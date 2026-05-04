@@ -342,18 +342,18 @@ section { padding: 96px 52px; }
 /* ══════════════════════════════════════════
    ABOUT
 ══════════════════════════════════════════ */
-#about { background: var(--bg-alt); display: grid; grid-template-columns: 320px 1fr; gap: 72px; align-items: start; }
+#about { background: var(--bg-alt); display: grid; grid-template-columns: 540px 1fr; gap: 40px; align-items: center; }
 .about-img-wrap { position: relative; }
 .about-img-wrap::before {
   content:''; position:absolute; inset:-7px;
   border:1.5px solid var(--accent); border-radius:4px;
-  opacity:0.35; transform:translate(7px,7px); transition:opacity 0.3s;
+  opacity:0.35; transform:translate(0px,0px); transition:opacity 0.3s;
 }
 .about-img-wrap:hover::before { opacity: 0.65; }
 .about-img-wrap img { width:100%; border-radius:4px; display:block; filter:grayscale(12%) contrast(1.04); transition:filter 0.4s; }
 .about-img-wrap:hover img { filter:grayscale(0%) contrast(1.07); }
 [data-theme="light"] .about-img-wrap img { filter:grayscale(5%) contrast(1.02) brightness(1.02); }
-[data-theme="light"] .about-img-wrap::before { border-color: var(--accent3); }
+[data-theme="light"] .about-img-wrap::before { border-color: var(--accent3);}
 
 .about-langs { display:flex; gap:7px; flex-wrap:wrap; margin-top:16px; align-items:center; }
 .about-langs-label {
@@ -365,15 +365,16 @@ section { padding: 96px 52px; }
 .lang-tag span { color:var(--accent); }
 [data-theme="light"] .lang-tag { background:rgba(123,47,255,0.06); }
 
-.about-text p { font-size:0.94rem; line-height:1.88; color:var(--text-muted); margin-bottom:16px; }
+.about-text p { font-size:0.94rem; line-height:1.5; color:var(--text-muted); margin-bottom:16px; }
 .about-text p strong { color:var(--text); }
 
-.skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-top:26px; }
+.skills-grid { display:grid; grid-template-columns:repeat(9,1fr); gap:7px; margin-top:4px; }
 .skill-tag {
   background:rgba(176,108,255,0.06); border:1px solid var(--border); border-radius:3px;
-  padding:8px 10px; font-size:0.68rem; color:var(--gray);
+  padding:8px 10px; font-size:0.50rem; color:var(--gray);
   font-family:'Space Mono',monospace; text-align:center;
   transition:border-color 0.2s, color 0.2s, background 0.2s;
+  min-width: 96px;
 }
 .skill-tag:hover { border-color:var(--accent); color:var(--accent); background:rgba(255,45,155,0.08); }
 [data-theme="light"] .skill-tag:hover { background:rgba(255,45,155,0.08); }
@@ -384,9 +385,9 @@ section { padding: 96px 52px; }
 #portfolio { background: var(--bg); }
 
 /* Featured cases */
-.cases-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-bottom:3px; }
-.case-card { position:relative; overflow:hidden; cursor:pointer; background:var(--card-bg); aspect-ratio:16/10; }
-.case-card.tall { aspect-ratio:3/4; }
+.cases-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; margin-bottom:3px; }
+.case-card { position:relative; overflow:hidden; cursor:pointer; background:var(--card-bg); aspect-ratio:1/1; }
+.case-card.tall { aspect-ratio:1/1; }
 .case-card img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.5s cubic-bezier(.25,.46,.45,.94), filter 0.45s; filter:brightness(0.82) saturate(0.88); }
 .case-card:hover img { transform:scale(1.05); filter:brightness(0.45) saturate(1.15); }
 [data-theme="light"] .case-card img { filter:brightness(0.88) saturate(0.9); }
@@ -447,7 +448,7 @@ section { padding: 96px 52px; }
 .tl-desc li::before { content:'→ '; color:var(--accent); opacity:0.6; }
 
 .know-group { margin-bottom:26px; }
-.know-group h4 { font-family:'Space Mono',monospace; font-size:0.58rem; letter-spacing:0.18em; color:var(--accent); text-transform:uppercase; margin-bottom:9px; }
+.know-group h4 {font-family: 'Bebas Neue', sans-serif;font-size: 1.2rem;letter-spacing: 0.08em;color: var(--text);margin-bottom: 10px;padding-bottom: 6px;}
 .know-tags { display:flex; flex-wrap:wrap; gap:6px; }
 .know-tag { background:rgba(176,108,255,0.06); border:1px solid var(--border); border-radius:2px; padding:5px 12px; font-size:0.71rem; color:var(--text-muted); transition:all 0.2s; }
 .know-tag:hover { border-color:var(--accent2); color:var(--accent2); background:rgba(255,110,199,0.06); }
@@ -509,8 +510,8 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
 
   .portfolio-grid { grid-template-columns: repeat(3, 1fr) !important; }
-  .cases-grid { grid-template-columns: 1fr 1fr; }
-  .case-card.tall { aspect-ratio: 16/9; }
+  .cases-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .case-card.tall { aspect-ratio:1/1; }
 
   .exp-layout { grid-template-columns: 1fr; gap: 44px; }
 
@@ -533,7 +534,7 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 
   .portfolio-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .cases-grid { grid-template-columns: 1fr !important; }
-  .case-card.tall { aspect-ratio: 16/9; }
+  .case-card.tall { aspect-ratio:1/1; }
 
   .lb-nav { display: none; }
 
@@ -552,8 +553,8 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   </a>
   <ul class="nav-links">
     <li><a href="#about"       class="t" data-key="nav-about">About</a></li>
+    <li><a href="#cases"       class="t" data-key="nav-case">Cases</a></li>
     <li><a href="#portfolio"   class="t" data-key="nav-portfolio">Portfolio</a></li>
-    <li><a href="99food.html" class="t" data-key="nav-case">99Food Case</a></li>
     <li><a href="#experiences" class="t" data-key="nav-exp">Experience</a></li>
     <li><a href="#contact"     class="t" data-key="nav-contact">Contact</a></li>
   </ul>
@@ -577,8 +578,8 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMenu()">✕</button>
   <a href="#about"       onclick="closeMenu()" class="t" data-key="nav-about">About</a>
+  <a href="#cases" onclick="closeMenu()" class="t" data-key="nav-case">Cases</a>
   <a href="#portfolio"   onclick="closeMenu()" class="t" data-key="nav-portfolio">Portfolio</a>
-  <a href="99food.html" onclick="closeMenu()" class="t" data-key="nav-case">99Food</a>
   <a href="#experiences" onclick="closeMenu()" class="t" data-key="nav-exp">Experience</a>
   <a href="#contact"     onclick="closeMenu()" class="t" data-key="nav-contact">Contact</a>
   <div class="mobile-controls">
@@ -595,7 +596,7 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
-  <div class="hero-content">
+  <div class="hero-content" style="padding-bottom: 24px;">
 
     <!-- NAME first -->
     <h1 class="hero-name">Leticia<br><span>Corredato</span></h1>
@@ -611,7 +612,7 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 
     <!-- CTAs -->
     <div class="hero-ctas">
-      <a href="#portfolio" class="hero-cta-primary  t" data-key="hero-cta1">View Portfolio</a>
+      <a href="#cases" class="hero-cta-primary  t" data-key="hero-cta1">View Success Cases</a>
       <a href="#contact"   class="hero-cta-secondary t" data-key="hero-cta2">Let's Talk</a>
     </div>
   </div>
@@ -621,21 +622,14 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 <div class="divider"></div>
 
 <!-- ══ ABOUT ══ -->
+    
 <section id="about">
-  <div class="about-img-wrap reveal">
-    <img src="https://static.wixstatic.com/media/b72a24_709874674e884b5cbea05f59784017e6~mv2.png" alt="Leticia Corredato">
-    <div class="about-langs">
-      <p class="about-langs-title">Languages</p>
-      <div class="lang-tag"><strong class="lang-code">PT</strong> Português — Native</div>
-      <div class="lang-tag"><strong class="lang-code">EN</strong> English — Full Professional</div>
-      <div class="lang-tag"><strong class="lang-code">FR</strong> Français — Elementary</div>
-    </div>
-  </div>
-  <div class="about-text reveal">
+  <div class="reveal">
     <p class="section-label t" data-key="about-label">Who I am</p>
     <h2 class="section-title t" data-key="about-title">About</h2>
     <div class="neon-line"></div>
 
+    <div class="about-text">
     <div data-lang="en" class="active">
       <p>UI/UX, Product and Growth Designer with <strong>6+ years</strong> of experience designing digital products, data-driven interfaces, and high-conversion marketing experiences.</p>
       <p>Strong background in user experience, paid media, and performance-driven design — combining visual design with data analysis to optimize user journeys and business outcomes.</p>
@@ -645,6 +639,11 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
       <p>UI/UX, Produto e Growth Designer com mais de <strong>6 anos</strong> de experiência na criação de produtos digitais, interfaces orientadas por dados e soluções de marketing focadas em conversão.</p>
       <p>Experiência sólida em UX, mídia paga e design orientado à performance — unindo criação visual e análise de dados para otimizar jornadas e resultados de negócio.</p>
       <p>Atuação recente em estratégia criativa e visualização de dados — dashboards, campanhas e canais de mídia paga (Meta, Google, YouTube). Conhecimento em Figma, Design System, CRM e front-end (HTML/CSS). Aprimorando habilidades em IA e estratégia de produto.</p>
+    </div>
+    </div>
+    </div>
+    <div class="about-img-wrap reveal">
+    <img src="https://static.wixstatic.com/media/b72a24_709874674e884b5cbea05f59784017e6~mv2.png" alt="Leticia Corredato">
     </div>
 
     <div class="skills-grid">
@@ -672,21 +671,21 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 
 <div class="divider"></div>
 
-<!-- ══ PORTFOLIO ══ -->
-<section id="portfolio">
+<!-- ══ CASES ══ -->
+<section id="cases">
   <div class="reveal">
     <p class="section-label t" data-key="port-label">Selected Works</p>
-    <h2 class="section-title t" data-key="port-title">Portfolio</h2>
+    <h2 class="section-title t" data-key="port-title">Success Cases</h2>
     <div class="neon-line"></div>
   </div>
 
   <!-- Featured cases EN -->
   <div class="cases-grid reveal active" data-lang="en" id="casesEN">
-    <div class="case-card tall" onclick="lb(2)">
+    <div class="case-card tall" onclick="window.location.href='case/evisita.html'" style="cursor:pointer;">
       <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png" alt="E-visita" loading="lazy">
       <div class="case-overlay"><span class="case-cat">UX/UI · Hypera Pharma</span><h3 class="case-title">E-visita Digital Platform</h3></div>
     </div>
-    <div class="case-card" onclick="window.location.href='99food-case.html'" style="cursor:pointer;">
+    <div class="case-card" onclick="window.location.href='case/99food.html'" style="cursor:pointer;">
       <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png" alt="Campaigns" loading="lazy">
       <div class="case-overlay"><span class="case-cat">Growth · 99/DiDi · Full Case →</span><h3 class="case-title">Creative Strategy & Performance</h3></div>
     </div>
@@ -698,11 +697,11 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 
   <!-- Featured cases PT -->
   <div class="cases-grid reveal" data-lang="pt" id="casesPT">
-    <div class="case-card tall" onclick="lb(2)">
+    <div class="case-card tall" onclick="window.location.href='/case/evisita.html'" style="cursor:pointer;">
       <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png" alt="E-visita" loading="lazy">
       <div class="case-overlay"><span class="case-cat">UX/UI · Hypera Pharma</span><h3 class="case-title">Plataforma E-visita</h3></div>
     </div>
-    <div class="case-card" onclick="openCase()" style="cursor:pointer;">
+    <div class="case-card" onclick="window.location.href='/case/99food.html'" style="cursor:pointer;">
       <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png" alt="Campanhas" loading="lazy">
       <div class="case-overlay"><span class="case-cat">Growth · 99/DiDi — Ver Case</span><h3 class="case-title">Campanhas de Performance</h3></div>
     </div>
@@ -711,45 +710,54 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
       <div class="case-overlay"><span class="case-cat">Visualização de Dados · Looker Studio</span><h3 class="case-title">Dashboards & Analytics</h3></div>
     </div>
   </div>
+  </section>
+
+<!-- ══ PORTFOLIO ══ -->
+<section id="portfolio">
+  <div class="reveal">
+    <p class="section-label t" data-key="port-label">General Works</p>
+    <h2 class="section-title t" data-key="port-title">Portfolio</h2>
+    <div class="neon-line"></div>
+  </div>
 
   <!-- Filters -->
   <div class="portfolio-filters reveal">
     <button class="filter-btn active" data-cat="all"     onclick="filterGrid('all',this)">All</button>
     <button class="filter-btn"        data-cat="uxui"    onclick="filterGrid('uxui',this)">UX / UI</button>
-    <button class="filter-btn"        data-cat="graphic" onclick="filterGrid('graphic',this)">Graphic</button>
     <button class="filter-btn"        data-cat="digital" onclick="filterGrid('digital',this)">Digital</button>
+    <button class="filter-btn"        data-cat="graphic" onclick="filterGrid('graphic',this)">Graphic</button>
   </div>
 
   <!-- Gallery EN -->
   <div class="portfolio-grid active" data-lang="en" id="gridEN">
-    <div class="portfolio-item" data-cat="graphic"  onclick="lb(0)"> <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="digital"  onclick="lb(1)"> <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"     onclick="lb(2)"> <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="graphic"  onclick="lb(3)"> <img src="https://static.wixstatic.com/media/b72a24_3333a0eca91440a680412600693fbbe2~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="digital"  onclick="lb(4)"> <img src="https://static.wixstatic.com/media/b72a24_e2608e088b364db49383ae9a1e3b1488~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"     onclick="lb(5)"> <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="graphic"  onclick="lb(6)"> <img src="https://static.wixstatic.com/media/b72a24_62dbd9a80b56417bac09320a09028a16~mv2.jpg"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="digital"  onclick="lb(7)"> <img src="https://static.wixstatic.com/media/b72a24_7f65afa3a5534c92a576b05804edbd60~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"     onclick="lb(8)"> <img src="https://static.wixstatic.com/media/b72a24_c2c88700ea504e23989124be2435bbd2~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="graphic"  onclick="lb(9)"> <img src="https://static.wixstatic.com/media/b72a24_7d80a2a1763048d1b7ba7bd2bb847892~mv2.jpg"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="digital" onclick="lb(10)"> <img src="https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png" alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"    onclick="lb(11)"> <img src="https://static.wixstatic.com/media/b72a24_9d30aa630cbd4ae3b50861427b7ea7d1~mv2.jpg"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
+    <div class="portfolio-item" data-cat="digital"          onclick="lb(0)"> <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
+    <div class="portfolio-item" data-cat="uxui"             onclick="lb(1)"> <img src="https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png" alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="uxui"             onclick="lb(2)"> <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
+    <div class="portfolio-item" data-cat="digital"          onclick="lb(3)"> <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
+    <div class="portfolio-item" data-cat="digital"          onclick="lb(4)"> <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
+    <div class="portfolio-item" data-cat="digital"          onclick="lb(5)"> <img src="https://static.wixstatic.com/media/b72a24_3333a0eca91440a680412600693fbbe2~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
+    <div class="portfolio-item" data-cat="digital"          onclick="lb(6)"> <img src="https://static.wixstatic.com/media/b72a24_e2608e088b364db49383ae9a1e3b1488~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
+    <div class="portfolio-item" data-cat="uxui"             onclick="lb(7)"> <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
+    <div class="portfolio-item" data-cat="uxui"             onclick="lb(8)"> <img src="https://static.wixstatic.com/media/b72a24_62dbd9a80b56417bac09320a09028a16~mv2.jpg"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
+    <div class="portfolio-item" data-cat="graphic"          onclick="lb(9)"> <img src="https://static.wixstatic.com/media/b72a24_7f65afa3a5534c92a576b05804edbd60~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
+    <div class="portfolio-item" data-cat="graphic"          onclick="lb(10)"> <img src="https://static.wixstatic.com/media/b72a24_c2c88700ea504e23989124be2435bbd2~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
+    <div class="portfolio-item" data-cat="graphic"          onclick="lb(11)"> <img src="https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png" alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
   </div>
 
   <!-- Gallery PT -->
   <div class="portfolio-grid" data-lang="pt" id="gridPT">
-    <div class="portfolio-item" data-cat="graphic"  onclick="lb(0)"> <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="digital"  onclick="lb(1)"> <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"     onclick="lb(2)"> <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="graphic"  onclick="lb(3)"> <img src="https://static.wixstatic.com/media/b72a24_3333a0eca91440a680412600693fbbe2~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="digital"  onclick="lb(4)"> <img src="https://static.wixstatic.com/media/b72a24_e2608e088b364db49383ae9a1e3b1488~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"     onclick="lb(5)"> <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="graphic"  onclick="lb(6)"> <img src="https://static.wixstatic.com/media/b72a24_62dbd9a80b56417bac09320a09028a16~mv2.jpg"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="digital"  onclick="lb(7)"> <img src="https://static.wixstatic.com/media/b72a24_7f65afa3a5534c92a576b05804edbd60~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"     onclick="lb(8)"> <img src="https://static.wixstatic.com/media/b72a24_c2c88700ea504e23989124be2435bbd2~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="graphic"  onclick="lb(9)"> <img src="https://static.wixstatic.com/media/b72a24_7d80a2a1763048d1b7ba7bd2bb847892~mv2.jpg"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="digital" onclick="lb(10)"> <img src="https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png" alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"    onclick="lb(11)"> <img src="https://static.wixstatic.com/media/b72a24_9d30aa630cbd4ae3b50861427b7ea7d1~mv2.jpg"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="digital"          onclick="lb(0)"> <img src="https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png" alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="uxui"             onclick="lb(1)"> <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="uxui"             onclick="lb(2)"> <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="digital"          onclick="lb(3)"> <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="digital"          onclick="lb(4)"> <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="digital"          onclick="lb(5)"> <img src="https://static.wixstatic.com/media/b72a24_3333a0eca91440a680412600693fbbe2~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="digital"          onclick="lb(6)"> <img src="https://static.wixstatic.com/media/b72a24_e2608e088b364db49383ae9a1e3b1488~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="uxui"             onclick="lb(7)"> <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="uxui"             onclick="lb(8)"> <img src="https://static.wixstatic.com/media/b72a24_62dbd9a80b56417bac09320a09028a16~mv2.jpg"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="graphic"          onclick="lb(9)"> <img src="https://static.wixstatic.com/media/b72a24_7f65afa3a5534c92a576b05804edbd60~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="graphic"          onclick="lb(10)"> <img src="https://static.wixstatic.com/media/b72a24_c2c88700ea504e23989124be2435bbd2~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
+    <div class="portfolio-item" data-cat="graphic"          onclick="lb(11)"> <img src="https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png" alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
   </div>
 </section>
 
@@ -774,87 +782,132 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 
   <div class="exp-layout">
 
-    <div class="timeline reveal">
-      <!-- 99/DiDi -->
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div>
-          <p class="tl-period">Sep 2025 – Apr 2026</p>
-          <h3 class="tl-company">99 / DiDi</h3>
-          <p class="tl-role">UI/UX, Creative Strategist &amp; Growth Designer</p>
-          <ul class="tl-desc" data-lang="en" style="display:block">
-            <li>Led performance campaigns across Meta, Google &amp; YouTube, combining creative strategy with paid media optimization</li>
-            <li>Built dashboards in Looker Studio; analyzed ROI, sign-ups and reach to drive data-informed decisions</li>
-            <li>Developed scalable creatives using Smartly.io; collaborated cross-functionally to improve conversion</li>
-          </ul>
-          <ul class="tl-desc" data-lang="pt">
-            <li>Gestão de campanhas de performance em Meta, Google e YouTube, unindo visão criativa e otimização de mídia</li>
-            <li>Construção de painéis no Looker Studio e análise de ROI, cadastros e alcance</li>
-            <li>Criação de materiais escaláveis com Smartly.io para melhorar conversão</li>
-          </ul>
-        </div>
-      </div>
-      <!-- Hypera -->
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div>
-          <p class="tl-period">May 2024 – Aug 2025</p>
-          <h3 class="tl-company">Hypera Pharma</h3>
-          <p class="tl-role">Digital Designer / UI</p>
-          <ul class="tl-desc" data-lang="en" style="display:block">
-            <li>Created email marketing templates &amp; components using Salesforce</li>
-            <li>Designed CRM and WhatsApp journey flows; prototyped in Figma</li>
-            <li>Developed visual components with HTML/CSS</li>
-            <li>Designed the e-visita digital medical platform</li>
-            <li>Collaborated with BI, MarTech &amp; strategy teams to enhance KPIs and UX</li>
-          </ul>
-          <ul class="tl-desc" data-lang="pt">
-            <li>Criou templates e componentes de email marketing no Salesforce</li>
-            <li>Projetou fluxos de jornada CRM e WhatsApp; prototipou no Figma</li>
-            <li>Desenvolveu componentes visuais com HTML/CSS</li>
-            <li>Projetou a plataforma médica digital e-visita</li>
-            <li>Colaborou com equipes de BI, MarTech e estratégia</li>
-          </ul>
-        </div>
-      </div>
-      <!-- WHF -->
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div>
-          <p class="tl-period">May 2021 – Feb 2023</p>
-          <h3 class="tl-company">WHF Design Company</h3>
-          <p class="tl-role">Social Media &amp; Digital Designer</p>
-          <ul class="tl-desc" data-lang="en" style="display:block">
-            <li>Created ads for performance campaigns (Google / Meta)</li>
-            <li>Developed landing pages and marketing emails applying UI/UX concepts</li>
-            <li>Aligned with marketing team for effective communication strategies</li>
-          </ul>
-          <ul class="tl-desc" data-lang="pt">
-            <li>Criou anúncios para campanhas de performance (Google/Meta)</li>
-            <li>Desenvolveu landing pages e e-mails marketing com conceitos de UI/UX</li>
-            <li>Alinhamento com marketing para estratégias de comunicação mais eficazes</li>
-          </ul>
-        </div>
-      </div>
-      <!-- A.Cabine -->
-      <div class="tl-item">
-        <div class="tl-dot"></div>
-        <div>
-          <p class="tl-period">Sep 2018 – May 2021</p>
-          <h3 class="tl-company">A.Cabine Materiais Elétricos</h3>
-          <p class="tl-role">Graphic Designer</p>
-          <ul class="tl-desc" data-lang="en" style="display:block">
-            <li>Developed graphic and digital materials for brand communication</li>
-            <li>Created social media and email marketing content focused on conversion</li>
-            <li>Collaborated with the sales team to optimize marketing strategy</li>
-          </ul>
-          <ul class="tl-desc" data-lang="pt">
-            <li>Desenvolveu materiais digitais e impressos para comunicação da marca</li>
-            <li>Criou conteúdo para redes sociais e email marketing com foco em conversão</li>
-            <li>Colaborou com a equipe de vendas para aprimorar a estratégia de marketing</li>
-          </ul>
-        </div>
-      </div>
+   <div class="timeline reveal">
+    <!-- 99/DiDi -->
+    <div class="tl-item">
+    <div class="tl-dot"></div>
+    <div>
+    <p class="tl-period" data-lang="en" style="display:block;">Sep 2025 – Apr 2026</p>
+    <p class="tl-period" data-lang="pt">Set 2025 – Abr 2026</p>
+    <h3 class="tl-company">99 / DiDi</h3>
+    <p class="tl-role">UI/UX, Creative Strategist &amp; Growth Designer</p>
+    <ul class="tl-desc" data-lang="en" style="display:block">
+    <li>Led performance campaigns across Meta, Google &amp; YouTube, combining creative strategy with paid media optimization</li>
+    <li>Built dashboards in Looker Studio; analyzed ROI, sign-ups and reach to drive data-informed decisions</li>
+    <li>Developed scalable creatives using Smartly.io; collaborated cross-functionally to improve conversion</li>
+    </ul>
+    <ul class="tl-desc" data-lang="pt">
+    <li>Gestão de campanhas de performance em Meta, Google e YouTube, unindo visão criativa e otimização de mídia</li>
+    <li>Construção de painéis no Looker Studio e análise de ROI, cadastros e alcance</li>
+    <li>Criação de materiais escaláveis com Smartly.io para melhorar conversão</li>
+    </ul>
+    </div>
+    </div>
+    <!-- Hypera -->
+    <div class="tl-item">
+    <div class="tl-dot"></div>
+    <div>
+    <p class="tl-period" data-lang="en" style="display:block;">May 2024 – Aug 2025</p>
+    <p class="tl-period" data-lang="pt">Mai 2024 – Ago 2025</p>
+    <h3 class="tl-company">Hypera Pharma</h3>
+    <p class="tl-role">Digital Designer / UI</p>
+    <ul class="tl-desc" data-lang="en" style="display:block">
+    <li>Created email marketing templates &amp; components using Salesforce</li>
+    <li>Designed CRM and WhatsApp journey flows; prototyped in Figma</li>
+    <li>Developed visual components with HTML/CSS</li>
+    <li>Designed the e-visita digital medical platform</li>
+    <li>Collaborated with BI, MarTech &amp; strategy teams to enhance KPIs and UX</li>
+    </ul>
+    <ul class="tl-desc" data-lang="pt">
+    <li>Criou templates e componentes de email marketing no Salesforce</li>
+    <li>Projetou fluxos de jornada CRM e WhatsApp; prototipou no Figma</li>
+    <li>Desenvolveu componentes visuais com HTML/CSS</li>
+    <li>Projetou a plataforma médica digital e-visita</li>
+    <li>Colaborou com equipes de BI, MarTech e estratégia</li>
+    </ul>
+    </div>
+    </div>
+    <!-- WHF -->
+    <div class="tl-item">
+    <div class="tl-dot"></div>
+    <div>
+    <p class="tl-period" data-lang="en" style="display:block;">May 2021 – Feb 2023</p>
+    <p class="tl-period" data-lang="pt">Mai 2021 – Fev 2023</p>
+    <h3 class="tl-company">WHF Design Company</h3>
+    <p class="tl-role">Social Media &amp; Digital Designer</p>
+    <ul class="tl-desc" data-lang="en" style="display:block">
+    <li>Created ads for performance campaigns (Google / Meta)</li>
+    <li>Developed landing pages and marketing emails applying UI/UX concepts</li>
+    <li>Aligned with marketing team for effective communication strategies</li>
+    </ul>
+    <ul class="tl-desc" data-lang="pt">
+    <li>Criou anúncios para campanhas de performance (Google/Meta)</li>
+    <li>Desenvolveu landing pages e e-mails marketing com conceitos de UI/UX</li>
+    <li>Alinhamento com marketing para estratégias de comunicação mais eficazes</li>
+    </ul>
+    </div>
+    </div>
+    <!-- A.Cabine -->
+    <div class="tl-item">
+    <div class="tl-dot"></div>
+    <div>
+    <p class="tl-period" data-lang="en" style="display:block;">Sep 2018 – May 2021</p>
+    <p class="tl-period" data-lang="pt">Set 2018 – Mai 2021</p>
+    <h3 class="tl-company">A.Cabine Materiais Elétricos</h3>
+    <p class="tl-role">Graphic Designer</p>
+    <ul class="tl-desc" data-lang="en" style="display:block">
+    <li>Developed graphic and digital materials for brand communication</li>
+    <li>Created social media and email marketing content focused on conversion</li>
+    <li>Collaborated with the sales team to optimize marketing strategy</li>
+    </ul>
+    <ul class="tl-desc" data-lang="pt">
+    <li>Desenvolveu materiais digitais e impressos para comunicação da marca</li>
+    <li>Criou conteúdo para redes sociais e email marketing com foco em conversão</li>
+    <li>Colaborou com a equipe de vendas para aprimorar a estratégia de marketing</li>
+    </ul>
+    </div>
+    </div>
+    <!-- A Casa dos Meninos -->
+    <div class="tl-item">
+    <div class="tl-dot"></div>
+    <div>
+    <p class="tl-period" data-lang="en" style="display:block;">May 2018 – Aug 2018</p>
+    <p class="tl-period" data-lang="pt">Mai 2018 – Ago 2018</p>
+    <h3 class="tl-company">A Casa dos Meninos</h3>
+    <p class="tl-role">Graphic Designer</p>
+    <ul class="tl-desc" data-lang="en" style="display:block">
+    <li>Created and printed graphic materials on small and large scales</li>
+    <li>Designed custom kits for birthdays, visual communication materials and personalized stickers</li>
+    <li>Responsible for customer service, delivery control and store management</li>
+    </ul>
+    <ul class="tl-desc" data-lang="pt">
+    <li>Criação e impressão de materiais gráficos em pequena e grande escala</li>
+    <li>Kits personalizados para aniversários, materiais de comunicação visual e adesivos personalizados</li>
+    <li>Atendimento ao cliente, controle de entregas e gestão da loja</li>
+    </ul>
+    </div>
+    </div>
+    <!-- Smart Personalizações -->
+    <div class="tl-item">
+    <div class="tl-dot"></div>
+    <div>
+    <p class="tl-period" data-lang="en" style="display:block;">Oct 2017 – May 2018</p>
+    <p class="tl-period" data-lang="pt">Out 2017 – Mai 2018</p>
+    <h3 class="tl-company">Smart Personalizações Visuais</h3>
+    <p class="tl-role" data-lang="en" style="display:block;">Trainee — Graphic Design</p>
+    <p class="tl-role" data-lang="pt">Estágio — Design Gráfico</p>
+    <ul class="tl-desc" data-lang="en" style="display:block">
+    <li>Graphic design services including customized vehicle graphics and visual communication materials</li>
+    <li>Created personalized stickers and printed materials</li>
+    <li>Customer service, inventory management and product reception</li>
+    </ul>
+    <ul class="tl-desc" data-lang="pt">
+    <li>Serviços de design gráfico incluindo adesivação de veículos e materiais de comunicação visual</li>
+    <li>Criação de adesivos personalizados e materiais impressos</li>
+    <li>Atendimento ao cliente, gestão de estoque e recepção de produtos</li>
+    </ul>
+    </div>
+    </div>
     </div><!-- /timeline -->
 
     <!-- Knowledge + Education + Certs -->
@@ -895,31 +948,83 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
         </div>
       </div>
 
-      <div class="edu-certs">
-        <h4 class="t" data-key="k-edu">Education</h4>
-        <div class="edu-item">
-          <strong>Universidade Guarulhos</strong>
-          <span class="t" data-key="edu-deg">Design Bachelor · 2016 – 2018</span>
-        </div>
-      </div>
+      <!-- LANGUAGES -->
+      <div class="reveal" style="margin-top:22px">
+      <p class="section-label" data-key="k-lang">Languages</p>
+          <ul class="cert-list" data-lang="en" style="display:block">
+              <li><span style="font-size:0.82rem; color:var(--text); font-weight:400;">Portuguese</span> — Native</li>
+              <li><span style="font-size:0.82rem; color:var(--text); font-weight:400;">English</span> — Full Professional</li>
+              <li><span style="font-size:0.82rem; color:var(--text); font-weight:400;">French</span> — Basic</li>
+          </ul>
+          <ul class="cert-list" data-lang="pt">
+              <li><span style="font-size:0.82rem; color:var(--text); font-weight:400;">Português</span> — Nativo</li>
+              <li><span style="font-size:0.82rem; color:var(--text); font-weight:400;">Inglês</span> — Profissional</li>
+              <li><span style="font-size:0.82rem; color:var(--text); font-weight:400;">Francês</span> — Básico</li>
+          </ul>
+          </div>
 
-      <div class="edu-certs" style="margin-top:22px">
-        <h4 class="t" data-key="k-cert">Certifications</h4>
-        <ul class="cert-list" data-lang="en" style="display:block">
-          <li>Adobe XD: UI Design of basic prototypes</li>
-          <li>Advanced UI</li>
-          <li>UI Design: Interface Design for Web Projects</li>
-          <li>Design Thinking, UX &amp; Agile Methodologies</li>
-          <li>Introduction to Web Development</li>
+      <!-- EDUCATION -->
+      <div class="reveal" style="margin-top:22px">
+      <p class="section-label" data-key="k-edu">Education</p>
+        <ul class="cert-list" data-lang="en">
+          <li>
+            <span style="font-size:0.85rem; color:var(--text); font-weight:400;">Design Bachelor</span> — Guarulhos University · 2016 – 2018
+          </li>
         </ul>
         <ul class="cert-list" data-lang="pt">
-          <li>Adobe XD: Design de UI para protótipos básicos</li>
-          <li>UI Avançada</li>
-          <li>Design de UI: Criação de interfaces para projetos web</li>
-          <li>Design Thinking, UX e Metodologias Ágeis</li>
-          <li>Introdução ao Desenvolvimento Web</li>
+          <li>
+            <span style="font-size:0.85rem; color:var(--text); font-weight:400;">Design Bacharel</span> — Universidade de Guarulhos · 2016 – 2018
+          </li>
         </ul>
       </div>
+
+      <!-- CERTIFICATIONS -->
+      <div class="reveal" style="margin-top:22px">
+      <p class="section-label" data-key="k-cert">Certifications</p>
+        <ul class="cert-list" data-lang="en" style="display:block">
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Marketing Digital</span> — Alura · Apr 2026</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Design System</span> — Alura · Apr 2026</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Praticando Figma</span> — Alura · Apr 2026</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Engenharia de Prompt</span> — Alura · Jul 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Inteligência Artificial e Personas</span> — Alura · Jul 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">E-mail Marketing</span> — Alura · Jul 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Design System</span> — Alura · Jul 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Design: Usability Testing</span> — Alura · Apr 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Design: Diving into Digital Interfaces</span> — Alura · Mar 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Design: UI Patterns</span> — Alura · Mar 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Design: Creating a Prototype Design</span> — Alura · Jan 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Design: Building the Final Product</span> — Alura · Mar 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">AI: Generative Intelligence Potential</span> — Alura · May 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Design Thinking: Enabling Solutions</span> — Alura · Jan 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Advanced UI</span> — Origamid · Apr 2024</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Design Thinking, UX &amp; Agile Methodologies</span> — Descomplica</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Introduction to Web Development</span> — Descomplica</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Design: Interface Design for Web Projects</span> — Udemy · Apr 2020</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Adobe XD: UI Design from basics to prototypes</span> — Udemy · Apr 2020</li>
+        </ul>
+        <ul class="cert-list" data-lang="pt">
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Marketing Digital</span> — Alura · Abr 2026</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Design System</span> — Alura · Abr 2026</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Praticando Figma</span> — Alura · Abr 2026</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Engenharia de Prompt</span> — Alura · Jul 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Inteligência Artificial e Personas</span> — Alura · Jul 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">E-mail Marketing</span> — Alura · Jul 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Design System</span> — Alura · Jul 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Design: Teste de Usabilidade</span> — Alura · Abr 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Design: Mergulhando nas Interfaces Digitais</span> — Alura · Mar 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Design: UI Patterns</span> — Alura · Mar 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Design: Criando o Design de um Protótipo</span> — Alura · Jan 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Design: Construindo o Produto Final</span> — Alura · Mar 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">IA: Explorando o Potencial da IA Generativa</span> — Alura · Mai 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Design Thinking: Viabilizando Soluções</span> — Alura · Jan 2025</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Avançada</span> — Origamid · Abr 2024</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Design Thinking, UX e Metodologias Ágeis</span> — Descomplica</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Introdução ao Desenvolvimento Web</span> — Descomplica</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">UI Design: Interfaces com Foco em Projetos Web</span> — Udemy · Abr 2020</li>
+          <li><span style="font-size:0.82rem; color:var(--text); font-weight:200;">Adobe XD: UI Design do Básico aos Protótipos</span> — Udemy · Abr 2020</li>
+        </ul>
+      </div>
+
     </div>
   </div><!-- /exp-layout -->
 </section>
@@ -1068,7 +1173,6 @@ const T = {
   'hero-value':    { en:'<strong>6+ years</strong> turning data into products people actually use — from digital interfaces and design systems to paid media campaigns that convert.',
                      pt:'<strong>6+ anos</strong> transformando dados em produtos que as pessoas realmente usam — de interfaces e design systems a campanhas de mídia paga que convertem.' },
   'stat-exp':      { en:'Years exp.',  pt:'Anos exp.' },
-  'stat-lang':     { en:'Languages',   pt:'Idiomas' },
   'stat-co':       { en:'Companies',   pt:'Empresas' },
   'hero-cta1':     { en:'View Portfolio', pt:'Ver Portfólio' },
   'hero-cta2':     { en:"Let's Talk",     pt:'Fale Comigo' },
@@ -1083,6 +1187,7 @@ const T = {
   'k-edu':         { en:'Education',             pt:'Educação' },
   'edu-deg':       { en:'Design Bachelor · 2016 – 2018', pt:'Design Bacharel · 2016 – 2018' },
   'k-cert':        { en:'Certifications',        pt:'Certificados' },
+  'k-lang':        { en:'Languages',             pt:'Idiomas' },
   'contact-label': { en:"Let's work together",   pt:'Vamos trabalhar juntos' },
   'contact-title': { en:'Get in Touch',           pt:'Entre em Contato' },
   'footer-dev':    { en:'Developed by Leticia Corredato', pt:'Desenvolvido por Leticia Corredato' },
