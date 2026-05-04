@@ -342,7 +342,7 @@ section { padding: 96px 52px; }
 /* ══════════════════════════════════════════
    ABOUT
 ══════════════════════════════════════════ */
-#about { background: var(--bg-alt); display: grid; grid-template-columns: 540px 1fr; gap: 40px; align-items: center; }
+#about { background: var(--bg-alt); display: grid; grid-template-columns: 720px 1fr; gap: 40px; align-items: center; }
 .about-img-wrap { position: relative; }
 .about-img-wrap::before {
   content:''; position:absolute; inset:-7px;
@@ -355,7 +355,7 @@ section { padding: 96px 52px; }
 [data-theme="light"] .about-img-wrap img { filter:grayscale(5%) contrast(1.02) brightness(1.02); }
 [data-theme="light"] .about-img-wrap::before { border-color: var(--accent3);}
 
-.about-langs { display:flex; gap:7px; flex-wrap:wrap; margin-top:16px; align-items:center; }
+.about-langs { display:flex; gap:7px; flex-wrap:wrap; margin-top:24px; align-items:center; }
 .about-langs-label {
   width: 100%; font-family:'Space Mono',monospace; font-size:0.55rem;
   letter-spacing:0.2em; color:var(--gray); text-transform:uppercase;
@@ -368,10 +368,10 @@ section { padding: 96px 52px; }
 .about-text p { font-size:0.94rem; line-height:1.5; color:var(--text-muted); margin-bottom:16px; }
 .about-text p strong { color:var(--text); }
 
-.skills-grid { display:grid; grid-template-columns:repeat(9,1fr); gap:7px; margin-top:4px; }
+.skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-top:32px; }
 .skill-tag {
   background:rgba(176,108,255,0.06); border:1px solid var(--border); border-radius:3px;
-  padding:8px 10px; font-size:0.50rem; color:var(--gray);
+  padding:8px 10px; font-size:0.64rem; color:var(--gray);
   font-family:'Space Mono',monospace; text-align:center;
   transition:border-color 0.2s, color 0.2s, background 0.2s;
   min-width: 96px;
@@ -641,11 +641,6 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
       <p>Atuação recente em estratégia criativa e visualização de dados — dashboards, campanhas e canais de mídia paga (Meta, Google, YouTube). Conhecimento em Figma, Design System, CRM e front-end (HTML/CSS). Aprimorando habilidades em IA e estratégia de produto.</p>
     </div>
     </div>
-    </div>
-    <div class="about-img-wrap reveal">
-    <img src="https://static.wixstatic.com/media/b72a24_709874674e884b5cbea05f59784017e6~mv2.png" alt="Leticia Corredato">
-    </div>
-
     <div class="skills-grid">
       <span class="skill-tag">UI/UX Design</span>
       <span class="skill-tag">Figma</span>
@@ -666,6 +661,12 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
       <span class="skill-tag">CRO / A/B Test</span>
       <span class="skill-tag">RD Station</span>
     </div>
+    </div>
+    <div class="about-img-wrap reveal">
+    <img src="https://static.wixstatic.com/media/b72a24_709874674e884b5cbea05f59784017e6~mv2.png" alt="Leticia Corredato">
+    </div>
+
+    
   </div>
 </section>
 
