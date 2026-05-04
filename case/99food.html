@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>99Food Case Study | Leticia Corredato</title>
+<meta name="description" content="Creative Strategy for Restaurant Acquisition — 99Food B2B Performance Campaigns">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════════
+   TOKENS — inherits same system as portfolio
+══════════════════════════════════════════ */
+:root {
+  --bg:        #0a0905;
+  --bg-alt:    #110e04;
+  --bg-mid:    #160f00;
+  --card-bg:   #130f05;
+  --text:      #faf7ec;
+  --text-muted:rgba(250,247,236,0.62);
+  --gray:      #8a8060;
+  --border:    rgba(210,168,0,0.18);
+  --accent:    #ff2d9b; /* portfolio accent for back-button */
+  --gold:      #d4a800;
+  --gold2:     #f0c84a;
+  --gold3:     #c8a200;
+  --nav-bg:    rgba(10,9,5,0.88);
+}
+[data-theme="light"] {
+  --bg:        #fdfbf0;
+  --bg-alt:    #f7f3dc;
+  --bg-mid:    #eee9c8;
+  --card-bg:   #fffef5;
+  --text:      #1a1600;
+  --text-muted:rgba(26,22,0,0.62);
+  --gray:      #7a7050;
+  --border:    rgba(180,140,0,0.18);
+  --nav-bg:    rgba(253,251,240,0.92);
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+  transition: background 0.4s, color 0.4s;
+}
+
+/* ── Cursor ── */
+#cursor {
+  position: fixed; width: 13px; height: 13px;
+  background: var(--gold); border-radius: 50%;
+  pointer-events: none; z-index: 9999;
+  transform: translate(-50%,-50%);
+  mix-blend-mode: screen;
+  transition: transform 0.1s, width 0.2s, height 0.2s;
+  will-change: left, top;
+}
+#cursor.big { width: 36px; height: 36px; background: rgba(212,168,0,0.2); transform: translate(-50%,-50%); }
+[data-theme="light"] #cursor { mix-blend-mode: multiply; }
+@media (hover:none) { #cursor { display:none; } body { cursor:auto; } }
+
+/* ══ NAV ══ */
+nav {
+  position: fixed; top:0; left:0; right:0; z-index:1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 15px 48px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.3s, background 0.4s;
+}
+nav.scrolled { padding: 10px 48px; }
+.nav-back {
+  display: inline-flex; align-items: center; gap: 8px;
+  text-decoration: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.14em;
+  color: var(--gray); text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-back:hover { color: var(--gold); }
+.nav-back svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.nav-brand {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.1rem; letter-spacing: 0.12em;
+  color: var(--gold);
+  text-shadow: 0 0 20px rgba(212,168,0,0.35);
+}
+/* Theme btn */
+.theme-btn {
+  background: transparent; border: 1px solid var(--border);
+  width: 34px; height: 34px; border-radius: 4px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--gray);
+  transition: background 0.2s, color 0.2s;
+}
+.theme-btn:hover { background: rgba(212,168,0,0.1); color: var(--gold); }
+.theme-btn svg { width: 14px; height: 14px; fill: currentColor; display: block; }
+.ham-mob { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:3px; }
+.ham-mob span { display:block; width:22px; height:2px; background:var(--gold); border-radius:2px; }
+
+/* ══ SECTIONS ══ */
+.cs-section { padding: 88px 52px; background: var(--bg); }
+.cs-section.alt { background: var(--bg-alt); }
+.cs-section.dark-gold {
+  background: #0d0b02;
+}
+[data-theme="light"] .cs-section.dark-gold { background: #faf5dc; }
+
+.cs-eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.28em;
+  color: var(--gold3); text-transform: uppercase; margin-bottom: 10px;
+}
+.cs-h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.2rem, 5.5vw, 4.4rem);
+  letter-spacing: 0.05em; line-height: 1;
+  color: var(--text); margin-bottom: 20px;
+}
+.cs-h2 em { color: var(--gold); font-style: normal; }
+.cs-lead {
+  font-size: 1rem; line-height: 1.82; color: var(--text-muted);
+  max-width: 660px; margin-bottom: 32px;
+}
+.cs-accent-line {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--gold), var(--gold2));
+  border-radius: 2px; margin-bottom: 28px;
+}
+.divider {
+  width:100%; height:1px;
+  background: linear-gradient(90deg,transparent,var(--gold),var(--gold2),transparent);
+  opacity:0.25;
+}
+
+/* ── Layout grids ── */
+.cs-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
+.cs-3col { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.cs-4col { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
+
+/* ── Cards ── */
+.cs-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border); border-radius: 8px; padding: 20px 22px;
+}
+.cs-card-label {
+  font-family:'Space Mono',monospace; font-size:0.55rem;
+  letter-spacing:0.18em; color:var(--gold3); text-transform:uppercase; margin-bottom:10px;
+}
+.cs-card-list { list-style:none; }
+.cs-card-list li { font-size:0.82rem; color:var(--text-muted); padding:3px 0; }
+.cs-card-list li::before { content:'— '; color:var(--gold); }
+
+/* ── Challenge cards ── */
+.cs-challenge-card {
+  background: var(--card-bg); border: 1px solid var(--border);
+  border-radius: 8px; padding: 18px 20px; border-top: 3px solid var(--gold);
+}
+.cs-challenge-card h4 { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:0.1em; color:var(--text); margin-bottom:5px; }
+.cs-challenge-card p { font-size:0.78rem; color:var(--text-muted); line-height:1.6; }
+
+/* ── Bar charts ── */
+.cs-chart { display:flex; flex-direction:column; gap:10px; margin-top:8px; }
+.cs-bar-row { display:flex; align-items:center; gap:10px; }
+.cs-bar-label { font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--gray); width:110px; flex-shrink:0; letter-spacing:0.05em; }
+.cs-bar-track { flex:1; height:8px; background:rgba(200,162,0,0.1); border-radius:4px; overflow:hidden; }
+.cs-bar-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,var(--gold),var(--gold2)); }
+.cs-bar-val { font-family:'Space Mono',monospace; font-size:0.56rem; color:var(--gold3); width:70px; text-align:right; flex-shrink:0; }
+
+/* ── Image containers ── */
+.cs-img-full {
+  width:100%; border-radius:10px;
+  border: 1px solid rgba(212,168,0,0.18);
+  box-shadow: 0 8px 40px rgba(0,0,0,0.25);
+  display: block;
+  object-fit: cover;
+}
+.cs-img-caption {
+  font-family:'Space Mono',monospace; font-size:0.54rem;
+  letter-spacing:0.12em; color:var(--gray); text-transform:uppercase;
+  text-align:center; margin-top:10px;
+}
+/* image grid for creatives */
+.cs-img-grid { display:grid; gap:8px; }
+.cs-img-grid.col2 { grid-template-columns:1fr 1fr; }
+.cs-img-grid.col3 { grid-template-columns:repeat(3,1fr); }
+.cs-img-grid.col4 { grid-template-columns:repeat(4,1fr); }
+.cs-img-item { position:relative; border-radius:8px; overflow:hidden; background:var(--card-bg); border:1px solid var(--border); }
+.cs-img-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s; }
+.cs-img-item:hover img { transform:scale(1.04); }
+.cs-img-item .cs-img-overlay {
+  position:absolute; inset:0;
+  background:linear-gradient(to top,rgba(10,9,5,0.7) 0%,transparent 60%);
+  display:flex; align-items:flex-end; padding:12px;
+  opacity:0; transition:opacity 0.3s;
+}
+.cs-img-item:hover .cs-img-overlay { opacity:1; }
+.cs-img-item .cs-img-overlay span { font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.1em; color:rgba(255,255,255,0.8); text-transform:uppercase; }
+
+/* ── Cover ── */
+.cs-cover {
+  min-height: 100vh;
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 130px 52px 80px; text-align: center;
+  background: #080701;
+}
+[data-theme="light"] .cs-cover { background: #faf8e8; }
+.cs-cover-grid {
+  position:absolute; inset:0;
+  background-image:
+    linear-gradient(rgba(220,175,0,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(220,175,0,0.06) 1px, transparent 1px);
+  background-size: 52px 52px;
+}
+.cs-cover-glow {
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse 65% 55% at 50% 40%, rgba(212,168,0,0.16) 0%, transparent 70%);
+}
+.cs-cover-tag {
+  display:inline-block; position:relative; z-index:1;
+  border:1px solid rgba(212,168,0,0.35); border-radius:100px;
+  padding:5px 18px; font-family:'Space Mono',monospace;
+  font-size:0.58rem; letter-spacing:0.2em; color:var(--gold3);
+  text-transform:uppercase; margin-bottom:24px;
+  background:rgba(212,168,0,0.07);
+}
+.cs-cover-brand {
+  font-family:'Bebas Neue',sans-serif;
+  font-size: clamp(5rem, 16vw, 13rem);
+  letter-spacing:0.02em; line-height:0.85;
+  color: #f5f0d8; position:relative; z-index:1;
+}
+[data-theme="light"] .cs-cover-brand { color: #1a1600; }
+.cs-cover-brand span { color: var(--gold); }
+.cs-cover-sub {
+  position:relative; z-index:1;
+  font-family:'Space Mono',monospace;
+  font-size:clamp(0.55rem,1.5vw,0.72rem);
+  letter-spacing:0.18em; color:#a08830;
+  text-transform:uppercase; margin-top:14px;
+}
+[data-theme="light"] .cs-cover-sub { color: #7a6820; }
+.cs-cover-desc {
+  position:relative; z-index:1;
+  font-size:0.9rem; line-height:1.78; color:rgba(245,240,216,0.65);
+  max-width:520px; margin:16px auto 0;
+}
+[data-theme="light"] .cs-cover-desc { color:rgba(26,22,0,0.6); }
+.cs-cover-meta {
+  position:relative; z-index:1;
+  display:flex; justify-content:center; gap:28px; flex-wrap:wrap; margin-top:44px;
+}
+.cs-meta-item { text-align:center; min-width:90px; }
+.cs-meta-label { font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; color:#7a6830; text-transform:uppercase; margin-bottom:4px; }
+.cs-meta-val { font-size:0.84rem; color:#f5f0d8; font-weight:600; }
+[data-theme="light"] .cs-meta-val { color:#1a1600; }
+.cs-meta-div { width:1px; background:rgba(200,162,0,0.2); align-self:stretch; }
+
+/* ── Timeline ── */
+.cs-timeline { position:relative; padding-left:28px; }
+.cs-timeline::before { content:''; position:absolute; left:10px; top:8px; bottom:8px; width:2px; background:linear-gradient(to bottom,var(--gold),rgba(200,162,0,0.1)); }
+.cs-tl-item { position:relative; margin-bottom:28px; }
+.cs-tl-dot { position:absolute; left:-22px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--gold); box-shadow:0 0 8px rgba(212,168,0,0.5); }
+.cs-tl-phase { font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.14em; color:var(--gold3); text-transform:uppercase; margin-bottom:3px; }
+.cs-tl-title { font-family:'Bebas Neue',sans-serif; font-size:1.05rem; letter-spacing:0.08em; color:var(--text); margin-bottom:4px; }
+.cs-tl-desc { font-size:0.78rem; color:var(--text-muted); line-height:1.6; }
+
+/* ── Before/After ── */
+.cs-ba { display:grid; grid-template-columns:1fr 1fr; gap:3px; border-radius:8px; overflow:hidden; }
+.cs-ba-col { padding:26px 22px; background:var(--card-bg); }
+.cs-ba-col.after { background:rgba(200,162,0,0.07); border:1px solid rgba(200,162,0,0.22); }
+.cs-ba-label { font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--border); color:var(--gray); }
+.cs-ba-col.after .cs-ba-label { color:var(--gold3); border-color:rgba(200,162,0,0.25); }
+.cs-ba-item { display:flex; align-items:flex-start; gap:8px; margin-bottom:12px; }
+.cs-ba-item::before { content:'•'; color:var(--gold); margin-top:1px; flex-shrink:0; }
+.cs-ba-item span { font-size:0.8rem; color:var(--text-muted); line-height:1.5; }
+
+/* ── Metric cards ── */
+.cs-metric-card {
+  background:var(--card-bg); border:1px solid var(--border);
+  border-radius:8px; padding:22px 20px; border-left:3px solid var(--gold);
+}
+.cs-metric-num { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; color:var(--gold); letter-spacing:0.04em; line-height:1; margin-bottom:5px; }
+.cs-metric-title { font-size:0.82rem; color:var(--text); font-weight:600; margin-bottom:5px; }
+.cs-metric-desc { font-size:0.75rem; color:var(--text-muted); line-height:1.55; }
+
+/* ── Region cards ── */
+.cs-regions { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.cs-region-card { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:18px 20px; }
+.cs-region-city { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:0.1em; color:var(--gold); margin-bottom:5px; }
+.cs-region-card p { font-size:0.77rem; color:var(--text-muted); line-height:1.55; }
+
+/* ── Seasonal cards ── */
+.cs-season-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
+.cs-season-card { background:var(--card-bg); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
+.cs-season-header { background:linear-gradient(135deg,var(--gold),var(--gold2)); padding:18px 20px; }
+.cs-season-header h3 { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:0.08em; color:#1a1600; margin-bottom:2px; }
+.cs-season-header p { font-size:0.72rem; color:rgba(26,22,0,0.7); }
+.cs-season-body { padding:16px 20px; }
+.cs-season-body p { font-size:0.78rem; color:var(--text-muted); line-height:1.55; margin-bottom:12px; }
+.cs-season-tag { display:inline-block; border:1px solid rgba(200,162,0,0.3); border-radius:100px; padding:3px 10px; font-size:0.6rem; color:var(--gold3); font-family:'Space Mono',monospace; letter-spacing:0.08em; margin:2px; }
+
+/* ── Msg pills ── */
+.cs-msg-grid { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0; }
+.cs-msg-pill { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(200,162,0,0.22); border-radius:6px; padding:10px 16px; background:var(--card-bg); transition:border-color 0.2s,background 0.2s; }
+.cs-msg-pill:hover { border-color:var(--gold); background:rgba(200,162,0,0.06); }
+.cs-msg-dot { width:7px; height:7px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+.cs-msg-pill span { font-size:0.78rem; color:var(--text-muted); font-weight:500; }
+
+/* ── Final tags ── */
+.cs-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+.cs-tag { border:1px solid rgba(200,162,0,0.25); border-radius:4px; padding:5px 14px; font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; color:var(--gold3); text-transform:uppercase; background:rgba(200,162,0,0.05); }
+
+/* ── Creative system ── */
+.cs-creative-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.cs-creative-card { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:20px; transition:border-color 0.2s,transform 0.2s; }
+.cs-creative-card:hover { border-color:rgba(200,162,0,0.4); transform:translateY(-3px); }
+.cs-creative-icon { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:var(--gold); margin-bottom:10px; }
+.cs-creative-card h4 { font-family:'Bebas Neue',sans-serif; font-size:0.98rem; letter-spacing:0.1em; color:var(--text); margin-bottom:4px; }
+.cs-creative-card p { font-size:0.75rem; color:var(--text-muted); line-height:1.5; }
+
+/* ── Reveal animation ── */
+.reveal { opacity:0; transform:translateY(22px); transition:opacity 0.7s ease,transform 0.7s ease; }
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:900px) {
+  nav { padding:13px 22px; }
+  .cs-section { padding:64px 24px; }
+  .cs-cover { padding:100px 24px 60px; }
+  .cs-2col { grid-template-columns:1fr; gap:36px; }
+  .cs-3col { grid-template-columns:1fr 1fr; }
+  .cs-4col { grid-template-columns:1fr 1fr; }
+  .cs-creative-grid { grid-template-columns:1fr 1fr; }
+  .cs-season-grid { grid-template-columns:1fr 1fr; }
+  .cs-regions { grid-template-columns:1fr 1fr; }
+  .cs-ba { grid-template-columns:1fr; }
+  .cs-img-grid.col3 { grid-template-columns:1fr 1fr; }
+  .cs-img-grid.col4 { grid-template-columns:1fr 1fr; }
+  .cs-cover-meta { gap:18px; }
+  .cs-meta-div { display:none; }
+}
+@media (max-width:560px) {
+  nav { padding:12px 18px; }
+  .cs-section { padding:52px 18px; }
+  .cs-cover { padding:90px 18px 50px; }
+  .cs-3col { grid-template-columns:1fr; }
+  .cs-4col { grid-template-columns:1fr 1fr; }
+  .cs-creative-grid { grid-template-columns:1fr; }
+  .cs-season-grid { grid-template-columns:1fr; }
+  .cs-regions { grid-template-columns:1fr; }
+  .cs-img-grid.col2 { grid-template-columns:1fr; }
+  .cs-img-grid.col3 { grid-template-columns:1fr; }
+  .cs-img-grid.col4 { grid-template-columns:1fr 1fr; }
+  .cs-cover-meta { flex-direction:column; align-items:center; gap:14px; }
+  .ham-mob { display:flex; }
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+
+<!-- ══ NAV ══ -->
+<nav id="mainNav">
+  <a class="nav-back" href="leticia-portfolio-v5.html">
+    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+    Back to Portfolio
+  </a>
+  <span class="nav-brand">99Food Case</span>
+  <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+  </button>
+</nav>
+
+<!-- ══ PAGE 01 — COVER ══ -->
+<div class="cs-cover">
+  <div class="cs-cover-grid"></div>
+  <div class="cs-cover-glow"></div>
+  <div class="cs-cover-tag">Case Study · 2025</div>
+  <h1 class="cs-cover-brand"><span>99</span>Food</h1>
+  <p class="cs-cover-sub">Creative Strategy for Restaurant Acquisition</p>
+  <p class="cs-cover-desc">Creative strategy, experimentation and performance campaigns for restaurant partner growth across Meta, Google and TikTok.</p>
+  <div class="cs-cover-meta">
+    <div class="cs-meta-item"><div class="cs-meta-label">Role</div><div class="cs-meta-val">Creative Strategist</div></div>
+    <div class="cs-meta-div"></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Focus</div><div class="cs-meta-val">B2B Acquisition</div></div>
+    <div class="cs-meta-div"></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Markets</div><div class="cs-meta-val">National + Regional</div></div>
+    <div class="cs-meta-div"></div>
+    <div class="cs-meta-item"><div class="cs-meta-label">Year</div><div class="cs-meta-val">2025</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ PAGE 02 — OVERVIEW ══ -->
+<div class="cs-section alt reveal">
+  <div class="cs-2col">
+    <div>
+      <p class="cs-eyebrow">02 — Overview</p>
+      <h2 class="cs-h2">Project<br><em>Context</em></h2>
+      <div class="cs-accent-line"></div>
+      <p class="cs-lead">At 99Food, I worked on creative strategy and performance campaigns focused on restaurant acquisition across Brazil. My role connected creative thinking, growth experimentation and performance analysis to help scale partner acquisition through paid media.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="cs-card">
+        <div class="cs-card-label">Responsibilities</div>
+        <ul class="cs-card-list">
+          <li>Creative Strategy</li><li>Campaign Planning</li><li>Creative Analysis</li>
+          <li>Performance Optimization</li><li>Seasonal Campaigns</li>
+          <li>Fake Refresh Testing</li><li>Cross-functional Collaboration</li>
+        </ul>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-label">Platforms</div>
+        <ul class="cs-card-list">
+          <li>Meta Ads</li><li>Google Ads</li><li>TikTok</li><li>Smartly.io</li><li>Figma</li>
+        </ul>
+      </div>
+      <div class="cs-card">
+        <div class="cs-card-label">Teams</div>
+        <ul class="cs-card-list">
+          <li>Growth</li><li>CRM</li><li>BI</li><li>Media Buyers</li><li>Creative Ops</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ PAGE 03 — CHALLENGE ══ -->
+<div class="cs-section reveal">
+  <div class="cs-2col">
+    <div>
+      <p class="cs-eyebrow">03 — The Challenge</p>
+      <h2 class="cs-h2">Scaling<br><em>Performance</em></h2>
+      <div class="cs-accent-line"></div>
+      <p class="cs-lead">Maintain acquisition performance at scale while combating creative fatigue in a highly competitive paid media environment.</p>
+      <p class="cs-lead">The operation required scalable creative production, faster experimentation, seasonal responsiveness, localized communication and performance consistency across multiple regions.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="cs-challenge-card"><h4>Rising CPC</h4><p>Increased competition drove up costs, making creative efficiency critical to maintaining ROI.</p></div>
+      <div class="cs-challenge-card"><h4>Creative Fatigue</h4><p>High-frequency campaigns accelerated ad fatigue, requiring continuous creative refreshes.</p></div>
+      <div class="cs-challenge-card"><h4>Scaling Complexity</h4><p>Expanding to new cities demanded localized content without proportionally scaling production.</p></div>
+      <div class="cs-challenge-card"><h4>Regional Differences</h4><p>Each market responded differently — a single national creative wasn't enough.</p></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ PAGE 04 — STRATEGIC ROADMAP ══ -->
+<div class="cs-section alt reveal">
+  <p class="cs-eyebrow">04 — Roadmap</p>
+  <h2 class="cs-h2">Creative Experimentation<br><em>Pipeline</em></h2>
+  <div class="cs-accent-line"></div>
+  <p class="cs-lead">A continuous experimentation roadmap combining seasonal launches, fake refresh strategies, AI-assisted creatives and regionalized campaigns.</p>
+
+  <!-- REAL ROADMAP IMAGE from user upload -->
+  <div style="margin-bottom:32px;">
+    <img src="IMG_2091.png" alt="99Food Restaurant Roadmap Pipeline" class="cs-img-full"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div style="display:none;background:rgba(200,162,0,0.07);border:1px solid var(--border);border-radius:10px;padding:48px 32px;text-align:center;">
+      <p style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:0.1em;">Restaurant Roadmap Pipeline</p>
+      <p style="font-size:0.8rem;color:var(--text-muted);margin-top:8px;">Meta · Apple · Google · Programmatic</p>
+    </div>
+    <p class="cs-img-caption">Restaurant Roadmap Pipeline — 99 Creative Strategy Kick-off</p>
+  </div>
+
+  <div class="cs-2col">
+    <div class="cs-timeline">
+      <div class="cs-tl-item">
+        <div class="cs-tl-dot"></div>
+        <div class="cs-tl-phase">Phase 1 — Q1</div>
+        <div class="cs-tl-title">Easter + Fake Refresh Launch</div>
+        <div class="cs-tl-desc">Seasonal creative for Easter opportunity. Parallel fake refresh test — swap BG template winner to extend high-performing ads.</div>
+      </div>
+      <div class="cs-tl-item">
+        <div class="cs-tl-dot"></div>
+        <div class="cs-tl-phase">Phase 2 — Q2</div>
+        <div class="cs-tl-title">AI Bag Delivery + Carousel How-to</div>
+        <div class="cs-tl-desc">AI-assisted creatives introduced. Carousel "How to Sign Up" launched in static and template versions.</div>
+      </div>
+      <div class="cs-tl-item">
+        <div class="cs-tl-dot"></div>
+        <div class="cs-tl-phase">Phase 3 — Q3</div>
+        <div class="cs-tl-title">12 New Cities Launch Pack</div>
+        <div class="cs-tl-desc">Coordinated Meta + Google launch pack for 12 new cities. AI Dashboard Growth creative introduced for performance channels.</div>
+      </div>
+      <div class="cs-tl-item">
+        <div class="cs-tl-dot"></div>
+        <div class="cs-tl-phase">Phase 4 — Q4</div>
+        <div class="cs-tl-title">UGC + Commission Fee Campaign</div>
+        <div class="cs-tl-desc">UGC Curios format introduced alongside Mother's Day seasonal. Commission Fee + Delivery campaign closed the year.</div>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div style="background:rgba(200,162,0,0.06);border:1px solid var(--border);border-radius:8px;padding:16px 20px;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:10px;">Campaign Types</div>
+        <div style="display:flex;flex-wrap:wrap;gap:6px;">
+          <span class="cs-season-tag">Seasonal</span><span class="cs-season-tag">Fake Refresh</span>
+          <span class="cs-season-tag">AI Creatives</span><span class="cs-season-tag">UGC</span>
+          <span class="cs-season-tag">Launch Pack</span><span class="cs-season-tag">Evergreen</span>
+          <span class="cs-season-tag">Carousel</span><span class="cs-season-tag">Regional</span>
+        </div>
+      </div>
+      <div style="background:rgba(200,162,0,0.06);border:1px solid var(--border);border-radius:8px;padding:16px 20px;">
+        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:12px;">Performance Signal</div>
+        <div class="cs-chart">
+          <div class="cs-bar-row"><span class="cs-bar-label">Seasonal</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:92%"></div></div><span class="cs-bar-val">Top Perf.</span></div>
+          <div class="cs-bar-row"><span class="cs-bar-label">AI Creatives</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:78%"></div></div><span class="cs-bar-val">High CTR</span></div>
+          <div class="cs-bar-row"><span class="cs-bar-label">Fake Refresh</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:85%"></div></div><span class="cs-bar-val">Lower CPC</span></div>
+          <div class="cs-bar-row"><span class="cs-bar-label">UGC</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:70%"></div></div><span class="cs-bar-val">+Engage</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ PAGE 05 — CREATIVE SYSTEM ══ -->
+<div class="cs-section reveal">
+  <p class="cs-eyebrow">05 — Creative System</p>
+  <h2 class="cs-h2">Scalable<br><em>Creative System</em></h2>
+  <div class="cs-accent-line"></div>
+  <p class="cs-lead">We developed modular creative structures to rapidly test messaging, formats and seasonal adaptations while maintaining brand consistency.</p>
+
+  <!-- Creative images grid — using Wix images from the roadmap as creative examples -->
+  <div class="cs-img-grid col4" style="margin-bottom:32px;">
+    <div class="cs-img-item" style="aspect-ratio:1;">
+      <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png" alt="Static Ad" loading="lazy">
+      <div class="cs-img-overlay"><span>Static — Zero Fee</span></div>
+    </div>
+    <div class="cs-img-item" style="aspect-ratio:1;">
+      <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png" alt="Video Ad" loading="lazy">
+      <div class="cs-img-overlay"><span>Video Creative</span></div>
+    </div>
+    <div class="cs-img-item" style="aspect-ratio:1;">
+      <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png" alt="Dashboard" loading="lazy">
+      <div class="cs-img-overlay"><span>AI Dashboard</span></div>
+    </div>
+    <div class="cs-img-item" style="aspect-ratio:1;">
+      <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png" alt="Carousel" loading="lazy">
+      <div class="cs-img-overlay"><span>Carousel — How to Sign Up</span></div>
+    </div>
+  </div>
+
+  <div class="cs-creative-grid">
+    <div class="cs-creative-card"><div class="cs-creative-icon">01</div><h4>Static Ads</h4><p>High-impact single-image formats optimized for performance channels. Core backbone of the acquisition funnel.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon">02</div><h4>Video Ads</h4><p>Short-form video with strong hooks. Outperformed static in click-through performance consistently.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon">03</div><h4>UGC Concepts</h4><p>Creator-style content to build trust and authenticity in restaurant partner communication.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon">04</div><h4>AI-Assisted Assets</h4><p>AI Bag Delivery and AI Dashboard Growth formats explored at scale with Smartly.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon">05</div><h4>Carousel Ads</h4><p>How-to Sign Up carousels in static and dynamic template versions for onboarding.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon">06</div><h4>Localized Versions</h4><p>City-specific adaptations with regional messaging for the 12-city launch pack.</p></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ PAGE 06 — COPYSTORMING ══ -->
+<div class="cs-section alt reveal">
+  <p class="cs-eyebrow">06 — Messaging</p>
+  <h2 class="cs-h2">Messaging<br><em>Experimentation</em></h2>
+  <div class="cs-accent-line"></div>
+  <p class="cs-lead">We explored multiple communication angles to identify which emotional and business-driven messages generated stronger acquisition performance.</p>
+  <div class="cs-msg-grid">
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span>High Demand</span></div>
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span>Zero Monthly Fee</span></div>
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span>Consumer Month</span></div>
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span>Easter Opportunity</span></div>
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span>Entrepreneur Mindset</span></div>
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span>Guaranteed Delivery</span></div>
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span>Café da Manhã</span></div>
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span>World Cup Opportunity</span></div>
+  </div>
+  <div style="margin-top:32px;">
+    <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:14px;">Performance Signal (relative)</div>
+    <div class="cs-chart">
+      <div class="cs-bar-row"><span class="cs-bar-label">Video Creative</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:95%"></div></div><span class="cs-bar-val">Higher CTR</span></div>
+      <div class="cs-bar-row"><span class="cs-bar-label">Seasonal Msgs</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:88%"></div></div><span class="cs-bar-val">+CTR</span></div>
+      <div class="cs-bar-row"><span class="cs-bar-label">Zero Fee Angle</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:82%"></div></div><span class="cs-bar-val">+Conv.</span></div>
+      <div class="cs-bar-row"><span class="cs-bar-label">Generic Copy</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:42%"></div></div><span class="cs-bar-val">Baseline</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ PAGE 07 — FAKE REFRESH ══ -->
+<div class="cs-section reveal">
+  <p class="cs-eyebrow">07 — Strategy</p>
+  <h2 class="cs-h2">Fake Refresh<br><em>Strategy</em></h2>
+  <div class="cs-accent-line"></div>
+  <p class="cs-lead" style="max-width:700px;">Instead of rebuilding high-performing ads from scratch, we tested lightweight visual and copy updates to extend performance lifespan while preserving platform learning.</p>
+
+  <!-- Creative comparison images -->
+  <div class="cs-img-grid col2" style="margin-bottom:28px;">
+    <div class="cs-img-item" style="aspect-ratio:4/3;">
+      <img src="https://static.wixstatic.com/media/b72a24_3333a0eca91440a680412600693fbbe2~mv2.png" alt="Before refresh" loading="lazy">
+      <div class="cs-img-overlay"><span>Original — Before Refresh</span></div>
+    </div>
+    <div class="cs-img-item" style="aspect-ratio:4/3;">
+      <img src="https://static.wixstatic.com/media/b72a24_e2608e088b364db49383ae9a1e3b1488~mv2.png" alt="After refresh" loading="lazy">
+      <div class="cs-img-overlay"><span>After Refresh — New BG + Copy</span></div>
+    </div>
+  </div>
+
+  <div class="cs-ba" style="margin-bottom:24px;">
+    <div class="cs-ba-col">
+      <div class="cs-ba-label">Before — Original</div>
+      <div class="cs-ba-item"><span>Same background across all variants</span></div>
+      <div class="cs-ba-item"><span>Single copy angle per campaign</span></div>
+      <div class="cs-ba-item"><span>Fatigue building over time</span></div>
+      <div class="cs-ba-item"><span>Platform learning reset on rebuild</span></div>
+    </div>
+    <div class="cs-ba-col after">
+      <div class="cs-ba-label">After — Fake Refresh</div>
+      <div class="cs-ba-item"><span>Background swap with BG Template Winner</span></div>
+      <div class="cs-ba-item"><span>Copy refresh with new persona angle</span></div>
+      <div class="cs-ba-item"><span>Visual update maintains ad identity</span></div>
+      <div class="cs-ba-item"><span>Platform learning preserved = lower CPC</span></div>
+    </div>
+  </div>
+  <div class="cs-4col">
+    <div class="cs-metric-card"><div class="cs-metric-num">↑</div><div class="cs-metric-title">+Reach</div><div class="cs-metric-desc">Extended delivery to new audiences</div></div>
+    <div class="cs-metric-card"><div class="cs-metric-num">↑</div><div class="cs-metric-title">+Clicks</div><div class="cs-metric-desc">Fresh creative drove engagement recovery</div></div>
+    <div class="cs-metric-card"><div class="cs-metric-num">↓</div><div class="cs-metric-title">Lower CPC</div><div class="cs-metric-desc">Learning preserved, costs stabilized</div></div>
+    <div class="cs-metric-card"><div class="cs-metric-num">→</div><div class="cs-metric-title">Sustained Perf.</div><div class="cs-metric-desc">No performance cliff after refresh</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ PAGE 08 — REGIONAL ══ -->
+<div class="cs-section alt reveal">
+  <p class="cs-eyebrow">08 — Regional</p>
+  <h2 class="cs-h2">Regional<br><em>Performance Insights</em></h2>
+  <div class="cs-accent-line"></div>
+  <p class="cs-lead">Different cities responded differently to creative approaches, proving the importance of localized communication and adaptive messaging.</p>
+  <div class="cs-regions">
+    <div class="cs-region-card"><div class="cs-region-city">São Paulo</div><p>Seasonal creatives drove higher engagement. National campaigns performed well when paired with city-specific offers.</p></div>
+    <div class="cs-region-card"><div class="cs-region-city">Manaus</div><p>Launch-focused communication performed better. Urgency and exclusivity messaging resonated stronger in this market.</p></div>
+    <div class="cs-region-card"><div class="cs-region-city">Fortaleza</div><p>Trust-driven messaging improved conversion quality. Proof-based creatives outperformed aspirational angles.</p></div>
+    <div class="cs-region-card"><div class="cs-region-city">Brasília</div><p>Localized creatives outperformed national versions. Regional identity in visuals increased relevance significantly.</p></div>
+    <div class="cs-region-card"><div class="cs-region-city">Rio de Janeiro</div><p>Consumer month campaigns had stronger traction. Lifestyle-oriented messaging aligned with local culture.</p></div>
+    <div class="cs-region-card"><div class="cs-region-city">Porto Alegre</div><p>Business-value messaging drove sign-ups. ROI-focused copy resonated with the entrepreneurial market profile.</p></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ PAGE 09 — SEASONAL ══ -->
+<div class="cs-section reveal">
+  <p class="cs-eyebrow">09 — Seasonal</p>
+  <h2 class="cs-h2">Seasonal<br><em>Campaigns</em></h2>
+  <div class="cs-accent-line"></div>
+  <p class="cs-lead">Seasonal campaigns consistently became top-performing acquisition assets, reducing fatigue while increasing engagement and conversion efficiency.</p>
+
+  <!-- Seasonal creative images -->
+  <div class="cs-img-grid col3" style="margin-bottom:28px;">
+    <div class="cs-img-item" style="aspect-ratio:4/3;">
+      <img src="https://static.wixstatic.com/media/b72a24_7f65afa3a5534c92a576b05804edbd60~mv2.png" alt="Easter Campaign" loading="lazy">
+      <div class="cs-img-overlay"><span>Easter Campaign</span></div>
+    </div>
+    <div class="cs-img-item" style="aspect-ratio:4/3;">
+      <img src="https://static.wixstatic.com/media/b72a24_c2c88700ea504e23989124be2435bbd2~mv2.png" alt="Consumer Month" loading="lazy">
+      <div class="cs-img-overlay"><span>Consumer Month</span></div>
+    </div>
+    <div class="cs-img-item" style="aspect-ratio:4/3;">
+      <img src="https://static.wixstatic.com/media/b72a24_9d30aa630cbd4ae3b50861427b7ea7d1~mv2.jpg" alt="AI Bag Delivery" loading="lazy">
+      <div class="cs-img-overlay"><span>AI Bag Delivery</span></div>
+    </div>
+  </div>
+
+  <div class="cs-season-grid">
+    <div class="cs-season-card">
+      <div class="cs-season-header"><h3>Easter</h3><p>Q1 Seasonal Campaign</p></div>
+      <div class="cs-season-body"><p>Restaurant acquisition campaign tying Easter consumer demand to partner growth opportunity. Combined urgency messaging with seasonal visual identity.</p><span class="cs-season-tag">Multi-million reach</span><span class="cs-season-tag">+CTR vs baseline</span></div>
+    </div>
+    <div class="cs-season-card">
+      <div class="cs-season-header"><h3>Consumer Month</h3><p>Seasonal + Performance</p></div>
+      <div class="cs-season-body"><p>Combined performance push during high-demand month. Messaging focused on growth potential for new restaurant partners joining the platform.</p><span class="cs-season-tag">Thousands of acquisitions</span><span class="cs-season-tag">Lower cost-per-lead</span></div>
+    </div>
+    <div class="cs-season-card">
+      <div class="cs-season-header"><h3>AI Bag Delivery</h3><p>AI Creative Initiative</p></div>
+      <div class="cs-season-body"><p>AI-assisted creative format featuring delivery bag visual. First AI-powered campaign asset in the pipeline — tested across Meta with strong engagement signals.</p><span class="cs-season-tag">Higher engagement</span><span class="cs-season-tag">AI-first format</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ PAGE 10 — PERFORMANCE ══ -->
+<div class="cs-section alt reveal">
+  <p class="cs-eyebrow">10 — Insights</p>
+  <h2 class="cs-h2">Performance<br><em>Insights</em></h2>
+  <div class="cs-accent-line"></div>
+  <div class="cs-3col">
+    <div class="cs-metric-card"><div class="cs-metric-num">↑↑</div><div class="cs-metric-title">Seasonal vs Evergreen</div><div class="cs-metric-desc">Seasonal assets outperformed evergreen in engagement and efficiency. Timing and relevance drove double-digit improvement.</div></div>
+    <div class="cs-metric-card"><div class="cs-metric-num">→</div><div class="cs-metric-title">Fatigue Mitigation</div><div class="cs-metric-desc">Refresh strategies helped stabilize delivery and maintain acquisition volume without resetting platform learning.</div></div>
+    <div class="cs-metric-card"><div class="cs-metric-num">▶</div><div class="cs-metric-title">Video vs Static</div><div class="cs-metric-desc">Video formats generated stronger click-through performance across Meta and TikTok placements.</div></div>
+    <div class="cs-metric-card"><div class="cs-metric-num">◉</div><div class="cs-metric-title">Localized Campaigns</div><div class="cs-metric-desc">Regional adaptations improved relevance and conversion quality vs national-only creative.</div></div>
+    <div class="cs-metric-card"><div class="cs-metric-num">+</div><div class="cs-metric-title">Multi-million Reach</div><div class="cs-metric-desc">Top seasonal campaigns reached millions of potential restaurant partners across Brazil.</div></div>
+    <div class="cs-metric-card"><div class="cs-metric-num">↓</div><div class="cs-metric-title">Acquisition Cost</div><div class="cs-metric-desc">Experimentation pipeline and refresh strategy helped reduce cost-per-acquisition vs benchmarks.</div></div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ PAGE 11 — ROLE ══ -->
+<div class="cs-section reveal">
+  <div class="cs-2col">
+    <div>
+      <p class="cs-eyebrow">11 — Role</p>
+      <h2 class="cs-h2">My Role<br><em>&amp; Impact</em></h2>
+      <div class="cs-accent-line"></div>
+      <p class="cs-lead">I worked across creative strategy, campaign planning and performance analysis, collaborating with Growth, CRM and BI teams to build scalable acquisition campaigns.</p>
+      <p class="cs-lead">My work connected creative thinking with data, ensuring each campaign was both visually compelling and performance-driven.</p>
+    </div>
+    <div>
+      <div class="cs-card">
+        <div class="cs-card-label">Core Responsibilities</div>
+        <ul class="cs-card-list">
+          <li>Creative direction &amp; visual strategy</li>
+          <li>Performance analysis &amp; reporting</li>
+          <li>Growth experimentation frameworks</li>
+          <li>Creative planning &amp; roadmap</li>
+          <li>Messaging strategy &amp; copystorming</li>
+          <li>Creative optimization cycles</li>
+          <li>Stakeholder presentations</li>
+          <li>Cross-team collaboration</li>
+        </ul>
+      </div>
+      <!-- More creative images -->
+      <div class="cs-img-grid col2" style="margin-top:16px;">
+        <div class="cs-img-item" style="aspect-ratio:1;">
+          <img src="https://static.wixstatic.com/media/b72a24_62dbd9a80b56417bac09320a09028a16~mv2.jpg" alt="Creative" loading="lazy">
+        </div>
+        <div class="cs-img-item" style="aspect-ratio:1;">
+          <img src="https://static.wixstatic.com/media/b72a24_7d80a2a1763048d1b7ba7bd2bb847892~mv2.jpg" alt="Creative" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<!-- ══ PAGE 12 — TAKEAWAYS ══ -->
+<div class="cs-section alt reveal" style="background:var(--bg-mid);">
+  <div style="max-width:720px;margin:0 auto;text-align:center;">
+    <p class="cs-eyebrow" style="text-align:center;">12 — Learnings</p>
+    <h2 class="cs-h2">Key <em>Learnings</em></h2>
+    <div class="cs-accent-line" style="margin:0 auto 28px;"></div>
+    <p class="cs-lead" style="margin:0 auto 32px;text-align:center;">This project strengthened my ability to connect creativity with business impact through experimentation, performance analysis and scalable creative systems. It expanded my experience collaborating cross-functionally in fast-paced growth environments focused on measurable results.</p>
+    <div class="cs-tags" style="justify-content:center;">
+      <span class="cs-tag">Creative Strategy</span>
+      <span class="cs-tag">Growth Design</span>
+      <span class="cs-tag">Paid Media</span>
+      <span class="cs-tag">Performance Creative</span>
+      <span class="cs-tag">UX Thinking</span>
+      <span class="cs-tag">Experimentation</span>
+      <span class="cs-tag">B2B Communication</span>
+    </div>
+    <div style="margin-top:44px;">
+      <a href="leticia-portfolio-v5.html" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,162,0,0.3);padding:12px 28px;border-radius:4px;transition:background 0.2s,border-color 0.2s;" onmouseover="this.style.background='rgba(200,162,0,0.08)';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(200,162,0,0.3)'">
+        ← Back to Portfolio
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+'use strict';
+/* ── CURSOR ── */
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top  = e.clientY + 'px';
+});
+document.querySelectorAll('a,button,.cs-img-item,.cs-creative-card,.cs-msg-pill').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+
+/* ── NAV SHRINK ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ── THEME ── */
+const SUN = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>';
+const MOON = '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>';
+let theme = 'dark';
+function toggleTheme() {
+  theme = theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  document.getElementById('themeBtn').innerHTML = theme === 'dark' ? SUN : MOON;
+}
+
+/* ── SCROLL REVEAL ── */
+document.addEventListener('DOMContentLoaded', () => {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+});
+</script>
+</body>
+</html>
