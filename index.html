@@ -342,7 +342,7 @@ section { padding: 96px 52px; }
 /* ══════════════════════════════════════════
    ABOUT
 ══════════════════════════════════════════ */
-#about { background: var(--bg-alt); display: grid; grid-template-columns: auto 1fr; gap: 40px; align-items: center; }
+#about { background: var(--bg-alt); display: grid; grid-template-columns: 720px 1fr; gap: 40px; align-items: center; }
 .about-img-wrap { position: relative; }
 .about-img-wrap::before {
   content:''; position:absolute; inset:-7px;
@@ -350,7 +350,7 @@ section { padding: 96px 52px; }
   opacity:0.35; transform:translate(0px,0px); transition:opacity 0.3s;
 }
 .about-img-wrap:hover::before { opacity: 0.65; }
-.about-img-wrap img { width:auto; max-height:650px; display:block; filter:grayscale(12%) contrast(1.04); transition:filter 0.4s; }
+.about-img-wrap img { width:100%; max-height:650px; display:block; filter:grayscale(12%) contrast(1.04); transition:filter 0.4s; }
 .about-img-wrap:hover img { filter:grayscale(0%) contrast(1.07); }
 [data-theme="light"] .about-img-wrap img { filter:grayscale(5%) contrast(1.02) brightness(1.02); }
 [data-theme="light"] .about-img-wrap::before { border-color: var(--accent3);}
@@ -504,8 +504,24 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   section { padding: 72px 28px; }
 
   #about { grid-template-columns: 1fr; gap: 32px; }
-  .about-img-wrap { display: flex; flex-direction: column; align-items: center; }
-  .about-img-wrap img { max-width: 260px; }
+  .about-img-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  .about-img-wrap img {
+    width: 50%;
+    height: 50vw;
+    max-height: 650px;
+    object-fit: cover;
+    object-position: bottom center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
 
@@ -525,6 +541,61 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 ══════════════════════════════════════════ */
 @media (max-width: 560px) {
   section { padding: 60px 18px; }
+
+  #about .reveal {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #about .about-img-wrap img {
+    width: 80px;
+    max-width: 650px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+  
+  #about .about-header{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    flex-wrap:nowrap;
+    align-items: center;
+  }
+  
+  #about .reveal:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+
+  #about .section-title {
+    margin-bottom: 0;
+    line-height: 1;
+  }
+
+  #about .neon-line,
+  #about .about-text,
+  #about .skills-grid {
+    width: 100%;
+  }
+
+  .about-img-wrap {
+    width: auto;
+    overflow: visible;
+  }
+
+  .about-img-wrap img {
+    width: 64px;
+    height: 64px;
+    border-radius: 4px;
+    object-fit: cover;
+    object-position: bottom center;
+    margin: 0;
+  }
 
   .hero-stats { gap: 20px; }
   .hero-ctas { flex-direction: column; align-items: center; }
@@ -622,25 +693,73 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 <div class="divider"></div>
 
 <!-- ══ ABOUT ══ -->
-    
+
 <section id="about">
   <div class="reveal">
-    <p class="section-label t" data-key="about-label">Who I am</p>
-    <h2 class="section-title t" data-key="about-title">About</h2>
+
+    <!-- TOPO -->
+    <div class="about-header">
+      <div class="about-title-group">
+        <p class="section-label t" data-key="about-label">Who I am</p>
+        <h2 class="section-title t" data-key="about-title">About</h2>
+      </div>
+
+      <!-- imagem ao lado no mobile -->
+      <div class="about-img-wrap reveal">
+        <img src="https://static.wixstatic.com/media/b72a24_709874674e884b5cbea05f59784017e6~mv2.png" alt="Leticia Corredato">
+      </div>
+    </div>
+
     <div class="neon-line"></div>
 
+    <!-- TEXTO -->
     <div class="about-text">
-    <div data-lang="en" class="active">
-      <p>UI/UX, Product and Growth Designer with <strong>6+ years</strong> of experience designing digital products, data-driven interfaces, and high-conversion marketing experiences.</p>
-      <p>Strong background in user experience, paid media, and performance-driven design — combining visual design with data analysis to optimize user journeys and business outcomes.</p>
-      <p>Recently expanded into creative strategy and data visualization — dashboards, campaign performance, and paid media channels (Meta, Google, YouTube). Proficient in Figma, Design Systems, CRM, and front-end fundamentals (HTML/CSS). Currently advancing in AI-driven design and product strategy.</p>
+
+      <div data-lang="en" class="active">
+        <p>
+          UI/UX, Product and Growth Designer with 
+          <strong>6+ years</strong> of experience designing digital products,
+          data-driven interfaces, and high-conversion marketing experiences.
+        </p>
+
+        <p>
+          Strong background in user experience, paid media, and performance-driven design —
+          combining visual design with data analysis to optimize user journeys and business outcomes.
+        </p>
+
+        <p>
+          Recently expanded into creative strategy and data visualization —
+          dashboards, campaign performance, and paid media channels
+          (Meta, Google, YouTube). Proficient in Figma, Design Systems,
+          CRM, and front-end fundamentals (HTML/CSS).
+          Currently advancing in AI-driven design and product strategy.
+        </p>
+      </div>
+
+      <div data-lang="pt">
+        <p>
+          UI/UX, Produto e Growth Designer com mais de 
+          <strong>6 anos</strong> de experiência na criação de produtos digitais,
+          interfaces orientadas por dados e soluções de marketing focadas em conversão.
+        </p>
+
+        <p>
+          Experiência sólida em UX, mídia paga e design orientado à performance —
+          unindo criação visual e análise de dados para otimizar jornadas e resultados de negócio.
+        </p>
+
+        <p>
+          Atuação recente em estratégia criativa e visualização de dados —
+          dashboards, campanhas e canais de mídia paga
+          (Meta, Google, YouTube). Conhecimento em Figma,
+          Design System, CRM e front-end (HTML/CSS).
+          Aprimorando habilidades em IA e estratégia de produto.
+        </p>
+      </div>
+
     </div>
-    <div data-lang="pt">
-      <p>UI/UX, Produto e Growth Designer com mais de <strong>6 anos</strong> de experiência na criação de produtos digitais, interfaces orientadas por dados e soluções de marketing focadas em conversão.</p>
-      <p>Experiência sólida em UX, mídia paga e design orientado à performance — unindo criação visual e análise de dados para otimizar jornadas e resultados de negócio.</p>
-      <p>Atuação recente em estratégia criativa e visualização de dados — dashboards, campanhas e canais de mídia paga (Meta, Google, YouTube). Conhecimento em Figma, Design System, CRM e front-end (HTML/CSS). Aprimorando habilidades em IA e estratégia de produto.</p>
-    </div>
-    </div>
+
+    <!-- SKILLS -->
     <div class="skills-grid">
       <span class="skill-tag">UI/UX Design</span>
       <span class="skill-tag">Figma</span>
@@ -661,12 +780,9 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
       <span class="skill-tag">CRO / A/B Test</span>
       <span class="skill-tag">RD Station</span>
     </div>
-    </div>
-    <div class="about-img-wrap reveal">
-    <img src="https://static.wixstatic.com/media/b72a24_709874674e884b5cbea05f59784017e6~mv2.png" alt="Leticia Corredato">
-    </div>
 
-    
+  </div>
+</section>
   </div>
 </section>
 
@@ -682,13 +798,13 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 
   <!-- Featured cases EN -->
   <div class="cases-grid reveal active" data-lang="en" id="casesEN">
-    <div class="case-card tall" onclick="window.location.href='case/evisita.html'" style="cursor:pointer;">
-      <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png" alt="E-visita" loading="lazy">
-      <div class="case-overlay"><span class="case-cat">UX/UI · Hypera Pharma</span><h3 class="case-title">E-visita Digital Platform</h3></div>
-    </div>
     <div class="case-card" onclick="window.location.href='case/99food.html'" style="cursor:pointer;">
       <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png" alt="Campaigns" loading="lazy">
       <div class="case-overlay"><span class="case-cat">Growth · 99/DiDi · Full Case →</span><h3 class="case-title">Creative Strategy & Performance</h3></div>
+    </div>
+    <div class="case-card tall" onclick="window.location.href='case/evisita.html'" style="cursor:pointer;">
+      <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png" alt="E-visita" loading="lazy">
+      <div class="case-overlay"><span class="case-cat">UX/UI · Hypera Pharma</span><h3 class="case-title">E-visita Digital Platform</h3></div>
     </div>
     <div class="case-card" onclick="lb(5)">
       <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png" alt="Dashboard" loading="lazy">
@@ -698,13 +814,13 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 
   <!-- Featured cases PT -->
   <div class="cases-grid reveal" data-lang="pt" id="casesPT">
-    <div class="case-card tall" onclick="window.location.href='/case/evisita.html'" style="cursor:pointer;">
-      <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png" alt="E-visita" loading="lazy">
-      <div class="case-overlay"><span class="case-cat">UX/UI · Hypera Pharma</span><h3 class="case-title">Plataforma E-visita</h3></div>
-    </div>
-    <div class="case-card" onclick="window.location.href='/case/99food.html'" style="cursor:pointer;">
+    <div class="case-card" onclick="window.location.href='case/99food.html'" style="cursor:pointer;">
       <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png" alt="Campanhas" loading="lazy">
       <div class="case-overlay"><span class="case-cat">Growth · 99/DiDi — Ver Case</span><h3 class="case-title">Campanhas de Performance</h3></div>
+    </div>
+    <div class="case-card tall" onclick="window.location.href='case/evisita.html'" style="cursor:pointer;">
+      <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png" alt="E-visita" loading="lazy">
+      <div class="case-overlay"><span class="case-cat">UX/UI · Hypera Pharma</span><h3 class="case-title">Plataforma E-visita</h3></div>
     </div>
     <div class="case-card" onclick="lb(5)">
       <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png" alt="Dashboard" loading="lazy">
