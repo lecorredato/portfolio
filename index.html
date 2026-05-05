@@ -17,7 +17,7 @@
 var _iub = _iub || [];
 _iub.csConfiguration = {"siteId":4522238,"cookiePolicyId":10202253,"lang":"en","storage":{"useSiteId":true}};
 </script>
-<script type="text/javascript" src="https://embeds.iubenda.com/widgets/85c9c2d0-6514-41d1-9200-ae24517364b1.js"></script>
+
 
 <script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4522238.js"></script>
 <script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
@@ -212,21 +212,53 @@ nav.scrolled { padding: 10px 52px; background: var(--nav-bg-s); }
 
 /* Mobile menu */
 .mobile-menu {
-  display: none; position: fixed; inset: 0;
-  background: var(--bg); z-index: 999;
-  flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+  position: fixed; 
+  inset: 0;
+  background: var(--bg); 
+  z-index: 9999; 
+  display: flex; /* Agora é sempre flex para a animação funcionar */
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 28px;
+
+  /* Estados iniciais para animação */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
 }
-.mobile-menu.open { display: flex; }
+
+/* Quando aberto */
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
 .mobile-menu a {
-  color: var(--text); text-decoration: none;
-  font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; letter-spacing: 0.1em;
+  color: var(--text); 
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif; 
+  font-size: 2.6rem; 
+  letter-spacing: 0.1em;
   transition: color 0.2s;
 }
+
 .mobile-menu a:hover { color: var(--accent); }
+
 .mobile-close {
-  position: absolute; top: 20px; right: 28px;
-  font-size: 1.8rem; color: var(--gray); cursor: pointer; background: none; border: none;
+  position: absolute; 
+  top: 20px; 
+  right: 28px;
+  font-size: 1.8rem; /* Mantido seu tamanho original */
+  color: var(--gray); /* Mantida sua cor original */
+  cursor: pointer; 
+  background: none; 
+  border: none;
+  z-index: 10000;
+  padding: 10px; /* Área de clique invisível maior para facilitar */
 }
+
+/* Mantendo seus controles originais */
 .mobile-controls {
   display: flex; align-items: stretch; gap: 0;
   border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
@@ -236,6 +268,7 @@ nav.scrolled { padding: 10px 52px; background: var(--nav-bg-s); }
 .mobile-controls .lang-switch button { font-size: 0.72rem; padding: 0 16px; height: 100%; }
 .mobile-controls .theme-btn { border: none; border-left: 1px solid var(--border); width: 44px; height: 100%; }
 .mobile-controls .theme-btn svg { width: 16px; height: 16px; }
+
 
 /* ══════════════════════════════════════════
    HERO
@@ -363,15 +396,26 @@ section { padding: 96px 52px; }
 /* ══════════════════════════════════════════
    ABOUT
 ══════════════════════════════════════════ */
-#about { background: var(--bg-alt); display: grid; grid-template-columns: 720px 1fr; gap: 40px; align-items: center; }
-.about-img-wrap { position: relative; }
+#about { background: var(--bg-alt); display: flex; grid-template-columns: 720px 1fr; gap: 40px; align-items: center; }
+
+.about-header{
+    height: 130px;
+    max-width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    flex-wrap:nowrap;
+    align-items: top;
+  }
+
+.about-img-wrap {position: relative; max-width: 320px; width: fit-content; height: fit-content; line-height: 0;}
 .about-img-wrap::before {
   content:''; position:absolute; inset:-7px;
   border:1.5px solid var(--accent); border-radius:4px;
   opacity:0.35; transform:translate(0px,0px); transition:opacity 0.3s;
 }
 .about-img-wrap:hover::before { opacity: 0.65; }
-.about-img-wrap img { width:100%; max-height:650px; display:block; filter:grayscale(12%) contrast(1.04); transition:filter 0.4s; }
+.about-img-wrap img { width:100%; max-height:540px; display:block; filter:grayscale(12%) contrast(1.04); transition:filter 0.4s; }
 .about-img-wrap:hover img { filter:grayscale(0%) contrast(1.07); }
 [data-theme="light"] .about-img-wrap img { filter:grayscale(5%) contrast(1.02) brightness(1.02); }
 [data-theme="light"] .about-img-wrap::before { border-color: var(--accent3);}
@@ -385,6 +429,8 @@ section { padding: 96px 52px; }
 .lang-tag { background:rgba(176,108,255,0.07); border:1px solid var(--border); border-radius:100px; padding:4px 12px; font-family:'Space Mono',monospace; font-size:0.6rem; color:var(--gray); letter-spacing:0.08em; }
 .lang-tag span { color:var(--accent); }
 [data-theme="light"] .lang-tag { background:rgba(123,47,255,0.06); }
+
+.about-text { min-height: 280px; padding: 20px 400px 0 0; }
 
 .about-text p { font-size:0.94rem; line-height:1.5; color:var(--text-muted); margin-bottom:16px; }
 .about-text p strong { color:var(--text); }
@@ -525,23 +571,33 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   section { padding: 72px 28px; }
 
   #about { grid-template-columns: 1fr; gap: 32px; }
-  .about-img-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  
+  .about-header{
     width: 100%;
-    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    flex-wrap:nowrap;
+    align-items: center;
+  }
+
+  .about-img-wrap {
+    width: auto;
+    overflow: visible;
   }
 
   .about-img-wrap img {
-    width: 50%;
-    height: 50vw;
-    max-height: 650px;
+    width: 80px;
+    max-width: 650px;
+    height: auto;
     object-fit: cover;
-    object-position: bottom center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    border-radius: 4px;
+  }
+
+  #about .about-text {
+    width: 100%;
+    padding: 0px;
+    min-height: auto;
   }
 
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
@@ -587,7 +643,7 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   
   #about .reveal:first-child {
     display: flex;
-    align-items: center;
+    align-items: left;
     justify-content: space-between;
     gap: 14px;
     flex-wrap: wrap;
@@ -598,10 +654,21 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
     line-height: 1;
   }
 
-  #about .neon-line,
-  #about .about-text,
+  .neon-line {
+    width: 52px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    border-radius: 2px;
+    margin-bottom: 26px;
+  }
+
   #about .skills-grid {
     width: 100%;
+  }
+
+  #about .about-text {
+    width: 100%;
+    padding: 0px;
   }
 
   .about-img-wrap {
@@ -670,18 +737,22 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 <!-- ══ MOBILE MENU ══ -->
 <div class="mobile-menu" id="mobileMenu">
   <button class="mobile-close" onclick="closeMenu()">✕</button>
+  
   <a href="#about"       onclick="closeMenu()" class="t" data-key="nav-about">About</a>
-  <a href="#cases" onclick="closeMenu()" class="t" data-key="nav-case">Cases</a>
+  <a href="#cases"       onclick="closeMenu()" class="t" data-key="nav-case">Cases</a>
   <a href="#portfolio"   onclick="closeMenu()" class="t" data-key="nav-portfolio">Portfolio</a>
   <a href="#experiences" onclick="closeMenu()" class="t" data-key="nav-exp">Experience</a>
   <a href="#contact"     onclick="closeMenu()" class="t" data-key="nav-contact">Contact</a>
+  
   <div class="mobile-controls">
     <div class="lang-switch">
       <button id="btnENMob" class="active" onclick="setLang('en')">EN</button>
       <div class="lang-sep"></div>
       <button id="btnPTMob" onclick="setLang('pt')">PT</button>
     </div>
-    <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()" aria-label="Toggle theme"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button>
+    <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </button>
   </div>
 </div>
 
@@ -1233,17 +1304,24 @@ window.addEventListener('scroll', () => {
 
 /* ── MOBILE MENU ── */
 const ham = document.getElementById('hamburger');
+
 function openMenu() {
-  document.getElementById('mobileMenu').classList.add('open');
-  ham.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeMenu() {
-  document.getElementById('mobileMenu').classList.remove('open');
-  ham.classList.remove('open');
-  document.body.style.overflow = '';
+  const menu = document.getElementById('mobileMenu');
+  if (menu) {
+    menu.classList.add('open');
+    if (ham) ham.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
 }
 
+function closeMenu() {
+  const menu = document.getElementById('mobileMenu');
+  if (menu) {
+    menu.classList.remove('open');
+    if (ham) ham.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
 
 /* ── THEME ── */
 const SUN = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>';
