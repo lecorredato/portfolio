@@ -600,16 +600,25 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
     min-height: auto;
   }
 
+  /* Scroll hint */
+  .scroll-hint {
+    position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
+    z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 5px;
+    opacity: 0; animation: fadeUp 1s 1.1s ease forwards;
+  }
+  .scroll-hint span { font-family: 'Space Mono', monospace; font-size: 0.5rem; letter-spacing: 0.2em; color: var(--gray); text-transform: uppercase; }
+  .scroll-line { width: 1px; height: 34px; background: linear-gradient(to bottom, var(--accent), transparent); animation: scrollPulse 1.8s ease infinite; }
+  @keyframes scrollPulse { 0%,100%{opacity:0.3;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.1)} }
+
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
 
-  .portfolio-grid { grid-template-columns: repeat(3, 1fr) !important; }
-  .cases-grid { grid-template-columns: 1fr 1fr 1fr; }
+  .portfolio-grid { grid-template-columns: repeat(4, 1fr) !important; }
+  .cases-grid { grid-template-columns: repeat(3, 1fr) !important; }
   .case-card.tall { aspect-ratio:1/1; }
 
   .exp-layout { grid-template-columns: 1fr; gap: 44px; }
 
   footer { padding: 56px 24px 30px; }
-  .scroll-hint { display: none; }
   .hero-stat-divider { display: none; }
 }
 
