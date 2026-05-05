@@ -620,8 +620,9 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 <!-- ══ NAV ══ -->
 <nav id="mainNav">
   <a class="nav-logo" href="#hero">
-    <img src="https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png" alt="LC">
+    <img id="navLogo" src="https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png" alt="LC">
   </a>
+  
   <ul class="nav-links">
     <li><a href="#about"       class="t" data-key="nav-about">About</a></li>
     <li><a href="#cases"       class="t" data-key="nav-case">Cases</a></li>
@@ -1222,18 +1223,31 @@ function closeMenu() {
   document.body.style.overflow = '';
 }
 
+
 /* ── THEME ── */
 const SUN = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>';
 const MOON = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>';
 let theme = 'dark';
+
 function toggleTheme() {
   theme = theme === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', theme);
   const icon = theme === 'dark' ? SUN : MOON;
-  document.getElementById('themeBtn').innerHTML    = icon;
+  document.getElementById('themeBtn').innerHTML = icon;
   document.getElementById('themeBtnMob').innerHTML = icon;
+
+/* TROCA DA LOGO */
+  const logo = document.getElementById('navLogo');
+  if (theme === 'light') {
+    logo.src = 'https://static.wixstatic.com/media/b72a24_02ca24368e834508a23fb0a12617db96~mv2.png';
+  } else {
+    logo.src = 'https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png';
+  }
 }
 
+
+
+   
 /* ── LANGUAGE ── */
 let lang = 'en';
 
