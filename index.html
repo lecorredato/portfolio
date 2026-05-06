@@ -326,13 +326,17 @@ nav.scrolled { padding: 10px 52px; background: var(--nav-bg-s); }
   display: inline-flex; align-items: center;
   border: 1px solid var(--border);
   border-radius: 100px;
-  padding: 6px 20px;
+  padding: 6px 32px;
   font-family: 'Space Mono', monospace;
   font-size: clamp(0.55rem, 1.5vw, 0.68rem);
   letter-spacing: 0.16em; color: var(--accent);
   text-transform: uppercase; margin-top: 16px;
   background: rgba(255,45,155,0.07);
   animation: fadeUp 0.85s 0.12s ease both;
+  max-width: 600px;
+  margin-top: 20px;
+  margin-left: auto;
+  margin-right: auto;
 }
 [data-theme="light"] .hero-badge { background: rgba(255,45,155,0.07); border-color: rgba(255,45,155,0.22); }
 
@@ -775,7 +779,7 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
     <h1 class="hero-name">Leticia<br><span>Corredato</span></h1>
 
     <!-- Role badge: AFTER name, no bullet dot -->
-    <div class="hero-badge t" data-key="hero-badge">Creative Strategy · UX/UI · Growth Designer</div>
+    <div class="hero-badge t" data-key="hero-badge">Creative Strategist & Product Designer <br> · UX/UI, CRM & Performance Marketing</div>
 
     <!-- Value prop -->
     <p class="hero-value t" data-key="hero-value">
@@ -893,8 +897,8 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 <!-- ══ CASES ══ -->
 <section id="cases">
   <div class="reveal">
-    <p class="section-label t" data-key="port-label">Selected Works</p>
-    <h2 class="section-title t" data-key="port-title">Success Cases</h2>
+    <p class="section-label t" data-key="case-label">Selected Works</p>
+    <h2 class="section-title t" data-key="case-title">Success Cases</h2>
     <div class="neon-line"></div>
   </div>
 
@@ -948,37 +952,130 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   </div>
 
   <!-- Gallery EN -->
-  <div class="portfolio-grid active" data-lang="en" id="gridEN">
-    <div class="portfolio-item" data-cat="digital"          onclick="lb(0)"> <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"             onclick="lb(1)"> <img src="https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png" alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"             onclick="lb(2)"> <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="digital"          onclick="lb(3)"> <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="digital"          onclick="lb(4)"> <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="digital"          onclick="lb(5)"> <img src="https://static.wixstatic.com/media/b72a24_3333a0eca91440a680412600693fbbe2~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="digital"          onclick="lb(6)"> <img src="https://static.wixstatic.com/media/b72a24_e2608e088b364db49383ae9a1e3b1488~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"             onclick="lb(7)"> <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"             onclick="lb(8)"> <img src="https://static.wixstatic.com/media/b72a24_62dbd9a80b56417bac09320a09028a16~mv2.jpg"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="graphic"          onclick="lb(9)"> <img src="https://static.wixstatic.com/media/b72a24_7f65afa3a5534c92a576b05804edbd60~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="graphic"          onclick="lb(10)"> <img src="https://static.wixstatic.com/media/b72a24_c2c88700ea504e23989124be2435bbd2~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-    <div class="portfolio-item" data-cat="graphic"          onclick="lb(11)"> <img src="https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png" alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div></div>
-  </div>
+<div class="portfolio-grid active" data-lang="en" id="gridEN">
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto1', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_91686112eab144e29d922bf12c0c4a3e~mv2.png" alt="99Food" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
 
-  <!-- Gallery PT -->
-  <div class="portfolio-grid" data-lang="pt" id="gridPT">
-    <div class="portfolio-item" data-cat="digital"          onclick="lb(0)"> <img src="https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png" alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"             onclick="lb(1)"> <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"             onclick="lb(2)"> <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="digital"          onclick="lb(3)"> <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="digital"          onclick="lb(4)"> <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="digital"          onclick="lb(5)"> <img src="https://static.wixstatic.com/media/b72a24_3333a0eca91440a680412600693fbbe2~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="digital"          onclick="lb(6)"> <img src="https://static.wixstatic.com/media/b72a24_e2608e088b364db49383ae9a1e3b1488~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"             onclick="lb(7)"> <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="uxui"             onclick="lb(8)"> <img src="https://static.wixstatic.com/media/b72a24_62dbd9a80b56417bac09320a09028a16~mv2.jpg"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="graphic"          onclick="lb(9)"> <img src="https://static.wixstatic.com/media/b72a24_7f65afa3a5534c92a576b05804edbd60~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="graphic"          onclick="lb(10)"> <img src="https://static.wixstatic.com/media/b72a24_c2c88700ea504e23989124be2435bbd2~mv2.png"                 alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-    <div class="portfolio-item" data-cat="graphic"          onclick="lb(11)"> <img src="https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png" alt="" loading="lazy"><div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div></div>
-  </div>
-</section>
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto2', 0)"> 
+      <img src="CAPA_PROJETO_2.png" alt="" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto3', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png" alt="E-Visita" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto4', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png" alt="Mantecorp Saude" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto5', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png" alt="Bild" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto6', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_3333a0eca91440a680412600693fbbe2~mv2.png" alt="Vitta" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto7', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png" alt="Life Diversico" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto8', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_62dbd9a80b56417bac09320a09028a16~mv2.jpg" alt="A.cabine" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+    
+    <div class="portfolio-item" data-cat="graphic" onclick="lb('projeto9', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_c2c88700ea504e23989124be2435bbd2~mv2.png" alt="Melua" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+    
+    <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto10', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_e2608e088b364db49383ae9a1e3b1488~mv2.png" alt="Leporem" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+    
+    <div class="portfolio-item" data-cat="graphic" onclick="lb('projeto11', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_7f65afa3a5534c92a576b05804edbd60~mv2.png" alt="Art Velas" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="graphic" onclick="lb('projeto12', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png" alt="KMGRU" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+</div>
+
+<!-- Gallery PT (Repetir a mesma lógica de ID) -->
+<div class="portfolio-grid" data-lang="pt" id="gridPT">
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto1', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_91686112eab144e29d922bf12c0c4a3e~mv2.png" alt="99Food" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto2', 0)"> 
+      <img src="CAPA_PROJETO_2.png" alt="" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto3', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png" alt="E-Visita" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto4', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png" alt="Mantecorp Saude" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto5', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png" alt="Bild" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto6', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_3333a0eca91440a680412600693fbbe2~mv2.png" alt="Vitta" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto7', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png" alt="Life Diversico" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto8', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_62dbd9a80b56417bac09320a09028a16~mv2.jpg" alt="A.cabine" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+    
+    <div class="portfolio-item" data-cat="graphic" onclick="lb('projeto9', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_c2c88700ea504e23989124be2435bbd2~mv2.png" alt="Melua" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+    
+    <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto10', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_e2608e088b364db49383ae9a1e3b1488~mv2.png" alt="Leporem" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+    
+    <div class="portfolio-item" data-cat="graphic" onclick="lb('projeto11', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_7f65afa3a5534c92a576b05804edbd60~mv2.png" alt="Art Velas" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="graphic" onclick="lb('projeto12', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png" alt="KMGRU" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+</div>
 
 <!-- Lightbox -->
 <div class="lightbox" id="lightbox" onclick="lbOutside(event)">
@@ -988,8 +1085,6 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   <button class="lb-nav lb-next" onclick="lbShift(1)"  aria-label="Next">›</button>
   <span class="lb-counter" id="lbCount"></span>
 </div>
-
-<div class="divider"></div>
 
 <!-- ══ EXPERIENCES ══ -->
 <section id="experiences">
@@ -1420,7 +1515,9 @@ const T = {
   'hero-cta2':     { en:"Let's Talk",     pt:'Fale Comigo' },
   'about-label':   { en:'Who I am',       pt:'Quem sou' },
   'about-title':   { en:'About',          pt:'Sobre' },
-  'port-label':    { en:'Selected Works', pt:'Trabalhos Selecionados' },
+  'case-label':    { en:'Selected Works', pt:'Projetos Selecionados' },
+  'case-title':    { en:'Success Cases',      pt:'Cases de Sucesso' },
+  'port-label':    { en:'General Works', pt:'Projetos Gerais' },
   'port-title':    { en:'Portfolio',      pt:'Portfólio' },
   'exp-label':     { en:'Background',     pt:'Histórico' },
   'exp-title':     { en:'Experience',     pt:'Experiências' },
@@ -1435,36 +1532,128 @@ const T = {
   'footer-dev':    { en:'Developed by Leticia Corredato', pt:'Desenvolvido por Leticia Corredato' },
 };
 
-/* ── LIGHTBOX ── */
-const imgs = [
-  'https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png',
-  'https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png',
-  'https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png',
-  'https://static.wixstatic.com/media/b72a24_3333a0eca91440a680412600693fbbe2~mv2.png',
-  'https://static.wixstatic.com/media/b72a24_e2608e088b364db49383ae9a1e3b1488~mv2.png',
-  'https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png',
-  'https://static.wixstatic.com/media/b72a24_62dbd9a80b56417bac09320a09028a16~mv2.jpg',
-  'https://static.wixstatic.com/media/b72a24_7f65afa3a5534c92a576b05804edbd60~mv2.png',
-  'https://static.wixstatic.com/media/b72a24_c2c88700ea504e23989124be2435bbd2~mv2.png',
-  'https://static.wixstatic.com/media/b72a24_7d80a2a1763048d1b7ba7bd2bb847892~mv2.jpg',
-  'https://static.wixstatic.com/media/b72a24_81655da18034492f8aca334c397d3cf0~mv2_d_3425_2248_s_2.png',
-  'https://static.wixstatic.com/media/b72a24_9d30aa630cbd4ae3b50861427b7ea7d1~mv2.jpg'
-];
+/* ── LIGHTBOX MULTI-GALERIA ── */
+
+const galleries = {
+  'projeto1': {
+    'en': [],
+    'pt': []
+  },
+  'projeto2': {
+    'en': [],
+    'pt': []
+  },
+  'projeto3': {
+    'en': [
+      "https://static.wixstatic.com/media/b72a24_1d676549f64248d08dede7e9d0e43cd2~mv2.png",
+      'https://static.wixstatic.com/media/b72a24_9297f5ddb1a447abb03433a14d7cfbf6~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_1f3061d9aaab4fe0903dc445a17b6b5d~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_4652a751e1794f879fda37f76bed6c03~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_bf2d9d4a5a6742c7bf6d1e6acd23a031~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_8d3f3935ca274dc481139ebfe987454d~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_6b12e2af7f0d4ab285ab2d8c18b49d63~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_ecf73678119749d5b9b57a5a0b3fdae8~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_0d2bef288a8e41ec86ade0b03da80110~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_3cb545eceffa4ea6b014e45b048eddca~mv2.png'
+    ],
+    'pt': [
+      'https://static.wixstatic.com/media/b72a24_cad13299b89146cea4903a6a538e03c1~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_00e810bcac8d42f1b25e60302789c99a~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_c2db9d1f3ab64e278712631d156dd7db~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_970e47a26bc245818fe70ecb0b502ebd~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_5d06228fad344d629fe0090c04c1cf99~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_b158ae0ed3454cb7bbb7a94999ab67a7~mv2.png',
+      'https://static.wixstatic.com/media/b72a24_76bba744793e4396a43ee5e09ae85296~mv2.png'      
+    ]
+  },
+  'projeto4': {
+    'en': [],
+    'pt': []
+  },
+  'projeto5': {
+    'en': [],
+    'pt': []
+  },
+  'projeto6': {
+    'en': [],
+    'pt': []
+  },
+  'projeto7': {
+    'en': [],
+    'pt': []
+  },
+  'projeto8': {
+    'en': [],
+    'pt': []
+  },
+  'projeto9': {
+    'en': [],
+    'pt': []
+  },
+  'projeto10': {
+    'en': [],
+    'pt': []
+  },
+  'projeto11': {
+    'en': [],
+    'pt': []
+  },
+  'projeto12': {
+    'en': [],
+    'pt': []
+  },
+};
+
+let currentGallery = [];
 let lbIdx = 0;
-function lb(i) {
+
+function lb(galleryKey, i) {
+  // 1. Descobrir qual grid está visível (EN ou PT)
+  const activeGrid = document.querySelector('.portfolio-grid.active');
+  const lang = activeGrid ? activeGrid.getAttribute('data-lang') : 'en';
+
+  // 2. Acessar o projeto e o idioma
+  const project = galleries[galleryKey];
+  
+  if (project && project[lang]) {
+    // .filter(Boolean) remove qualquer string vazia que tenha sobrado
+    currentGallery = project[lang].filter(Boolean); 
+  } else {
+    console.error("Erro: Galeria ou Idioma não encontrado", galleryKey, lang);
+    return;
+  }
+
   lbIdx = i;
-  document.getElementById('lbImg').src = imgs[i];
-  document.getElementById('lbCount').textContent = `${i+1} / ${imgs.length}`;
+  updateLightbox();
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
-function lbClose() { document.getElementById('lightbox').classList.remove('open'); document.body.style.overflow = ''; }
-function lbOutside(e) { if (e.target.id === 'lightbox') lbClose(); }
-function lbShift(d) {
-  lbIdx = (lbIdx + d + imgs.length) % imgs.length;
-  document.getElementById('lbImg').src = imgs[lbIdx];
-  document.getElementById('lbCount').textContent = `${lbIdx+1} / ${imgs.length}`;
+
+function updateLightbox() {
+  const imgElement = document.getElementById('lbImg');
+  const countElement = document.getElementById('lbCount');
+  
+  if (currentGallery[lbIdx]) {
+    imgElement.src = currentGallery[lbIdx];
+    countElement.textContent = `${lbIdx + 1} / ${currentGallery.length}`;
+  }
 }
+
+function lbClose() { 
+  document.getElementById('lightbox').classList.remove('open'); 
+  document.body.style.overflow = ''; 
+}
+
+function lbOutside(e) { 
+  if (e.target.id === 'lightbox') lbClose(); 
+}
+
+function lbShift(d) {
+  if (currentGallery.length === 0) return;
+  lbIdx = (lbIdx + d + currentGallery.length) % currentGallery.length;
+  updateLightbox();
+}
+
 document.addEventListener('keydown', e => {
   if (!document.getElementById('lightbox').classList.contains('open')) return;
   if (e.key === 'Escape')     lbClose();
