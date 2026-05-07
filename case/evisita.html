@@ -7,7 +7,6 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-8ZM0P67L3H');
 </script>
 <meta charset="UTF-8">
@@ -24,81 +23,192 @@ body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;over
 #cursor{position:fixed;width:14px;height:14px;background:var(--ev,#e8601a);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.12s,width 0.25s,height 0.25s;mix-blend-mode:var(--cursor-blend);will-change:left,top;}
 #cursor.big{width:38px;height:38px;background:rgba(232,96,26,0.18);transform:translate(-50%,-50%);}
 @media(hover:none){#cursor{display:none;}body{cursor:auto;}}
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:16px 52px;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding 0.3s,background 0.4s;}
-nav.scrolled{padding:10px 52px;background:var(--nav-bg-s);}
-.nav-logo img{height:46px;filter:drop-shadow(0 0 8px var(--accent));transition:filter 0.3s;}
-[data-theme="light"] .nav-logo img{filter:drop-shadow(0 0 6px var(--accent3)) brightness(0.9);}
-.nav-logo img:hover{filter:drop-shadow(0 0 20px var(--accent2));}
-.nav-links{display:flex;gap:32px;list-style:none;}
-.nav-links a{color:var(--gray);text-decoration:none;font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;transition:color 0.2s;position:relative;}
-.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform 0.25s;}
-.nav-links a:hover,.nav-links a.cur{color:var(--accent);}
-.nav-links a:hover::after,.nav-links a.cur::after{transform:scaleX(1);}
-.nav-right{display:flex;align-items:center;gap:8px;}
-.nav-controls{display:flex;align-items:stretch;border:1px solid var(--border);border-radius:4px;overflow:hidden;height:32px;}
-.lang-switch{display:flex;align-items:stretch;}
-.lang-switch button{background:transparent;border:none;color:var(--gray);padding:0 12px;cursor:pointer;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.13em;text-transform:uppercase;transition:background 0.2s,color 0.2s;height:100%;display:flex;align-items:center;}
-.lang-switch button.active{background:var(--accent);color:#fff;font-weight:700;}
-.lang-switch button:not(.active):hover{color:var(--accent);}
-.nav-sep{width:1px;background:var(--border);flex-shrink:0;align-self:stretch;}
-.theme-btn{background:transparent;border:none;border-left:1px solid var(--border);width:36px;height:100%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s,color 0.2s;color:var(--gray);padding:0;flex-shrink:0;}
-.theme-btn:hover{background:rgba(255,45,155,0.09);color:var(--accent);}
-.theme-btn svg{width:14px;height:14px;fill:currentColor;display:block;}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;}
-.hamburger span{display:block;width:24px;height:2px;background:var(--accent);border-radius:2px;transition:transform 0.3s,opacity 0.3s;}
-.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
-.hamburger.open span:nth-child(2){opacity:0;}
-.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
-.mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:999;flex-direction:column;align-items:center;justify-content:center;gap:28px;}
-.mobile-menu.open{display:flex;}
-.mobile-menu a{color:var(--text);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:0.1em;transition:color 0.2s;}
-.mobile-menu a:hover{color:var(--accent);}
-.mobile-close{position:absolute;top:20px;right:28px;font-size:1.8rem;color:var(--gray);cursor:pointer;background:none;border:none;}
-.mob-ctrl{display:flex;align-items:stretch;border:1px solid var(--border);border-radius:4px;overflow:hidden;height:40px;margin-top:8px;}
-.mob-ctrl .lang-switch button{font-size:0.72rem;padding:0 16px;height:100%;}
-.mob-ctrl .theme-btn{border:none;border-left:1px solid var(--border);width:44px;height:100%;}
-.mob-ctrl .theme-btn svg{width:16px;height:16px;}
-/* PAGE */
+
+/* ══ GRIDS (FALTAVAM) ══ */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.igrid{display:grid;gap:10px;}
+.igrid.c2{grid-template-columns:1fr 1fr;}
+.igrid.c3{grid-template-columns:repeat(3,1fr);}
+.igrid.c4{grid-template-columns:repeat(4,1fr);}
+
+/* ══ TYPOGRAPHY (FALTAVAM) ══ */
+.lead{font-size:0.96rem;line-height:1.82;color:var(--text-muted);margin-bottom:14px;}
+.img-cap{font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;color:var(--gray);text-align:center;margin-top:10px;text-transform:uppercase;}
+
+/* ══ TIMELINE (FALTAVAM) ══ */
+.tml{position:relative;display:flex;flex-direction:column;gap:0;padding-left:32px;}
+.ti{position:relative;padding:0 0 28px 0;}
+.ti:last-child{padding-bottom:0;}
+.ttt{font-weight:600;font-size:0.94rem;color:var(--text);margin-bottom:6px;}
+.tde{font-size:0.86rem;line-height:1.72;color:var(--text-muted);}
+
+/* ══ BAR CHART (FALTAVAM) ══ */
+.barchart{display:flex;flex-direction:column;gap:12px;}
+.bar-row{display:flex;align-items:center;gap:12px;}
+.bar-lbl{font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.1em;color:var(--gray);text-transform:uppercase;width:90px;flex-shrink:0;}
+
+/* ══ MSGS / PILLS GRID (FALTAVA) ══ */
+.msgs{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:8px;}
+
+/* ══ TAGS WRAP (FALTAVA) ══ */
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
+
+/* ══ NAVIGATION ══ */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 16px 52px;
+  background: var(--nav-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  transition: padding 0.3s ease, background 0.4s ease;
+}
+.nav-logo img {
+  height: 46px;
+  filter: drop-shadow(0 0 8px var(--accent));
+  transition: filter 0.3s;
+}
+[data-theme="light"] .nav-logo img { filter: drop-shadow(0 0 6px var(--accent3)) brightness(0.9); }
+.nav-logo img:hover { filter: drop-shadow(0 0 20px var(--accent2)); }
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: var(--gray);
+  text-decoration: none;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+  height: 1px; background: var(--accent);
+  transform: scaleX(0); transition: transform 0.25s ease;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* ── NAV CONTROLS ── */
+.nav-right { display: flex; align-items: center; gap: 8px; }
+.nav-controls {
+  display: flex; align-items: stretch;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  height: 32px;
+}
+.lang-switch { display: flex; align-items: stretch; }
+.lang-switch button {
+  background: transparent; border: none;
+  color: var(--gray);
+  padding: 0 12px;
+  cursor: pointer;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.13em; text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+  height: 100%; display: flex; align-items: center;
+}
+.lang-switch button.active { background: var(--accent); color: #fff; font-weight: 700; }
+.lang-switch button:not(.active):hover { color: var(--accent); }
+.nav-sep { width: 1px; background: var(--border); flex-shrink: 0; align-self: stretch; }
+.theme-btn {
+  background: transparent; border: none; border-left: 1px solid var(--border);
+  width: 36px; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.35s;
+  color: var(--gray); padding: 0; flex-shrink: 0;
+}
+.theme-btn:hover { background: rgba(255,45,155,0.09); color: var(--accent); }
+.theme-btn svg { width: 14px; height: 14px; fill: currentColor; display: block; }
+
+/* ── Hamburger ── */
+.hamburger {
+  display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px;
+  z-index: 10001;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px; background: var(--accent);
+  border-radius: 2px; transition: transform 0.3s, opacity 0.3s;
+}
+.mobile-close-trigger { position: absolute; top: 20px; right: 28px; }
+.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.hamburger.open span:nth-child(2) { opacity: 0; }
+.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.mobile-menu {
+  position: fixed; inset: 0;
+  background: var(--bg); z-index: 9999;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 28px;
+  opacity: 0; visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+.mobile-menu.open { opacity: 1; visibility: visible; }
+.mobile-menu a {
+  color: var(--text); text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; letter-spacing: 0.1em;
+  transition: color 0.2s;
+}
+.mobile-menu a:hover { color: var(--accent); }
+.mobile-close {
+  position: absolute; top: 20px; right: 28px;
+  font-size: 1.8rem; color: var(--gray);
+  cursor: pointer; background: none; border: none; z-index: 10000; padding: 10px;
+}
+.mobile-controls {
+  display: flex; align-items: stretch; gap: 0;
+  border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+  height: 40px; margin-top: 8px;
+}
+.mobile-controls .lang-switch { border: none; }
+.mobile-controls .lang-switch button { font-size: 0.72rem; padding: 0 16px; height: 100%; }
+.mobile-controls .theme-btn { border: none; border-left: 1px solid var(--border); width: 44px; height: 100%; }
+.mobile-controls .theme-btn svg { width: 16px; height: 16px; }
+
+/* ══ PAGE STRUCTURE ══ */
 .divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,#e8601a,#f0924a,transparent);opacity:0.28;}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity 0.7s,transform 0.7s;}
 .reveal.visible{opacity:1;transform:translateY(0);}
-/* Case palette */
+
+/* ══ CASE PALETTE ══ */
 .cs-section{padding:88px 52px;background:var(--bg);}
 .cs-section.alt{background:var(--bg-alt);}
 .ey{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.28em;color:#c44a10;text-transform:uppercase;margin-bottom:10px;}
+.ch2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,3.8rem);letter-spacing:0.04em;line-height:1.05;margin-bottom:18px;}
 .ch2 em{color:#e8601a;font-style:normal;}
 .aline{width:48px;height:3px;background:linear-gradient(90deg,#e8601a,#f0924a);border-radius:2px;margin-bottom:28px;}
 .gcard{background:var(--card-bg);border:1px solid rgba(232,96,26,0.18);border-radius:8px;padding:20px 22px;}
 .gcard-lbl{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;color:#c44a10;text-transform:uppercase;margin-bottom:10px;}
+.gcard ul{list-style:none;display:flex;flex-direction:column;gap:6px;}
+.gcard li{font-size:0.88rem;color:var(--text-muted);}
 .gcard li::before{content:'— ';color:#e8601a;}
 .chal{background:var(--card-bg);border:1px solid rgba(232,96,26,0.16);border-radius:8px;padding:18px 20px;border-top:3px solid #e8601a;}
+.chal h4{font-size:0.94rem;font-weight:600;color:var(--text);margin-bottom:6px;}
+.chal p{font-size:0.85rem;line-height:1.7;color:var(--text-muted);}
 .bar-track{flex:1;height:8px;background:rgba(232,96,26,0.1);border-radius:4px;overflow:hidden;}
 .bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,#e8601a,#f0924a);}
-.bar-val{font-family:'Space Mono',monospace;font-size:0.56rem;color:#c44a10;width:70px;text-align:right;flex-shrink:0;}
+.bar-val{font-family:'Space Mono',monospace;font-size:0.56rem;color:#c44a10;width:90px;text-align:right;flex-shrink:0;}
 .img-full{width:100%;border-radius:10px;border:1px solid rgba(232,96,26,0.2);box-shadow:0 8px 40px rgba(0,0,0,0.3);display:block;object-fit:cover;}
 .iitem{position:relative;border-radius:8px;overflow:hidden;background:var(--card-bg);border:1px solid rgba(232,96,26,0.15);}
+.iitem img{width:100%;display:block;object-fit:cover;}
 .iov{position:absolute;inset:0;background:linear-gradient(to top,rgba(46,16,4,0.88) 0%,transparent 55%);display:flex;align-items:flex-end;padding:12px;opacity:0;transition:opacity 0.3s;}
+.iitem:hover .iov{opacity:1;}
+.iov span{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.1em;color:#fdf0e8;text-transform:uppercase;}
 .tml::before{content:'';position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,#e8601a,rgba(232,96,26,0.06));}
 .tdot{position:absolute;left:-22px;top:4px;width:12px;height:12px;border-radius:50%;background:#e8601a;box-shadow:0 0 10px rgba(232,96,26,0.55);}
 .tph{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;color:#c44a10;text-transform:uppercase;margin-bottom:3px;}
-.bac.af{background:rgba(232,96,26,0.06);border:1px solid rgba(232,96,26,0.22);}
-.bac.af .balbl{color:#c44a10;border-color:rgba(232,96,26,0.25);}
-.bai::before{content:'•';color:#e8601a;margin-top:1px;flex-shrink:0;}
-.met{background:var(--card-bg);border:1px solid rgba(232,96,26,0.16);border-radius:8px;padding:22px 20px;border-left:3px solid #e8601a;}
-.met-n{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#e8601a;letter-spacing:0.04em;line-height:1;margin-bottom:5px;}
-.reg{background:var(--card-bg);border:1px solid rgba(232,96,26,0.16);border-radius:8px;padding:18px 20px;}
-.reg-c{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;letter-spacing:0.1em;color:#e8601a;margin-bottom:5px;}
-.seac{background:var(--card-bg);border:1px solid rgba(232,96,26,0.18);border-radius:10px;overflow:hidden;}
-.seach{background:linear-gradient(135deg,#c44a10,#e8601a);padding:18px 20px;}
-.stag{display:inline-block;border:1px solid rgba(232,96,26,0.3);border-radius:100px;padding:3px 10px;font-size:0.6rem;color:#c44a10;font-family:'Space Mono',monospace;letter-spacing:0.08em;margin:2px;}
 .mpill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(232,96,26,0.22);border-radius:6px;padding:10px 16px;background:var(--card-bg);transition:border-color 0.2s,background 0.2s;}
 .mpill:hover{border-color:#e8601a;background:rgba(232,96,26,0.07);}
+.mpill span{font-size:0.86rem;color:var(--text-muted);}
 .mdot{width:7px;height:7px;border-radius:50%;background:#e8601a;flex-shrink:0;}
-.crc{background:var(--card-bg);border:1px solid rgba(232,96,26,0.15);border-radius:8px;padding:20px;transition:border-color 0.2s,transform 0.2s;}
-.crc:hover{border-color:rgba(232,96,26,0.45);transform:translateY(-3px);}
-.crn{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:#e8601a;margin-bottom:10px;}
+.met{background:var(--card-bg);border:1px solid rgba(232,96,26,0.16);border-radius:8px;padding:22px 20px;border-left:3px solid #e8601a;}
+.met-n{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:#e8601a;letter-spacing:0.04em;line-height:1;margin-bottom:5px;}
+.met-t{font-weight:600;font-size:0.9rem;color:var(--text);margin-bottom:6px;}
+.met-d{font-size:0.83rem;line-height:1.7;color:var(--text-muted);}
 .tag{border:1px solid rgba(232,96,26,0.25);border-radius:4px;padding:5px 14px;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:#c44a10;text-transform:uppercase;background:rgba(232,96,26,0.05);}
+
+/* ══ COVER ══ */
 .cover{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:130px 52px 80px;text-align:center;background:#0f0602;}
 [data-theme="light"] .cover{background:#fdf0e8;}
 .covgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(232,96,26,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(232,96,26,0.07) 1px,transparent 1px);background-size:52px 52px;}
@@ -111,6 +221,7 @@ nav.scrolled{padding:10px 52px;background:var(--nav-bg-s);}
 [data-theme="light"] .covsub{color:#c44a10;}
 .covdesc{position:relative;z-index:1;font-size:0.9rem;line-height:1.78;color:rgba(253,240,232,0.65);max-width:530px;margin:18px auto 0;}
 [data-theme="light"] .covdesc{color:rgba(42,14,4,0.62);}
+.covmeta{position:relative;z-index:1;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:44px;}
 .mil{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.15em;color:rgba(232,96,26,0.55);text-transform:uppercase;margin-bottom:4px;}
 .miv{font-size:0.84rem;color:#fdf0e8;font-weight:600;}
 [data-theme="light"] .miv{color:#2a0e04;}
@@ -118,36 +229,51 @@ nav.scrolled{padding:10px 52px;background:var(--nav-bg-s);}
 .backbtn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:#c44a10;border:1px solid rgba(232,96,26,0.28);padding:11px 26px;border-radius:4px;transition:background 0.2s,border-color 0.2s;margin-top:40px;}
 .backbtn:hover{background:rgba(232,96,26,0.08);border-color:#e8601a;}
 .backbtn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;}
-/* Responsive */
+
+/* ══ FOOTER ══ */
+footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(--border);text-align:center;}
+.footer-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,5vw,3.3rem);letter-spacing:0.1em;color:var(--text);margin-bottom:6px;}
+.footer-sub{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--gray);letter-spacing:0.13em;margin-bottom:34px;}
+.social-links{display:flex;justify-content:center;gap:12px;margin-bottom:38px;}
+.social-link{width:44px;height:44px;border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.25s;}
+.social-link:hover{border-color:var(--accent);box-shadow:0 0 14px rgba(255,45,155,0.28);transform:translateY(-3px);}
+.social-link img{width:21px;height:21px;}
+[data-theme="light"] .social-link img{filter:brightness(0.5) saturate(1.5);}
+.footer-copy{font-size:0.67rem;color:var(--gray);font-family:'Space Mono',monospace;opacity:0.4;}
+.section-label{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.28em;color:var(--gray);text-transform:uppercase;}
+
+/* ══ RESPONSIVE ══ */
 @media(max-width:900px){
-nav{padding:13px 22px;}nav.scrolled{padding:9px 22px;}
-.nav-links{display:none;}.hamburger{display:flex;}
-.cs-section,.cover~*>.cs-section{padding:64px 24px;}
-.cs-section{padding:64px 24px;}
-.cover{padding:100px 24px 60px;}
-.g2{grid-template-columns:1fr;gap:36px;}
-.g3{grid-template-columns:1fr 1fr;}
-.g4{grid-template-columns:1fr 1fr;}
-.crgrid{grid-template-columns:1fr 1fr;}
-.seas{grid-template-columns:1fr 1fr;}
-.regs{grid-template-columns:1fr 1fr;}
-.ba{grid-template-columns:1fr;}
-.igrid.c3{grid-template-columns:1fr 1fr;}
-.igrid.c4{grid-template-columns:1fr 1fr;}
-.covmeta{gap:16px;}.mdiv{display:none;}
+  nav{padding:13px 22px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .cs-section{padding:64px 24px;}
+  .cover{padding:100px 24px 60px;}
+  .g2{grid-template-columns:1fr;gap:36px;}
+  .g3{grid-template-columns:1fr 1fr;}
+  .g4{grid-template-columns:1fr 1fr;}
+  .igrid.c3{grid-template-columns:1fr 1fr;}
+  .igrid.c4{grid-template-columns:1fr 1fr;}
+  .covmeta{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+  .mdiv{display:none;}
+  footer{padding:48px 18px 28px;}
 }
 @media(max-width:560px){
-.cs-section{padding:52px 18px;}
-.cover{padding:90px 18px 50px;}
-.g3{grid-template-columns:1fr;}
-.g4{grid-template-columns:1fr 1fr;}
-.crgrid{grid-template-columns:1fr;}
-.seas{grid-template-columns:1fr;}
-.regs{grid-template-columns:1fr;}
-.igrid.c2{grid-template-columns:1fr;}
-.igrid.c3{grid-template-columns:1fr;}
-.igrid.c4{grid-template-columns:1fr 1fr;}
-.ba{grid-template-columns:1fr;}
+  nav{padding:12px 18px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .cs-section{padding:52px 18px;}
+  .cover{padding:90px 18px 50px;}
+  .g3{grid-template-columns:1fr;}
+  .g4{grid-template-columns:1fr 1fr;}
+  .igrid.c2{grid-template-columns:1fr;}
+  .igrid.c3{grid-template-columns:1fr;}
+  .igrid.c4{grid-template-columns:1fr 1fr;}
+  .covmeta{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+}
+@media(max-height:480px) and (orientation:landscape){
+  .mobile-menu{justify-content:flex-start;padding:60px 20px;overflow-y:auto;gap:16px;}
+  .mobile-menu a{font-size:1.5rem;}
 }
 </style>
 </head>
@@ -156,24 +282,28 @@ nav{padding:13px 22px;}nav.scrolled{padding:9px 22px;}
 
 <!-- ══ NAV ══ -->
 <nav id="mainNav">
-  <a class="nav-logo" href="leticia-portfolio-v5.html">
-    <img src="https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png" alt="LC">
+  <a class="nav-logo" href="https://lecorredato.github.io/portfolio/#hero">
+    <img id="navLogo" src="https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png" alt="LC">
   </a>
   <ul class="nav-links">
-    <li><a href="leticia-portfolio-v5.html#about" class="t" data-key="nav-about">About</a></li>
-    <li><a href="leticia-portfolio-v5.html#cases" class="t" data-key="nav-case">Cases</a></li>
-    <li><a href="leticia-portfolio-v5.html#portfolio" class="t" data-key="nav-portfolio">Portfolio</a></li>
-    <li><a href="leticia-portfolio-v5.html#experiences" class="t" data-key="nav-exp">Experience</a></li>
-    <li><a href="leticia-portfolio-v5.html#contact" class="t" data-key="nav-contact">Contact</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#about"       class="t" data-key="nav-about">About</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#cases"       class="t" data-key="nav-case">Cases</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#portfolio"   class="t" data-key="nav-portfolio">Portfolio</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#experiences" class="t" data-key="nav-exp">Experience</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#contact"     class="t" data-key="nav-contact">Contact</a></li>
   </ul>
   <div class="nav-right">
-    <div class="lang-switch">
-      <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
-      <div class="lang-sep"></div>
-      <button id="btnPT" onclick="setLang('pt')">PT</button>
+    <div class="nav-controls">
+      <div class="lang-switch">
+        <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
+        <div class="nav-sep"></div>
+        <button id="btnPT" onclick="setLang('pt')">PT</button>
+      </div>
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+      </button>
     </div>
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button>
-    <div class="hamburger" id="hamburger" onclick="openMenu()">
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
   </div>
@@ -181,19 +311,23 @@ nav{padding:13px 22px;}nav.scrolled{padding:9px 22px;}
 
 <!-- ══ MOBILE MENU ══ -->
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="closeMenu()">✕</button>
-  <a href="leticia-portfolio-v5.html#about" onclick="closeMenu()" class="t" data-key="nav-about">About</a>
-  <a href="leticia-portfolio-v5.html#cases" onclick="closeMenu()" class="t" data-key="nav-case">Cases</a>
-  <a href="leticia-portfolio-v5.html#portfolio" onclick="closeMenu()" class="t" data-key="nav-portfolio">Portfolio</a>
-  <a href="leticia-portfolio-v5.html#experiences" onclick="closeMenu()" class="t" data-key="nav-exp">Experience</a>
-  <a href="leticia-portfolio-v5.html#contact" onclick="closeMenu()" class="t" data-key="nav-contact">Contact</a>
+  <div class="hamburger open mobile-close-trigger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <a href="https://lecorredato.github.io/portfolio/#about"       onclick="closeMenu()" class="t" data-key="nav-about">About</a>
+  <a href="https://lecorredato.github.io/portfolio/#cases"       onclick="closeMenu()" class="t" data-key="nav-case">Cases</a>
+  <a href="https://lecorredato.github.io/portfolio/#portfolio"   onclick="closeMenu()" class="t" data-key="nav-portfolio">Portfolio</a>
+  <a href="https://lecorredato.github.io/portfolio/#experiences" onclick="closeMenu()" class="t" data-key="nav-exp">Experience</a>
+  <a href="https://lecorredato.github.io/portfolio/#contact"     onclick="closeMenu()" class="t" data-key="nav-contact">Contact</a>
   <div class="mobile-controls">
     <div class="lang-switch">
       <button id="btnENMob" class="active" onclick="setLang('en')">EN</button>
       <div class="lang-sep"></div>
       <button id="btnPTMob" onclick="setLang('pt')">PT</button>
     </div>
-    <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()" aria-label="Toggle theme"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button>
+    <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </button>
   </div>
 </div>
 
@@ -204,11 +338,11 @@ nav{padding:13px 22px;}nav.scrolled{padding:9px 22px;}
   <div class="covtag">Case Study · 2024–2025</div>
   <h1 class="covbrand"><em>e</em>-Visita</h1>
   <p class="covsub">
-    <span data-lang="en" style="display:inline;">Digital Medical Platform — UX/UI Design</span>
+    <span data-lang="en">Digital Medical Platform — UX/UI Design</span>
     <span data-lang="pt">Plataforma Médica Digital — Design UX/UI</span>
   </p>
   <p class="covdesc">
-    <span data-lang="en" style="display:inline;">End-to-end digital interface design for a medical engagement platform connecting pharmaceutical representatives with healthcare professionals at Mantecorp Saúde · Hypera Pharma.</span>
+    <span data-lang="en">End-to-end digital interface design for a medical engagement platform connecting pharmaceutical representatives with healthcare professionals at Mantecorp Saúde · Hypera Pharma.</span>
     <span data-lang="pt">Design de interface digital de ponta a ponta para uma plataforma de engajamento médico conectando representantes farmacêuticos com profissionais de saúde na Mantecorp Saúde · Hypera Pharma.</span>
   </p>
   <div class="covmeta">
@@ -227,24 +361,30 @@ nav{padding:13px 22px;}nav.scrolled{padding:9px 22px;}
 <div class="cs-section alt reveal">
   <div class="g2">
     <div>
-      <p class="ey">01 — <span data-lang="en" style="display:inline;">Overview</span><span data-lang="pt">Visão Geral</span></p>
-      <h2 class="ch2"><span data-lang="en" style="display:inline;">Project</span><span data-lang="pt">Contexto do</span><br><em><span data-lang="en" style="display:inline;">Context</span><span data-lang="pt">Projeto</span></em></h2>
+      <p class="ey">01 — <span data-lang="en">Overview</span><span data-lang="pt">Visão Geral</span></p>
+      <h2 class="ch2"><span data-lang="en">Project</span><span data-lang="pt">Contexto do</span><br><em><span data-lang="en">Context</span><span data-lang="pt">Projeto</span></em></h2>
       <div class="aline"></div>
-      <p class="lead" data-lang="en" style="display:block;">At Hypera Pharma, I designed the e-Visita platform — a digital medical visit tool built for Mantecorp Saúde that digitizes and streamlines interactions between pharmaceutical representatives and healthcare professionals.</p>
+      <p class="lead" data-lang="en">At Hypera Pharma, I designed the e-Visita platform — a digital medical visit tool built for Mantecorp Saúde that digitizes and streamlines interactions between pharmaceutical representatives and healthcare professionals.</p>
       <p class="lead" data-lang="en">My role as UI Designer covered end-to-end interface design, from wireframes and Figma prototypes to HTML/CSS component development, working closely with CRM, MarTech and BI teams to enhance KPIs and user experience.</p>
       <p class="lead" data-lang="pt">Na Hypera Pharma, projetei a plataforma e-Visita — uma ferramenta de visita médica digital construída para a Mantecorp Saúde que digitaliza e otimiza as interações entre representantes farmacêuticos e profissionais de saúde.</p>
       <p class="lead" data-lang="pt">Meu papel como UI Designer cobriu o design de interface de ponta a ponta, de wireframes e protótipos no Figma ao desenvolvimento HTML/CSS, em colaboração com equipes de CRM, MarTech e BI.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px;">
       <div class="gcard">
-        <div class="gcard-lbl"><span data-lang="en" style="display:inline;">Responsibilities</span><span data-lang="pt">Responsabilidades</span></div>
+        <div class="gcard-lbl"><span data-lang="en">Responsibilities</span><span data-lang="pt">Responsabilidades</span></div>
         <ul>
-          <li data-lang="en" style="display:block;">UX/UI Design &amp; Prototyping</li><li data-lang="pt">Design UX/UI e Prototipagem</li>
-          <li data-lang="en" style="display:block;">Design System &amp; Components</li><li data-lang="pt">Design System e Componentes</li>
-          <li data-lang="en" style="display:block;">HTML/CSS Development</li><li data-lang="pt">Desenvolvimento HTML/CSS</li>
-          <li data-lang="en" style="display:block;">CRM Journey Design</li><li data-lang="pt">Design de Jornada CRM</li>
-          <li data-lang="en" style="display:block;">Email Marketing Templates</li><li data-lang="pt">Templates de Email Marketing</li>
-          <li data-lang="en" style="display:block;">Cross-team Collaboration</li><li data-lang="pt">Colaboração Multidisciplinar</li>
+          <li data-lang="en">UX/UI Design &amp; Prototyping</li>
+          <li data-lang="pt">Design UX/UI e Prototipagem</li>
+          <li data-lang="en">Design System &amp; Components</li>
+          <li data-lang="pt">Design System e Componentes</li>
+          <li data-lang="en">HTML/CSS Development</li>
+          <li data-lang="pt">Desenvolvimento HTML/CSS</li>
+          <li data-lang="en">CRM Journey Design</li>
+          <li data-lang="pt">Design de Jornada CRM</li>
+          <li data-lang="en">Email Marketing Templates</li>
+          <li data-lang="pt">Templates de Email Marketing</li>
+          <li data-lang="en">Cross-team Collaboration</li>
+          <li data-lang="pt">Colaboração Multidisciplinar</li>
         </ul>
       </div>
       <div class="gcard">
@@ -262,42 +402,39 @@ nav{padding:13px 22px;}nav.scrolled{padding:9px 22px;}
 
 <!-- 02 SCREENS GALLERY -->
 <div class="cs-section reveal">
-  <p class="ey">02 — <span data-lang="en" style="display:inline;">Interface</span><span data-lang="pt">Interface</span></p>
-  <h2 class="ch2"><span data-lang="en" style="display:inline;">Platform</span><span data-lang="pt">Telas da</span><br><em><span data-lang="en" style="display:inline;">Screens</span><span data-lang="pt">Plataforma</span></em></h2>
+  <p class="ey">02 — <span data-lang="en">Interface</span><span data-lang="pt">Interface</span></p>
+  <h2 class="ch2"><span data-lang="en">Platform</span><span data-lang="pt">Telas da</span><br><em><span data-lang="en">Screens</span><span data-lang="pt">Plataforma</span></em></h2>
   <div class="aline"></div>
-  <p class="lead" data-lang="en" style="display:block;">Complete UI flow — covering dashboard, scheduling, medical profiles, content modules and notification systems — designed for clarity, usability and brand alignment.</p>
+  <p class="lead" data-lang="en">Complete UI flow — covering dashboard, scheduling, medical profiles, content modules and notification systems — designed for clarity, usability and brand alignment.</p>
   <p class="lead" data-lang="pt">Fluxo de UI completo — cobrindo dashboard, agendamento, perfis médicos, módulos de conteúdo e sistema de notificações — projetado para clareza, usabilidade e alinhamento de marca.</p>
 
-  <!-- Cover / hero screen -->
   <div style="margin-bottom:10px;">
     <div class="iitem">
       <img src="https://static.wixstatic.com/media/b72a24_127f9ecee61641119b330f7759e07e7a~mv2.png" alt="e-Visita Platform Cover" loading="lazy" style="width:100%;display:block;">
-      <div class="iov"><span data-lang="en" style="display:inline;">e-Visita — Platform Cover</span><span data-lang="pt">e-Visita — Capa da Plataforma</span></div>
+      <div class="iov"><span data-lang="en">e-Visita — Platform Cover</span><span data-lang="pt">e-Visita — Capa da Plataforma</span></div>
     </div>
   </div>
-
-  <!-- 2 screens -->
   <div class="igrid c2" style="margin-bottom:10px;">
-    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_1d676549f64248d08dede7e9d0e43cd2~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en" style="display:inline;">Dashboard View</span><span data-lang="pt">Visão do Dashboard</span></div></div>
-    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_9297f5ddb1a447abb03433a14d7cfbf6~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en" style="display:inline;">Medical Profile</span><span data-lang="pt">Perfil Médico</span></div></div>
+    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_1d676549f64248d08dede7e9d0e43cd2~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en">Dashboard View</span><span data-lang="pt">Visão do Dashboard</span></div></div>
+    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_9297f5ddb1a447abb03433a14d7cfbf6~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en">Medical Profile</span><span data-lang="pt">Perfil Médico</span></div></div>
   </div>
   <div class="igrid c2" style="margin-bottom:10px;">
-    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_1f3061d9aaab4fe0903dc445a17b6b5d~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en" style="display:inline;">Scheduling Flow</span><span data-lang="pt">Fluxo de Agendamento</span></div></div>
-    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_4652a751e1794f879fda37f76bed6c03~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en" style="display:inline;">Visit Confirmation</span><span data-lang="pt">Confirmação de Visita</span></div></div>
+    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_1f3061d9aaab4fe0903dc445a17b6b5d~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en">Scheduling Flow</span><span data-lang="pt">Fluxo de Agendamento</span></div></div>
+    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_4652a751e1794f879fda37f76bed6c03~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en">Visit Confirmation</span><span data-lang="pt">Confirmação de Visita</span></div></div>
   </div>
   <div class="igrid c2" style="margin-bottom:10px;">
-    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_bf2d9d4a5a6742c7bf6d1e6acd23a031~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en" style="display:inline;">Content Module</span><span data-lang="pt">Módulo de Conteúdo</span></div></div>
-    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_8d3f3935ca274dc481139ebfe987454d~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en" style="display:inline;">Engagement View</span><span data-lang="pt">Visão de Engajamento</span></div></div>
+    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_bf2d9d4a5a6742c7bf6d1e6acd23a031~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en">Content Module</span><span data-lang="pt">Módulo de Conteúdo</span></div></div>
+    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_8d3f3935ca274dc481139ebfe987454d~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en">Engagement View</span><span data-lang="pt">Visão de Engajamento</span></div></div>
   </div>
   <div class="igrid c2" style="margin-bottom:10px;">
-    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_6b12e2af7f0d4ab285ab2d8c18b49d63~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en" style="display:inline;">Representative Panel</span><span data-lang="pt">Painel do Representante</span></div></div>
-    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_ecf73678119749d5b9b57a5a0b3fdae8~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en" style="display:inline;">Notification System</span><span data-lang="pt">Sistema de Notificações</span></div></div>
+    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_6b12e2af7f0d4ab285ab2d8c18b49d63~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en">Representative Panel</span><span data-lang="pt">Painel do Representante</span></div></div>
+    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_ecf73678119749d5b9b57a5a0b3fdae8~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en">Notification System</span><span data-lang="pt">Sistema de Notificações</span></div></div>
   </div>
   <div class="igrid c2">
-    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_0d2bef288a8e41ec86ade0b03da80110~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en" style="display:inline;">Analytics View</span><span data-lang="pt">Visão de Analytics</span></div></div>
-    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_3cb545eceffa4ea6b014e45b048eddca~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en" style="display:inline;">Mobile Experience</span><span data-lang="pt">Experiência Mobile</span></div></div>
+    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_0d2bef288a8e41ec86ade0b03da80110~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en">Analytics View</span><span data-lang="pt">Visão de Analytics</span></div></div>
+    <div class="iitem"><img src="https://static.wixstatic.com/media/b72a24_3cb545eceffa4ea6b014e45b048eddca~mv2.png" alt="" loading="lazy"><div class="iov"><span data-lang="en">Mobile Experience</span><span data-lang="pt">Experiência Mobile</span></div></div>
   </div>
-  <p class="img-cap"><span data-lang="en" style="display:inline;">e-Visita Platform · Mantecorp Saúde · Hypera Pharma</span><span data-lang="pt">Plataforma e-Visita · Mantecorp Saúde · Hypera Pharma</span></p>
+  <p class="img-cap"><span data-lang="en">e-Visita Platform · Mantecorp Saúde · Hypera Pharma</span><span data-lang="pt">Plataforma e-Visita · Mantecorp Saúde · Hypera Pharma</span></p>
 </div>
 <div class="divider"></div>
 
@@ -305,17 +442,17 @@ nav{padding:13px 22px;}nav.scrolled{padding:9px 22px;}
 <div class="cs-section alt reveal">
   <div class="g2">
     <div>
-      <p class="ey">03 — <span data-lang="en" style="display:inline;">The Challenge</span><span data-lang="pt">O Desafio</span></p>
-      <h2 class="ch2"><span data-lang="en" style="display:inline;">Digitizing</span><span data-lang="pt">Digitalizando</span><br><em><span data-lang="en" style="display:inline;">Medical Visits</span><span data-lang="pt">Visitas Médicas</span></em></h2>
+      <p class="ey">03 — <span data-lang="en">The Challenge</span><span data-lang="pt">O Desafio</span></p>
+      <h2 class="ch2"><span data-lang="en">Digitizing</span><span data-lang="pt">Digitalizando</span><br><em><span data-lang="en">Medical Visits</span><span data-lang="pt">Visitas Médicas</span></em></h2>
       <div class="aline"></div>
-      <p class="lead" data-lang="en" style="display:block;">The pharmaceutical industry relies on in-person medical visits. The challenge was translating this relationship-driven process into a digital platform that preserved interaction quality while adding efficiency and scale.</p>
+      <p class="lead" data-lang="en">The pharmaceutical industry relies on in-person medical visits. The challenge was translating this relationship-driven process into a digital platform that preserved interaction quality while adding efficiency and scale.</p>
       <p class="lead" data-lang="pt">A indústria farmacêutica depende de visitas médicas presenciais. O desafio era traduzir esse processo orientado a relacionamentos em uma plataforma digital que preservasse a qualidade da interação adicionando eficiência e escala.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="chal"><h4 data-lang="en" style="display:block;">Complex User Roles</h4><h4 data-lang="pt">Papéis de Usuário Complexos</h4><p data-lang="en" style="display:block;">Representatives, doctors and admins required separate but unified design flows with distinct permissions.</p><p data-lang="pt">Representantes, médicos e admins exigiram fluxos separados mas unificados com permissões distintas.</p></div>
-      <div class="chal"><h4 data-lang="en" style="display:block;">Data-heavy Interfaces</h4><h4 data-lang="pt">Interfaces com Muitos Dados</h4><p data-lang="en" style="display:block;">Medical data, scheduling and content modules required clear hierarchy and minimal cognitive load.</p><p data-lang="pt">Dados médicos, agendamento e módulos de conteúdo exigiram hierarquia clara e carga cognitiva mínima.</p></div>
-      <div class="chal"><h4 data-lang="en" style="display:block;">Brand Consistency</h4><h4 data-lang="pt">Consistência de Marca</h4><p data-lang="en" style="display:block;">Maintaining Mantecorp and Hypera Pharma brand guidelines across all platform components and emails.</p><p data-lang="pt">Manter as diretrizes de marca da Mantecorp e Hypera Pharma em todos os componentes e e-mails.</p></div>
-      <div class="chal"><h4 data-lang="en" style="display:block;">CRM Integration</h4><h4 data-lang="pt">Integração com CRM</h4><p data-lang="en" style="display:block;">Platform needed deep integration with Salesforce, WhatsApp automation and email marketing journeys.</p><p data-lang="pt">A plataforma precisou de integração com Salesforce, automação de WhatsApp e jornadas de email marketing.</p></div>
+      <div class="chal"><h4 data-lang="en">Complex User Roles</h4><h4 data-lang="pt">Papéis de Usuário Complexos</h4><p data-lang="en">Representatives, doctors and admins required separate but unified design flows with distinct permissions.</p><p data-lang="pt">Representantes, médicos e admins exigiram fluxos separados mas unificados com permissões distintas.</p></div>
+      <div class="chal"><h4 data-lang="en">Data-heavy Interfaces</h4><h4 data-lang="pt">Interfaces com Muitos Dados</h4><p data-lang="en">Medical data, scheduling and content modules required clear hierarchy and minimal cognitive load.</p><p data-lang="pt">Dados médicos, agendamento e módulos de conteúdo exigiram hierarquia clara e carga cognitiva mínima.</p></div>
+      <div class="chal"><h4 data-lang="en">Brand Consistency</h4><h4 data-lang="pt">Consistência de Marca</h4><p data-lang="en">Maintaining Mantecorp and Hypera Pharma brand guidelines across all platform components and emails.</p><p data-lang="pt">Manter as diretrizes de marca da Mantecorp e Hypera Pharma em todos os componentes e e-mails.</p></div>
+      <div class="chal"><h4 data-lang="en">CRM Integration</h4><h4 data-lang="pt">Integração com CRM</h4><p data-lang="en">Platform needed deep integration with Salesforce, WhatsApp automation and email marketing journeys.</p><p data-lang="pt">A plataforma precisou de integração com Salesforce, automação de WhatsApp e jornadas de email marketing.</p></div>
     </div>
   </div>
 </div>
@@ -325,18 +462,18 @@ nav{padding:13px 22px;}nav.scrolled{padding:9px 22px;}
 <div class="cs-section reveal">
   <div class="g2">
     <div>
-      <p class="ey">04 — <span data-lang="en" style="display:inline;">Process</span><span data-lang="pt">Processo</span></p>
-      <h2 class="ch2"><span data-lang="en" style="display:inline;">Design</span><span data-lang="pt">Processo de</span><br><em><span data-lang="en" style="display:inline;">Process</span><span data-lang="pt">Design</span></em></h2>
+      <p class="ey">04 — <span data-lang="en">Process</span><span data-lang="pt">Processo</span></p>
+      <h2 class="ch2"><span data-lang="en">Design</span><span data-lang="pt">Processo de</span><br><em><span data-lang="en">Process</span><span data-lang="pt">Design</span></em></h2>
       <div class="aline"></div>
-      <p class="lead" data-lang="en" style="display:block;">From discovery to delivery — a structured approach built around user needs, technical constraints, brand guidelines and business goals.</p>
+      <p class="lead" data-lang="en">From discovery to delivery — a structured approach built around user needs, technical constraints, brand guidelines and business goals.</p>
       <p class="lead" data-lang="pt">Da descoberta à entrega — uma abordagem estruturada construída em torno das necessidades dos usuários, restrições técnicas, diretrizes de marca e objetivos de negócio.</p>
     </div>
     <div class="tml">
-      <div class="ti"><div class="tdot"></div><div><div class="tph">Step 01</div><div class="ttt"><span data-lang="en" style="display:inline;">Discovery &amp; Stakeholder Alignment</span><span data-lang="pt">Descoberta e Alinhamento com Stakeholders</span></div><div class="tde" data-lang="en" style="display:block;">Mapped existing medical visit processes and pain points through sessions with CRM, growth and medical teams.</div><div class="tde" data-lang="pt">Mapeamento dos processos existentes de visita médica por meio de sessões com equipes de CRM, growth e médica.</div></div></div>
-      <div class="ti"><div class="tdot"></div><div><div class="tph">Step 02</div><div class="ttt"><span data-lang="en" style="display:inline;">User Flows &amp; Wireframes</span><span data-lang="pt">Fluxos de Usuário e Wireframes</span></div><div class="tde" data-lang="en" style="display:block;">Created detailed flows for each user role, then low-fidelity wireframes to validate structure before visual design.</div><div class="tde" data-lang="pt">Criação de fluxos detalhados para cada papel de usuário e wireframes de baixa fidelidade para validar a estrutura.</div></div></div>
-      <div class="ti"><div class="tdot"></div><div><div class="tph">Step 03</div><div class="ttt"><span data-lang="en" style="display:inline;">Design System &amp; Figma Prototyping</span><span data-lang="pt">Design System e Prototipagem no Figma</span></div><div class="tde" data-lang="en" style="display:block;">Built a scalable design system with Auto Layout components. Prototyped key flows for stakeholder validation.</div><div class="tde" data-lang="pt">Design system escalável com componentes Auto Layout. Prototipagem dos fluxos principais para validação dos stakeholders.</div></div></div>
-      <div class="ti"><div class="tdot"></div><div><div class="tph">Step 04</div><div class="ttt"><span data-lang="en" style="display:inline;">HTML/CSS Development</span><span data-lang="pt">Desenvolvimento HTML/CSS</span></div><div class="tde" data-lang="en" style="display:block;">Developed visual components in HTML/CSS for Salesforce integration, bridging design and development teams.</div><div class="tde" data-lang="pt">Componentes visuais em HTML/CSS para integração Salesforce, conectando design e desenvolvimento.</div></div></div>
-      <div class="ti"><div class="tdot"></div><div><div class="tph">Step 05</div><div class="ttt"><span data-lang="en" style="display:inline;">CRM &amp; WhatsApp Journey Design</span><span data-lang="pt">Design de Jornadas CRM e WhatsApp</span></div><div class="tde" data-lang="en" style="display:block;">Designed email and WhatsApp automation flows to drive platform adoption and post-visit engagement with HCPs.</div><div class="tde" data-lang="pt">Design de fluxos de automação de email e WhatsApp para impulsionar adoção da plataforma e engajamento pós-visita.</div></div></div>
+      <div class="ti"><div class="tdot"></div><div><div class="tph">Step 01</div><div class="ttt"><span data-lang="en">Discovery &amp; Stakeholder Alignment</span><span data-lang="pt">Descoberta e Alinhamento com Stakeholders</span></div><p class="tde" data-lang="en">Mapped existing medical visit processes and pain points through sessions with CRM, growth and medical teams.</p><p class="tde" data-lang="pt">Mapeamento dos processos existentes de visita médica por meio de sessões com equipes de CRM, growth e médica.</p></div></div>
+      <div class="ti"><div class="tdot"></div><div><div class="tph">Step 02</div><div class="ttt"><span data-lang="en">User Flows &amp; Wireframes</span><span data-lang="pt">Fluxos de Usuário e Wireframes</span></div><p class="tde" data-lang="en">Created detailed flows for each user role, then low-fidelity wireframes to validate structure before visual design.</p><p class="tde" data-lang="pt">Criação de fluxos detalhados para cada papel de usuário e wireframes de baixa fidelidade para validar a estrutura.</p></div></div>
+      <div class="ti"><div class="tdot"></div><div><div class="tph">Step 03</div><div class="ttt"><span data-lang="en">Design System &amp; Figma Prototyping</span><span data-lang="pt">Design System e Prototipagem no Figma</span></div><p class="tde" data-lang="en">Built a scalable design system with Auto Layout components. Prototyped key flows for stakeholder validation.</p><p class="tde" data-lang="pt">Design system escalável com componentes Auto Layout. Prototipagem dos fluxos principais para validação dos stakeholders.</p></div></div>
+      <div class="ti"><div class="tdot"></div><div><div class="tph">Step 04</div><div class="ttt"><span data-lang="en">HTML/CSS Development</span><span data-lang="pt">Desenvolvimento HTML/CSS</span></div><p class="tde" data-lang="en">Developed visual components in HTML/CSS for Salesforce integration, bridging design and development teams.</p><p class="tde" data-lang="pt">Componentes visuais em HTML/CSS para integração Salesforce, conectando design e desenvolvimento.</p></div></div>
+      <div class="ti"><div class="tdot"></div><div><div class="tph">Step 05</div><div class="ttt"><span data-lang="en">CRM &amp; WhatsApp Journey Design</span><span data-lang="pt">Design de Jornadas CRM e WhatsApp</span></div><p class="tde" data-lang="en">Designed email and WhatsApp automation flows to drive platform adoption and post-visit engagement with HCPs.</p><p class="tde" data-lang="pt">Design de fluxos de automação de email e WhatsApp para impulsionar adoção da plataforma e engajamento pós-visita.</p></div></div>
     </div>
   </div>
 </div>
@@ -344,55 +481,54 @@ nav{padding:13px 22px;}nav.scrolled{padding:9px 22px;}
 
 <!-- 05 FEATURES -->
 <div class="cs-section alt reveal">
-  <p class="ey">05 — <span data-lang="en" style="display:inline;">Features</span><span data-lang="pt">Funcionalidades</span></p>
-  <h2 class="ch2"><span data-lang="en" style="display:inline;">Key Platform</span><span data-lang="pt">Principais</span><br><em><span data-lang="en" style="display:inline;">Features</span><span data-lang="pt">Funcionalidades</span></em></h2>
+  <p class="ey">05 — <span data-lang="en">Features</span><span data-lang="pt">Funcionalidades</span></p>
+  <h2 class="ch2"><span data-lang="en">Key Platform</span><span data-lang="pt">Principais</span><br><em><span data-lang="en">Features</span><span data-lang="pt">Funcionalidades</span></em></h2>
   <div class="aline"></div>
-  <p class="lead" data-lang="en" style="display:block;">A modular platform built for pharmaceutical representatives to manage, schedule and deliver digital medical visits at scale — with full CRM integration.</p>
+  <p class="lead" data-lang="en">A modular platform built for pharmaceutical representatives to manage, schedule and deliver digital medical visits at scale — with full CRM integration.</p>
   <p class="lead" data-lang="pt">Uma plataforma modular para representantes farmacêuticos gerenciarem, agendarem e realizarem visitas médicas digitais em escala — com integração CRM completa.</p>
   <div class="msgs">
-    <div class="mpill"><div class="mdot"></div><span data-lang="en" style="display:inline;">Medical Visit Scheduling</span><span data-lang="pt">Agendamento de Visitas Médicas</span></div>
-    <div class="mpill"><div class="mdot"></div><span data-lang="en" style="display:inline;">Digital Content Sharing</span><span data-lang="pt">Compartilhamento de Conteúdo Digital</span></div>
-    <div class="mpill"><div class="mdot"></div><span data-lang="en" style="display:inline;">Rep Activity Dashboard</span><span data-lang="pt">Dashboard do Representante</span></div>
-    <div class="mpill"><div class="mdot"></div><span data-lang="en" style="display:inline;">Doctor Profile Management</span><span data-lang="pt">Gestão de Perfil Médico</span></div>
-    <div class="mpill"><div class="mdot"></div><span data-lang="en" style="display:inline;">Salesforce CRM Integration</span><span data-lang="pt">Integração CRM Salesforce</span></div>
-    <div class="mpill"><div class="mdot"></div><span data-lang="en" style="display:inline;">WhatsApp Automation Journeys</span><span data-lang="pt">Jornadas de Automação WhatsApp</span></div>
-    <div class="mpill"><div class="mdot"></div><span data-lang="en" style="display:inline;">Notification System</span><span data-lang="pt">Sistema de Notificações</span></div>
-    <div class="mpill"><div class="mdot"></div><span data-lang="en" style="display:inline;">Mobile-responsive Interface</span><span data-lang="pt">Interface Responsiva para Mobile</span></div>
+    <div class="mpill"><div class="mdot"></div><span data-lang="en">Medical Visit Scheduling</span><span data-lang="pt">Agendamento de Visitas Médicas</span></div>
+    <div class="mpill"><div class="mdot"></div><span data-lang="en">Digital Content Sharing</span><span data-lang="pt">Compartilhamento de Conteúdo Digital</span></div>
+    <div class="mpill"><div class="mdot"></div><span data-lang="en">Rep Activity Dashboard</span><span data-lang="pt">Dashboard do Representante</span></div>
+    <div class="mpill"><div class="mdot"></div><span data-lang="en">Doctor Profile Management</span><span data-lang="pt">Gestão de Perfil Médico</span></div>
+    <div class="mpill"><div class="mdot"></div><span data-lang="en">Salesforce CRM Integration</span><span data-lang="pt">Integração CRM Salesforce</span></div>
+    <div class="mpill"><div class="mdot"></div><span data-lang="en">WhatsApp Automation Journeys</span><span data-lang="pt">Jornadas de Automação WhatsApp</span></div>
+    <div class="mpill"><div class="mdot"></div><span data-lang="en">Notification System</span><span data-lang="pt">Sistema de Notificações</span></div>
+    <div class="mpill"><div class="mdot"></div><span data-lang="en">Mobile-responsive Interface</span><span data-lang="pt">Interface Responsiva para Mobile</span></div>
   </div>
   <div class="g4" style="margin-top:28px;">
-    <div class="met"><div class="met-n">✦</div><div class="met-t">Figma Design System</div><div class="met-d" data-lang="en" style="display:block;">Scalable component library with Auto Layout for rapid, consistent screen building.</div><div class="met-d" data-lang="pt">Biblioteca escalável com Auto Layout para construção ágil e consistente de telas.</div></div>
-    <div class="met"><div class="met-n">✦</div><div class="met-t" data-lang="en" style="display:block;">CRM Journey Design</div><div class="met-t" data-lang="pt">Design de Jornada CRM</div><div class="met-d" data-lang="en" style="display:block;">WhatsApp and email flows to nurture engagement and content delivery post-visit.</div><div class="met-d" data-lang="pt">Fluxos de WhatsApp e email para nutrir engajamento e entrega de conteúdo pós-visita.</div></div>
-    <div class="met"><div class="met-n">✦</div><div class="met-t">HTML / CSS</div><div class="met-d" data-lang="en" style="display:block;">Front-end components delivered directly for Salesforce integration, reducing handoff friction.</div><div class="met-d" data-lang="pt">Componentes front-end entregues diretamente para integração Salesforce, reduzindo atrito de handoff.</div></div>
-    <div class="met"><div class="met-n">✦</div><div class="met-t" data-lang="en" style="display:block;">Multi-team Collaboration</div><div class="met-t" data-lang="pt">Colaboração Multi-equipes</div><div class="met-d" data-lang="en" style="display:block;">Worked with BI, MarTech and strategy teams to align UX decisions with KPIs and business outcomes.</div><div class="met-d" data-lang="pt">Colaboração com BI, MarTech e estratégia para alinhar decisões de UX com KPIs e resultados de negócio.</div></div>
+    <div class="met"><div class="met-n">✦</div><div class="met-t">Figma Design System</div><p class="met-d" data-lang="en">Scalable component library with Auto Layout for rapid, consistent screen building.</p><p class="met-d" data-lang="pt">Biblioteca escalável com Auto Layout para construção ágil e consistente de telas.</p></div>
+    <div class="met"><div class="met-n">✦</div><div class="met-t" data-lang="en">CRM Journey Design</div><div class="met-t" data-lang="pt">Design de Jornada CRM</div><p class="met-d" data-lang="en">WhatsApp and email flows to nurture engagement and content delivery post-visit.</p><p class="met-d" data-lang="pt">Fluxos de WhatsApp e email para nutrir engajamento e entrega de conteúdo pós-visita.</p></div>
+    <div class="met"><div class="met-n">✦</div><div class="met-t">HTML / CSS</div><p class="met-d" data-lang="en">Front-end components delivered directly for Salesforce integration, reducing handoff friction.</p><p class="met-d" data-lang="pt">Componentes front-end entregues diretamente para integração Salesforce, reduzindo atrito de handoff.</p></div>
+    <div class="met"><div class="met-n">✦</div><div class="met-t" data-lang="en">Multi-team Collaboration</div><div class="met-t" data-lang="pt">Colaboração Multi-equipes</div><p class="met-d" data-lang="en">Worked with BI, MarTech and strategy teams to align UX decisions with KPIs and business outcomes.</p><p class="met-d" data-lang="pt">Colaboração com BI, MarTech e estratégia para alinhar decisões de UX com KPIs e resultados de negócio.</p></div>
   </div>
 </div>
 <div class="divider"></div>
 
 <!-- 06 PERFORMANCE INSIGHTS -->
 <div class="cs-section reveal">
-  <p class="ey">06 — <span data-lang="en" style="display:inline;">Insights</span><span data-lang="pt">Insights</span></p>
-  <h2 class="ch2"><span data-lang="en" style="display:inline;">Results &amp;</span><span data-lang="pt">Resultados e</span><br><em><span data-lang="en" style="display:inline;">Impact</span><span data-lang="pt">Impacto</span></em></h2>
+  <p class="ey">06 — <span data-lang="en">Insights</span><span data-lang="pt">Insights</span></p>
+  <h2 class="ch2"><span data-lang="en">Results &amp;</span><span data-lang="pt">Resultados e</span><br><em><span data-lang="en">Impact</span><span data-lang="pt">Impacto</span></em></h2>
   <div class="aline"></div>
-
   <div class="g2" style="margin-bottom:36px;">
     <div>
-      <p class="lead" data-lang="en" style="display:block;">The platform improved engagement efficiency for pharmaceutical representatives, enabling digital medical visits that maintained relationship quality while reducing operational overhead.</p>
+      <p class="lead" data-lang="en">The platform improved engagement efficiency for pharmaceutical representatives, enabling digital medical visits that maintained relationship quality while reducing operational overhead.</p>
       <p class="lead" data-lang="pt">A plataforma melhorou a eficiência de engajamento dos representantes farmacêuticos, permitindo visitas médicas digitais que mantiveram a qualidade do relacionamento reduzindo custos operacionais.</p>
       <div style="margin-top:20px;">
-        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;color:#0284c7;text-transform:uppercase;margin-bottom:14px;"><span data-lang="en" style="display:inline;">Performance Signal (relative)</span><span data-lang="pt">Sinal de Performance (relativo)</span></div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;color:#c44a10;text-transform:uppercase;margin-bottom:14px;"><span data-lang="en">Performance Signal (relative)</span><span data-lang="pt">Sinal de Performance (relativo)</span></div>
         <div class="barchart">
-          <div class="bar-row"><span class="bar-lbl">Design System</span><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div><span class="bar-val" data-lang="en" style="display:inline;">Faster Delivery</span><span class="bar-val" data-lang="pt">Entrega Ágil</span></div>
-          <div class="bar-row"><span class="bar-lbl">CRM Journey</span><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div><span class="bar-val" data-lang="en" style="display:inline;">+Engagement</span><span class="bar-val" data-lang="pt">+Engajamento</span></div>
-          <div class="bar-row"><span class="bar-lbl">HTML/CSS Dev</span><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div><span class="bar-val" data-lang="en" style="display:inline;">Less Handoff</span><span class="bar-val" data-lang="pt">Menos Handoff</span></div>
-          <div class="bar-row"><span class="bar-lbl">Cross-team</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="bar-val" data-lang="en" style="display:inline;">+KPI Align.</span><span class="bar-val" data-lang="pt">+Alinhamento</span></div>
+          <div class="bar-row"><span class="bar-lbl">Design System</span><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div><span class="bar-val" data-lang="en">Faster Delivery</span><span class="bar-val" data-lang="pt">Entrega Ágil</span></div>
+          <div class="bar-row"><span class="bar-lbl">CRM Journey</span><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div><span class="bar-val" data-lang="en">+Engagement</span><span class="bar-val" data-lang="pt">+Engajamento</span></div>
+          <div class="bar-row"><span class="bar-lbl">HTML/CSS Dev</span><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div><span class="bar-val" data-lang="en">Less Handoff</span><span class="bar-val" data-lang="pt">Menos Handoff</span></div>
+          <div class="bar-row"><span class="bar-lbl">Cross-team</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="bar-val" data-lang="en">+KPI Align.</span><span class="bar-val" data-lang="pt">+Alinhamento</span></div>
         </div>
       </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="met"><div class="met-n">↑</div><div class="met-t" data-lang="en" style="display:block;">Engagement Quality</div><div class="met-t" data-lang="pt">Qualidade do Engajamento</div><div class="met-d" data-lang="en" style="display:block;">Digital visits maintained relationship depth while improving scheduling efficiency for medical reps.</div><div class="met-d" data-lang="pt">Visitas digitais mantiveram profundidade do relacionamento melhorando a eficiência de agendamento.</div></div>
-      <div class="met"><div class="met-n">→</div><div class="met-t" data-lang="en" style="display:block;">Scalable Design System</div><div class="met-t" data-lang="pt">Design System Escalável</div><div class="met-d" data-lang="en" style="display:block;">Component library enabled faster iteration and consistent experience across all platform touchpoints.</div><div class="met-d" data-lang="pt">Biblioteca de componentes permitiu iteração mais rápida e experiência consistente em todos os pontos de contato.</div></div>
-      <div class="met"><div class="met-n">◉</div><div class="met-t" data-lang="en" style="display:block;">CRM Integration</div><div class="met-t" data-lang="pt">Integração CRM</div><div class="met-d" data-lang="en" style="display:block;">Email and WhatsApp journeys increased post-visit content consumption and medical engagement.</div><div class="met-d" data-lang="pt">Jornadas de email e WhatsApp aumentaram consumo de conteúdo pós-visita e engajamento médico.</div></div>
-      <div class="met"><div class="met-n">▶</div><div class="met-t" data-lang="en" style="display:block;">Development Bridge</div><div class="met-t" data-lang="pt">Ponte com Desenvolvimento</div><div class="met-d" data-lang="en" style="display:block;">HTML/CSS delivery reduced handoff friction and accelerated implementation cycles significantly.</div><div class="met-d" data-lang="pt">Entrega em HTML/CSS reduziu atrito de handoff e acelerou os ciclos de implementação.</div></div>
+      <div class="met"><div class="met-n">↑</div><div class="met-t" data-lang="en">Engagement Quality</div><div class="met-t" data-lang="pt">Qualidade do Engajamento</div><p class="met-d" data-lang="en">Digital visits maintained relationship depth while improving scheduling efficiency for medical reps.</p><p class="met-d" data-lang="pt">Visitas digitais mantiveram profundidade do relacionamento melhorando a eficiência de agendamento.</p></div>
+      <div class="met"><div class="met-n">→</div><div class="met-t" data-lang="en">Scalable Design System</div><div class="met-t" data-lang="pt">Design System Escalável</div><p class="met-d" data-lang="en">Component library enabled faster iteration and consistent experience across all platform touchpoints.</p><p class="met-d" data-lang="pt">Biblioteca de componentes permitiu iteração mais rápida e experiência consistente em todos os pontos de contato.</p></div>
+      <div class="met"><div class="met-n">◉</div><div class="met-t" data-lang="en">CRM Integration</div><div class="met-t" data-lang="pt">Integração CRM</div><p class="met-d" data-lang="en">Email and WhatsApp journeys increased post-visit content consumption and medical engagement.</p><p class="met-d" data-lang="pt">Jornadas de email e WhatsApp aumentaram consumo de conteúdo pós-visita e engajamento médico.</p></div>
+      <div class="met"><div class="met-n">▶</div><div class="met-t" data-lang="en">Development Bridge</div><div class="met-t" data-lang="pt">Ponte com Desenvolvimento</div><p class="met-d" data-lang="en">HTML/CSS delivery reduced handoff friction and accelerated implementation cycles significantly.</p><p class="met-d" data-lang="pt">Entrega em HTML/CSS reduziu atrito de handoff e acelerou os ciclos de implementação.</p></div>
     </div>
   </div>
 </div>
@@ -402,24 +538,24 @@ nav{padding:13px 22px;}nav.scrolled{padding:9px 22px;}
 <div class="cs-section alt reveal">
   <div class="g2">
     <div>
-      <p class="ey">07 — <span data-lang="en" style="display:inline;">Role</span><span data-lang="pt">Papel</span></p>
-      <h2 class="ch2"><span data-lang="en" style="display:inline;">My Role</span><span data-lang="pt">Meu Papel</span><br><em>&amp; Impact</em></h2>
+      <p class="ey">07 — <span data-lang="en">Role</span><span data-lang="pt">Papel</span></p>
+      <h2 class="ch2"><span data-lang="en">My Role</span><span data-lang="pt">Meu Papel</span><br><em>&amp; Impact</em></h2>
       <div class="aline"></div>
-      <p class="lead" data-lang="en" style="display:block;">I worked end-to-end on the e-Visita platform, from UX research and wireframing to final UI delivery and front-end development, collaborating with CRM, MarTech and BI teams throughout.</p>
+      <p class="lead" data-lang="en">I worked end-to-end on the e-Visita platform, from UX research and wireframing to final UI delivery and front-end development, collaborating with CRM, MarTech and BI teams throughout.</p>
       <p class="lead" data-lang="pt">Trabalhei de ponta a ponta na plataforma e-Visita, desde pesquisa UX e wireframes até entrega de UI final e desenvolvimento front-end, em colaboração com equipes de CRM, MarTech e BI.</p>
     </div>
     <div>
       <div class="gcard">
-        <div class="gcard-lbl"><span data-lang="en" style="display:inline;">Core Responsibilities</span><span data-lang="pt">Responsabilidades Principais</span></div>
+        <div class="gcard-lbl"><span data-lang="en">Core Responsibilities</span><span data-lang="pt">Responsabilidades Principais</span></div>
         <ul>
-          <li data-lang="en" style="display:block;">UX research &amp; user flows</li><li data-lang="pt">Pesquisa UX e fluxos de usuário</li>
-          <li data-lang="en" style="display:block;">Wireframing &amp; prototyping in Figma</li><li data-lang="pt">Wireframing e prototipagem no Figma</li>
-          <li data-lang="en" style="display:block;">Design system &amp; component library</li><li data-lang="pt">Design system e biblioteca de componentes</li>
-          <li data-lang="en" style="display:block;">HTML/CSS front-end development</li><li data-lang="pt">Desenvolvimento front-end HTML/CSS</li>
-          <li data-lang="en" style="display:block;">CRM &amp; WhatsApp journey design</li><li data-lang="pt">Design de jornadas CRM e WhatsApp</li>
-          <li data-lang="en" style="display:block;">Email marketing templates (Salesforce)</li><li data-lang="pt">Templates de email marketing (Salesforce)</li>
-          <li data-lang="en" style="display:block;">Stakeholder presentations</li><li data-lang="pt">Apresentações para stakeholders</li>
-          <li data-lang="en" style="display:block;">KPI alignment with BI &amp; strategy teams</li><li data-lang="pt">Alinhamento de KPIs com BI e estratégia</li>
+          <li data-lang="en">UX research &amp; user flows</li><li data-lang="pt">Pesquisa UX e fluxos de usuário</li>
+          <li data-lang="en">Wireframing &amp; prototyping in Figma</li><li data-lang="pt">Wireframing e prototipagem no Figma</li>
+          <li data-lang="en">Design system &amp; component library</li><li data-lang="pt">Design system e biblioteca de componentes</li>
+          <li data-lang="en">HTML/CSS front-end development</li><li data-lang="pt">Desenvolvimento front-end HTML/CSS</li>
+          <li data-lang="en">CRM &amp; WhatsApp journey design</li><li data-lang="pt">Design de jornadas CRM e WhatsApp</li>
+          <li data-lang="en">Email marketing templates (Salesforce)</li><li data-lang="pt">Templates de email marketing (Salesforce)</li>
+          <li data-lang="en">Stakeholder presentations</li><li data-lang="pt">Apresentações para stakeholders</li>
+          <li data-lang="en">KPI alignment with BI &amp; strategy teams</li><li data-lang="pt">Alinhamento de KPIs com BI e estratégia</li>
         </ul>
       </div>
       <div class="igrid c2" style="margin-top:14px;">
@@ -434,10 +570,10 @@ nav{padding:13px 22px;}nav.scrolled{padding:9px 22px;}
 <!-- 08 TAKEAWAYS -->
 <div class="cs-section reveal">
   <div style="max-width:720px;margin:0 auto;text-align:center;">
-    <p class="ey" style="text-align:center;">08 — <span data-lang="en" style="display:inline;">Learnings</span><span data-lang="pt">Aprendizados</span></p>
-    <h2 class="ch2"><span data-lang="en" style="display:inline;">Key</span><span data-lang="pt">Principais</span> <em><span data-lang="en" style="display:inline;">Learnings</span><span data-lang="pt">Aprendizados</span></em></h2>
+    <p class="ey" style="text-align:center;">08 — <span data-lang="en">Learnings</span><span data-lang="pt">Aprendizados</span></p>
+    <h2 class="ch2"><span data-lang="en">Key</span><span data-lang="pt">Principais</span> <em><span data-lang="en">Learnings</span><span data-lang="pt">Aprendizados</span></em></h2>
     <div class="aline" style="margin:0 auto 28px;"></div>
-    <p class="lead" data-lang="en" style="display:block;text-align:center;">This project deepened my expertise in product design within a highly regulated industry. Designing for complex multi-role user flows while maintaining a clean, accessible interface pushed my UX thinking and front-end skills simultaneously — and showed me how design can directly improve business outcomes when connected to data and strategy.</p>
+    <p class="lead" data-lang="en" style="text-align:center;">This project deepened my expertise in product design within a highly regulated industry. Designing for complex multi-role user flows while maintaining a clean, accessible interface pushed my UX thinking and front-end skills simultaneously — and showed me how design can directly improve business outcomes when connected to data and strategy.</p>
     <p class="lead" data-lang="pt" style="text-align:center;">Este projeto aprofundou minha expertise em design de produto numa indústria altamente regulamentada. Projetar para fluxos multi-papéis complexos mantendo uma interface limpa e acessível desenvolveu simultaneamente meu pensamento UX e habilidades de front-end — e me mostrou como o design pode impactar diretamente os resultados de negócio quando conectado a dados e estratégia.</p>
     <div class="tags" style="justify-content:center;">
       <span class="tag">UX/UI Design</span>
@@ -451,42 +587,146 @@ nav{padding:13px 22px;}nav.scrolled{padding:9px 22px;}
     </div>
     <a href="leticia-portfolio-v5.html" class="backbtn">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
-      <span data-lang="en" style="display:inline;">Back to Portfolio</span><span data-lang="pt">Voltar ao Portfólio</span>
+      <span data-lang="en">Back to Portfolio</span><span data-lang="pt">Voltar ao Portfólio</span>
     </a>
   </div>
 </div>
 
+<!-- ══ FOOTER ══ -->
+<footer id="contact">
+  <p class="section-label" style="margin-bottom:10px;">
+  <span class="t" data-key="contact-label">Let's work together</span>
+</p>
+<h2 class="footer-title">
+  <span class="t" data-key="contact-title">Get in Touch</span>
+</h2>
+  <p class="footer-sub">leticiacorredato@gmail.com &nbsp;·&nbsp; +55 11 96620-3733</p>
+  <div class="social-links">
+    <a class="social-link" href="mailto:leticiacorredato@gmail.com" title="Email">
+      <img src="https://static.wixstatic.com/media/b72a24_8452b0d797424bc8a699146518b5ca5b~mv2.png" alt="Email">
+    </a>
+    <a class="social-link" href="https://api.whatsapp.com/send?phone=5511966203733" target="_blank" rel="noopener" title="WhatsApp">
+      <img src="https://static.wixstatic.com/media/b72a24_c23be33be3d64cec883c38cccee56207~mv2.png" alt="WhatsApp">
+    </a>
+    <a class="social-link" href="https://lecorredato.github.io/portfolio/blog" target="_blank" rel="noopener" title="Updates">
+      <img src="https://static.wixstatic.com/media/b72a24_d0eee958e53a4ab3845dafa3f008c13d~mv2.png" alt="Updates">
+    </a>
+    <a class="social-link" href="https://www.behance.net/portfoliolecorredato" target="_blank" rel="noopener" title="Behance">
+      <img src="https://static.wixstatic.com/media/b72a24_0db6f750f18c49c0af242f2f7cee2201~mv2.png" alt="Behance">
+    </a>
+    <a class="social-link" href="https://www.linkedin.com/in/lecorredato/" target="_blank" rel="noopener" title="LinkedIn">
+      <img src="https://static.wixstatic.com/media/b72a24_2ba7e9436bab46e4beb80551640ee0a3~mv2.png" alt="LinkedIn">
+    </a>
+  </div>
+  <p class="footer-copy">
+  <span class="t" data-key="footer-dev">Developed by Leticia Corredato</span> &nbsp;·&nbsp; 2025
+</p>
+</footer>
+
 <script>
 'use strict';
-const cur=document.getElementById('cursor');
-document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
-document.querySelectorAll('a,button,.iitem,.crc,.mpill,.gcard,.chal,.met,.reg,.seac').forEach(el=>{el.addEventListener('mouseenter',()=>cur.classList.add('big'));el.addEventListener('mouseleave',()=>cur.classList.remove('big'));});
-window.addEventListener('scroll',()=>{document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60);},{passive:true});
-const ham=document.getElementById('hamburger');
-function openMenu(){document.getElementById('mobileMenu').classList.add('open');ham.classList.add('open');document.body.style.overflow='hidden';}
-function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');ham.classList.remove('open');document.body.style.overflow='';}
-const SUN='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>';
-const MOON='<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>';
-let theme='dark';
-function toggleTheme(){theme=theme==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',theme);const ic=theme==='dark'?SUN:MOON;document.getElementById('themeBtn').innerHTML=ic;document.getElementById('themeBtnMob').innerHTML=ic;}
-let lang='en';
-function setLang(l){
-  lang=l;
-  document.getElementById('btnEN').classList.toggle('active',l==='en');
-  document.getElementById('btnPT').classList.toggle('active',l==='pt');
-  document.getElementById('btnENMob').classList.toggle('active',l==='en');
-  document.getElementById('btnPTMob').classList.toggle('active',l==='pt');
-  document.querySelectorAll('[data-lang]').forEach(el=>{
-    const isInline=el.tagName==='SPAN'||el.tagName==='A';
-    el.style.display=el.dataset.lang===l?(isInline?'inline':'block'):'none';
+
+/* ── CURSOR ── */
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => { cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px'; });
+document.querySelectorAll('a,button,.iitem,.crc,.mpill,.gcard,.chal,.met,.reg,.seac').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+
+/* ── NAV SHRINK ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+/* ── REVEAL ON SCROLL ── */
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+/* ── MOBILE MENU ── */
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.getElementById('hamburger');
+  const isOpen = menu.classList.toggle('open');
+  if (ham) ham.classList.toggle('open');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+function closeMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.getElementById('hamburger');
+  menu.classList.remove('open');
+  if (ham) ham.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ── TRANSLATIONS ── */
+const T = {
+  'nav-case':      { en: 'Cases',       pt: 'Cases' },
+  'nav-about':     { en: 'About',       pt: 'Sobre' },
+  'nav-portfolio': { en: 'Portfolio',   pt: 'Portfólio' },
+  'nav-exp':       { en: 'Experience',  pt: 'Experiência' },
+  'nav-contact':   { en: 'Contact',     pt: 'Contato' },
+  'contact-label': { en:"Let's work together",   pt:'Vamos trabalhar juntos' },
+  'contact-title': { en:'Get in Touch',           pt:'Entre em Contato' },
+  'footer-dev':    { en:'Developed by Leticia Corredato', pt:'Desenvolvido por Leticia Corredato' },
+};
+
+/* ── LANGUAGE ── */
+let lang = 'en';
+
+function setLang(l) {
+  lang = l;
+
+  // Button states
+  ['btnEN','btnENMob'].forEach(id => document.getElementById(id).classList.toggle('active', l === 'en'));
+  ['btnPT','btnPTMob'].forEach(id => document.getElementById(id).classList.toggle('active', l === 'pt'));
+
+  // .t elements
+  document.querySelectorAll('.t[data-key]').forEach(el => {
+    const k = el.dataset.key;
+    if (T[k]) el.textContent = T[k][l];
+  });
+
+  // [data-lang] toggle — preserve original display type
+  // Elements that are inline by nature keep inline, block elements keep block
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    const show = el.dataset.lang === l;
+    if (!show) {
+      el.style.display = 'none';
+    } else {
+      // Restore the natural display based on tag
+      const tag = el.tagName.toLowerCase();
+      const inlineTags = ['span', 'a', 'strong', 'em', 'b', 'i'];
+      el.style.display = inlineTags.includes(tag) ? 'inline' : 'block';
+    }
   });
 }
-document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('[data-lang="en"]').forEach(el=>{const isInline=el.tagName==='SPAN'||el.tagName==='A';el.style.display=isInline?'inline':'block';});
-  document.querySelectorAll('[data-lang="pt"]').forEach(el=>{el.style.display='none';});
-  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-});
+
+/* ── THEME ── */
+const SUN = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>';
+const MOON = '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>';
+let theme = 'dark';
+
+function toggleTheme() {
+  theme = theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  const icon = theme === 'dark' ? SUN : MOON;
+  ['themeBtn','themeBtnMob'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.innerHTML = icon;
+  });
+  const logo = document.getElementById('navLogo');
+  if (logo) {
+    logo.src = theme === 'light'
+      ? 'https://static.wixstatic.com/media/b72a24_02ca24368e834508a23fb0a12617db96~mv2.png'
+      : 'https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png';
+  }
+}
+
+// Init: set EN as default and trigger display
+setLang('en');
 </script>
 </body>
 </html>
