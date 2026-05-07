@@ -205,31 +205,59 @@ nav.scrolled { padding: 10px 52px; background: var(--nav-bg-s); }
 .theme-btn svg { width: 14px; height: 14px; fill: currentColor; display: block; }
 
 /* ── Hamburger ── */
-.hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-.hamburger span { display: block; width: 24px; height: 2px; background: var(--accent); border-radius: 2px; transition: transform 0.3s, opacity 0.3s; }
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+/* Estilo das barrinhas (Hambúrguer que vira X) */
+.hamburger {
+  display: none; 
+  flex-direction: column; 
+  gap: 5px; 
+  cursor: pointer; 
+  padding: 4px;
+  z-index: 10001; /* Garante que fique acima de tudo */
+}
 
-/* Mobile menu */
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--accent); /* Cor das barrinhas */
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Posicionamento do botão dentro do menu aberto */
+.mobile-close-trigger {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+}
+
+/* A animação mágica para virar o X */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Ajuste no seu Mobile Menu para manter a transição suave */
 .mobile-menu {
   position: fixed; 
   inset: 0;
   background: var(--bg); 
   z-index: 9999; 
-  display: flex; /* Agora é sempre flex para a animação funcionar */
+  display: flex; 
   flex-direction: column; 
   align-items: center; 
   justify-content: center; 
   gap: 28px;
-
-  /* Estados iniciais para animação */
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.4s ease, visibility 0.4s ease;
 }
 
-/* Quando aberto */
 .mobile-menu.open {
   opacity: 1;
   visibility: visible;
@@ -737,7 +765,21 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 }
 
   footer { padding: 48px 18px 28px; }
+
+@media (max-height: 480px) and (orientation: landscape) {
+  .mobile-menu {
+    /* Permite que o menu tenha scroll se os itens não couberem */
+    justify-content: flex-start; 
+    padding: 60px 20px; /* Dá um espaço no topo e base */
+    overflow-y: auto; 
+    gap: 16px; /* Reduz o espaço entre os links */
+  }
+
+  .mobile-menu a {
+    font-size: 1.5rem; /* Opcional: reduz um pouco a fonte se necessário */
+  }
 }
+
 </style>
 </head>
 <body>
@@ -759,23 +801,31 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   </ul>
   <div class="nav-right">
     <!-- EN | PT side-by-side -->
-    <div class="lang-switch">
-      <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
-      <div class="lang-sep"></div>
-      <button id="btnPT" onclick="setLang('pt')">PT</button>
-    </div>
+    <div class="nav-controls">
+      <div class="lang-switch">
+        <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
+        <div class="nav-sep"></div>
+        <button id="btnPT" onclick="setLang('pt')">PT</button>
+      </div>
     <!-- Sun / Moon -->
-    <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg></button>
-    <!-- Hamburger -->
-    <div class="hamburger" id="hamburger" onclick="openMenu()">
-      <span></span><span></span><span></span>
-    </div>
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+      </button>
+     </div> 
+      <!-- Hamburger -->
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
   </div>
 </nav>
 
 <!-- ══ MOBILE MENU ══ -->
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="closeMenu()">✕</button>
+<div class="hamburger open mobile-close-trigger" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
   
   <a href="#about"       onclick="closeMenu()" class="t" data-key="nav-about">About</a>
   <a href="#cases"       onclick="closeMenu()" class="t" data-key="nav-case">Cases</a>
@@ -1435,22 +1485,16 @@ window.addEventListener('scroll', () => {
 /* ── MOBILE MENU ── */
 const ham = document.getElementById('hamburger');
 
-function openMenu() {
+function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
-  if (menu) {
-    menu.classList.add('open');
-    if (ham) ham.classList.add('open');
-    document.body.style.overflow = 'hidden';
-  }
-}
+  const ham = document.getElementById('hamburger');
 
-function closeMenu() {
-  const menu = document.getElementById('mobileMenu');
-  if (menu) {
-    menu.classList.remove('open');
-    if (ham) ham.classList.remove('open');
-    document.body.style.overflow = '';
-  }
+  // Alterna a classe 'open' em ambos ao mesmo tempo
+  const isOpen = menu.classList.toggle('open');
+  if (ham) ham.classList.toggle('open');
+
+  // Trava ou libera o scroll do corpo da página
+  document.body.style.overflow = isOpen ? 'hidden' : '';
 }
 
 /* ── THEME ── */

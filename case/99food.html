@@ -71,45 +71,183 @@ body {
 [data-theme="light"] #cursor { mix-blend-mode: multiply; }
 @media (hover:none) { #cursor { display:none; } body { cursor:auto; } }
 
-/* ══ NAV ══ */
+/* ══════════════════════════════════════════
+   NAVIGATION
+══════════════════════════════════════════ */
 nav {
-  position: fixed; top:0; left:0; right:0; z-index:1000;
+  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
   display: flex; align-items: center; justify-content: space-between;
-  padding: 15px 48px;
+  padding: 16px 52px;
   background: var(--nav-bg);
   backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-bottom: 1px solid var(--border);
-  transition: padding 0.3s, background 0.4s;
+  transition: padding 0.3s ease, background 0.4s ease;
 }
-nav.scrolled { padding: 10px 48px; }
-.nav-back {
-  display: inline-flex; align-items: center; gap: 8px;
+
+.nav-logo img {
+  height: 46px;
+  filter: drop-shadow(0 0 8px var(--accent));
+  transition: filter 0.3s;
+}
+[data-theme="light"] .nav-logo img { filter: drop-shadow(0 0 6px var(--accent3)) brightness(0.9); }
+.nav-logo img:hover { filter: drop-shadow(0 0 20px var(--accent2)); }
+
+.nav-links { display: flex; gap: 32px; list-style: none; }
+.nav-links a {
+  color: var(--gray);
   text-decoration: none;
   font-family: 'Space Mono', monospace;
-  font-size: 0.62rem; letter-spacing: 0.14em;
-  color: var(--gray); text-transform: uppercase;
+  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+  height: 1px; background: var(--accent);
+  transform: scaleX(0); transition: transform 0.25s ease;
+}
+.nav-links a:hover { color: var(--accent); }
+.nav-links a:hover::after { transform: scaleX(1); }
+
+/* ── NAV CONTROLS ── */
+.nav-right { display: flex; align-items: center; gap: 8px; }
+
+/* ── Language: EN | PT + Theme btn — same height, same border box ── */
+.nav-controls {
+  display: flex; align-items: stretch;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+  height: 32px;
+}
+.lang-switch {
+  display: flex; align-items: stretch;
+}
+.lang-switch button {
+  background: transparent; border: none;
+  color: var(--gray);
+  padding: 0 12px;
+  cursor: pointer;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.13em; text-transform: uppercase;
+  transition: background 0.2s, color 0.2s;
+  height: 100%; display: flex; align-items: center;
+}
+.lang-switch button.active { background: var(--accent); color: #fff; font-weight: 700; }
+.lang-switch button:not(.active):hover { color: var(--accent); }
+.nav-sep {
+  width: 1px; background: var(--border);
+  flex-shrink: 0; align-self: stretch;
+}
+
+/* Theme btn — same box, no separate border */
+.theme-btn {
+  background: transparent; border: none; border-left: 1px solid var(--border);
+  width: 36px; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, transform 0.35s;
+  color: var(--gray); padding: 0;
+  flex-shrink: 0;
+}
+.theme-btn:hover { background: rgba(255,45,155,0.09); color: var(--accent); }
+/* SVG icons inside theme-btn */
+.theme-btn svg { width: 14px; height: 14px; fill: currentColor; display: block; }
+
+/* ── Hamburger ── */
+/* Estilo das barrinhas (Hambúrguer que vira X) */
+.hamburger {
+  display: none; 
+  flex-direction: column; 
+  gap: 5px; 
+  cursor: pointer; 
+  padding: 4px;
+  z-index: 10001; /* Garante que fique acima de tudo */
+}
+
+.hamburger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--accent); /* Cor das barrinhas */
+  border-radius: 2px;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Posicionamento do botão dentro do menu aberto */
+.mobile-close-trigger {
+  position: absolute;
+  top: 20px;
+  right: 28px;
+}
+
+/* A animação mágica para virar o X */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Ajuste no seu Mobile Menu para manter a transição suave */
+.mobile-menu {
+  position: fixed; 
+  inset: 0;
+  background: var(--bg); 
+  z-index: 9999; 
+  display: flex; 
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  gap: 28px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.mobile-menu.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu a {
+  color: var(--text); 
+  text-decoration: none;
+  font-family: 'Bebas Neue', sans-serif; 
+  font-size: 2.6rem; 
+  letter-spacing: 0.1em;
   transition: color 0.2s;
 }
-.nav-back:hover { color: var(--gold); }
-.nav-back svg { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
-.nav-brand {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 1.1rem; letter-spacing: 0.12em;
-  color: var(--gold);
-  text-shadow: 0 0 20px rgba(212,168,0,0.35);
+
+.mobile-menu a:hover { color: var(--accent); }
+
+.mobile-close {
+  position: absolute; 
+  top: 20px; 
+  right: 28px;
+  font-size: 1.8rem; /* Mantido seu tamanho original */
+  color: var(--gray); /* Mantida sua cor original */
+  cursor: pointer; 
+  background: none; 
+  border: none;
+  z-index: 10000;
+  padding: 10px; /* Área de clique invisível maior para facilitar */
 }
-/* Theme btn */
-.theme-btn {
-  background: transparent; border: 1px solid var(--border);
-  width: 34px; height: 34px; border-radius: 4px;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer; color: var(--gray);
-  transition: background 0.2s, color 0.2s;
+
+/* Mantendo seus controles originais */
+.mobile-controls {
+  display: flex; align-items: stretch; gap: 0;
+  border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+  height: 40px; margin-top: 8px;
 }
-.theme-btn:hover { background: rgba(212,168,0,0.1); color: var(--gold); }
-.theme-btn svg { width: 14px; height: 14px; fill: currentColor; display: block; }
-.ham-mob { display:none; flex-direction:column; gap:5px; cursor:pointer; padding:3px; }
-.ham-mob span { display:block; width:22px; height:2px; background:var(--gold); border-radius:2px; }
+.mobile-controls .lang-switch { border: none; }
+.mobile-controls .lang-switch button { font-size: 0.72rem; padding: 0 16px; height: 100%; }
+.mobile-controls .theme-btn { border: none; border-left: 1px solid var(--border); width: 44px; height: 100%; }
+.mobile-controls .theme-btn svg { width: 16px; height: 16px; }
 
 /* ══ SECTIONS ══ */
 .cs-section { padding: 88px 52px; background: var(--bg); }
@@ -341,6 +479,8 @@ nav.scrolled { padding: 10px 48px; }
 /* ══════════ RESPONSIVE ══════════ */
 @media (max-width:900px) {
   nav { padding:13px 22px; }
+  .nav-links { display: none;}
+  .hamburger { display: flex; }
   .cs-section { padding:64px 24px; }
   .cs-cover { padding:100px 24px 60px; }
   .cs-2col { grid-template-columns:1fr; gap:36px; }
@@ -352,11 +492,13 @@ nav.scrolled { padding: 10px 48px; }
   .cs-ba { grid-template-columns:1fr; }
   .cs-img-grid.col3 { grid-template-columns:1fr 1fr; }
   .cs-img-grid.col4 { grid-template-columns:1fr 1fr; }
-  .cs-cover-meta { gap:18px; }
+  .cs-cover-meta { display:grid; grid-template-columns: repeat(2, 1fr); align-items:center; gap:18px; }
   .cs-meta-div { display:none; }
 }
 @media (max-width:560px) {
   nav { padding:12px 18px; }
+  .nav-links { display: none;}
+  .hamburger { display: flex; }
   .cs-section { padding:52px 18px; }
   .cs-cover { padding:90px 18px 50px; }
   .cs-3col { grid-template-columns:1fr; }
@@ -367,7 +509,7 @@ nav.scrolled { padding: 10px 48px; }
   .cs-img-grid.col2 { grid-template-columns:1fr; }
   .cs-img-grid.col3 { grid-template-columns:1fr; }
   .cs-img-grid.col4 { grid-template-columns:1fr 1fr; }
-  .cs-cover-meta { flex-direction:column; align-items:center; gap:14px; }
+  .cs-cover-meta { display:grid; grid-template-columns: repeat(2, 1fr); align-items:center; gap:14px; }
   .ham-mob { display:flex; }
 }
 </style>
@@ -378,15 +520,62 @@ nav.scrolled { padding: 10px 48px; }
 
 <!-- ══ NAV ══ -->
 <nav id="mainNav">
-  <a class="nav-back" href="leticia-portfolio-v5.html">
-    <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
-    Back to Portfolio
+  <a class="nav-logo" href="#hero">
+    <img id="navLogo" src="https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png" alt="LC">
   </a>
-  <span class="nav-brand">99Food Case</span>
-  <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">
-    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
-  </button>
+  
+  <ul class="nav-links">
+    <li><a href="#about"       class="t" data-key="nav-about">About</a></li>
+    <li><a href="#cases"       class="t" data-key="nav-case">Cases</a></li>
+    <li><a href="#portfolio"   class="t" data-key="nav-portfolio">Portfolio</a></li>
+    <li><a href="#experiences" class="t" data-key="nav-exp">Experience</a></li>
+    <li><a href="#contact"     class="t" data-key="nav-contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <!-- EN | PT side-by-side -->
+    <div class="nav-controls">
+      <div class="lang-switch">
+        <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
+        <div class="nav-sep"></div>
+        <button id="btnPT" onclick="setLang('pt')">PT</button>
+      </div>
+    <!-- Sun / Moon -->
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+      </button>
+     </div> 
+      <!-- Hamburger -->
+      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+        <span></span><span></span><span></span>
+      </div>
+  </div>
 </nav>
+
+<!-- ══ MOBILE MENU ══ -->
+<div class="mobile-menu" id="mobileMenu">
+<div class="hamburger open mobile-close-trigger" onclick="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</div>
+  
+  <a href="#about"       onclick="closeMenu()" class="t" data-key="nav-about">About</a>
+  <a href="#cases"       onclick="closeMenu()" class="t" data-key="nav-case">Cases</a>
+  <a href="#portfolio"   onclick="closeMenu()" class="t" data-key="nav-portfolio">Portfolio</a>
+  <a href="#experiences" onclick="closeMenu()" class="t" data-key="nav-exp">Experience</a>
+  <a href="#contact"     onclick="closeMenu()" class="t" data-key="nav-contact">Contact</a>
+  
+  <div class="mobile-controls">
+    <div class="lang-switch">
+      <button id="btnENMob" class="active" onclick="setLang('en')">EN</button>
+      <div class="lang-sep"></div>
+      <button id="btnPTMob" onclick="setLang('pt')">PT</button>
+    </div>
+    <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </button>
+  </div>
+</div>
 
 <!-- ══ PAGE 01 — COVER ══ -->
 <div class="cs-cover">
@@ -806,15 +995,54 @@ window.addEventListener('scroll', () => {
   document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
 }, { passive: true });
 
+/* ── MOBILE MENU ── */
+const ham = document.getElementById('hamburger');
+
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.getElementById('hamburger');
+
+  // Alterna a classe 'open' em ambos ao mesmo tempo
+  const isOpen = menu.classList.toggle('open');
+  if (ham) ham.classList.toggle('open');
+
+  // Trava ou libera o scroll do corpo da página
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
 /* ── THEME ── */
 const SUN = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>';
 const MOON = '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>';
+
 let theme = 'dark';
+
 function toggleTheme() {
+  // 1. Alterna a variável de tema
   theme = theme === 'dark' ? 'light' : 'dark';
+  
+  // 2. Aplica o atributo no HTML para o CSS mudar as cores
   document.documentElement.setAttribute('data-theme', theme);
-  document.getElementById('themeBtn').innerHTML = theme === 'dark' ? SUN : MOON;
+  
+  // 3. Define qual ícone mostrar
+  const icon = theme === 'dark' ? SUN : MOON;
+  
+  // 4. Atualiza os botões (Desktop e Mobile)
+  const btn = document.getElementById('themeBtn');
+  const btnMob = document.getElementById('themeBtnMob');
+  if (btn) btn.innerHTML = icon;
+  if (btnMob) btnMob.innerHTML = icon;
+
+  /* ── TROCA DA LOGO (Agora dentro da função!) ── */
+  const logo = document.getElementById('navLogo');
+  if (logo) {
+    if (theme === 'light') {
+      logo.src = 'https://static.wixstatic.com/media/b72a24_02ca24368e834508a23fb0a12617db96~mv2.png';
+    } else {
+      logo.src = 'https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png';
+    }
+  }
 }
+
 
 /* ── SCROLL REVEAL ── */
 document.addEventListener('DOMContentLoaded', () => {
