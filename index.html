@@ -709,7 +709,32 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   .cases-grid { grid-template-columns: 1fr !important; }
   .case-card.tall { aspect-ratio:1/1; }
 
-  .lb-nav { display: none; }
+  .lb-nav {
+    display: flex !important; /* Força a exibição */
+    opacity: 1 !important;
+    background: rgba(0, 0, 0, 0.3); /* Fundo semi-transparente para dar contraste */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+  }
+
+  .lb-prev { left: 10px; }
+  .lb-next { right: 10px; }
+
+  /* Aumenta o tamanho do ícone da seta para o dedo clicar fácil */
+  .lb-nav::before {
+    font-size: 30px;
+  }
+
+  /* Ajusta a imagem para não ficar por baixo das setas se for muito larga */
+  #lbImg {
+    max-width: 95%;
+    max-height: 80vh;
+  }
+}
 
   footer { padding: 48px 18px 28px; }
 }
@@ -1449,9 +1474,34 @@ function toggleTheme() {
   }
 }
 
+/* ── SUPORTE A SWIPE (ARRASTAR) NO MOBILE ── */
 
+let touchstartX = 0;
+let touchendX = 0;
 
-   
+const lbContainer = document.getElementById('lightbox');
+
+lbContainer.addEventListener('touchstart', e => {
+    touchstartX = e.changedTouches[0].screenX;
+}, {passive: true});
+
+lbContainer.addEventListener('touchend', e => {
+    touchendX = e.changedTouches[0].screenX;
+    handleGesture();
+}, {passive: true});
+
+function handleGesture() {
+    // Sensibilidade: só muda se o arrasto for maior que 50px
+    const threshold = 50; 
+    
+    if (touchendX < touchstartX - threshold) {
+        lbShift(1); // Arrastou para a esquerda -> Próxima
+    }
+    if (touchendX > touchstartX + threshold) {
+        lbShift(-1); // Arrastou para a direita -> Anterior
+    }
+}
+  
 /* ── LANGUAGE ── */
 let lang = 'en';
 
