@@ -1,15 +1,8 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <link rel="icon" type="image/png" href="https://static.wixstatic.com/media/b72a24_d4103973c3324e58be536fd787f7414e~mv2.png">
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8ZM0P67L3H"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-8ZM0P67L3H');
-</script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8ZM0P67L3H');</script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>99Food Case Study | Leticia Corredato</title>
@@ -17,474 +10,226 @@
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg:        #0a0905;
-  --bg-alt:    #110e04;
-  --bg-mid:    #160f00;
-  --card-bg:   #130f05;
-  --text:      #faf7ec;
-  --text-muted:rgba(250,247,236,0.62);
-  --gray:      #8a8060;
-  --border:    rgba(210,168,0,0.18);
-  --accent:    #ff2d9b;
-  --gold:      #d4a800;
-  --gold2:     #f0c84a;
-  --gold3:     #c8a200;
-  --nav-bg:    rgba(10,9,5,0.88);
-}
-[data-theme="light"] {
-  --bg:        #fdfbf0;
-  --bg-alt:    #f7f3dc;
-  --bg-mid:    #eee9c8;
-  --card-bg:   #fffef5;
-  --text:      #1a1600;
-  --text-muted:rgba(26,22,0,0.62);
-  --gray:      #7a7050;
-  --border:    rgba(180,140,0,0.18);
-  --nav-bg:    rgba(253,251,240,0.92);
-}
+  /* Cores de Destaque (Mantendo o seu Rosa e trocando Laranja por Gold) */
+  --accent: #ff2d9b;
+  --ev: #d4a800;          /* Substituído o laranja pelo seu --gold */
+  --accent2: #ff6ec7;
+  --accent3: #c4006e;
+  
+  /* Escala de Dourados (para variações de hover e detalhes) */
+  --gold: #d4a800;
+  --gold2: #f0c84a;
+  --gold3: #c8a200;
 
-*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: smooth; }
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Outfit', sans-serif;
-  overflow-x: hidden;
-  cursor: none;
-  transition: background 0.4s, color 0.4s;
-}
+  /* Estrutura de Fundo (Baseada no segundo código - tons arroxeados/escuros) */
+  --bg: #08050a;
+  --bg-alt: #100816;
+  --bg-mid: #160c1e;
+  --card-bg: #120a18;
 
-#cursor {
-  position: fixed; width: 13px; height: 13px;
-  background: var(--gold); border-radius: 50%;
-  pointer-events: none; z-index: 9999;
-  transform: translate(-50%,-50%);
-  mix-blend-mode: screen;
-  transition: transform 0.1s, width 0.2s, height 0.2s;
-  will-change: left, top;
-}
-#cursor.big { width: 36px; height: 36px; background: rgba(212,168,0,0.2); transform: translate(-50%,-50%); }
-[data-theme="light"] #cursor { mix-blend-mode: multiply; }
-@media (hover:none) { #cursor { display:none; } body { cursor:auto; } }
+  /* Texto e Tipografia */
+  --text: #fff0f8;
+  --text-muted: rgba(255, 240, 248, 0.62);
+  --gray: #a07890;
 
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 16px 52px;
-  background: var(--nav-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  transition: padding 0.3s ease, background 0.4s ease;
+  /* Bordas e Navegação */
+  --border: rgba(255, 45, 155, 0.18);
+  --nav-bg: rgba(8, 5, 10, 0.82);
+  --nav-bg-s: rgba(8, 5, 10, 0.97);
+  
+  /* Efeitos */
+  --cursor-blend: screen;
 }
-.nav-logo img {
-  height: 46px;
-  filter: drop-shadow(0 0 8px var(--accent));
-  transition: filter 0.3s;
+[data-theme="light"]{--bg:#fdfbf0;--bg-alt:#f7f3dc;--bg-mid:#eee9c8;--card-bg:#fffef5;--text:#1a1600;--text-muted:rgba(26,22,0,0.62);--gray:#7a7050;--border:rgba(180,140,0,0.18);--nav-bg:rgba(253,251,240,0.92);}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden;cursor:none;transition:background 0.4s,color 0.4s;}
+#cursor{position:fixed;width:13px;height:13px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:width 0.2s,height 0.2s;will-change:left,top;}
+#cursor.big{width:36px;height:36px;background:rgba(212,168,0,0.2);}
+[data-theme="light"] #cursor{mix-blend-mode:multiply;}
+@media(hover:none){#cursor{display:none;}body{cursor:auto;}}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:16px 52px;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding 0.3s,background 0.4s;}
+.nav-logo img{height:46px;filter:drop-shadow(0 0 8px var(--accent));transition:filter 0.3s;}
+[data-theme="light"] .nav-logo img{filter:drop-shadow(0 0 6px var(--accent)) brightness(0.9);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{color:var(--gray);text-decoration:none;font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform 0.25s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-right{display:flex;align-items:center;gap:8px;}
+.nav-controls{display:flex;align-items:stretch;border:1px solid var(--border);border-radius:4px;overflow:hidden;height:32px;}
+.lang-switch{display:flex;align-items:stretch;}
+.lang-switch button{background:transparent;border:none;color:var(--gray);padding:0 12px;cursor:pointer;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.13em;text-transform:uppercase;transition:background 0.2s,color 0.2s;height:100%;display:flex;align-items:center;}
+.lang-switch button.active{background:var(--accent);color:#fff;font-weight:700;}
+.lang-switch button:not(.active):hover{color:var(--accent);}
+.nav-sep{width:1px;background:var(--border);flex-shrink:0;align-self:stretch;}
+.theme-btn{background:transparent;border:none;border-left:1px solid var(--border);width:36px;height:100%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s,color 0.2s;color:var(--gray);padding:0;flex-shrink:0;}
+.theme-btn:hover{background:rgba(255,45,155,0.09);color:var(--accent);}
+.theme-btn svg{width:14px;height:14px;fill:currentColor;display:block;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:10001;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--accent);border-radius:2px;transition:transform 0.3s,opacity 0.3s;}
+.mobile-close-trigger{position:absolute;top:20px;right:28px;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;visibility:hidden;transition:opacity 0.4s,visibility 0.4s;}
+.mobile-menu.open{opacity:1;visibility:visible;}
+.mobile-menu a{color:var(--text);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:0.1em;transition:color 0.2s;}
+.mobile-menu a:hover{color:var(--accent);}
+.mobile-controls{display:flex;align-items:stretch;border:1px solid var(--border);border-radius:4px;overflow:hidden;height:40px;margin-top:8px;}
+.mobile-controls .lang-switch button{font-size:0.72rem;padding:0 16px;height:100%;}
+.mobile-controls .theme-btn{border-left:1px solid var(--border);width:44px;height:100%;}
+.mobile-controls .theme-btn svg{width:16px;height:16px;}
+.cs-section{padding:80px 52px;background:var(--bg);}
+.cs-section.alt{background:var(--bg-alt);}
+.cs-eyebrow{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.28em;color:var(--gold3);text-transform:uppercase;margin-bottom:10px;}
+.cs-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5.5vw,4.4rem);letter-spacing:0.05em;line-height:1;color:var(--text);margin-bottom:20px;}
+.cs-h2 em{color:var(--gold);font-style:normal;}
+.cs-lead{font-size:0.92rem;line-height:1.78;color:var(--text-muted);max-width:640px;margin-bottom:22px;}
+.cs-accent-line{width:48px;height:3px;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:2px;margin-bottom:24px;}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),transparent);opacity:0.25;}
+.cs-2col{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;}
+.cs-3col{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.cs-4col{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.cs-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:20px 22px;}
+.cs-card-label{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;color:var(--gold3);text-transform:uppercase;margin-bottom:10px;}
+.cs-card-list{list-style:none;}
+.cs-card-list li{font-size:0.82rem;color:var(--text-muted);padding:3px 0;}
+.cs-card-list li::before{content:'— ';color:var(--gold);}
+.cs-challenge-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:18px 20px;border-top:3px solid var(--gold);}
+.cs-challenge-card h4{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:var(--text);margin-bottom:5px;}
+.cs-challenge-card p{font-size:0.78rem;color:var(--text-muted);line-height:1.6;}
+.cs-cover{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:130px 52px 80px;text-align:center;background:#080701;}
+[data-theme="light"] .cs-cover{background:#faf8e8;}
+.cs-cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(220,175,0,0.06) 1px,transparent 1px),linear-gradient(90deg,rgba(220,175,0,0.06) 1px,transparent 1px);background-size:52px 52px;}
+.cs-cover-glow{position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% 40%,rgba(212,168,0,0.16) 0%,transparent 70%);}
+.cs-cover-tag{display:inline-block;position:relative;z-index:1;border:1px solid rgba(212,168,0,0.35);border-radius:100px;padding:5px 18px;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;color:var(--gold3);text-transform:uppercase;margin-bottom:24px;background:rgba(212,168,0,0.07);}
+.cs-cover-brand{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,16vw,13rem);letter-spacing:0.02em;line-height:0.85;color:#f5f0d8;position:relative;z-index:1;}
+[data-theme="light"] .cs-cover-brand{color:#1a1600;}
+.cs-cover-brand span{color:var(--gold);}
+.cs-cover-sub{position:relative;z-index:1;font-family:'Space Mono',monospace;font-size:clamp(0.55rem,1.5vw,0.72rem);letter-spacing:0.18em;color:#a08830;text-transform:uppercase;margin-top:14px;}
+.cs-cover-desc{position:relative;z-index:1;font-size:0.9rem;line-height:1.78;color:rgba(245,240,216,0.65);max-width:520px;margin:16px auto 0;}
+[data-theme="light"] .cs-cover-desc{color:rgba(26,22,0,0.6);}
+.cs-cover-meta{position:relative;z-index:1;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:44px;}
+.cs-meta-item{text-align:center;min-width:90px;}
+.cs-meta-label{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.15em;color:#7a6830;text-transform:uppercase;margin-bottom:4px;}
+.cs-meta-val{font-size:0.84rem;color:#f5f0d8;font-weight:600;}
+[data-theme="light"] .cs-meta-val{color:#1a1600;}
+.cs-meta-div{width:1px;background:rgba(200,162,0,0.2);align-self:stretch;}
+/* HIGHLIGHT BOX — gold background for key numbers */
+.cs-highlight-box{background:var(--gold);border-radius:10px;padding:28px 32px;margin:24px 0;}
+.cs-hb-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.cs-highlight-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,3.5vw,2.8rem);color:#1a1600;line-height:1;margin-bottom:6px;}
+.cs-highlight-title{font-size:0.78rem;color:rgba(26,22,0,0.85);font-weight:600;margin-bottom:3px;}
+.cs-highlight-desc{font-size:0.68rem;color:rgba(26,22,0,0.65);line-height:1.5;}
+/* RESULTS */
+.cs-result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.cs-result-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;padding:28px 22px;border-top:3px solid var(--gold);transition:transform 0.2s,border-color 0.2s;}
+.cs-result-card:hover{transform:translateY(-3px);border-color:var(--gold2);}
+.cs-result-num{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,4vw,3.2rem);color:var(--gold);letter-spacing:0.04em;line-height:1;margin-bottom:8px;}
+.cs-result-title{font-size:0.85rem;color:var(--text);font-weight:600;margin-bottom:6px;}
+.cs-result-desc{font-size:0.72rem;color:var(--text-muted);line-height:1.55;}
+.cs-result-source{font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.1em;color:var(--gold3);text-transform:uppercase;margin-top:10px;opacity:0.7;}
+/* INSIGHT */
+.cs-insight-box{background:rgba(200,162,0,0.06);border:1px solid rgba(200,162,0,0.22);border-left:3px solid var(--gold);border-radius:8px;padding:20px 24px;margin-top:24px;}
+.cs-insight-box p{font-size:0.82rem;color:var(--text-muted);line-height:1.7;}
+.cs-insight-box strong{color:var(--gold);}
+/* TIMELINE */
+.cs-timeline{position:relative;padding-left:28px;}
+.cs-timeline::before{content:'';position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--gold),rgba(200,162,0,0.1));}
+.cs-tl-item{position:relative;margin-bottom:26px;}
+.cs-tl-dot{position:absolute;left:-22px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(212,168,0,0.5);}
+.cs-tl-phase{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:3px;}
+.cs-tl-title{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.08em;color:var(--text);margin-bottom:4px;}
+.cs-tl-desc{font-size:0.78rem;color:var(--text-muted);line-height:1.6;}
+/* BEFORE / AFTER */
+.cs-ba{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:8px;overflow:hidden;margin-bottom:24px;}
+.cs-ba-col{padding:24px 20px;background:var(--card-bg);}
+.cs-ba-col.after{background:rgba(200,162,0,0.07);border:1px solid rgba(200,162,0,0.22);}
+.cs-ba-label{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--gray);}
+.cs-ba-col.after .cs-ba-label{color:var(--gold3);border-color:rgba(200,162,0,0.25);}
+.cs-ba-item{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;}
+.cs-ba-item::before{content:'•';color:var(--gold);margin-top:1px;flex-shrink:0;}
+.cs-ba-item span{font-size:0.8rem;color:var(--text-muted);line-height:1.5;}
+/* SIGNAL CARDS */
+.cs-signal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:24px;}
+.cs-signal-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:16px 18px;display:flex;gap:14px;align-items:flex-start;}
+.cs-signal-icon{font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);flex-shrink:0;line-height:1;min-width:56px;}
+.cs-signal-title{font-size:0.82rem;color:var(--text);font-weight:600;margin-bottom:3px;}
+.cs-signal-desc{font-size:0.72rem;color:var(--text-muted);line-height:1.55;}
+/* MSG PILLS */
+.cs-msg-grid{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0;}
+.cs-msg-pill{display:inline-flex;align-items:center;gap:7px;border:1px solid rgba(200,162,0,0.22);border-radius:6px;padding:8px 14px;background:var(--card-bg);transition:border-color 0.2s,background 0.2s;}
+.cs-msg-pill:hover{border-color:var(--gold);background:rgba(200,162,0,0.06);}
+.cs-msg-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.cs-msg-pill span{font-size:0.76rem;color:var(--text-muted);font-weight:500;}
+/* CREATIVE GRID */
+.cs-creative-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.cs-creative-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:18px 20px;transition:border-color 0.2s,transform 0.2s;}
+.cs-creative-card:hover{border-color:rgba(200,162,0,0.4);transform:translateY(-3px);}
+.cs-creative-icon{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;color:var(--gold);margin-bottom:8px;}
+.cs-creative-card h4{font-family:'Bebas Neue',sans-serif;font-size:0.95rem;letter-spacing:0.1em;color:var(--text);margin-bottom:4px;}
+.cs-creative-card p{font-size:0.74rem;color:var(--text-muted);line-height:1.5;}
+/* SEASONAL */
+.cs-season-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.cs-season-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.cs-season-header{background:linear-gradient(135deg,var(--gold),var(--gold2));padding:16px 20px;}
+.cs-season-header h3{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.08em;color:#1a1600;margin-bottom:2px;}
+.cs-season-header p{font-size:0.7rem;color:rgba(26,22,0,0.7);}
+.cs-season-body{padding:14px 18px;}
+.cs-season-body p{font-size:0.77rem;color:var(--text-muted);line-height:1.55;margin-bottom:10px;}
+.cs-season-tag{display:inline-block;border:1px solid rgba(200,162,0,0.3);border-radius:100px;padding:3px 10px;font-size:0.6rem;color:var(--gold3);font-family:'Space Mono',monospace;letter-spacing:0.08em;margin:2px;}
+/* REGION */
+.cs-regions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+.cs-region-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:16px 18px;}
+.cs-region-city{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.1em;color:var(--gold);margin-bottom:5px;}
+.cs-region-card p{font-size:0.75rem;color:var(--text-muted);line-height:1.55;}
+/* TAGS */
+.cs-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
+.cs-tag{border:1px solid rgba(200,162,0,0.25);border-radius:4px;padding:5px 14px;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--gold3);text-transform:uppercase;background:rgba(200,162,0,0.05);}
+/* IMG */
+.cs-img-full{width:100%;border-radius:10px;border:1px solid rgba(212,168,0,0.18);box-shadow:0 8px 40px rgba(0,0,0,0.25);display:block;object-fit:cover;}
+.cs-img-caption{font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.12em;color:var(--gray);text-transform:uppercase;text-align:center;margin-top:10px;}
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+/* FOOTER */
+footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(--border);text-align:center;}
+.footer-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,5vw,3.3rem);letter-spacing:0.1em;color:var(--text);margin-bottom:6px;}
+.footer-sub{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--gray);letter-spacing:0.13em;margin-bottom:34px;}
+.social-links{display:flex;justify-content:center;gap:12px;margin-bottom:38px;}
+.social-link{width:44px;height:44px;border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.25s;}
+.social-link:hover{border-color:var(--accent);box-shadow:0 0 14px rgba(255,45,155,0.28);transform:translateY(-3px);}
+.social-link img{width:21px;height:21px;}
+[data-theme="light"] .social-link img{filter:brightness(0.5) saturate(1.5);}
+.footer-copy{font-size:0.67rem;color:var(--gray);font-family:'Space Mono',monospace;opacity:0.4;}
+@media(max-width:900px){
+  nav{padding:13px 22px;}.nav-links{display:none;}.hamburger{display:flex;}
+  .cs-section{padding:60px 24px;}.cs-cover{padding:100px 24px 60px;}
+  .cs-2col{grid-template-columns:1fr;gap:32px;}.cs-3col{grid-template-columns:1fr 1fr;}
+  .cs-4col{grid-template-columns:1fr 1fr;}.cs-creative-grid{grid-template-columns:1fr 1fr;}
+  .cs-season-grid{grid-template-columns:1fr 1fr;}.cs-regions{grid-template-columns:1fr 1fr;}
+  .cs-result-grid{grid-template-columns:1fr 1fr;}.cs-signal-grid{grid-template-columns:1fr;}
+  .cs-ba{grid-template-columns:1fr;}.cs-hb-grid{grid-template-columns:1fr 1fr;}
+  .cs-cover-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}.cs-meta-div{display:none;}
+  footer{padding:48px 18px 28px;}
 }
-[data-theme="light"] .nav-logo img { filter: drop-shadow(0 0 6px var(--accent)) brightness(0.9); }
-.nav-logo img:hover { filter: drop-shadow(0 0 20px var(--accent)); }
-
-.nav-links { display: flex; gap: 32px; list-style: none; }
-.nav-links a {
-  color: var(--gray);
-  text-decoration: none;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
-  transition: color 0.2s;
-  position: relative;
+@media(max-width:560px){
+  nav{padding:12px 18px;}.cs-section{padding:48px 18px;}.cs-cover{padding:90px 18px 50px;}
+  .cs-3col{grid-template-columns:1fr;}.cs-creative-grid{grid-template-columns:1fr;}
+  .cs-season-grid{grid-template-columns:1fr;}.cs-regions{grid-template-columns:1fr;}
+  .cs-result-grid{grid-template-columns:1fr;}.cs-hb-grid{grid-template-columns:1fr 1fr;}
+  .cs-cover-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
 }
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
-  height: 1px; background: var(--accent);
-  transform: scaleX(0); transition: transform 0.25s ease;
-}
-.nav-links a:hover { color: var(--accent); }
-.nav-links a:hover::after { transform: scaleX(1); }
-
-.nav-right { display: flex; align-items: center; gap: 8px; }
-.nav-controls {
-  display: flex; align-items: stretch;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  overflow: hidden;
-  height: 32px;
-}
-.lang-switch { display: flex; align-items: stretch; }
-.lang-switch button {
-  background: transparent; border: none;
-  color: var(--gray);
-  padding: 0 12px;
-  cursor: pointer;
-  font-family: 'Space Mono', monospace;
-  font-size: 0.58rem; letter-spacing: 0.13em; text-transform: uppercase;
-  transition: background 0.2s, color 0.2s;
-  height: 100%; display: flex; align-items: center;
-}
-.lang-switch button.active { background: var(--accent); color: #fff; font-weight: 700; }
-.lang-switch button:not(.active):hover { color: var(--accent); }
-.nav-sep { width: 1px; background: var(--border); flex-shrink: 0; align-self: stretch; }
-
-.theme-btn {
-  background: transparent; border: none; border-left: 1px solid var(--border);
-  width: 36px; height: 100%;
-  display: flex; align-items: center; justify-content: center;
-  cursor: pointer;
-  transition: background 0.2s, color 0.2s, transform 0.35s;
-  color: var(--gray); padding: 0;
-  flex-shrink: 0;
-}
-.theme-btn:hover { background: rgba(255,45,155,0.09); color: var(--accent); }
-.theme-btn svg { width: 14px; height: 14px; fill: currentColor; display: block; }
-
-.hamburger {
-  display: none; flex-direction: column; gap: 5px;
-  cursor: pointer; padding: 4px; z-index: 10001;
-}
-.hamburger span {
-  display: block; width: 24px; height: 2px;
-  background: var(--accent); border-radius: 2px;
-  transition: transform 0.3s, opacity 0.3s;
-}
-.mobile-close-trigger { position: absolute; top: 20px; right: 28px; }
-.hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger.open span:nth-child(2) { opacity: 0; }
-.hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
-
-.mobile-menu {
-  position: fixed; inset: 0;
-  background: var(--bg); z-index: 9999;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  gap: 28px;
-  opacity: 0; visibility: hidden;
-  transition: opacity 0.4s ease, visibility 0.4s ease;
-}
-.mobile-menu.open { opacity: 1; visibility: visible; }
-.mobile-menu a {
-  color: var(--text); text-decoration: none;
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: 2.6rem; letter-spacing: 0.1em;
-  transition: color 0.2s;
-}
-.mobile-menu a:hover { color: var(--accent); }
-.mobile-close {
-  position: absolute; top: 20px; right: 28px;
-  font-size: 1.8rem; color: var(--gray);
-  cursor: pointer; background: none; border: none;
-  z-index: 10000; padding: 10px;
-}
-.mobile-controls {
-  display: flex; align-items: stretch; gap: 0;
-  border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
-  height: 40px; margin-top: 8px;
-}
-.mobile-controls .lang-switch { border: none; }
-.mobile-controls .lang-switch button { font-size: 0.72rem; padding: 0 16px; height: 100%; }
-.mobile-controls .theme-btn { border: none; border-left: 1px solid var(--border); width: 44px; height: 100%; }
-.mobile-controls .theme-btn svg { width: 16px; height: 16px; }
-
-/* ══ SECTIONS ══ */
-.cs-section { padding: 88px 52px; background: var(--bg); }
-.cs-section.alt { background: var(--bg-alt); }
-.cs-section.dark-gold { background: #0d0b02; }
-[data-theme="light"] .cs-section.dark-gold { background: #faf5dc; }
-
-.cs-eyebrow {
-  font-family: 'Space Mono', monospace;
-  font-size: 0.58rem; letter-spacing: 0.28em;
-  color: var(--gold3); text-transform: uppercase; margin-bottom: 10px;
-}
-.cs-h2 {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(2.2rem, 5.5vw, 4.4rem);
-  letter-spacing: 0.05em; line-height: 1;
-  color: var(--text); margin-bottom: 20px;
-}
-.cs-h2 em { color: var(--gold); font-style: normal; }
-.cs-lead {
-  font-size: 1rem; line-height: 1.82; color: var(--text-muted);
-  max-width: 660px; margin-bottom: 32px;
-}
-.cs-accent-line {
-  width: 48px; height: 3px;
-  background: linear-gradient(90deg, var(--gold), var(--gold2));
-  border-radius: 2px; margin-bottom: 28px;
-}
-.divider {
-  width:100%; height:1px;
-  background: linear-gradient(90deg,transparent,var(--gold),var(--gold2),transparent);
-  opacity:0.25;
-}
-
-.cs-2col { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: start; }
-.cs-3col { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-.cs-4col { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; }
-
-.cs-card {
-  background: var(--card-bg);
-  border: 1px solid var(--border); border-radius: 8px; padding: 20px 22px;
-}
-.cs-card-label {
-  font-family:'Space Mono',monospace; font-size:0.55rem;
-  letter-spacing:0.18em; color:var(--gold3); text-transform:uppercase; margin-bottom:10px;
-}
-.cs-card-list { list-style:none; }
-.cs-card-list li { font-size:0.82rem; color:var(--text-muted); padding:3px 0; }
-.cs-card-list li::before { content:'— '; color:var(--gold); }
-
-.cs-challenge-card {
-  background: var(--card-bg); border: 1px solid var(--border);
-  border-radius: 8px; padding: 18px 20px; border-top: 3px solid var(--gold);
-}
-.cs-challenge-card h4 { font-family:'Bebas Neue',sans-serif; font-size:1rem; letter-spacing:0.1em; color:var(--text); margin-bottom:5px; }
-.cs-challenge-card p { font-size:0.78rem; color:var(--text-muted); line-height:1.6; }
-
-.cs-chart { display:flex; flex-direction:column; gap:10px; margin-top:8px; }
-.cs-bar-row { display:flex; align-items:center; gap:10px; }
-.cs-bar-label { font-family:'Space Mono',monospace; font-size:0.58rem; color:var(--gray); width:110px; flex-shrink:0; letter-spacing:0.05em; }
-.cs-bar-track { flex:1; height:8px; background:rgba(200,162,0,0.1); border-radius:4px; overflow:hidden; }
-.cs-bar-fill { height:100%; border-radius:4px; background:linear-gradient(90deg,var(--gold),var(--gold2)); }
-.cs-bar-val { font-family:'Space Mono',monospace; font-size:0.56rem; color:var(--gold3); width:70px; text-align:right; flex-shrink:0; }
-
-.cs-img-full {
-  width:100%; border-radius:10px;
-  border: 1px solid rgba(212,168,0,0.18);
-  box-shadow: 0 8px 40px rgba(0,0,0,0.25);
-  display: block; object-fit: cover;
-}
-.cs-img-caption {
-  font-family:'Space Mono',monospace; font-size:0.54rem;
-  letter-spacing:0.12em; color:var(--gray); text-transform:uppercase;
-  text-align:center; margin-top:10px;
-}
-.cs-img-grid { display:grid; gap:8px; }
-.cs-img-grid.col2 { grid-template-columns:1fr 1fr; }
-.cs-img-grid.col3 { grid-template-columns:repeat(3,1fr); }
-.cs-img-grid.col4 { grid-template-columns:repeat(4,1fr); }
-.cs-img-item { position:relative; border-radius:8px; overflow:hidden; background:var(--card-bg); border:1px solid var(--border); }
-.cs-img-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s; }
-.cs-img-item:hover img { transform:scale(1.04); }
-.cs-img-item .cs-img-overlay {
-  position:absolute; inset:0;
-  background:linear-gradient(to top,rgba(10,9,5,0.7) 0%,transparent 60%);
-  display:flex; align-items:flex-end; padding:12px;
-  opacity:0; transition:opacity 0.3s;
-}
-.cs-img-item:hover .cs-img-overlay { opacity:1; }
-.cs-img-item .cs-img-overlay span { font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.1em; color:rgba(255,255,255,0.8); text-transform:uppercase; }
-
-.cs-cover {
-  min-height: 100vh;
-  position: relative; overflow: hidden;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  padding: 130px 52px 80px; text-align: center;
-  background: #080701;
-}
-[data-theme="light"] .cs-cover { background: #faf8e8; }
-.cs-cover-grid {
-  position:absolute; inset:0;
-  background-image:
-    linear-gradient(rgba(220,175,0,0.06) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(220,175,0,0.06) 1px, transparent 1px);
-  background-size: 52px 52px;
-}
-.cs-cover-glow {
-  position:absolute; inset:0;
-  background: radial-gradient(ellipse 65% 55% at 50% 40%, rgba(212,168,0,0.16) 0%, transparent 70%);
-}
-.cs-cover-tag {
-  display:inline-block; position:relative; z-index:1;
-  border:1px solid rgba(212,168,0,0.35); border-radius:100px;
-  padding:5px 18px; font-family:'Space Mono',monospace;
-  font-size:0.58rem; letter-spacing:0.2em; color:var(--gold3);
-  text-transform:uppercase; margin-bottom:24px;
-  background:rgba(212,168,0,0.07);
-}
-.cs-cover-brand {
-  font-family:'Bebas Neue',sans-serif;
-  font-size: clamp(5rem, 16vw, 13rem);
-  letter-spacing:0.02em; line-height:0.85;
-  color: #f5f0d8; position:relative; z-index:1;
-}
-[data-theme="light"] .cs-cover-brand { color: #1a1600; }
-.cs-cover-brand span { color: var(--gold); }
-.cs-cover-sub {
-  position:relative; z-index:1;
-  font-family:'Space Mono',monospace;
-  font-size:clamp(0.55rem,1.5vw,0.72rem);
-  letter-spacing:0.18em; color:#a08830;
-  text-transform:uppercase; margin-top:14px;
-}
-[data-theme="light"] .cs-cover-sub { color: #7a6820; }
-.cs-cover-desc {
-  position:relative; z-index:1;
-  font-size:0.9rem; line-height:1.78; color:rgba(245,240,216,0.65);
-  max-width:520px; margin:16px auto 0;
-}
-[data-theme="light"] .cs-cover-desc { color:rgba(26,22,0,0.6); }
-.cs-cover-meta {
-  position:relative; z-index:1;
-  display:flex; justify-content:center; gap:28px; flex-wrap:wrap; margin-top:44px;
-}
-.cs-meta-item { text-align:center; min-width:90px; }
-.cs-meta-label { font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.15em; color:#7a6830; text-transform:uppercase; margin-bottom:4px; }
-.cs-meta-val { font-size:0.84rem; color:#f5f0d8; font-weight:600; }
-[data-theme="light"] .cs-meta-val { color:#1a1600; }
-.cs-meta-div { width:1px; background:rgba(200,162,0,0.2); align-self:stretch; }
-
-.cs-timeline { position:relative; padding-left:28px; }
-.cs-timeline::before { content:''; position:absolute; left:10px; top:8px; bottom:8px; width:2px; background:linear-gradient(to bottom,var(--gold),rgba(200,162,0,0.1)); }
-.cs-tl-item { position:relative; margin-bottom:28px; }
-.cs-tl-dot { position:absolute; left:-22px; top:4px; width:12px; height:12px; border-radius:50%; background:var(--gold); box-shadow:0 0 8px rgba(212,168,0,0.5); }
-.cs-tl-phase { font-family:'Space Mono',monospace; font-size:0.52rem; letter-spacing:0.14em; color:var(--gold3); text-transform:uppercase; margin-bottom:3px; }
-.cs-tl-title { font-family:'Bebas Neue',sans-serif; font-size:1.05rem; letter-spacing:0.08em; color:var(--text); margin-bottom:4px; }
-.cs-tl-desc { font-size:0.78rem; color:var(--text-muted); line-height:1.6; }
-
-.cs-ba { display:grid; grid-template-columns:1fr 1fr; gap:3px; border-radius:8px; overflow:hidden; }
-.cs-ba-col { padding:26px 22px; background:var(--card-bg); }
-.cs-ba-col.after { background:rgba(200,162,0,0.07); border:1px solid rgba(200,162,0,0.22); }
-.cs-ba-label { font-family:'Space Mono',monospace; font-size:0.55rem; letter-spacing:0.18em; text-transform:uppercase; margin-bottom:14px; padding-bottom:8px; border-bottom:1px solid var(--border); color:var(--gray); }
-.cs-ba-col.after .cs-ba-label { color:var(--gold3); border-color:rgba(200,162,0,0.25); }
-.cs-ba-item { display:flex; align-items:flex-start; gap:8px; margin-bottom:12px; }
-.cs-ba-item::before { content:'•'; color:var(--gold); margin-top:1px; flex-shrink:0; }
-.cs-ba-item span { font-size:0.8rem; color:var(--text-muted); line-height:1.5; }
-
-.cs-metric-card {
-  background:var(--card-bg); border:1px solid var(--border);
-  border-radius:8px; padding:22px 20px; border-left:3px solid var(--gold);
-}
-.cs-metric-num { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; color:var(--gold); letter-spacing:0.04em; line-height:1; margin-bottom:5px; }
-.cs-metric-title { font-size:0.82rem; color:var(--text); font-weight:600; margin-bottom:5px; }
-.cs-metric-desc { font-size:0.75rem; color:var(--text-muted); line-height:1.55; }
-
-/* Big number results */
-.cs-result-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-.cs-result-card {
-  background:var(--card-bg); border:1px solid var(--border);
-  border-radius:10px; padding:28px 22px;
-  border-top:3px solid var(--gold);
-  transition: transform 0.2s, border-color 0.2s;
-}
-.cs-result-card:hover { transform:translateY(-3px); border-color:var(--gold2); }
-.cs-result-num {
-  font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(2.2rem,4vw,3rem);
-  color:var(--gold); letter-spacing:0.04em;
-  line-height:1; margin-bottom:8px;
-}
-.cs-result-title { font-size:0.85rem; color:var(--text); font-weight:600; margin-bottom:6px; }
-.cs-result-desc { font-size:0.72rem; color:var(--text-muted); line-height:1.55; }
-.cs-result-source {
-  font-family:'Space Mono',monospace; font-size:0.5rem;
-  letter-spacing:0.1em; color:var(--gold3);
-  text-transform:uppercase; margin-top:10px;
-  opacity:0.7;
-}
-
-/* Insight box */
-.cs-insight-box {
-  background:rgba(200,162,0,0.06);
-  border:1px solid rgba(200,162,0,0.22);
-  border-left:3px solid var(--gold);
-  border-radius:8px; padding:20px 24px; margin-top:24px;
-}
-.cs-insight-box p { font-size:0.82rem; color:var(--text-muted); line-height:1.7; }
-.cs-insight-box strong { color:var(--gold); }
-
-.cs-regions { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
-.cs-region-card { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:18px 20px; }
-.cs-region-city { font-family:'Bebas Neue',sans-serif; font-size:1.1rem; letter-spacing:0.1em; color:var(--gold); margin-bottom:5px; }
-.cs-region-card p { font-size:0.77rem; color:var(--text-muted); line-height:1.55; }
-
-.cs-season-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; }
-.cs-season-card { background:var(--card-bg); border:1px solid var(--border); border-radius:10px; overflow:hidden; }
-.cs-season-header { background:linear-gradient(135deg,var(--gold),var(--gold2)); padding:18px 20px; }
-.cs-season-header h3 { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:0.08em; color:#1a1600; margin-bottom:2px; }
-.cs-season-header p { font-size:0.72rem; color:rgba(26,22,0,0.7); }
-.cs-season-body { padding:16px 20px; }
-.cs-season-body p { font-size:0.78rem; color:var(--text-muted); line-height:1.55; margin-bottom:12px; }
-.cs-season-tag { display:inline-block; border:1px solid rgba(200,162,0,0.3); border-radius:100px; padding:3px 10px; font-size:0.6rem; color:var(--gold3); font-family:'Space Mono',monospace; letter-spacing:0.08em; margin:2px; }
-
-.cs-msg-grid { display:flex; flex-wrap:wrap; gap:10px; margin:20px 0; }
-.cs-msg-pill { display:inline-flex; align-items:center; gap:8px; border:1px solid rgba(200,162,0,0.22); border-radius:6px; padding:10px 16px; background:var(--card-bg); transition:border-color 0.2s,background 0.2s; }
-.cs-msg-pill:hover { border-color:var(--gold); background:rgba(200,162,0,0.06); }
-.cs-msg-dot { width:7px; height:7px; border-radius:50%; background:var(--gold); flex-shrink:0; }
-.cs-msg-pill span { font-size:0.78rem; color:var(--text-muted); font-weight:500; }
-
-.cs-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
-.cs-tag { border:1px solid rgba(200,162,0,0.25); border-radius:4px; padding:5px 14px; font-family:'Space Mono',monospace; font-size:0.6rem; letter-spacing:0.1em; color:var(--gold3); text-transform:uppercase; background:rgba(200,162,0,0.05); }
-
-.cs-creative-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-.cs-creative-card { background:var(--card-bg); border:1px solid var(--border); border-radius:8px; padding:20px; transition:border-color 0.2s,transform 0.2s; }
-.cs-creative-card:hover { border-color:rgba(200,162,0,0.4); transform:translateY(-3px); }
-.cs-creative-icon { font-family:'Bebas Neue',sans-serif; font-size:1.4rem; color:var(--gold); margin-bottom:10px; }
-.cs-creative-card h4 { font-family:'Bebas Neue',sans-serif; font-size:0.98rem; letter-spacing:0.1em; color:var(--text); margin-bottom:4px; }
-.cs-creative-card p { font-size:0.75rem; color:var(--text-muted); line-height:1.5; }
-
-.reveal { opacity:0; transform:translateY(22px); transition:opacity 0.7s ease,transform 0.7s ease; }
-.reveal.visible { opacity:1; transform:translateY(0); }
-
-footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid var(--border); text-align:center; }
-.footer-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(1.8rem,5vw,3.3rem); letter-spacing:0.1em; color:var(--text); margin-bottom:6px; }
-.footer-sub { font-family:'Space Mono',monospace; font-size:0.68rem; color:var(--gray); letter-spacing:0.13em; margin-bottom:34px; }
-.social-links { display:flex; justify-content:center; gap:12px; margin-bottom:38px; }
-.social-link { width:44px; height:44px; border:1px solid var(--border); border-radius:3px; display:flex; align-items:center; justify-content:center; text-decoration:none; transition:all 0.25s; }
-.social-link:hover { border-color:var(--accent); box-shadow:0 0 14px rgba(255,45,155,0.28); transform:translateY(-3px); }
-.social-link img { width:21px; height:21px; }
-[data-theme="light"] .social-link img { filter: brightness(0.5) saturate(1.5); }
-.footer-copy { font-size:0.67rem; color:var(--gray); font-family:'Space Mono',monospace; opacity:0.4; }
-
-/* ══ RESPONSIVE ══ */
-@media (max-width:900px) {
-  nav { padding:13px 22px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .cs-section { padding:64px 24px; }
-  .cs-cover { padding:100px 24px 60px; }
-  .cs-2col { grid-template-columns:1fr; gap:36px; }
-  .cs-3col { grid-template-columns:1fr 1fr; }
-  .cs-4col { grid-template-columns:1fr 1fr; }
-  .cs-creative-grid { grid-template-columns:1fr 1fr; }
-  .cs-season-grid { grid-template-columns:1fr 1fr; }
-  .cs-regions { grid-template-columns:1fr 1fr; }
-  .cs-result-grid { grid-template-columns:1fr 1fr; }
-  .cs-ba { grid-template-columns:1fr; }
-  .cs-img-grid.col3 { grid-template-columns:1fr 1fr; }
-  .cs-img-grid.col4 { grid-template-columns:1fr 1fr; }
-  .cs-cover-meta { display:grid; grid-template-columns: repeat(2, 1fr); align-items:center; gap:18px; }
-  .cs-meta-div { display:none; }
-  footer { padding: 48px 18px 28px; }
-}
-@media (max-width:560px) {
-  nav { padding:12px 18px; }
-  .nav-links { display: none; }
-  .hamburger { display: flex; }
-  .cs-section { padding:52px 18px; }
-  .cs-cover { padding:90px 18px 50px; }
-  .cs-3col { grid-template-columns:1fr; }
-  .cs-4col { grid-template-columns:1fr 1fr; }
-  .cs-creative-grid { grid-template-columns:1fr; }
-  .cs-season-grid { grid-template-columns:1fr; }
-  .cs-regions { grid-template-columns:1fr; }
-  .cs-result-grid { grid-template-columns:1fr; }
-  .cs-img-grid.col2 { grid-template-columns:1fr; }
-  .cs-img-grid.col3 { grid-template-columns:1fr; }
-  .cs-img-grid.col4 { grid-template-columns:1fr 1fr; }
-  .cs-cover-meta { display:grid; grid-template-columns: repeat(2, 1fr); gap:14px; }
-}
-@media (max-height: 480px) and (orientation: landscape) {
-  .mobile-menu { justify-content: flex-start; padding: 60px 20px; overflow-y: auto; gap: 16px; }
-  .mobile-menu a { font-size: 1.5rem; }
+@media(max-height:480px) and (orientation:landscape){
+  .mobile-menu{justify-content:flex-start;padding:60px 20px;overflow-y:auto;gap:16px;}
+  .mobile-menu a{font-size:1.5rem;}
 }
 </style>
 </head>
 <body>
-
 <div id="cursor"></div>
 
-<!-- ══ NAV ══ -->
 <nav id="mainNav">
   <a class="nav-logo" href="https://lecorredato.github.io/portfolio/#hero">
     <img id="navLogo" src="https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png" alt="LC">
@@ -507,17 +252,12 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
       </button>
     </div>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </div>
 </nav>
 
-<!-- ══ MOBILE MENU ══ -->
 <div class="mobile-menu" id="mobileMenu">
-  <div class="hamburger open mobile-close-trigger" onclick="toggleMenu()">
-    <span></span><span></span><span></span>
-  </div>
+  <div class="hamburger open mobile-close-trigger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   <a href="https://lecorredato.github.io/portfolio/#about"       onclick="closeMenu()" class="t" data-key="nav-about">About</a>
   <a href="https://lecorredato.github.io/portfolio/#cases"       onclick="closeMenu()" class="t" data-key="nav-case">Cases</a>
   <a href="https://lecorredato.github.io/portfolio/#portfolio"   onclick="closeMenu()" class="t" data-key="nav-portfolio">Portfolio</a>
@@ -526,7 +266,7 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   <div class="mobile-controls">
     <div class="lang-switch">
       <button id="btnENMob" class="active" onclick="setLang('en')">EN</button>
-      <div class="lang-sep"></div>
+      <div class="nav-sep"></div>
       <button id="btnPTMob" onclick="setLang('pt')">PT</button>
     </div>
     <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()" aria-label="Toggle theme">
@@ -535,556 +275,342 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   </div>
 </div>
 
-<!-- ══════════════════════════════════════════
-     01 — COVER
-══════════════════════════════════════════ -->
+<!-- COVER -->
 <div class="cs-cover">
-  <div class="cs-cover-grid"></div>
-  <div class="cs-cover-glow"></div>
+  <div class="cs-cover-grid"></div><div class="cs-cover-glow"></div>
   <div class="cs-cover-tag t" data-key="cover-tag">Case Study · 2026</div>
   <h1 class="cs-cover-brand"><span>99</span>Food</h1>
   <p class="cs-cover-sub t" data-key="cover-sub">Creative Strategy for Restaurant Acquisition</p>
-  <p class="cs-cover-desc t" data-key="cover-desc">Paid media campaigns on Meta and Google to scale restaurant sign-ups across Brazil — built on creative experimentation, regional intelligence, and performance data.</p>
+  <p class="cs-cover-desc t" data-key="cover-desc">B2B paid media campaigns on Meta and Google to scale restaurant sign-ups across Brazil — built on creative experimentation, regional intelligence, and performance data.</p>
   <div class="cs-cover-meta">
-    <div class="cs-meta-item">
-      <div class="cs-meta-label t" data-key="meta-role-label">Role</div>
-      <div class="cs-meta-val t" data-key="meta-role-val">Creative Strategist</div>
-    </div>
+    <div class="cs-meta-item"><div class="cs-meta-label t" data-key="ml-role">Role</div><div class="cs-meta-val t" data-key="mv-role">Creative Strategist</div></div>
     <div class="cs-meta-div"></div>
-    <div class="cs-meta-item">
-      <div class="cs-meta-label t" data-key="meta-focus-label">Focus</div>
-      <div class="cs-meta-val t" data-key="meta-focus-val">B2B National Acquisition</div>
-    </div>
+    <div class="cs-meta-item"><div class="cs-meta-label t" data-key="ml-focus">Focus</div><div class="cs-meta-val t" data-key="mv-focus">B2B National Acquisition</div></div>
     <div class="cs-meta-div"></div>
-    <div class="cs-meta-item">
-      <div class="cs-meta-label t" data-key="meta-platforms-label">Platforms</div>
-      <div class="cs-meta-val">Meta · Google · Smartly.io</div>
-    </div>
+    <div class="cs-meta-item"><div class="cs-meta-label t" data-key="ml-plat">Platforms</div><div class="cs-meta-val">Meta · Google · Figma · Smartly.io</div></div>
     <div class="cs-meta-div"></div>
-    <div class="cs-meta-item">
-      <div class="cs-meta-label t" data-key="meta-year-label">Year</div>
-      <div class="cs-meta-val">2026</div>
-    </div>
+    <div class="cs-meta-item"><div class="cs-meta-label t" data-key="ml-year">Year</div><div class="cs-meta-val">2026</div></div>
   </div>
 </div>
-
 <div class="divider"></div>
 
-<!-- ══════════════════════════════════════════
-     02 — OVERVIEW
-══════════════════════════════════════════ -->
+<!-- 01 BRIEF -->
 <div class="cs-section alt reveal">
   <div class="cs-2col">
     <div>
-      <p class="cs-eyebrow t" data-key="s02-eyebrow">02 — Overview</p>
+      <p class="cs-eyebrow t" data-key="s02-ey">01 — Overview</p>
       <h2 class="cs-h2 t" data-key="s02-h2">The<br><em>Brief</em></h2>
       <div class="cs-accent-line"></div>
-      <p class="cs-lead t" data-key="s02-lead1">In January 2026, I joined 99Food as a Creative Strategist with one clear mandate: grow the restaurant partner base through B2B acquisition campaigns on Meta and Google.</p>
-      <p class="cs-lead t" data-key="s02-lead2">The audience wasn't a typical consumer — it was a business owner deciding whether to trust a new platform with their livelihood. That required a different kind of creative thinking: messaging that spoke to business value, not just visual appeal.</p>
-      <p class="cs-lead t" data-key="s02-lead3">My role connected creative strategy, performance analysis, and cross-functional collaboration — working alongside Growth, CRM, BI, and Media Buying teams.</p>
+      <p class="cs-lead t" data-key="s02-l1">In January 2026, I joined 99Food as a Creative Strategist with one mandate: grow the restaurant partner base through B2B acquisition campaigns on Meta and Google.</p>
+      <p class="cs-lead t" data-key="s02-l2">The audience wasn't a typical consumer — it was a business owner deciding whether to trust a new platform with their livelihood. Every creative decision had to answer: what's in it for my business?</p>
     </div>
-    <div style="display:flex;flex-direction:column;gap:14px;">
+    <div style="display:flex;flex-direction:column;gap:12px;">
       <div class="cs-card">
-        <div class="cs-card-label t" data-key="card-resp-label">Responsibilities</div>
-        <ul class="cs-card-list" id="resp-list">
-          <li class="t" data-key="resp-1">Creative direction &amp; messaging strategy</li>
-          <li class="t" data-key="resp-2">Quarterly experimentation roadmap</li>
-          <li class="t" data-key="resp-3">Performance analysis &amp; reporting</li>
-          <li class="t" data-key="resp-4">Seasonal campaign planning</li>
-          <li class="t" data-key="resp-5">Fake refresh methodology</li>
-          <li class="t" data-key="resp-6">Localized creative adaptation</li>
-          <li class="t" data-key="resp-7">Stakeholder presentations</li>
-          <li class="t" data-key="resp-8">Cross-functional collaboration</li>
+        <div class="cs-card-label t" data-key="c-resp">Responsibilities</div>
+        <ul class="cs-card-list">
+          <li class="t" data-key="r1">Creative direction &amp; messaging strategy</li>
+          <li class="t" data-key="r2">Quarterly experimentation roadmap</li>
+          <li class="t" data-key="r3">Performance analysis &amp; biweekly reporting</li>
+          <li class="t" data-key="r4">Seasonal campaign planning &amp; execution</li>
+          <li class="t" data-key="r5">Fake refresh methodology</li>
+          <li class="t" data-key="r6">Localized creative adaptation — 12 cities</li>
+          <li class="t" data-key="r7">Stakeholder presentations</li>
         </ul>
       </div>
       <div class="cs-card">
-        <div class="cs-card-label t" data-key="card-platforms-label">Platforms</div>
-        <ul class="cs-card-list">
-          <li>Meta Ads</li><li>Google Ads</li><li>Smartly.io</li><li>Figma</li>
-        </ul>
-      </div>
-      <div class="cs-card">
-        <div class="cs-card-label t" data-key="card-teams-label">Teams</div>
-        <ul class="cs-card-list">
-          <li>Growth</li><li>CRM</li><li>BI</li><li>Media Buyers</li><li>Creative Ops</li>
-        </ul>
+        <div class="cs-card-label t" data-key="c-teams">Teams</div>
+        <ul class="cs-card-list"><li>Growth</li><li>CRM</li><li>BI</li><li>Media Buyers</li><li>Creative Ops</li></ul>
       </div>
     </div>
   </div>
 </div>
-
 <div class="divider"></div>
 
-<!-- ══════════════════════════════════════════
-     03 — CHALLENGE
-══════════════════════════════════════════ -->
+<!-- 02 RESULTS -->
 <div class="cs-section reveal">
+  <p class="cs-eyebrow t" data-key="s03-ey">02 — Results</p>
+  <h2 class="cs-h2 t" data-key="s03-h2">What the System<br><em>Delivered</em></h2>
+  <div class="cs-accent-line"></div>
+  <p class="cs-lead t" data-key="s03-lead">Across seasonal campaigns, fake refresh cycles, and copystorming tests, the experimentation pipeline consistently outperformed business-as-usual creative — in reach, efficiency, and sign-up volume.</p>
+  <div class="cs-highlight-box">
+    <div class="cs-hb-grid">
+      <div><div class="cs-highlight-num">+22%</div><div class="cs-highlight-title t" data-key="h1-t">Reach</div><div class="cs-highlight-desc t" data-key="h1-d">After Fake Refresh applied. New audiences reached without resetting platform learning.</div></div>
+      <div><div class="cs-highlight-num">+17%</div><div class="cs-highlight-title t" data-key="h2-t">Clicks</div><div class="cs-highlight-desc t" data-key="h2-d">Engagement recovered post-refresh with platform learning fully preserved.</div></div>
+      <div><div class="cs-highlight-num">-9%</div><div class="cs-highlight-title t" data-key="h3-t">CPC</div><div class="cs-highlight-desc t" data-key="h3-d">Cost per click reduced. Only +6% more spend to achieve all three gains.</div></div>
+      <div><div class="cs-highlight-num">+14%</div><div class="cs-highlight-title t" data-key="h4-t">Engagement</div><div class="cs-highlight-desc t" data-key="h4-d">Higher engagement with lower CPM and CPC. Efficiency driven by creative, not budget.</div></div>
+    </div>
+  </div>
+  <div class="cs-result-grid" style="margin-top:16px;">
+    <div class="cs-result-card">
+      <div class="cs-result-num">23%</div>
+      <div class="cs-result-title t" data-key="res1-t">of Total Sign-Ups</div>
+      <div class="cs-result-desc t" data-key="res1-d">Driven by the Easter seasonal pack alone — with a cost per sign-up 11% below the account average. The top asset achieved the lowest CPSU of the entire period.</div>
+      <div class="cs-result-source">Source: Smartly</div>
+    </div>
+    <div class="cs-result-card">
+      <div class="cs-result-num">$0.05</div>
+      <div class="cs-result-title t" data-key="res2-t">CPC · AI Bag Delivery</div>
+      <div class="cs-result-desc t" data-key="res2-d">First AI-native creative in the pipeline achieved the lowest CPC of the entire account — significantly below all active campaign benchmarks.</div>
+      <div class="cs-result-source">Source: Smartly</div>
+    </div>
+    <div class="cs-result-card">
+      <div class="cs-result-num">260%</div>
+      <div class="cs-result-title t" data-key="res3-t">Clicks vs. Other Assets</div>
+      <div class="cs-result-desc t" data-key="res3-d">The winning Fake Refresh variant generated 260% more clicks than the sum of all other image creatives combined in the same period.</div>
+      <div class="cs-result-source">Source: Smartly</div>
+    </div>
+  </div>
+  <div class="cs-insight-box">
+    <p class="t" data-key="res-insight"><strong>The proof:</strong> With only +6% more spend, the right creative system delivered +22% reach, +17% clicks, and +14% engagement — with lower CPM and CPC. Creative strategy, not budget, drove the gains.</p>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- 03 CHALLENGE -->
+<div class="cs-section alt reveal">
   <div class="cs-2col">
     <div>
-      <p class="cs-eyebrow t" data-key="s03-eyebrow">03 — The Challenge</p>
-      <h2 class="cs-h2 t" data-key="s03-h2">Three Problems,<br><em>One System</em></h2>
+      <p class="cs-eyebrow t" data-key="s04-ey">03 — The Challenge</p>
+      <h2 class="cs-h2 t" data-key="s04-h2">Three Problems,<br><em>One System</em></h2>
       <div class="cs-accent-line"></div>
-      <p class="cs-lead t" data-key="s03-lead">Scaling B2B acquisition through paid media comes with compounding constraints. The environment demanded creative efficiency above all else — less budget waste, more learning signal, faster iteration.</p>
+      <p class="cs-lead t" data-key="s04-lead">Scaling B2B acquisition through paid media comes with compounding constraints. The environment demanded creative efficiency above all — less budget waste, more signal, faster iteration.</p>
     </div>
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="cs-challenge-card">
-        <h4 t data-key="ch1-title">Rising CPC</h4>
-        <p class="t" data-key="ch1-desc">A +27% increase in overall market CPC during Q1 made creative efficiency the primary lever for protecting acquisition costs.</p>
-      </div>
-      <div class="cs-challenge-card">
-        <h4 class="t" data-key="ch2-title">Creative Fatigue</h4>
-        <p class="t" data-key="ch2-desc">High-frequency campaigns burned through assets fast. Without a refresh strategy, performance would plateau and costs would spike.</p>
-      </div>
-      <div class="cs-challenge-card">
-        <h4 class="t" data-key="ch3-title">Regional Complexity</h4>
-        <p class="t" data-key="ch3-desc">Expanding to 12 new cities meant each market needed relevant messaging — but production couldn't scale 1:1 with geography.</p>
-      </div>
-      <div class="cs-challenge-card">
-        <h4 class="t" data-key="ch4-title">B2B Specificity</h4>
-        <p class="t" data-key="ch4-desc">Restaurant owners don't respond to consumer logic. Every angle had to answer one question: "What's in it for my business?"</p>
-      </div>
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <div class="cs-challenge-card"><h4 class="t" data-key="ch1-t">Rising CPC</h4><p class="t" data-key="ch1-d">A +27% increase in market CPC during Q1 made creative efficiency the primary lever for protecting acquisition costs.</p></div>
+      <div class="cs-challenge-card"><h4 class="t" data-key="ch2-t">Creative Fatigue</h4><p class="t" data-key="ch2-d">High-frequency campaigns burned through assets fast. Without a refresh strategy, performance would plateau and costs would spike.</p></div>
+      <div class="cs-challenge-card"><h4 class="t" data-key="ch3-t">Regional Complexity</h4><p class="t" data-key="ch3-d">Expanding to 12 new cities meant localized messaging — but production couldn't scale 1:1 with geography.</p></div>
+      <div class="cs-challenge-card"><h4 class="t" data-key="ch4-t">B2B Specificity</h4><p class="t" data-key="ch4-d">Restaurant owners don't respond to consumer logic. Every angle had to connect to real business value — not just visual appeal.</p></div>
     </div>
   </div>
 </div>
-
 <div class="divider"></div>
 
-<!-- ══════════════════════════════════════════
-     04 — STRATEGIC ROADMAP
-══════════════════════════════════════════ -->
-<div class="cs-section alt reveal">
-  <p class="cs-eyebrow t" data-key="s04-eyebrow">04 — Strategic Logic</p>
-  <h2 class="cs-h2 t" data-key="s04-h2">Before Building Creatives,<br><em>We Built a System</em></h2>
+<!-- 04 STRATEGIC LOGIC + ROADMAP -->
+<div class="cs-section reveal">
+  <p class="cs-eyebrow t" data-key="s05-ey">04 — Strategic Logic</p>
+  <h2 class="cs-h2 t" data-key="s05-h2">Before Building Creatives,<br><em>We Built a System</em></h2>
   <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s04-lead">Instead of producing campaigns reactively, I structured a quarterly experimentation pipeline — each phase with a hypothesis, a creative variable, and a performance signal to validate. Every asset had a reason to exist. Every result fed the next cycle.</p>
-
-  <div style="margin-bottom:32px;">
-    <img src="IMG_2091.png" alt="99Food Restaurant Roadmap Pipeline" class="cs-img-full"
-         onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-    <div style="display:none;background:rgba(200,162,0,0.07);border:1px solid var(--border);border-radius:10px;padding:48px 32px;text-align:center;">
-      <p style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:0.1em;">Restaurant Roadmap Pipeline</p>
-    </div>
-    <p class="cs-img-caption t" data-key="roadmap-caption">Restaurant Roadmap Pipeline — 99 Creative Strategy Kick-off</p>
+  <p class="cs-lead t" data-key="s05-lead">Instead of producing campaigns reactively, I structured a quarterly experimentation pipeline — each phase with a hypothesis, a creative variable, and a performance signal to validate. Every asset had a reason to exist. Every result fed the next cycle.</p>
+  <div style="margin-bottom:28px;">
+    <img src="IMG_2091.png" alt="99Food Restaurant Roadmap Pipeline" class="cs-img-full" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div style="display:none;background:rgba(200,162,0,0.07);border:1px solid var(--border);border-radius:10px;padding:40px 32px;text-align:center;"><p style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:0.1em;">Restaurant Roadmap Pipeline</p></div>
+    <p class="cs-img-caption t" data-key="roadmap-cap">Restaurant Roadmap Pipeline — 99 Creative Strategy Kick-off</p>
   </div>
-
   <div class="cs-2col">
     <div class="cs-timeline">
-      <div class="cs-tl-item">
-        <div class="cs-tl-dot"></div>
-        <div class="cs-tl-phase t" data-key="tl1-phase">Phase 1 · Q1</div>
-        <div class="cs-tl-title t" data-key="tl1-title">Easter + Fake Refresh Launch</div>
-        <div class="cs-tl-desc t" data-key="tl1-desc">Seasonal creative tying Easter consumer demand to partner growth. Parallel test: background swap on top-performing ad to extend delivery without resetting platform learning.</div>
-      </div>
-      <div class="cs-tl-item">
-        <div class="cs-tl-dot"></div>
-        <div class="cs-tl-phase t" data-key="tl2-phase">Phase 2 · Q2</div>
-        <div class="cs-tl-title t" data-key="tl2-title">AI Bag Delivery + Carousel How-to</div>
-        <div class="cs-tl-desc t" data-key="tl2-desc">First AI-assisted creative format introduced. "How to Sign Up" carousel launched in static and template versions to reduce friction in the onboarding message.</div>
-      </div>
-      <div class="cs-tl-item">
-        <div class="cs-tl-dot"></div>
-        <div class="cs-tl-phase t" data-key="tl3-phase">Phase 3 · Q3</div>
-        <div class="cs-tl-title t" data-key="tl3-title">12 New Cities Launch Pack</div>
-        <div class="cs-tl-desc t" data-key="tl3-desc">Coordinated Meta + Google pack for regional expansion. AI Dashboard Growth creative introduced to communicate platform traction to prospective partners.</div>
-      </div>
-      <div class="cs-tl-item">
-        <div class="cs-tl-dot"></div>
-        <div class="cs-tl-phase t" data-key="tl4-phase">Phase 4 · Q4</div>
-        <div class="cs-tl-title t" data-key="tl4-title">UGC + Commission Fee Campaign</div>
-        <div class="cs-tl-desc t" data-key="tl4-desc">UGC Curios format introduced to build peer trust. Mother's Day seasonal + Commission Fee + Delivery campaign closed the annual cycle.</div>
-      </div>
+      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="tl1-ph">Phase 1 · Q1</div><div class="cs-tl-title t" data-key="tl1-ti">Easter + Fake Refresh Launch</div><div class="cs-tl-desc t" data-key="tl1-de">Seasonal creative tying Easter demand to partner growth opportunity. Parallel test: BG swap on top-performing ad to extend delivery without resetting platform learning.</div></div>
+      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="tl2-ph">Phase 2 · Q2</div><div class="cs-tl-title t" data-key="tl2-ti">AI Bag Delivery + Carousel How-to</div><div class="cs-tl-desc t" data-key="tl2-de">First AI-assisted creative introduced. "How to Sign Up" carousel launched in static and template versions to reduce onboarding friction.</div></div>
+      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="tl3-ph">Phase 3 · Q3</div><div class="cs-tl-title t" data-key="tl3-ti">12 New Cities Launch Pack</div><div class="cs-tl-desc t" data-key="tl3-de">Coordinated Meta + Google pack for regional expansion. AI Dashboard Growth creative introduced to communicate platform traction to prospective partners.</div></div>
+      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="tl4-ph">Phase 4 · Q4</div><div class="cs-tl-title t" data-key="tl4-ti">UGC + Commission Fee Campaign</div><div class="cs-tl-desc t" data-key="tl4-de">UGC Curios format introduced for peer trust. Mother's Day seasonal + Commission Fee + Delivery campaign closed the annual cycle.</div></div>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px;">
       <div style="background:rgba(200,162,0,0.06);border:1px solid var(--border);border-radius:8px;padding:16px 20px;">
-        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:10px;" class="t" data-key="campaign-types-label">Campaign Types</div>
-        <div style="display:flex;flex-wrap:wrap;gap:6px;">
-          <span class="cs-season-tag t" data-key="ct1">Seasonal</span>
-          <span class="cs-season-tag">Fake Refresh</span>
-          <span class="cs-season-tag t" data-key="ct2">AI Creatives</span>
-          <span class="cs-season-tag">UGC</span>
-          <span class="cs-season-tag t" data-key="ct3">Launch Pack</span>
-          <span class="cs-season-tag t" data-key="ct4">Evergreen</span>
-          <span class="cs-season-tag">Carousel</span>
-          <span class="cs-season-tag t" data-key="ct5">Regional</span>
+        <div style="margin-bottom:12px;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:7px;" class="t" data-key="ct-label-type">Content Types</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <span class="cs-season-tag t" data-key="ct-edu">Educational</span>
+            <span class="cs-season-tag">UGC</span>
+            <span class="cs-season-tag t" data-key="ct-ai">AI Creative</span>
+            <span class="cs-season-tag t" data-key="ct-offers">Offers &amp; Benefits</span>
+          </div>
+        </div>
+        <div>
+          <div style="font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:7px;" class="t" data-key="ct-label-act">Strategies &amp; Actions</div>
+          <div style="display:flex;flex-wrap:wrap;gap:6px;">
+            <span class="cs-season-tag">Fake Refresh</span>
+            <span class="cs-season-tag t" data-key="ct-sea">Seasonal</span>
+            <span class="cs-season-tag t" data-key="ct-evergreen">Evergreen</span>
+            <span class="cs-season-tag t" data-key="ct-launch">Launch Pack</span>
+          </div>
         </div>
       </div>
       <div style="background:rgba(200,162,0,0.06);border:1px solid var(--border);border-radius:8px;padding:16px 20px;">
-        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:12px;" class="t" data-key="perf-signal-label">Performance Signal</div>
-        <div class="cs-chart">
-          <div class="cs-bar-row"><span class="cs-bar-label t" data-key="bar1-label">Seasonal</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:92%"></div></div><span class="cs-bar-val t" data-key="bar1-val">Top Perf.</span></div>
-          <div class="cs-bar-row"><span class="cs-bar-label">Fake Refresh</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:85%"></div></div><span class="cs-bar-val t" data-key="bar2-val">Lower CPC</span></div>
-          <div class="cs-bar-row"><span class="cs-bar-label t" data-key="bar3-label">AI Creatives</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:78%"></div></div><span class="cs-bar-val t" data-key="bar3-val">High CTR</span></div>
-          <div class="cs-bar-row"><span class="cs-bar-label">UGC</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:70%"></div></div><span class="cs-bar-val t" data-key="bar4-val">+Engage</span></div>
+        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:12px;" class="t" data-key="ps-label">Performance Signal</div>
+        <div style="display:flex;flex-direction:column;gap:9px;">
+          <div style="display:flex;justify-content:space-between;font-size:0.76rem;"><span style="color:var(--text-muted);" class="t" data-key="ps1-l">Seasonal</span><span style="color:var(--gold);font-family:'Space Mono',monospace;font-size:0.65rem;" class="t" data-key="ps1-v">Top performer</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.76rem;"><span style="color:var(--text-muted);">Fake Refresh</span><span style="color:var(--gold);font-family:'Space Mono',monospace;font-size:0.65rem;" class="t" data-key="ps2-v">−9% CPC</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.76rem;"><span style="color:var(--text-muted);" class="t" data-key="ps3-l">AI Creatives</span><span style="color:var(--gold);font-family:'Space Mono',monospace;font-size:0.65rem;" class="t" data-key="ps3-v">Lowest CPC</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.76rem;"><span style="color:var(--text-muted);">Video</span><span style="color:var(--gold);font-family:'Space Mono',monospace;font-size:0.65rem;" class="t" data-key="ps4-v">+0.55pp CTR</span></div>
+          <div style="display:flex;justify-content:space-between;font-size:0.76rem;"><span style="color:var(--text-muted);">UGC</span><span style="color:var(--gold);font-family:'Space Mono',monospace;font-size:0.65rem;" class="t" data-key="ps5-v">+Engagement</span></div>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 <div class="divider"></div>
 
-<!-- ══════════════════════════════════════════
-     05 — CREATIVE SYSTEM
-══════════════════════════════════════════ -->
-<div class="cs-section reveal">
-  <p class="cs-eyebrow t" data-key="s05-eyebrow">05 — Creative System</p>
-  <h2 class="cs-h2 t" data-key="s05-h2">Modular Formats Built to<br><em>Test, Refresh & Scale</em></h2>
-  <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s05-lead">Rather than one-off campaigns, I built a modular creative system — formats adaptable by message, season, or region without starting from scratch. This compressed production cycles and multiplied the experiments the team could run per quarter.</p>
-
-  <div class="cs-img-grid col4" style="margin-bottom:32px;">
-    <div class="cs-img-item" style="aspect-ratio:1;">
-      <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png" alt="Static Ad" loading="lazy">
-      <div class="cs-img-overlay"><span class="t" data-key="img1-overlay">Static — Zero Fee</span></div>
-    </div>
-    <div class="cs-img-item" style="aspect-ratio:1;">
-      <img src="https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png" alt="Video Ad" loading="lazy">
-      <div class="cs-img-overlay"><span class="t" data-key="img2-overlay">Video Creative</span></div>
-    </div>
-    <div class="cs-img-item" style="aspect-ratio:1;">
-      <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png" alt="Dashboard" loading="lazy">
-      <div class="cs-img-overlay"><span class="t" data-key="img3-overlay">AI Dashboard</span></div>
-    </div>
-    <div class="cs-img-item" style="aspect-ratio:1;">
-      <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png" alt="Carousel" loading="lazy">
-      <div class="cs-img-overlay"><span class="t" data-key="img4-overlay">Carousel — How to Sign Up</span></div>
-    </div>
-  </div>
-
-  <div class="cs-creative-grid">
-    <div class="cs-creative-card">
-      <div class="cs-creative-icon">01</div>
-      <h4 class="t" data-key="cc1-title">Static Ads</h4>
-      <p class="t" data-key="cc1-desc">Core of the acquisition funnel. High-impact single-image formats optimized for Meta and Google placements. The "High Demand + Guaranteed Delivery" angle represented ~74% of total national investment in peak periods.</p>
-    </div>
-    <div class="cs-creative-card">
-      <div class="cs-creative-icon">02</div>
-      <h4 class="t" data-key="cc2-title">Video Ads</h4>
-      <p class="t" data-key="cc2-desc">Short-form with strong opening hooks. Consistently outperformed static in CTR — generating +0.55 p.p. above campaign average. The "Eupreendedorismo" format became a recurring top performer across multiple cities.</p>
-    </div>
-    <div class="cs-creative-card">
-      <div class="cs-creative-icon">03</div>
-      <h4 class="t" data-key="cc3-title">Carousel — How to Sign Up</h4>
-      <p class="t" data-key="cc3-desc">Step-by-step onboarding format in static and dynamic template versions. Reduced perceived complexity of joining the platform, tested in both static and template variants.</p>
-    </div>
-    <div class="cs-creative-card">
-      <div class="cs-creative-icon">04</div>
-      <h4 class="t" data-key="cc4-title">AI-Assisted Assets</h4>
-      <p class="t" data-key="cc4-desc">AI Bag Delivery launched April 2nd via Smartly.io — generated 1,800+ sign-ups with a $19K investment. First AI-native creative format in the pipeline. CPC: $0.05.</p>
-    </div>
-    <div class="cs-creative-card">
-      <div class="cs-creative-icon">05</div>
-      <h4 class="t" data-key="cc5-title">UGC Concepts</h4>
-      <p class="t" data-key="cc5-desc">Creator-style content designed to build peer trust with restaurant owners — a different emotional register from performance-first formats. Introduced in Q4 as part of the UGC Curios series.</p>
-    </div>
-    <div class="cs-creative-card">
-      <div class="cs-creative-icon">06</div>
-      <h4 class="t" data-key="cc6-title">Localized Versions</h4>
-      <p class="t" data-key="cc6-desc">City-specific adaptations for the 12-city expansion pack. Regional visual cues and adjusted messaging without full production per market — Instagram Feed and Stories were top placements across all cities.</p>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- ══════════════════════════════════════════
-     06 — MESSAGING EXPERIMENTATION
-══════════════════════════════════════════ -->
+<!-- 05 CREATIVE SYSTEM -->
 <div class="cs-section alt reveal">
-  <p class="cs-eyebrow t" data-key="s06-eyebrow">06 — Messaging</p>
-  <h2 class="cs-h2 t" data-key="s06-h2">Finding the Angle That Makes<br><em>a Restaurant Owner Say Yes</em></h2>
+  <p class="cs-eyebrow t" data-key="s06-ey">05 — Creative System</p>
+  <h2 class="cs-h2 t" data-key="s06-h2">Modular Formats Built to<br><em>Test, Refresh &amp; Scale</em></h2>
   <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s06-lead">I ran structured copystorming sessions to identify which emotional and business-driven triggers drove action among restaurant owners. Six messaging directions were tested simultaneously, tracked weekly across impressions, clicks, and conversion. The learning shaped creative allocation throughout the year.</p>
-
-  <div class="cs-msg-grid">
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="msg1">High Demand + Guaranteed Delivery</span></div>
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="msg2">Zero Monthly Fee</span></div>
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="msg3">Consumer Month</span></div>
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="msg4">Easter Opportunity</span></div>
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="msg5">Entrepreneur Mindset</span></div>
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="msg6">Carnival</span></div>
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="msg7">Café da Manhã</span></div>
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="msg8">World Cup</span></div>
-  </div>
-
-  <div style="margin-top:32px;">
-    <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:14px;" class="t" data-key="perf-signal-label2">Performance Signal</div>
-    <div class="cs-chart">
-      <div class="cs-bar-row"><span class="cs-bar-label t" data-key="sig1-label">"High Demand" Angle</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:95%"></div></div><span class="cs-bar-val t" data-key="sig1-val">~74% Imp.</span></div>
-      <div class="cs-bar-row"><span class="cs-bar-label t" data-key="sig2-label">Video Format</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:88%"></div></div><span class="cs-bar-val t" data-key="sig2-val">+0.55 CTR</span></div>
-      <div class="cs-bar-row"><span class="cs-bar-label t" data-key="sig3-label">Seasonal Msgs</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:82%"></div></div><span class="cs-bar-val t" data-key="sig3-val">+CTR Spike</span></div>
-      <div class="cs-bar-row"><span class="cs-bar-label t" data-key="sig4-label">Generic Copy</span><div class="cs-bar-track"><div class="cs-bar-fill" style="width:32%"></div></div><span class="cs-bar-val t" data-key="sig4-val">Baseline</span></div>
-    </div>
+  <p class="cs-lead t" data-key="s06-lead">Instead of one-off campaigns, I built a modular creative system — formats adaptable by message, season, or region without starting from scratch. This compressed production cycles and multiplied experiments per quarter.</p>
+  <div class="cs-creative-grid">
+    <div class="cs-creative-card"><div class="cs-creative-icon">01</div><h4 class="t" data-key="cc1-t">Static Ads</h4><p class="t" data-key="cc1-d">Core of the acquisition funnel. The "High Demand + Guaranteed Delivery" angle represented ~74% of total national impressions in peak periods.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon">02</div><h4 class="t" data-key="cc2-t">Video Ads</h4><p class="t" data-key="cc2-d">Short-form with strong hooks. Consistently outperformed static in CTR — +0.55 p.p. above campaign average. Top format across multiple cities.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon">03</div><h4 class="t" data-key="cc3-t">Educational Carousel</h4><p class="t" data-key="cc3-d">"How to Sign Up" step-by-step format in static and template versions — reduced perceived complexity of joining the platform.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon">04</div><h4 class="t" data-key="cc4-t">AI-Assisted Assets</h4><p class="t" data-key="cc4-d">AI Bag Delivery via Smartly.io — first AI-native creative in the pipeline. Achieved the lowest CPC of the entire account at $0.05.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon">05</div><h4 class="t" data-key="cc5-t">UGC Concepts</h4><p class="t" data-key="cc5-d">Creator-style content to build peer trust with restaurant owners — a different emotional register from performance-first formats.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon">06</div><h4 class="t" data-key="cc6-t">Localized Versions</h4><p class="t" data-key="cc6-d">City-specific adaptations for the 12-city expansion — regional cues, adjusted messaging, no full production per market.</p></div>
   </div>
 </div>
-
 <div class="divider"></div>
 
-<!-- ══════════════════════════════════════════
-     07 — FAKE REFRESH
-══════════════════════════════════════════ -->
+<!-- 06 MESSAGING -->
 <div class="cs-section reveal">
-  <p class="cs-eyebrow t" data-key="s07-eyebrow">07 — Key Strategy</p>
-  <h2 class="cs-h2 t" data-key="s07-h2">Fake Refresh<br><em>Strategy</em></h2>
+  <p class="cs-eyebrow t" data-key="s07-ey">06 — Messaging</p>
+  <h2 class="cs-h2 t" data-key="s07-h2">Finding the Angle That Makes<br><em>a Restaurant Owner Say Yes</em></h2>
   <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s07-lead">When a high-performing ad starts to fatigue, the default is to rebuild it — but that resets the platform's learning phase, spikes CPC, and loses accumulated delivery efficiency. The Fake Refresh challenged that default: lightweight visual and copy updates preserved the ad's identity and platform learning while giving the algorithm a renewed signal. Validated with pre/post data across 7 cities simultaneously.</p>
+  <p class="cs-lead t" data-key="s07-lead">Structured copystorming sessions identified which emotional and business-driven triggers drove action. Six directions tested simultaneously, tracked weekly across impressions, clicks, and conversion.</p>
+  <div class="cs-msg-grid">
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="mg1">High Demand + Guaranteed Delivery</span></div>
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="mg2">Zero Monthly Fee</span></div>
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="mg3">Extra Earnings</span></div>
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="mg4">Seasonal Opportunity</span></div>
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="mg5">Entrepreneur Mindset</span></div>
+    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="mg6">Occasions</span></div>
+  </div>
+  <div class="cs-signal-grid">
+    <div class="cs-signal-card"><div class="cs-signal-icon">~74%</div><div><div class="cs-signal-title t" data-key="sg1-t">"High Demand" Angle</div><div class="cs-signal-desc t" data-key="sg1-d">Represented ~74% of total national impressions in the first test cycle — the highest volume driver across the account.</div></div></div>
+    <div class="cs-signal-card"><div class="cs-signal-icon">+0.55pp</div><div><div class="cs-signal-title t" data-key="sg2-t">Video Format</div><div class="cs-signal-desc t" data-key="sg2-d">CTR consistently above campaign average. Outperformed static going further down the funnel in every tested market.</div></div></div>
+    <div class="cs-signal-card"><div class="cs-signal-icon">23%</div><div><div class="cs-signal-title t" data-key="sg3-t">Seasonal Messages</div><div class="cs-signal-desc t" data-key="sg3-d">Seasonal pack drove 23% of total sign-ups during the campaign window — highest CTR spikes of the year.</div></div></div>
+    <div class="cs-signal-card"><div class="cs-signal-icon" style="font-size:0.9rem;min-width:56px;padding-top:4px;">BASE<br>LINE</div><div><div class="cs-signal-title t" data-key="sg4-t">Generic Copy</div><div class="cs-signal-desc t" data-key="sg4-d">Lowest performance across all metrics. Served as the control baseline — validated the advantage of every specific angle tested.</div></div></div>
+  </div>
+</div>
+<div class="divider"></div>
 
-  <div class="cs-ba" style="margin-bottom:24px;">
+<!-- 07 FAKE REFRESH -->
+<div class="cs-section alt reveal">
+  <p class="cs-eyebrow t" data-key="s08-ey">07 — Key Strategy</p>
+  <h2 class="cs-h2 t" data-key="s08-h2">Fake Refresh<br><em>Strategy</em></h2>
+  <div class="cs-accent-line"></div>
+  <p class="cs-lead t" data-key="s08-l1">The strategy emerged from a pattern observed through Smartly.io's creative feed: by monitoring performance changes across creatives published simultaneously via the platform's live feed, it became clear that lightweight visual updates on top-performing ads were extending delivery without triggering a new learning phase.</p>
+  <p class="cs-lead t" data-key="s08-l2">Instead of rebuilding ads from scratch — which resets platform learning, spikes CPC, and loses accumulated delivery efficiency — Fake Refresh applied BG swaps and copy angle updates to preserve the ad's identity while giving the algorithm a renewed signal.</p>
+  <div class="cs-ba">
     <div class="cs-ba-col">
-      <div class="cs-ba-label t" data-key="ba-before">Before — Original</div>
+      <div class="cs-ba-label t" data-key="ba-bef">Before — Original</div>
       <div class="cs-ba-item"><span class="t" data-key="ba-b1">Same background across all variants</span></div>
       <div class="cs-ba-item"><span class="t" data-key="ba-b2">Single copy angle per campaign</span></div>
       <div class="cs-ba-item"><span class="t" data-key="ba-b3">Fatigue building, CPC rising</span></div>
-      <div class="cs-ba-item"><span class="t" data-key="ba-b4">Platform learning reset on full rebuild</span></div>
+      <div class="cs-ba-item"><span class="t" data-key="ba-b4">Learning reset on full rebuild</span></div>
     </div>
     <div class="cs-ba-col after">
-      <div class="cs-ba-label t" data-key="ba-after">After — Fake Refresh</div>
+      <div class="cs-ba-label t" data-key="ba-aft">After — Fake Refresh</div>
       <div class="cs-ba-item"><span class="t" data-key="ba-a1">BG swap using Template Winner</span></div>
       <div class="cs-ba-item"><span class="t" data-key="ba-a2">New persona/angle refreshed in copy</span></div>
       <div class="cs-ba-item"><span class="t" data-key="ba-a3">Visual update maintains ad identity</span></div>
       <div class="cs-ba-item"><span class="t" data-key="ba-a4">Platform learning preserved → lower CPC</span></div>
     </div>
   </div>
-
-  <div class="cs-4col">
-    <div class="cs-metric-card">
-      <div class="cs-metric-num">+22%</div>
-      <div class="cs-metric-title t" data-key="m1-title">Reach</div>
-      <div class="cs-metric-desc t" data-key="m1-desc">Extended delivery to new audience segments. Source: Smartly.</div>
-    </div>
-    <div class="cs-metric-card">
-      <div class="cs-metric-num">+17%</div>
-      <div class="cs-metric-title t" data-key="m2-title">Clicks</div>
-      <div class="cs-metric-desc t" data-key="m2-desc">Engagement recovered post-refresh. Platform learning maintained throughout.</div>
-    </div>
-    <div class="cs-metric-card">
-      <div class="cs-metric-num">-9%</div>
-      <div class="cs-metric-title t" data-key="m3-title">CPC</div>
-      <div class="cs-metric-desc t" data-key="m3-desc">Cost per click reduced. Learning preserved, costs stabilized after update.</div>
-    </div>
-    <div class="cs-metric-card">
-      <div class="cs-metric-num">+14%</div>
-      <div class="cs-metric-title t" data-key="m4-title">Engagement</div>
-      <div class="cs-metric-desc t" data-key="m4-desc">Higher engagement with lower CPM and CPC. Only +6% more spend required.</div>
+  <div class="cs-highlight-box">
+    <div class="cs-hb-grid">
+      <div><div class="cs-highlight-num">+22%</div><div class="cs-highlight-title t" data-key="fr1-t">Reach</div><div class="cs-highlight-desc t" data-key="fr1-d">Extended to new segments without learning reset</div></div>
+      <div><div class="cs-highlight-num">+17%</div><div class="cs-highlight-title t" data-key="fr2-t">Clicks</div><div class="cs-highlight-desc t" data-key="fr2-d">Engagement recovered post-refresh</div></div>
+      <div><div class="cs-highlight-num">-9%</div><div class="cs-highlight-title t" data-key="fr3-t">CPC</div><div class="cs-highlight-desc t" data-key="fr3-d">Costs reduced, learning maintained</div></div>
+      <div><div class="cs-highlight-num">260%</div><div class="cs-highlight-title t" data-key="fr4-t">Clicks vs. All Others</div><div class="cs-highlight-desc t" data-key="fr4-d">Text Swap winner vs. all image creatives combined</div></div>
     </div>
   </div>
-
-  <div class="cs-insight-box" style="margin-top:20px;">
-    <p class="t" data-key="refresh-insight"><strong>Key insight:</strong> The "Text Swap" variant (ID 151) became the absolute winner — on its own, it generated 4,000 clicks, a volume 260% higher than the sum of all other image creatives combined (1,100 clicks). The national creative converted 61% of total share clicks across 7 tested cities.</p>
+  <div class="cs-insight-box">
+    <p class="t" data-key="fr-insight"><strong>Key insight:</strong> The national creative converted 61% of total share clicks across 7 tested cities simultaneously, confirming that the national + refresh approach outperformed city-only executions in most markets.</p>
   </div>
 </div>
-
 <div class="divider"></div>
 
-<!-- ══════════════════════════════════════════
-     08 — SEASONAL CAMPAIGNS
-══════════════════════════════════════════ -->
-<div class="cs-section alt reveal">
-  <p class="cs-eyebrow t" data-key="s08-eyebrow">08 — Seasonal</p>
-  <h2 class="cs-h2 t" data-key="s08-h2">The Moments That<br><em>Made the Funnel Move</em></h2>
+<!-- 08 SEASONAL -->
+<div class="cs-section reveal">
+  <p class="cs-eyebrow t" data-key="s09-ey">08 — Seasonal</p>
+  <h2 class="cs-h2 t" data-key="s09-h2">The Moments That<br><em>Made the Funnel Move</em></h2>
   <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s08-lead">Seasonal campaigns consistently became top-performing acquisition assets — reducing fatigue while increasing engagement and conversion efficiency. The key: combining seasonal relevance with a clear business value proposition for the restaurant owner.</p>
-
+  <p class="cs-lead t" data-key="s09-lead">Seasonal campaigns consistently outperformed evergreen assets — combining timing, relevance, and a clear business value proposition for the restaurant owner.</p>
   <div class="cs-season-grid">
     <div class="cs-season-card">
-      <div class="cs-season-header">
-        <h3 class="t" data-key="sea1-title">Easter Campaign</h3>
-        <p class="t" data-key="sea1-sub">Q1 · National · Meta</p>
-      </div>
+      <div class="cs-season-header"><h3 class="t" data-key="se1-t">Easter Campaign</h3><p class="t" data-key="se1-s">Q1 · National · Meta</p></div>
       <div class="cs-season-body">
-        <p class="t" data-key="sea1-desc">Launched March 5th with "sell more at Easter with zero monthly fee" messaging. Combined urgency with seasonal visual identity. Migrated to fake refresh on March 17th to tackle fatigue.</p>
-        <span class="cs-season-tag">43K investment</span>
-        <span class="cs-season-tag">21M impressions</span>
-        <span class="cs-season-tag">126K clicks</span>
-        <span class="cs-season-tag">3,600 sign-ups</span>
-        <span class="cs-season-tag t" data-key="sea1-tag">$12.05 cost/sign-up</span>
-        <span class="cs-season-tag t" data-key="sea1-tag2">11% below avg</span>
+        <p class="t" data-key="se1-d">Launched with "sell more at Easter with zero monthly fee" messaging. Migrated to fake refresh mid-campaign, extending performance and stabilizing cost efficiency through April.</p>
+        <span class="cs-season-tag t" data-key="se1-t1">23% of total sign-ups</span><span class="cs-season-tag t" data-key="se1-t2">−11% vs account avg CPSU</span><span class="cs-season-tag t" data-key="se1-t3">Top creative of the period</span>
       </div>
     </div>
     <div class="cs-season-card">
-      <div class="cs-season-header">
-        <h3 class="t" data-key="sea2-title">Consumer Month</h3>
-        <p class="t" data-key="sea2-sub">Q1 · National · Meta</p>
-      </div>
+      <div class="cs-season-header"><h3 class="t" data-key="se2-t">Consumer Month</h3><p class="t" data-key="se2-s">Q1 · National · Meta</p></div>
       <div class="cs-season-body">
-        <p class="t" data-key="sea2-desc">Launched March 3rd combining consumer demand with zero monthly fee offer. Migrated from static to template format (fake refresh) on March 20th — stabilized performance through month-end.</p>
-        <span class="cs-season-tag">$6K investment</span>
-        <span class="cs-season-tag">1.3M impressions</span>
-        <span class="cs-season-tag">11K clicks</span>
-        <span class="cs-season-tag">317 sign-ups</span>
+        <p class="t" data-key="se2-d">Combined consumer demand momentum with zero monthly fee offer. Fake refresh applied on day 17 — switched from static to template format, stabilizing performance through month-end.</p>
+        <span class="cs-season-tag t" data-key="se2-t1">Fake refresh mid-flight</span><span class="cs-season-tag t" data-key="se2-t2">Performance stabilized</span>
       </div>
     </div>
     <div class="cs-season-card">
-      <div class="cs-season-header">
-        <h3 class="t" data-key="sea3-title">AI Bag Delivery</h3>
-        <p class="t" data-key="sea3-sub">Q2 · National · Meta</p>
-      </div>
+      <div class="cs-season-header"><h3 class="t" data-key="se3-t">AI Bag Delivery</h3><p class="t" data-key="se3-s">Q2 · National · Meta</p></div>
       <div class="cs-season-body">
-        <p class="t" data-key="sea3-desc">Launched April 2nd. First AI-native creative in the pipeline — generated strong acquisition results with highly efficient cost-per-sign-up, significantly below account benchmarks.</p>
-        <span class="cs-season-tag">$19K investment</span>
-        <span class="cs-season-tag">1,800+ sign-ups</span>
-        <span class="cs-season-tag">$0.05 CPC</span>
-        <span class="cs-season-tag t" data-key="sea3-tag">AI-first format</span>
+        <p class="t" data-key="se3-d">First AI-native creative in the pipeline. Generated strong acquisition volume with the lowest CPC of the entire account — significantly below all active campaign benchmarks.</p>
+        <span class="cs-season-tag">$0.05 CPC</span><span class="cs-season-tag t" data-key="se3-t1">Lowest CPC of the account</span><span class="cs-season-tag t" data-key="se3-t2">AI-first format</span>
       </div>
     </div>
   </div>
 </div>
-
 <div class="divider"></div>
 
-<!-- ══════════════════════════════════════════
-     09 — REGIONAL INSIGHTS
-══════════════════════════════════════════ -->
-<div class="cs-section reveal">
-  <p class="cs-eyebrow t" data-key="s09-eyebrow">09 — Regional</p>
-  <h2 class="cs-h2 t" data-key="s09-h2">One Country,<br><em>Many Audiences</em></h2>
-  <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s09-lead">National campaigns established the base. Regional data revealed that different cities had distinct conversion triggers — which shaped creative adaptation for the 12-city expansion pack. Instagram Feed and Stories were top placements across all markets. Video led CPC efficiency in most cities.</p>
-
-  <div class="cs-regions">
-    <div class="cs-region-card">
-      <div class="cs-region-city">São Paulo</div>
-      <p class="t" data-key="reg1-desc">Seasonal creatives drove the highest engagement. Easter "Chocolate" creative secured #1 position. Predominantly male audience, 18–34 age group. Instagram stories and feed were top placements.</p>
-    </div>
-    <div class="cs-region-card">
-      <div class="cs-region-city">Rio de Janeiro</div>
-      <p class="t" data-key="reg2-desc">Consumer Month campaigns had stronger traction. Seasonal relevance combined with lifestyle-oriented messaging aligned with local culture. Male audience drove the majority of clicks.</p>
-    </div>
-    <div class="cs-region-card">
-      <div class="cs-region-city">Manaus</div>
-      <p class="t" data-key="reg3-desc">Business value and entrepreneurship messaging outperformed. "Eupreendedorismo" video combined sweet production with Easter, driving strong results. Instagram placements were top-performing.</p>
-    </div>
-    <div class="cs-region-card">
-      <div class="cs-region-city">Brasília</div>
-      <p class="t" data-key="reg4-desc">One of the lowest spend-volume cities, but notable: the only market where static creatives had a lower CPC than video — a unique signal for this audience. App introduction creative highlighted zero monthly fee.</p>
-    </div>
-    <div class="cs-region-card">
-      <div class="cs-region-city">Fortaleza</div>
-      <p class="t" data-key="reg5-desc">National ad consistently outperformed city-specific creative. Running the national campaign proved the better strategy for this market. Video led CPC efficiency with lowest cost per engagement.</p>
-    </div>
-    <div class="cs-region-card">
-      <div class="cs-region-city">Porto Alegre</div>
-      <p class="t" data-key="reg6-desc">ROI-focused and business-value messaging resonated with the entrepreneurial market profile. Video led CPC and engagement with lowest cost per engagement throughout the period.</p>
-    </div>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-<!-- ══════════════════════════════════════════
-     10 — RESULTS
-══════════════════════════════════════════ -->
+<!-- 09 REGIONAL -->
 <div class="cs-section alt reveal">
-  <p class="cs-eyebrow t" data-key="s10-eyebrow">10 — Results</p>
-  <h2 class="cs-h2 t" data-key="s10-h2">What the System<br><em>Delivered</em></h2>
+  <p class="cs-eyebrow t" data-key="s10-ey">09 — Regional</p>
+  <h2 class="cs-h2 t" data-key="s10-h2">One Country,<br><em>Many Audiences</em></h2>
   <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s10-lead">Across seasonal campaigns, fake refresh cycles, copystorming tests, and the 12-city expansion, the experimentation pipeline consistently outperformed business-as-usual creative — in reach, efficiency, and sign-up volume.</p>
-
-  <div class="cs-result-grid">
-    <div class="cs-result-card">
-      <div class="cs-result-num">+22%</div>
-      <div class="cs-result-title t" data-key="res1-title">Reach</div>
-      <div class="cs-result-desc t" data-key="res1-desc">After Fake Refresh strategy applied. Extended delivery to new audience segments without resetting platform learning.</div>
-      <div class="cs-result-source">Source: Smartly</div>
-    </div>
-    <div class="cs-result-card">
-      <div class="cs-result-num">+17%</div>
-      <div class="cs-result-title t" data-key="res2-title">Clicks</div>
-      <div class="cs-result-desc t" data-key="res2-desc">Engagement recovered post-refresh. Platform learning maintained throughout the entire cycle.</div>
-      <div class="cs-result-source">Source: Smartly</div>
-    </div>
-    <div class="cs-result-card">
-      <div class="cs-result-num">-9%</div>
-      <div class="cs-result-title t" data-key="res3-title">CPC</div>
-      <div class="cs-result-desc t" data-key="res3-desc">Cost per click reduced after refresh. Learning preserved, costs stabilized. Only +6% more spend to achieve all gains.</div>
-      <div class="cs-result-source">Source: Smartly</div>
-    </div>
-    <div class="cs-result-card">
-      <div class="cs-result-num">3,600</div>
-      <div class="cs-result-title t" data-key="res4-title">Sign-Ups · Easter</div>
-      <div class="cs-result-desc t" data-key="res4-desc">$43K investment · 21M impressions. $12.05 cost per sign-up — 11% below the account average of $13.52.</div>
-      <div class="cs-result-source">Source: Smartly</div>
-    </div>
-    <div class="cs-result-card">
-      <div class="cs-result-num">1,800+</div>
-      <div class="cs-result-title t" data-key="res5-title">Sign-Ups · AI Bag</div>
-      <div class="cs-result-desc t" data-key="res5-desc">$19K investment · $0.05 CPC. First AI-native creative in the pipeline, significantly below account benchmarks.</div>
-      <div class="cs-result-source">Source: Smartly</div>
-    </div>
-    <div class="cs-result-card">
-      <div class="cs-result-num">23%</div>
-      <div class="cs-result-title t" data-key="res6-title">of Total Sign-Ups</div>
-      <div class="cs-result-desc t" data-key="res6-desc">Driven by the Easter seasonal pack alone during the campaign window. "Chocolate" asset CPSU: $8.94 — lowest of the period.</div>
-      <div class="cs-result-source">Source: Smartly</div>
-    </div>
-  </div>
-
-  <div class="cs-insight-box">
-    <p class="t" data-key="results-insight"><strong>The proof:</strong> In the period before vs. after Fake Refresh + Copystorming — with only +6% more spend, the operation achieved +22% reach, +17% clicks, and +14% engagement, with lower CPM and CPC. Creative strategy, not budget, drove the gains.</p>
+  <p class="cs-lead t" data-key="s10-lead">National campaigns set the base. Regional data revealed distinct conversion triggers per city — shaping creative adaptation for the 12-city expansion. Instagram Feed and Stories led across all markets.</p>
+  <div class="cs-regions">
+    <div class="cs-region-card"><div class="cs-region-city">São Paulo</div><p class="t" data-key="rg1">Seasonal creatives drove the highest engagement. Easter "Chocolate" asset secured #1 position in the period.</p></div>
+    <div class="cs-region-card"><div class="cs-region-city">Rio de Janeiro</div><p class="t" data-key="rg2">Consumer Month had the strongest traction. Lifestyle-oriented messaging aligned better with local culture than ROI angles.</p></div>
+    <div class="cs-region-card"><div class="cs-region-city">Manaus</div><p class="t" data-key="rg3">Entrepreneurship + seasonal combination outperformed. Video format led both CPC and engagement throughout the period.</p></div>
+    <div class="cs-region-card"><div class="cs-region-city">Brasília</div><p class="t" data-key="rg4">Only market where static had lower CPC than video — a unique audience signal that informed creative allocation for this city.</p></div>
+    <div class="cs-region-card"><div class="cs-region-city">Fortaleza</div><p class="t" data-key="rg5">National creative consistently outperformed city-specific versions. Running the national ad was the optimal strategy for this market.</p></div>
+    <div class="cs-region-card"><div class="cs-region-city">Porto Alegre</div><p class="t" data-key="rg6">ROI-focused messaging resonated with the entrepreneurial profile. Video led CPC efficiency with the lowest cost per engagement.</p></div>
   </div>
 </div>
-
 <div class="divider"></div>
 
-<!-- ══════════════════════════════════════════
-     11 — MY ROLE
-══════════════════════════════════════════ -->
+<!-- 10 MY ROLE -->
 <div class="cs-section reveal">
   <div class="cs-2col">
     <div>
-      <p class="cs-eyebrow t" data-key="s11-eyebrow">11 — Role</p>
+      <p class="cs-eyebrow t" data-key="s11-ey">10 — Role</p>
       <h2 class="cs-h2 t" data-key="s11-h2">My Role<br><em>&amp; Impact</em></h2>
       <div class="cs-accent-line"></div>
-      <p class="cs-lead t" data-key="s11-lead1">I owned creative strategy end-to-end — from structuring the experimentation roadmap and running copystorming sessions, to analyzing biweekly performance data and presenting recommendations to stakeholders across Growth, CRM, and BI.</p>
-      <p class="cs-lead t" data-key="s11-lead2">Every brief had a hypothesis. Every campaign had a learning to extract. Every result fed back into the next cycle.</p>
+      <p class="cs-lead t" data-key="s11-l1">I owned creative strategy end-to-end — from structuring the experimentation roadmap and running copystorming sessions, to analyzing biweekly performance data and presenting recommendations to stakeholders.</p>
+      <p class="cs-lead t" data-key="s11-l2">Every brief had a hypothesis. Every campaign had a learning to extract. Every result fed the next cycle.</p>
     </div>
-    <div>
-      <div class="cs-card">
-        <div class="cs-card-label t" data-key="role-card-label">Core Responsibilities</div>
-        <ul class="cs-card-list">
-          <li class="t" data-key="role-1">Quarterly experimentation roadmap planning</li>
-          <li class="t" data-key="role-2">Messaging strategy &amp; structured copystorming</li>
-          <li class="t" data-key="role-3">Creative direction: static, video, carousel, UGC, AI</li>
-          <li class="t" data-key="role-4">Biweekly performance analysis &amp; reporting (WoW)</li>
-          <li class="t" data-key="role-5">Seasonal campaign planning &amp; execution</li>
-          <li class="t" data-key="role-6">Fake refresh methodology — national + 7 cities</li>
-          <li class="t" data-key="role-7">Localized creative adaptation for 12-city expansion</li>
-          <li class="t" data-key="role-8">AI-assisted creative exploration via Smartly.io</li>
-          <li class="t" data-key="role-9">Cross-functional collaboration: Growth · CRM · BI · Media Buyers · Agency</li>
-          <li class="t" data-key="role-10">Stakeholder presentations &amp; creative reviews</li>
-        </ul>
-      </div>
+    <div class="cs-card">
+      <div class="cs-card-label t" data-key="role-label">Core Responsibilities</div>
+      <ul class="cs-card-list">
+        <li class="t" data-key="rl1">Quarterly experimentation roadmap planning</li>
+        <li class="t" data-key="rl2">Messaging strategy &amp; structured copystorming</li>
+        <li class="t" data-key="rl3">Creative direction: static, video, carousel, UGC, AI</li>
+        <li class="t" data-key="rl4">Biweekly performance analysis &amp; WoW reporting</li>
+        <li class="t" data-key="rl5">Seasonal campaign planning &amp; execution</li>
+        <li class="t" data-key="rl6">Fake refresh methodology — national + 7 cities</li>
+        <li class="t" data-key="rl7">Localized adaptation — 12-city expansion</li>
+        <li class="t" data-key="rl8">AI-assisted creatives via Smartly.io</li>
+        <li class="t" data-key="rl9">Cross-functional: Growth · CRM · BI · Media · Agency</li>
+        <li class="t" data-key="rl10">Stakeholder presentations &amp; creative reviews</li>
+      </ul>
     </div>
   </div>
 </div>
-
 <div class="divider"></div>
 
-<!-- ══════════════════════════════════════════
-     12 — KEY LEARNINGS
-══════════════════════════════════════════ -->
+<!-- 11 KEY LEARNINGS -->
 <div class="cs-section alt reveal" style="background:var(--bg-mid);">
-  <div style="max-width:720px;margin:0 auto;text-align:center;">
-    <p class="cs-eyebrow t" data-key="s12-eyebrow" style="text-align:center;">12 — Learnings</p>
+  <div style="max-width:700px;margin:0 auto;text-align:center;">
+    <p class="cs-eyebrow t" data-key="s12-ey" style="text-align:center;">11 — Learnings</p>
     <h2 class="cs-h2 t" data-key="s12-h2">Key <em>Learnings</em></h2>
-    <div class="cs-accent-line" style="margin:0 auto 28px;"></div>
-    <p class="cs-lead t" data-key="s12-lead1" style="margin:0 auto 20px;text-align:center;">The biggest wins didn't come from a single brilliant creative — they came from a system that tested fast, learned consistently, and scaled what worked.</p>
-    <p class="cs-lead t" data-key="s12-lead2" style="margin:0 auto 32px;text-align:center;">In a B2B paid media environment, creative strategy is growth strategy. Seasonal relevance, lightweight refresh cycles, and structured messaging experimentation proved more effective than budget increases: with +6% more spend, the right creative system delivered +22% more reach.</p>
+    <div class="cs-accent-line" style="margin:0 auto 24px;"></div>
+    <p class="cs-lead t" data-key="s12-l1" style="margin:0 auto 18px;text-align:center;">The biggest wins didn't come from a single brilliant creative — they came from a system that tested fast, learned consistently, and scaled what worked.</p>
+    <p class="cs-lead t" data-key="s12-l2" style="margin:0 auto 28px;text-align:center;">In B2B paid media, creative strategy is growth strategy. With +6% more spend, the right system delivered +22% more reach — proof that efficiency comes from creative thinking, not budget.</p>
     <div class="cs-tags" style="justify-content:center;">
-      <span class="cs-tag">Creative Strategy</span>
-      <span class="cs-tag">B2B Communication</span>
-      <span class="cs-tag">Meta Ads</span>
-      <span class="cs-tag">Google Ads</span>
-      <span class="cs-tag">Copystorming</span>
-      <span class="cs-tag">Fake Refresh</span>
-      <span class="cs-tag">AI Creatives</span>
-      <span class="cs-tag t" data-key="tag-seasonal">Seasonal Campaigns</span>
-      <span class="cs-tag t" data-key="tag-local">Localization</span>
-      <span class="cs-tag">Smartly.io</span>
-      <span class="cs-tag t" data-key="tag-data">Data Analysis</span>
-      <span class="cs-tag t" data-key="tag-collab">Cross-functional Collaboration</span>
+      <span class="cs-tag">Creative Strategy</span><span class="cs-tag">B2B Communication</span>
+      <span class="cs-tag">Meta Ads</span><span class="cs-tag">Google Ads</span>
+      <span class="cs-tag">Copystorming</span><span class="cs-tag">Fake Refresh</span>
+      <span class="cs-tag">AI Creatives</span><span class="cs-tag t" data-key="tag-sea">Seasonal Campaigns</span>
+      <span class="cs-tag t" data-key="tag-loc">Localization</span><span class="cs-tag">Smartly.io</span>
+      <span class="cs-tag t" data-key="tag-data">Data Analysis</span><span class="cs-tag t" data-key="tag-col">Cross-functional</span>
     </div>
-    <div style="margin-top:44px;">
+    <div style="margin-top:40px;">
       <a href="https://lecorredato.github.io/portfolio/" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,162,0,0.3);padding:12px 28px;border-radius:4px;transition:background 0.2s,border-color 0.2s;" onmouseover="this.style.background='rgba(200,162,0,0.08)';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(200,162,0,0.3)'">
         <span class="t" data-key="back-btn">← Back to Portfolio</span>
       </a>
@@ -1092,359 +618,83 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   </div>
 </div>
 
-<!-- ══ FOOTER ══ -->
 <footer id="contact">
-  <p class="section-label" style="margin-bottom:10px"><span class="t" data-key="contact-label">Let's work together</span></p>
+  <p style="margin-bottom:10px;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;color:var(--gold3);text-transform:uppercase;"><span class="t" data-key="contact-label">Let's work together</span></p>
   <h2 class="footer-title t" data-key="contact-title">Get in Touch</h2>
   <p class="footer-sub">leticiacorredato@gmail.com &nbsp;·&nbsp; +55 11 96620-3733</p>
   <div class="social-links">
-    <a class="social-link" href="mailto:leticiacorredato@gmail.com" title="Email">
-      <img src="https://static.wixstatic.com/media/b72a24_8452b0d797424bc8a699146518b5ca5b~mv2.png" alt="Email">
-    </a>
-    <a class="social-link" href="https://api.whatsapp.com/send?phone=5511966203733" target="_blank" rel="noopener" title="WhatsApp">
-      <img src="https://static.wixstatic.com/media/b72a24_c23be33be3d64cec883c38cccee56207~mv2.png" alt="WhatsApp">
-    </a>
-    <a class="social-link" href="https://lecorredato.github.io/portfolio/blog" target="_blank" rel="noopener" title="Updates">
-      <img src="https://static.wixstatic.com/media/b72a24_d0eee958e53a4ab3845dafa3f008c13d~mv2.png" alt="Updates">
-    </a>
-    <a class="social-link" href="https://www.behance.net/portfoliolecorredato" target="_blank" rel="noopener" title="Behance">
-      <img src="https://static.wixstatic.com/media/b72a24_0db6f750f18c49c0af242f2f7cee2201~mv2.png" alt="Behance">
-    </a>
-    <a class="social-link" href="https://www.linkedin.com/in/lecorredato/" target="_blank" rel="noopener" title="LinkedIn">
-      <img src="https://static.wixstatic.com/media/b72a24_2ba7e9436bab46e4beb80551640ee0a3~mv2.png" alt="LinkedIn">
-    </a>
+    <a class="social-link" href="mailto:leticiacorredato@gmail.com" title="Email"><img src="https://static.wixstatic.com/media/b72a24_8452b0d797424bc8a699146518b5ca5b~mv2.png" alt="Email"></a>
+    <a class="social-link" href="https://api.whatsapp.com/send?phone=5511966203733" target="_blank" rel="noopener" title="WhatsApp"><img src="https://static.wixstatic.com/media/b72a24_c23be33be3d64cec883c38cccee56207~mv2.png" alt="WhatsApp"></a>
+    <a class="social-link" href="https://lecorredato.github.io/portfolio/blog" target="_blank" rel="noopener" title="Updates"><img src="https://static.wixstatic.com/media/b72a24_d0eee958e53a4ab3845dafa3f008c13d~mv2.png" alt="Updates"></a>
+    <a class="social-link" href="https://www.behance.net/portfoliolecorredato" target="_blank" rel="noopener" title="Behance"><img src="https://static.wixstatic.com/media/b72a24_0db6f750f18c49c0af242f2f7cee2201~mv2.png" alt="Behance"></a>
+    <a class="social-link" href="https://www.linkedin.com/in/lecorredato/" target="_blank" rel="noopener" title="LinkedIn"><img src="https://static.wixstatic.com/media/b72a24_2ba7e9436bab46e4beb80551640ee0a3~mv2.png" alt="LinkedIn"></a>
   </div>
-  <p class="footer-copy">
-    <span class="t" data-key="footer-dev">Developed by Leticia Corredato</span> &nbsp;·&nbsp; 2026
-  </p>
+  <p class="footer-copy"><span class="t" data-key="footer-dev">Developed by Leticia Corredato</span> &nbsp;·&nbsp; 2026</p>
 </footer>
 
 <script>
 'use strict';
-
-/* ══ TRANSLATIONS ══ */
-const T = {
-  /* NAV */
-  'nav-about':     { en:'About',       pt:'Sobre' },
-  'nav-case':      { en:'Cases',       pt:'Cases' },
-  'nav-portfolio': { en:'Portfolio',   pt:'Portfólio' },
-  'nav-exp':       { en:'Experience',  pt:'Experiência' },
-  'nav-contact':   { en:'Contact',     pt:'Contato' },
-
-  /* FOOTER */
-  'contact-label': { en:"Let's work together",            pt:'Vamos trabalhar juntos' },
-  'contact-title': { en:'Get in Touch',                   pt:'Entre em Contato' },
-  'footer-dev':    { en:'Developed by Leticia Corredato', pt:'Desenvolvido por Leticia Corredato' },
-
-  /* COVER */
-  'cover-tag':     { en:'Case Study · 2026',              pt:'Estudo de Caso · 2026' },
-  'cover-sub':     { en:'Creative Strategy for Restaurant Acquisition', pt:'Estratégia Criativa para Aquisição de Restaurantes' },
-  'cover-desc':    { en:'Paid media campaigns on Meta and Google to scale restaurant sign-ups across Brazil — built on creative experimentation, regional intelligence, and performance data.', pt:'Campanhas de mídia paga no Meta e Google para escalar o cadastro de restaurantes no Brasil — construídas sobre experimentação criativa, inteligência regional e dados de performance.' },
-  'meta-role-label':     { en:'Role',          pt:'Função' },
-  'meta-role-val':       { en:'Creative Strategist', pt:'Estrategista Criativa' },
-  'meta-focus-label':    { en:'Focus',         pt:'Foco' },
-  'meta-focus-val':      { en:'B2B Acquisition', pt:'Aquisição B2B' },
-  'meta-platforms-label':{ en:'Platforms',     pt:'Plataformas' },
-  'meta-markets-label':  { en:'Markets',       pt:'Mercados' },
-  'meta-markets-val':    { en:'National + 12 Cities', pt:'Nacional + 12 Cidades' },
-  'meta-year-label':     { en:'Year',          pt:'Ano' },
-
-  /* S02 OVERVIEW */
-  's02-eyebrow':   { en:'02 — Overview',       pt:'02 — Visão Geral' },
-  's02-h2':        { en:'The<br><em>Brief</em>', pt:'O<br><em>Briefing</em>' },
-  's02-lead1':     { en:'In January 2026, I joined 99Food as a Creative Strategist with one clear mandate: grow the restaurant partner base through B2B acquisition campaigns on Meta and Google.', pt:'Em janeiro de 2026, entrei na 99Food como Estrategista Criativa com um objetivo claro: expandir a base de parceiros restaurantes através de campanhas de aquisição B2B no Meta e Google.' },
-  's02-lead2':     { en:"The audience wasn't a typical consumer — it was a business owner deciding whether to trust a new platform with their livelihood. That required a different kind of creative thinking: messaging that spoke to business value, not just visual appeal.", pt:'O público não era um consumidor típico — era um empreendedor decidindo se confiaria em uma nova plataforma com o seu negócio. Isso exigia um pensamento criativo diferente: mensagens que falassem de valor para o negócio, não apenas de apelo visual.' },
-  's02-lead3':     { en:'My role connected creative strategy, performance analysis, and cross-functional collaboration — working alongside Growth, CRM, BI, and Media Buying teams.', pt:'Minha função conectou estratégia criativa, análise de performance e colaboração entre áreas — trabalhando junto aos times de Growth, CRM, BI e Mídia.' },
-  'card-resp-label':     { en:'Responsibilities', pt:'Responsabilidades' },
-  'resp-1': { en:'Creative direction & messaging strategy', pt:'Direção criativa e estratégia de mensagem' },
-  'resp-2': { en:'Quarterly experimentation roadmap',       pt:'Roadmap de experimentação trimestral' },
-  'resp-3': { en:'Performance analysis & reporting',        pt:'Análise de performance e relatórios' },
-  'resp-4': { en:'Seasonal campaign planning',              pt:'Planejamento de campanhas sazonais' },
-  'resp-5': { en:'Fake refresh methodology',                pt:'Metodologia de fake refresh' },
-  'resp-6': { en:'Localized creative adaptation',           pt:'Adaptação criativa regionalizada' },
-  'resp-7': { en:'Stakeholder presentations',               pt:'Apresentações para stakeholders' },
-  'resp-8': { en:'Cross-functional collaboration',          pt:'Colaboração entre times' },
-  'card-platforms-label':{ en:'Platforms', pt:'Plataformas' },
-  'card-teams-label':    { en:'Teams',     pt:'Times' },
-
-  /* S03 CHALLENGE */
-  's03-eyebrow':   { en:'03 — The Challenge', pt:'03 — O Desafio' },
-  's03-h2':        { en:'Three Problems,<br><em>One System</em>', pt:'Três Problemas,<br><em>Um Sistema</em>' },
-  's03-lead':      { en:'Scaling B2B acquisition through paid media comes with compounding constraints. The environment demanded creative efficiency above all else — less budget waste, more learning signal, faster iteration.', pt:'Escalar aquisição B2B via mídia paga envolve restrições que se acumulam. O ambiente exigia eficiência criativa acima de tudo — menos desperdício de verba, mais sinal de aprendizado, iteração mais rápida.' },
-  'ch1-title': { en:'Rising CPC',          pt:'CPC em Alta' },
-  'ch1-desc':  { en:'A +27% increase in overall market CPC during Q1 made creative efficiency the primary lever for protecting acquisition costs.', pt:'Um aumento de +27% no CPC geral de mercado no Q1 tornou a eficiência criativa o principal alavanca para proteger os custos de aquisição.' },
-  'ch2-title': { en:'Creative Fatigue',    pt:'Saturação de Criativo' },
-  'ch2-desc':  { en:'High-frequency campaigns burned through assets fast. Without a refresh strategy, performance would plateau and costs would spike.', pt:'Campanhas de alta frequência esgotavam os criativos rapidamente. Sem uma estratégia de refresh, a performance estagnaria e os custos subiriam.' },
-  'ch3-title': { en:'Regional Complexity', pt:'Complexidade Regional' },
-  'ch3-desc':  { en:'Expanding to 12 new cities meant each market needed relevant messaging — but production couldn\'t scale 1:1 with geography.', pt:'Expandir para 12 novas cidades significava que cada mercado precisava de mensagens relevantes — mas a produção não podia escalar 1:1 com a geografia.' },
-  'ch4-title': { en:'B2B Specificity',     pt:'Especificidade B2B' },
-  'ch4-desc':  { en:'Restaurant owners don\'t respond to consumer logic. Every angle had to answer one question: "What\'s in it for my business?"', pt:'Donos de restaurante não respondem à lógica do consumidor. Cada ângulo precisava responder: "O que isso faz pelo meu negócio?"' },
-
-  /* S04 ROADMAP */
-  's04-eyebrow': { en:'04 — Strategic Logic', pt:'04 — Lógica Estratégica' },
-  's04-h2':      { en:'Before Building Creatives,<br><em>We Built a System</em>', pt:'Antes de Criar Criativos,<br><em>Construímos um Sistema</em>' },
-  's04-lead':    { en:'Instead of producing campaigns reactively, I structured a quarterly experimentation pipeline — each phase with a hypothesis, a creative variable, and a performance signal to validate. Every asset had a reason to exist. Every result fed the next cycle.', pt:'Em vez de produzir campanhas de forma reativa, estruturei um pipeline de experimentação trimestral — cada fase com uma hipótese, uma variável criativa e um sinal de performance para validar. Cada ativo tinha uma razão de existir. Cada resultado alimentava o próximo ciclo.' },
-  'roadmap-caption': { en:'Restaurant Roadmap Pipeline — 99 Creative Strategy Kick-off', pt:'Pipeline do Roadmap de Restaurantes — Kick-off de Estratégia Criativa 99' },
-  'tl1-phase': { en:'Phase 1 · Q1', pt:'Fase 1 · T1' },
-  'tl1-title': { en:'Easter + Fake Refresh Launch', pt:'Páscoa + Lançamento do Fake Refresh' },
-  'tl1-desc':  { en:'Seasonal creative tying Easter consumer demand to partner growth. Parallel test: background swap on top-performing ad to extend delivery without resetting platform learning.', pt:'Criativo sazonal conectando a demanda da Páscoa à oportunidade de crescimento para parceiros. Teste paralelo: troca de fundo no anúncio top performer para estender a entrega sem resetar o aprendizado da plataforma.' },
-  'tl2-phase': { en:'Phase 2 · Q2', pt:'Fase 2 · T2' },
-  'tl2-title': { en:'AI Bag Delivery + Carousel How-to', pt:'IA Bag Delivery + Carousel Como Cadastrar' },
-  'tl2-desc':  { en:'First AI-assisted creative format introduced. "How to Sign Up" carousel launched in static and template versions to reduce friction in the onboarding message.', pt:'Primeiro formato criativo com IA introduzido. Carousel "Como se Cadastrar" lançado em versão estática e template para reduzir atrito na mensagem de onboarding.' },
-  'tl3-phase': { en:'Phase 3 · Q3', pt:'Fase 3 · T3' },
-  'tl3-title': { en:'12 New Cities Launch Pack', pt:'Pack de Lançamento em 12 Novas Cidades' },
-  'tl3-desc':  { en:'Coordinated Meta + Google pack for regional expansion. AI Dashboard Growth creative introduced to communicate platform traction to prospective partners.', pt:'Pack coordenado Meta + Google para expansão regional. Criativo IA Dashboard Growth introduzido para comunicar o crescimento da plataforma a potenciais parceiros.' },
-  'tl4-phase': { en:'Phase 4 · Q4', pt:'Fase 4 · T4' },
-  'tl4-title': { en:'UGC + Commission Fee Campaign', pt:'UGC + Campanha de Taxa de Comissão' },
-  'tl4-desc':  { en:'UGC Curios format introduced to build peer trust. Mother\'s Day seasonal + Commission Fee + Delivery campaign closed the annual cycle.', pt:'Formato UGC Curios introduzido para construir confiança entre pares. Campanha sazonal Dia das Mães + Taxa de Comissão + Entrega fechou o ciclo anual.' },
-  'campaign-types-label': { en:'Campaign Types', pt:'Tipos de Campanha' },
-  'ct1': { en:'Seasonal', pt:'Sazonal' },
-  'ct2': { en:'AI Creatives', pt:'Criativos IA' },
-  'ct3': { en:'Launch Pack', pt:'Pack de Lançamento' },
-  'ct4': { en:'Evergreen', pt:'Evergreen' },
-  'ct5': { en:'Regional', pt:'Regional' },
-  'perf-signal-label': { en:'Performance Signal', pt:'Sinal de Performance' },
-  'bar1-label': { en:'Seasonal', pt:'Sazonal' },
-  'bar1-val':   { en:'Top Perf.', pt:'Top Perf.' },
-  'bar2-val':   { en:'Lower CPC', pt:'CPC Menor' },
-  'bar3-label': { en:'AI Creatives', pt:'Criativos IA' },
-  'bar3-val':   { en:'High CTR', pt:'CTR Alto' },
-  'bar4-val':   { en:'+Engage', pt:'+Engaj.' },
-
-  /* S05 CREATIVE SYSTEM */
-  's05-eyebrow': { en:'05 — Creative System', pt:'05 — Sistema Criativo' },
-  's05-h2':      { en:'Modular Formats Built to<br><em>Test, Refresh & Scale</em>', pt:'Formatos Modulares para<br><em>Testar, Atualizar e Escalar</em>' },
-  's05-lead':    { en:'Rather than one-off campaigns, I built a modular creative system — formats adaptable by message, season, or region without starting from scratch. This compressed production cycles and multiplied the experiments the team could run per quarter.', pt:'Em vez de campanhas pontuais, construí um sistema criativo modular — formatos adaptáveis por mensagem, temporada ou região sem começar do zero. Isso comprimiu os ciclos de produção e multiplicou os experimentos que o time conseguia rodar por trimestre.' },
-  'img1-overlay': { en:'Static — Zero Fee', pt:'Estático — Taxa Zero' },
-  'img2-overlay': { en:'Video Creative', pt:'Vídeo Criativo' },
-  'img3-overlay': { en:'AI Dashboard', pt:'Dashboard IA' },
-  'img4-overlay': { en:'Carousel — How to Sign Up', pt:'Carrossel — Como se Cadastrar' },
-  'cc1-title': { en:'Static Ads', pt:'Anúncios Estáticos' },
-  'cc1-desc':  { en:'Core of the acquisition funnel. High-impact single-image formats optimized for Meta and Google placements. The "High Demand + Guaranteed Delivery" angle represented ~74% of total national investment in peak periods.', pt:'Base do funil de aquisição. Formatos de imagem única de alto impacto otimizados para Meta e Google. O ângulo "Alta Demanda + Entrega Garantida" representou ~74% do investimento nacional total nos períodos de pico.' },
-  'cc2-title': { en:'Video Ads', pt:'Anúncios em Vídeo' },
-  'cc2-desc':  { en:'Short-form with strong opening hooks. Consistently outperformed static in CTR — generating +0.55 p.p. above campaign average. The "Eupreendedorismo" format became a recurring top performer across multiple cities.', pt:'Formato curto com hooks de abertura fortes. Consistentemente superou o estático em CTR — gerando +0,55 p.p. acima da média da campanha. O formato "Eupreendedorismo" se tornou top performer recorrente em múltiplas cidades.' },
-  'cc3-title': { en:'Carousel — How to Sign Up', pt:'Carrossel — Como se Cadastrar' },
-  'cc3-desc':  { en:'Step-by-step onboarding format in static and dynamic template versions. Reduced perceived complexity of joining the platform, tested in both static and template variants.', pt:'Formato de onboarding passo a passo em versões estática e template dinâmico. Reduziu a complexidade percebida de entrar na plataforma, testado em ambas as variantes.' },
-  'cc4-title': { en:'AI-Assisted Assets', pt:'Criativos com IA' },
-  'cc4-desc':  { en:'AI Bag Delivery launched April 2nd via Smartly.io — generated 1,800+ sign-ups with a $19K investment. First AI-native creative format in the pipeline. CPC: $0.05.', pt:'IA Bag Delivery lançado em 2 de abril via Smartly.io — gerou mais de 1.800 cadastros com investimento de $19K. Primeiro formato criativo nativo de IA no pipeline. CPC: $0,05.' },
-  'cc5-title': { en:'UGC Concepts', pt:'Conceitos UGC' },
-  'cc5-desc':  { en:'Creator-style content designed to build peer trust with restaurant owners — a different emotional register from performance-first formats. Introduced in Q4 as part of the UGC Curios series.', pt:'Conteúdo no estilo criador para construir confiança com donos de restaurante — um registro emocional diferente dos formatos focados em performance. Introduzido no T4 como parte da série UGC Curios.' },
-  'cc6-title': { en:'Localized Versions', pt:'Versões Regionalizadas' },
-  'cc6-desc':  { en:'City-specific adaptations for the 12-city expansion pack. Regional visual cues and adjusted messaging without full production per market — Instagram Feed and Stories were top placements across all cities.', pt:'Adaptações por cidade para o pack de expansão de 12 cidades. Elementos visuais regionais e mensagens ajustadas sem produção completa por mercado — Feed e Stories do Instagram foram os placements top em todas as cidades.' },
-
-  /* S06 MESSAGING */
-  's06-eyebrow': { en:'06 — Messaging', pt:'06 — Mensageria' },
-  's06-h2':      { en:'Finding the Angle That Makes<br><em>a Restaurant Owner Say Yes</em>', pt:'Encontrando o Ângulo que Faz<br><em>um Dono de Restaurante Dizer Sim</em>' },
-  's06-lead':    { en:'I ran structured copystorming sessions to identify which emotional and business-driven triggers drove action among restaurant owners. Six messaging directions were tested simultaneously, tracked weekly across impressions, clicks, and conversion. The learning shaped creative allocation throughout the year.', pt:'Conduzi sessões estruturadas de copystorming para identificar quais gatilhos emocionais e de negócio geravam ação entre donos de restaurante. Seis direções de mensagem foram testadas simultaneamente, rastreadas semanalmente em impressões, cliques e conversão. O aprendizado moldou a alocação criativa ao longo do ano.' },
-  'msg1': { en:'High Demand + Guaranteed Delivery', pt:'Alta Demanda + Entrega Garantida' },
-  'msg2': { en:'Zero Monthly Fee',     pt:'Sem Mensalidade' },
-  'msg3': { en:'Consumer Month',       pt:'Mês do Consumidor' },
-  'msg4': { en:'Easter Opportunity',   pt:'Oportunidade Páscoa' },
-  'msg5': { en:'Entrepreneur Mindset', pt:'Mentalidade Empreendedora' },
-  'msg6': { en:'Carnival',             pt:'Carnaval' },
-  'msg7': { en:'Café da Manhã',        pt:'Café da Manhã' },
-  'msg8': { en:'World Cup',            pt:'Copa do Mundo' },
-  'perf-signal-label2': { en:'Performance Signal', pt:'Sinal de Performance' },
-  'sig1-label': { en:'"High Demand" Angle', pt:'Ângulo "Alta Demanda"' },
-  'sig1-val':   { en:'~74% Imp.',     pt:'~74% Imp.' },
-  'sig2-label': { en:'Video Format',  pt:'Formato Vídeo' },
-  'sig2-val':   { en:'+0.55 CTR',    pt:'+0.55 CTR' },
-  'sig3-label': { en:'Seasonal Msgs', pt:'Msgs Sazonais' },
-  'sig3-val':   { en:'+CTR Spike',   pt:'+Pico CTR' },
-  'sig4-label': { en:'Generic Copy',  pt:'Copy Genérico' },
-  'sig4-val':   { en:'Baseline',      pt:'Baseline' },
-
-  /* S07 FAKE REFRESH */
-  's07-eyebrow': { en:'07 — Key Strategy', pt:'07 — Estratégia Principal' },
-  's07-h2':      { en:'Fake Refresh<br><em>Strategy</em>', pt:'Estratégia de<br><em>Fake Refresh</em>' },
-  's07-lead':    { en:"When a high-performing ad starts to fatigue, the default is to rebuild it — but that resets the platform's learning phase, spikes CPC, and loses accumulated delivery efficiency. The Fake Refresh challenged that default: lightweight visual and copy updates preserved the ad's identity and platform learning while giving the algorithm a renewed signal. Validated with pre/post data across 7 cities simultaneously.", pt:'Quando um anúncio de alta performance começa a saturar, o padrão é reconstruí-lo — mas isso reseta a fase de aprendizado da plataforma, dispara o CPC e perde a eficiência de entrega acumulada. O Fake Refresh desafiou esse padrão: atualizações leves visuais e de copy preservaram a identidade do anúncio e o aprendizado da plataforma, dando ao algoritmo um sinal renovado. Validado com dados pré/pós em 7 cidades simultaneamente.' },
-  'ba-before': { en:'Before — Original', pt:'Antes — Original' },
-  'ba-b1': { en:'Same background across all variants',      pt:'Mesmo fundo em todas as variantes' },
-  'ba-b2': { en:'Single copy angle per campaign',           pt:'Único ângulo de copy por campanha' },
-  'ba-b3': { en:'Fatigue building, CPC rising',             pt:'Saturação crescendo, CPC subindo' },
-  'ba-b4': { en:'Platform learning reset on full rebuild',  pt:'Aprendizado da plataforma resetado ao reconstruir' },
-  'ba-after': { en:'After — Fake Refresh', pt:'Depois — Fake Refresh' },
-  'ba-a1': { en:'BG swap using Template Winner',            pt:'Troca de fundo com Template Vencedor' },
-  'ba-a2': { en:'New persona/angle refreshed in copy',      pt:'Nova persona/ângulo atualizado no copy' },
-  'ba-a3': { en:'Visual update maintains ad identity',      pt:'Atualização visual mantém identidade do anúncio' },
-  'ba-a4': { en:'Platform learning preserved → lower CPC', pt:'Aprendizado preservado → CPC menor' },
-  'm1-title': { en:'Reach',       pt:'Alcance' },
-  'm1-desc':  { en:'Extended delivery to new audience segments. Source: Smartly.', pt:'Entrega estendida a novos segmentos de audiência. Fonte: Smartly.' },
-  'm2-title': { en:'Clicks',      pt:'Cliques' },
-  'm2-desc':  { en:'Engagement recovered post-refresh. Platform learning maintained throughout.', pt:'Engajamento recuperado após o refresh. Aprendizado da plataforma mantido ao longo do ciclo.' },
-  'm3-title': { en:'CPC',         pt:'CPC' },
-  'm3-desc':  { en:'Cost per click reduced. Learning preserved, costs stabilized after update.', pt:'Custo por clique reduzido. Aprendizado preservado, custos estabilizados após atualização.' },
-  'm4-title': { en:'Engagement',  pt:'Engajamento' },
-  'm4-desc':  { en:'Higher engagement with lower CPM and CPC. Only +6% more spend required.', pt:'Engajamento maior com CPM e CPC menores. Apenas +6% a mais de investimento necessário.' },
-  'refresh-insight': { en:'<strong>Key insight:</strong> The "Text Swap" variant (ID 151) became the absolute winner — on its own, it generated 4,000 clicks, a volume 260% higher than the sum of all other image creatives combined (1,100 clicks). The national creative converted 61% of total share clicks across 7 tested cities.', pt:'<strong>Insight principal:</strong> A variante "Text Swap" (ID 151) se tornou a vencedora absoluta — por conta própria gerou 4.000 cliques, volume 260% maior que a soma de todos os outros criativos de imagem combinados (1.100 cliques). O criativo nacional converteu 61% do share total de cliques em 7 cidades testadas.' },
-
-  /* S08 SEASONAL */
-  's08-eyebrow': { en:'08 — Seasonal', pt:'08 — Sazonal' },
-  's08-h2':      { en:'The Moments That<br><em>Made the Funnel Move</em>', pt:'Os Momentos que<br><em>Moveram o Funil</em>' },
-  's08-lead':    { en:'Seasonal campaigns consistently became top-performing acquisition assets — reducing fatigue while increasing engagement and conversion efficiency. The key: combining seasonal relevance with a clear business value proposition for the restaurant owner.', pt:'As campanhas sazonais se tornaram consistentemente os ativos de aquisição de melhor performance — reduzindo a saturação enquanto aumentavam o engajamento e a eficiência de conversão. A chave: combinar relevância sazonal com uma proposta de valor clara para o dono de restaurante.' },
-  'sea1-title': { en:'Easter Campaign',  pt:'Campanha de Páscoa' },
-  'sea1-sub':   { en:'Q1 · National · Meta', pt:'T1 · Nacional · Meta' },
-  'sea1-desc':  { en:'Launched March 5th with "sell more at Easter with zero monthly fee" messaging. Combined urgency with seasonal visual identity. Migrated to fake refresh on March 17th to tackle fatigue.', pt:'Lançada em 5 de março com a mensagem "venda mais na Páscoa sem mensalidade". Combinou urgência com identidade visual sazonal. Migrou para fake refresh em 17 de março para combater a saturação.' },
-  'sea1-tag':   { en:'$12.05 cost/sign-up', pt:'R$ CPSU $12.05' },
-  'sea1-tag2':  { en:'11% below avg', pt:'11% abaixo da média' },
-  'sea2-title': { en:'Consumer Month', pt:'Mês do Consumidor' },
-  'sea2-sub':   { en:'Q1 · National · Meta', pt:'T1 · Nacional · Meta' },
-  'sea2-desc':  { en:'Launched March 3rd combining consumer demand with zero monthly fee offer. Migrated from static to template format (fake refresh) on March 20th — stabilized performance through month-end.', pt:'Lançada em 3 de março combinando demanda do consumidor com oferta de mensalidade zero. Migrou de estático para template (fake refresh) em 20 de março — estabilizou a performance até o fim do mês.' },
-  'sea3-title': { en:'AI Bag Delivery', pt:'IA Bag Delivery' },
-  'sea3-sub':   { en:'Q2 · National · Meta', pt:'T2 · Nacional · Meta' },
-  'sea3-desc':  { en:'Launched April 2nd. First AI-native creative in the pipeline — generated strong acquisition results with highly efficient cost-per-sign-up, significantly below account benchmarks.', pt:'Lançado em 2 de abril. Primeiro criativo nativo de IA no pipeline — gerou resultados expressivos de aquisição com custo por cadastro altamente eficiente, bem abaixo dos benchmarks da conta.' },
-  'sea3-tag':   { en:'AI-first format', pt:'Formato IA-first' },
-
-  /* S09 REGIONAL */
-  's09-eyebrow': { en:'09 — Regional', pt:'09 — Regional' },
-  's09-h2':      { en:'One Country,<br><em>Many Audiences</em>', pt:'Um País,<br><em>Muitas Audiências</em>' },
-  's09-lead':    { en:'National campaigns established the base. Regional data revealed that different cities had distinct conversion triggers — which shaped creative adaptation for the 12-city expansion pack. Instagram Feed and Stories were top placements across all markets. Video led CPC efficiency in most cities.', pt:'As campanhas nacionais estabeleceram a base. Os dados regionais revelaram que diferentes cidades tinham gatilhos de conversão distintos — o que moldou a adaptação criativa para o pack de expansão de 12 cidades. Feed e Stories do Instagram foram os placements top em todos os mercados. Vídeo liderou em eficiência de CPC na maioria das cidades.' },
-  'reg1-desc': { en:'Seasonal creatives drove the highest engagement. Easter "Chocolate" creative secured #1 position. Predominantly male audience, 18–34 age group. Instagram stories and feed were top placements.', pt:'Criativos sazonais geraram o maior engajamento. Criativo "Chocolate" da Páscoa garantiu a posição #1. Audiência predominantemente masculina, faixa 18–34 anos. Stories e Feed foram os placements top.' },
-  'reg2-desc': { en:'Consumer Month campaigns had stronger traction. Seasonal relevance combined with lifestyle-oriented messaging aligned with local culture. Male audience drove the majority of clicks.', pt:'Campanhas do Mês do Consumidor tiveram maior tração. Relevância sazonal combinada com mensagens orientadas a lifestyle se alinhou à cultura local. Audiência masculina gerou a maioria dos cliques.' },
-  'reg3-desc': { en:'Business value and entrepreneurship messaging outperformed. "Eupreendedorismo" video combined sweet production with Easter, driving strong results. Instagram placements were top-performing.', pt:'Mensagens de valor de negócio e empreendedorismo superaram as outras. Vídeo "Eupreendedorismo" combinou produção de doces com Páscoa, gerando resultados fortes. Placements do Instagram foram os mais eficientes.' },
-  'reg4-desc': { en:'One of the lowest spend-volume cities, but notable: the only market where static creatives had a lower CPC than video — a unique signal for this audience. App introduction creative highlighted zero monthly fee.', pt:'Uma das cidades com menor volume de investimento, mas notável: único mercado onde criativos estáticos tiveram CPC menor que vídeo — um sinal único para essa audiência. Criativo de introdução ao app destacou a mensalidade zero.' },
-  'reg5-desc': { en:'National ad consistently outperformed city-specific creative. Running the national campaign proved the better strategy for this market. Video led CPC efficiency with lowest cost per engagement.', pt:'O anúncio nacional superou consistentemente o criativo específico da cidade. Rodar a campanha nacional se mostrou a melhor estratégia para este mercado. Vídeo liderou em eficiência de CPC com o menor custo por engajamento.' },
-  'reg6-desc': { en:'ROI-focused and business-value messaging resonated with the entrepreneurial market profile. Video led CPC and engagement with lowest cost per engagement throughout the period.', pt:'Mensagens focadas em ROI e valor de negócio ressoaram com o perfil empreendedor do mercado. Vídeo liderou em CPC e engajamento com o menor custo por engajamento durante todo o período.' },
-
-  /* S10 RESULTS */
-  's10-eyebrow': { en:'10 — Results', pt:'10 — Resultados' },
-  's10-h2':      { en:'What the System<br><em>Delivered</em>', pt:'O que o Sistema<br><em>Entregou</em>' },
-  's10-lead':    { en:'Across seasonal campaigns, fake refresh cycles, copystorming tests, and the 12-city expansion, the experimentation pipeline consistently outperformed business-as-usual creative — in reach, efficiency, and sign-up volume.', pt:'Em campanhas sazonais, ciclos de fake refresh, testes de copystorming e expansão para 12 cidades, o pipeline de experimentação superou consistentemente os criativos padrão — em alcance, eficiência e volume de cadastros.' },
-  'res1-title': { en:'Reach',               pt:'Alcance' },
-  'res1-desc':  { en:'After Fake Refresh strategy applied. Extended delivery to new audience segments without resetting platform learning.', pt:'Após aplicação da estratégia de Fake Refresh. Entrega estendida a novos segmentos sem resetar o aprendizado da plataforma.' },
-  'res2-title': { en:'Clicks',              pt:'Cliques' },
-  'res2-desc':  { en:'Engagement recovered post-refresh. Platform learning maintained throughout the entire cycle.', pt:'Engajamento recuperado após o refresh. Aprendizado da plataforma mantido durante todo o ciclo.' },
-  'res3-title': { en:'CPC',                 pt:'CPC' },
-  'res3-desc':  { en:'Cost per click reduced after refresh. Learning preserved, costs stabilized. Only +6% more spend to achieve all gains.', pt:'Custo por clique reduzido após o refresh. Aprendizado preservado, custos estabilizados. Apenas +6% a mais de investimento para todos os ganhos.' },
-  'res4-title': { en:'Sign-Ups · Easter',   pt:'Cadastros · Páscoa' },
-  'res4-desc':  { en:'$43K investment · 21M impressions. $12.05 cost per sign-up — 11% below the account average of $13.52.', pt:'Investimento $43K · 21M impressões. Custo por cadastro de $12,05 — 11% abaixo da média da conta de $13,52.' },
-  'res5-title': { en:'Sign-Ups · AI Bag',   pt:'Cadastros · IA Bag' },
-  'res5-desc':  { en:'$19K investment · $0.05 CPC. First AI-native creative in the pipeline, significantly below account benchmarks.', pt:'Investimento $19K · CPC $0,05. Primeiro criativo nativo de IA no pipeline, bem abaixo dos benchmarks da conta.' },
-  'res6-title': { en:'of Total Sign-Ups',   pt:'dos Cadastros Totais' },
-  'res6-desc':  { en:'Driven by the Easter seasonal pack alone during the campaign window. "Chocolate" asset CPSU: $8.94 — lowest of the period.', pt:'Gerado apenas pelo pack sazonal de Páscoa durante a janela da campanha. Ativo "Chocolate" CPSU: $8,94 — o mais baixo do período.' },
-  'results-insight': { en:'<strong>The proof:</strong> In the period before vs. after Fake Refresh + Copystorming — with only +6% more spend, the operation achieved +22% reach, +17% clicks, and +14% engagement, with lower CPM and CPC. Creative strategy, not budget, drove the gains.', pt:'<strong>A prova:</strong> No período antes vs. depois do Fake Refresh + Copystorming — com apenas +6% a mais de investimento, a operação atingiu +22% de alcance, +17% de cliques e +14% de engajamento, com CPM e CPC menores. Estratégia criativa, não verba, gerou os ganhos.' },
-
-  /* S11 ROLE */
-  's11-eyebrow': { en:'11 — Role', pt:'11 — Função' },
-  's11-h2':      { en:'My Role<br><em>& Impact</em>', pt:'Meu Papel<br><em>e Impacto</em>' },
-  's11-lead1':   { en:'I owned creative strategy end-to-end — from structuring the experimentation roadmap and running copystorming sessions, to analyzing biweekly performance data and presenting recommendations to stakeholders across Growth, CRM, and BI.', pt:'Fui responsável pela estratégia criativa de ponta a ponta — desde a estruturação do roadmap de experimentação e condução de sessões de copystorming, até a análise quinzenal de dados de performance e apresentação de recomendações para stakeholders de Growth, CRM e BI.' },
-  's11-lead2':   { en:'Every brief had a hypothesis. Every campaign had a learning to extract. Every result fed back into the next cycle.', pt:'Cada briefing tinha uma hipótese. Cada campanha tinha um aprendizado a extrair. Cada resultado alimentava o próximo ciclo.' },
-  'role-card-label': { en:'Core Responsibilities', pt:'Responsabilidades Principais' },
-  'role-1':  { en:'Quarterly experimentation roadmap planning',                pt:'Planejamento do roadmap de experimentação trimestral' },
-  'role-2':  { en:'Messaging strategy & structured copystorming',              pt:'Estratégia de mensagem e copystorming estruturado' },
-  'role-3':  { en:'Creative direction: static, video, carousel, UGC, AI',     pt:'Direção criativa: estático, vídeo, carrossel, UGC, IA' },
-  'role-4':  { en:'Biweekly performance analysis & reporting (WoW)',           pt:'Análise quinzenal de performance e relatórios (WoW)' },
-  'role-5':  { en:'Seasonal campaign planning & execution',                    pt:'Planejamento e execução de campanhas sazonais' },
-  'role-6':  { en:'Fake refresh methodology — national + 7 cities',           pt:'Metodologia de fake refresh — nacional + 7 cidades' },
-  'role-7':  { en:'Localized creative adaptation for 12-city expansion',      pt:'Adaptação criativa regionalizada para expansão em 12 cidades' },
-  'role-8':  { en:'AI-assisted creative exploration via Smartly.io',          pt:'Exploração de criativos com IA via Smartly.io' },
-  'role-9':  { en:'Cross-functional collaboration: Growth · CRM · BI · Media Buyers · Agency', pt:'Colaboração entre times: Growth · CRM · BI · Mídia · Agência' },
-  'role-10': { en:'Stakeholder presentations & creative reviews',             pt:'Apresentações para stakeholders e revisões criativas' },
-
-  /* S12 LEARNINGS */
-  's12-eyebrow': { en:'12 — Learnings', pt:'12 — Aprendizados' },
-  's12-h2':      { en:'Key <em>Learnings</em>', pt:'Principais <em>Aprendizados</em>' },
-  's12-lead1':   { en:"The biggest wins didn't come from a single brilliant creative — they came from a system that tested fast, learned consistently, and scaled what worked.", pt:'Os maiores resultados não vieram de um criativo brilhante isolado — vieram de um sistema que testou rápido, aprendeu de forma consistente e escalou o que funcionou.' },
-  's12-lead2':   { en:'In a B2B paid media environment, creative strategy is growth strategy. Seasonal relevance, lightweight refresh cycles, and structured messaging experimentation proved more effective than budget increases: with +6% more spend, the right creative system delivered +22% more reach.', pt:'Em mídia paga B2B, estratégia criativa é estratégia de crescimento. Relevância sazonal, ciclos leves de refresh e experimentação estruturada de mensagem se mostraram mais eficazes do que aumentos de verba: com +6% a mais de investimento, o sistema criativo certo entregou +22% a mais de alcance.' },
-  'tag-seasonal': { en:'Seasonal Campaigns', pt:'Campanhas Sazonais' },
-  'tag-local':    { en:'Localization',        pt:'Regionalização' },
-  'tag-data':     { en:'Data Analysis',       pt:'Análise de Dados' },
-  'tag-collab':   { en:'Cross-functional Collaboration', pt:'Colaboração Entre Times' },
-  'back-btn':     { en:'← Back to Portfolio', pt:'← Voltar ao Portfólio' },
+const T={
+  'nav-about':{en:'About',pt:'Sobre'},'nav-case':{en:'Cases',pt:'Cases'},'nav-portfolio':{en:'Portfolio',pt:'Portfólio'},'nav-exp':{en:'Experience',pt:'Experiência'},'nav-contact':{en:'Contact',pt:'Contato'},
+  'contact-label':{en:"Let's work together",pt:'Vamos trabalhar juntos'},'contact-title':{en:'Get in Touch',pt:'Entre em Contato'},'footer-dev':{en:'Developed by Leticia Corredato',pt:'Desenvolvido por Leticia Corredato'},
+  'cover-tag':{en:'Case Study · 2026',pt:'Estudo de Caso · 2026'},'cover-sub':{en:'Creative Strategy for Restaurant Acquisition',pt:'Estratégia Criativa para Aquisição de Restaurantes'},'cover-desc':{en:'B2B paid media campaigns on Meta and Google to scale restaurant sign-ups across Brazil — built on creative experimentation, regional intelligence, and performance data.',pt:'Campanhas B2B de mídia paga no Meta e Google para escalar o cadastro de restaurantes no Brasil — construídas sobre experimentação criativa, inteligência regional e dados de performance.'},
+  'ml-role':{en:'Role',pt:'Função'},'mv-role':{en:'Creative Strategist',pt:'Estrategista Criativa'},'ml-focus':{en:'Focus',pt:'Foco'},'mv-focus':{en:'B2B Acquisition',pt:'Aquisição B2B'},'ml-plat':{en:'Platforms',pt:'Plataformas'},'ml-mkt':{en:'Markets',pt:'Mercados'},'mv-mkt':{en:'National + 12 Cities',pt:'Nacional + 12 Cidades'},'ml-year':{en:'Year',pt:'Ano'},
+  's02-ey':{en:'02 — Overview',pt:'02 — Visão Geral'},'s02-h2':{en:'The<br><em>Brief</em>',pt:'O<br><em>Briefing</em>'},'s02-l1':{en:'In January 2026, I joined 99Food as a Creative Strategist with one mandate: grow the restaurant partner base through B2B acquisition campaigns on Meta and Google.',pt:'Em janeiro de 2026, entrei na 99Food como Estrategista Criativa com um objetivo: expandir a base de parceiros restaurantes por meio de campanhas B2B no Meta e Google.'},'s02-l2':{en:"The audience wasn't a typical consumer — it was a business owner deciding whether to trust a new platform with their livelihood. Every creative decision had to answer: what's in it for my business?",pt:'O público não era um consumidor típico — era um empreendedor decidindo se confiaria em uma nova plataforma com seu negócio. Cada decisão criativa precisava responder: o que isso faz pelo meu negócio?'},
+  'c-resp':{en:'Responsibilities',pt:'Responsabilidades'},'r1':{en:'Creative direction & messaging strategy',pt:'Direção criativa e estratégia de mensagem'},'r2':{en:'Quarterly experimentation roadmap',pt:'Roadmap de experimentação trimestral'},'r3':{en:'Performance analysis & biweekly reporting',pt:'Análise de performance e relatórios quinzenais'},'r4':{en:'Seasonal campaign planning & execution',pt:'Planejamento e execução de campanhas sazonais'},'r5':{en:'Fake refresh methodology',pt:'Metodologia de fake refresh'},'r6':{en:'Localized creative adaptation — 12 cities',pt:'Adaptação criativa regionalizada — 12 cidades'},'r7':{en:'Stakeholder presentations',pt:'Apresentações para stakeholders'},'c-plat':{en:'Platforms',pt:'Plataformas'},'c-teams':{en:'Teams',pt:'Times'},
+  's03-ey':{en:'03 — Results',pt:'03 — Resultados'},'s03-h2':{en:'What the System<br><em>Delivered</em>',pt:'O que o Sistema<br><em>Entregou</em>'},'s03-lead':{en:'Across seasonal campaigns, fake refresh cycles, and copystorming tests, the experimentation pipeline consistently outperformed business-as-usual creative — in reach, efficiency, and sign-up volume.',pt:'Em campanhas sazonais, ciclos de fake refresh e testes de copystorming, o pipeline de experimentação superou consistentemente os criativos padrão — em alcance, eficiência e volume de cadastros.'},
+  'h1-t':{en:'Reach',pt:'Alcance'},'h1-d':{en:'After Fake Refresh applied. New audiences reached without resetting platform learning.',pt:'Após aplicação do Fake Refresh. Novas audiências alcançadas sem resetar o aprendizado da plataforma.'},'h2-t':{en:'Clicks',pt:'Cliques'},'h2-d':{en:'Engagement recovered post-refresh with platform learning fully preserved.',pt:'Engajamento recuperado após o refresh com aprendizado totalmente preservado.'},'h3-t':{en:'CPC',pt:'CPC'},'h3-d':{en:'Cost per click reduced. Only +6% more spend to achieve all three gains.',pt:'Custo por clique reduzido. Apenas +6% a mais de investimento para todos os ganhos.'},'h4-t':{en:'Engagement',pt:'Engajamento'},'h4-d':{en:'Higher engagement with lower CPM and CPC. Efficiency driven by creative, not budget.',pt:'Maior engajamento com CPM e CPC menores. Eficiência gerada por criativo, não por verba.'},
+  'res1-t':{en:'of Total Sign-Ups',pt:'dos Cadastros Totais'},'res1-d':{en:'Driven by the Easter seasonal pack alone — with a cost per sign-up 11% below the account average. The top asset achieved the lowest CPSU of the entire period.',pt:'Gerado pelo pack sazonal de Páscoa — com custo por cadastro 11% abaixo da média da conta. O ativo top atingiu o menor CPSU do período.'},'res2-t':{en:'CPC · AI Bag Delivery',pt:'CPC · IA Bag Delivery'},'res2-d':{en:'First AI-native creative in the pipeline achieved the lowest CPC of the entire account — significantly below all active campaign benchmarks.',pt:'Primeiro criativo nativo de IA no pipeline atingiu o menor CPC de toda a conta — bem abaixo de todos os benchmarks.'},'res3-t':{en:'Clicks vs. Other Assets',pt:'Cliques vs. Outros Criativos'},'res3-d':{en:'The winning Fake Refresh variant generated 260% more clicks than the sum of all other image creatives combined in the same period.',pt:'A variante vencedora do Fake Refresh gerou 260% mais cliques do que todos os outros criativos de imagem combinados no mesmo período.'},'res-insight':{en:'<strong>The proof:</strong> With only +6% more spend, the right creative system delivered +22% reach, +17% clicks, and +14% engagement — with lower CPM and CPC. Creative strategy, not budget, drove the gains.',pt:'<strong>A prova:</strong> Com apenas +6% a mais de investimento, o sistema criativo certo entregou +22% de alcance, +17% de cliques e +14% de engajamento — com CPM e CPC menores. Estratégia criativa, não verba, gerou os ganhos.'},
+  's04-ey':{en:'04 — The Challenge',pt:'04 — O Desafio'},'s04-h2':{en:'Three Problems,<br><em>One System</em>',pt:'Três Problemas,<br><em>Um Sistema</em>'},'s04-lead':{en:'Scaling B2B acquisition through paid media comes with compounding constraints. The environment demanded creative efficiency above all — less budget waste, more signal, faster iteration.',pt:'Escalar aquisição B2B via mídia paga envolve restrições que se acumulam. O ambiente exigia eficiência criativa acima de tudo — menos desperdício, mais sinal, iteração mais rápida.'},
+  'ch1-t':{en:'Rising CPC',pt:'CPC em Alta'},'ch1-d':{en:'A +27% increase in market CPC during Q1 made creative efficiency the primary lever for protecting acquisition costs.',pt:'Um aumento de +27% no CPC de mercado no Q1 tornou a eficiência criativa a principal alavanca para proteger os custos de aquisição.'},'ch2-t':{en:'Creative Fatigue',pt:'Saturação de Criativo'},'ch2-d':{en:"High-frequency campaigns burned through assets fast. Without a refresh strategy, performance would plateau and costs would spike.",pt:'Campanhas de alta frequência esgotavam os criativos rapidamente. Sem estratégia de refresh, a performance estagnaria e os custos subiriam.'},'ch3-t':{en:'Regional Complexity',pt:'Complexidade Regional'},'ch3-d':{en:"Expanding to 12 new cities meant localized messaging — but production couldn't scale 1:1 with geography.",pt:'Expandir para 12 novas cidades exigia mensagens localizadas — mas a produção não podia escalar 1:1 com a geografia.'},'ch4-t':{en:'B2B Specificity',pt:'Especificidade B2B'},'ch4-d':{en:"Restaurant owners don't respond to consumer logic. Every angle had to connect to real business value — not just visual appeal.",pt:'Donos de restaurante não respondem à lógica do consumidor. Cada ângulo precisava conectar a valor real de negócio — não apenas apelo visual.'},
+  's05-ey':{en:'05 — Strategic Logic',pt:'05 — Lógica Estratégica'},'s05-h2':{en:'Before Building Creatives,<br><em>We Built a System</em>',pt:'Antes de Criar Criativos,<br><em>Construímos um Sistema</em>'},'s05-lead':{en:'Instead of producing campaigns reactively, I structured a quarterly experimentation pipeline — each phase with a hypothesis, a creative variable, and a performance signal to validate. Every asset had a reason to exist. Every result fed the next cycle.',pt:'Em vez de produzir campanhas reativamente, estruturei um pipeline de experimentação trimestral — cada fase com hipótese, variável criativa e sinal de performance para validar. Cada ativo tinha uma razão de existir. Cada resultado alimentava o próximo ciclo.'},
+  'roadmap-cap':{en:'Restaurant Roadmap Pipeline — 99 Creative Strategy Kick-off',pt:'Pipeline do Roadmap — Kick-off de Estratégia Criativa 99'},
+  'tl1-ph':{en:'Phase 1 · Q1',pt:'Fase 1 · T1'},'tl1-ti':{en:'Easter + Fake Refresh Launch',pt:'Páscoa + Lançamento do Fake Refresh'},'tl1-de':{en:'Seasonal creative tying Easter demand to partner growth opportunity. Parallel test: BG swap on top-performing ad to extend delivery without resetting platform learning.',pt:'Criativo sazonal conectando a demanda da Páscoa à oportunidade de crescimento. Teste paralelo: troca de BG no anúncio top para estender a entrega sem resetar o aprendizado.'},
+  'tl2-ph':{en:'Phase 2 · Q2',pt:'Fase 2 · T2'},'tl2-ti':{en:'AI Bag Delivery + Carousel How-to',pt:'IA Bag Delivery + Carousel Como Cadastrar'},'tl2-de':{en:'First AI-assisted creative introduced. "How to Sign Up" carousel launched in static and template versions to reduce onboarding friction.',pt:'Primeiro criativo com IA introduzido. Carousel "Como se Cadastrar" lançado em versão estática e template para reduzir fricção no onboarding.'},
+  'tl3-ph':{en:'Phase 3 · Q3',pt:'Fase 3 · T3'},'tl3-ti':{en:'12 New Cities Launch Pack',pt:'Pack de Lançamento — 12 Cidades'},'tl3-de':{en:'Coordinated Meta + Google pack for regional expansion. AI Dashboard Growth creative introduced to communicate platform traction to prospective partners.',pt:'Pack coordenado Meta + Google para expansão regional. Criativo IA Dashboard Growth introduzido para comunicar tração da plataforma a potenciais parceiros.'},
+  'tl4-ph':{en:'Phase 4 · Q4',pt:'Fase 4 · T4'},'tl4-ti':{en:'UGC + Commission Fee Campaign',pt:'UGC + Campanha de Taxa de Comissão'},'tl4-de':{en:"UGC Curios format introduced for peer trust. Mother's Day seasonal + Commission Fee + Delivery campaign closed the annual cycle.",pt:'Formato UGC Curios para confiança entre pares. Campanha sazonal Dia das Mães + Taxa de Comissão + Entrega fechou o ciclo anual.'},
+  'ct-label-type':{en:'Content Types',pt:'Tipos de Conteúdo'},'ct-label-act':{en:'Strategies & Actions',pt:'Estratégias & Ações'},'ct-offers':{en:'Offers & Benefits',pt:'Ofertas & Benefícios'},'ct-evergreen':{en:'Evergreen',pt:'Evergreen'},'ct-launch':{en:'Launch Pack',pt:'Launch Pack'},'ct-edu':{en:'Educational',pt:'Educacional'},'ct-ai':{en:'AI Creatives',pt:'Criativos IA'},'ct-sea':{en:'Seasonal',pt:'Sazonal'},'ct-reg':{en:'Regional',pt:'Regional'},
+  'ps-label':{en:'Performance Signal',pt:'Sinal de Performance'},'ps1-l':{en:'Seasonal',pt:'Sazonal'},'ps1-v':{en:'Top performer',pt:'Top performer'},'ps2-v':{en:'−9% CPC',pt:'−9% CPC'},'ps3-l':{en:'AI Creatives',pt:'Criativos IA'},'ps3-v':{en:'Lowest CPC',pt:'Menor CPC'},'ps4-v':{en:'+0.55pp CTR',pt:'+0.55pp CTR'},'ps5-v':{en:'+Engagement',pt:'+Engajamento'},
+  's06-ey':{en:'06 — Creative System',pt:'06 — Sistema Criativo'},'s06-h2':{en:'Modular Formats Built to<br><em>Test, Refresh & Scale</em>',pt:'Formatos Modulares para<br><em>Testar, Atualizar e Escalar</em>'},'s06-lead':{en:"Instead of one-off campaigns, I built a modular creative system — formats adaptable by message, season, or region without starting from scratch. This compressed production cycles and multiplied experiments per quarter.",pt:'Em vez de campanhas pontuais, construí um sistema criativo modular — formatos adaptáveis por mensagem, temporada ou região sem começar do zero. Isso comprimiu ciclos de produção e multiplicou experimentos por trimestre.'},
+  'cc1-t':{en:'Static Ads',pt:'Anúncios Estáticos'},'cc1-d':{en:'Core of the acquisition funnel. The "High Demand + Guaranteed Delivery" angle represented ~74% of total national impressions in peak periods.',pt:'Base do funil de aquisição. O ângulo "Alta Demanda + Entrega Garantida" representou ~74% das impressões nacionais nos períodos de pico.'},'cc2-t':{en:'Video Ads',pt:'Anúncios em Vídeo'},'cc2-d':{en:'Short-form with strong hooks. Consistently outperformed static in CTR — +0.55 p.p. above campaign average. Top format across multiple cities.',pt:'Formato curto com hooks fortes. Consistentemente superou estático em CTR — +0,55 p.p. acima da média. Top formato em múltiplas cidades.'},'cc3-t':{en:'Educational Carousel',pt:'Carrossel Educacional'},'cc3-d':{en:'"How to Sign Up" step-by-step format in static and template versions — reduced perceived complexity of joining the platform.',pt:'"Como se Cadastrar" passo a passo em versões estática e template — reduziu a complexidade percebida de entrar na plataforma.'},'cc4-t':{en:'AI-Assisted Assets',pt:'Criativos com IA'},'cc4-d':{en:'AI Bag Delivery via Smartly.io — first AI-native creative in the pipeline. Achieved the lowest CPC of the entire account at $0.05.',pt:'IA Bag Delivery via Smartly.io — primeiro criativo nativo de IA no pipeline. Atingiu o menor CPC de toda a conta: $0,05.'},'cc5-t':{en:'UGC Concepts',pt:'Conceitos UGC'},'cc5-d':{en:'Creator-style content to build peer trust with restaurant owners — a different emotional register from performance-first formats.',pt:'Conteúdo no estilo criador para construir confiança com donos de restaurante — registro emocional diferente dos formatos focados em performance.'},'cc6-t':{en:'Localized Versions',pt:'Versões Regionalizadas'},'cc6-d':{en:'City-specific adaptations for the 12-city expansion — regional cues, adjusted messaging, no full production per market.',pt:'Adaptações por cidade para expansão de 12 cidades — elementos regionais, mensagens ajustadas, sem produção completa por mercado.'},
+  's07-ey':{en:'07 — Messaging',pt:'07 — Mensageria'},'s07-h2':{en:'Finding the Angle That Makes<br><em>a Restaurant Owner Say Yes</em>',pt:'Encontrando o Ângulo que Faz<br><em>um Dono de Restaurante Dizer Sim</em>'},'s07-lead':{en:'Structured copystorming sessions identified which emotional and business-driven triggers drove action. Six directions tested simultaneously, tracked weekly across impressions, clicks, and conversion.',pt:'Sessões estruturadas de copystorming identificaram quais gatilhos emocionais e de negócio geravam ação. Seis direções testadas simultaneamente, rastreadas semanalmente.'},
+  'mg1':{en:'High Demand + Guaranteed Delivery',pt:'Alta Demanda + Entrega Garantida'},'mg2':{en:'Zero Monthly Fee',pt:'Sem Mensalidade'},'mg3':{en:'Extra Earnings',pt:'Renda Extra'},'mg4':{en:'Seasonal Opportunity',pt:'Oportunidade Sazonal'},'mg5':{en:'Entrepreneur Mindset',pt:'Mentalidade Empreendedora'},'mg6':{en:'Occasions',pt:'Ocasiões'},
+  'sg1-t':{en:'"High Demand" Angle',pt:'Ângulo "Alta Demanda"'},'sg1-d':{en:'Represented ~74% of total national impressions in the first test cycle — the highest volume driver across the account.',pt:'Representou ~74% das impressões nacionais no primeiro ciclo de teste — o maior gerador de volume da conta.'},'sg2-t':{en:'Video Format',pt:'Formato Vídeo'},'sg2-d':{en:'CTR consistently above campaign average. Outperformed static going further down the funnel in every tested market.',pt:'CTR consistentemente acima da média. Superou estático no fundo do funil em todos os mercados testados.'},'sg3-t':{en:'Seasonal Messages',pt:'Mensagens Sazonais'},'sg3-d':{en:'Seasonal pack drove 23% of total sign-ups during the campaign window — highest CTR spikes of the year.',pt:'Pack sazonal gerou 23% dos cadastros durante a janela da campanha — maiores picos de CTR do ano.'},'sg4-t':{en:'Generic Copy',pt:'Copy Genérico'},'sg4-d':{en:'Lowest performance across all metrics. Served as the control baseline — validated the advantage of every specific angle tested.',pt:'Pior performance em todas as métricas. Serviu como baseline de controle — validou a vantagem de cada ângulo específico testado.'},
+  's08-ey':{en:'08 — Key Strategy',pt:'08 — Estratégia Principal'},'s08-h2':{en:'Fake Refresh<br><em>Strategy</em>',pt:'Estratégia de<br><em>Fake Refresh</em>'},'s08-l1':{en:"The strategy emerged from a pattern observed through Smartly.io's creative feed: by monitoring performance changes across creatives published simultaneously via the platform's live feed, it became clear that lightweight visual updates on top-performing ads were extending delivery without triggering a new learning phase.",pt:'A estratégia surgiu de um padrão observado no feed criativo da Smartly.io: ao monitorar mudanças de performance em criativos publicados simultaneamente via feed da plataforma, ficou claro que atualizações visuais leves em anúncios top estendiam a entrega sem acionar uma nova fase de aprendizado.'},'s08-l2':{en:"Instead of rebuilding ads from scratch — which resets platform learning, spikes CPC, and loses accumulated delivery efficiency — Fake Refresh applied BG swaps and copy angle updates to preserve the ad's identity while giving the algorithm a renewed signal.",pt:'Em vez de reconstruir anúncios do zero — o que reseta o aprendizado, dispara o CPC e perde a eficiência acumulada — o Fake Refresh aplicou trocas de BG e atualizações de copy para preservar a identidade do anúncio dando ao algoritmo um sinal renovado.'},
+  'ba-bef':{en:'Before — Original',pt:'Antes — Original'},'ba-b1':{en:'Same background across all variants',pt:'Mesmo fundo em todas as variantes'},'ba-b2':{en:'Single copy angle per campaign',pt:'Único ângulo de copy por campanha'},'ba-b3':{en:'Fatigue building, CPC rising',pt:'Saturação crescendo, CPC subindo'},'ba-b4':{en:'Learning reset on full rebuild',pt:'Aprendizado resetado ao reconstruir'},'ba-aft':{en:'After — Fake Refresh',pt:'Depois — Fake Refresh'},'ba-a1':{en:'BG swap using Template Winner',pt:'Troca de BG com Template Vencedor'},'ba-a2':{en:'New persona/angle refreshed in copy',pt:'Nova persona/ângulo atualizado no copy'},'ba-a3':{en:'Visual update maintains ad identity',pt:'Atualização visual mantém identidade do anúncio'},'ba-a4':{en:'Platform learning preserved → lower CPC',pt:'Aprendizado preservado → CPC menor'},
+  'fr1-t':{en:'Reach',pt:'Alcance'},'fr1-d':{en:'Extended to new segments without learning reset',pt:'Estendido a novos segmentos sem resetar aprendizado'},'fr2-t':{en:'Clicks',pt:'Cliques'},'fr2-d':{en:'Engagement recovered post-refresh',pt:'Engajamento recuperado após o refresh'},'fr3-t':{en:'CPC',pt:'CPC'},'fr3-d':{en:'Costs reduced, learning maintained',pt:'Custos reduzidos, aprendizado mantido'},'fr4-t':{en:'Clicks vs. All Others',pt:'Cliques vs. Todos os Outros'},'fr4-d':{en:'Text Swap winner vs. all image creatives combined',pt:'Text Swap vencedor vs. todos os criativos de imagem combinados'},'fr-insight':{en:'<strong>Key insight:</strong> The national creative converted 61% of total share clicks across 7 tested cities simultaneously, confirming that the national + refresh approach outperformed city-only executions in most markets.',pt:'<strong>Insight principal:</strong> O criativo nacional converteu 61% do share total de cliques em 7 cidades testadas simultaneamente, confirmando que a abordagem nacional + refresh superou as execuções exclusivas por cidade na maioria dos mercados.'},
+  's09-ey':{en:'09 — Seasonal',pt:'09 — Sazonal'},'s09-h2':{en:'The Moments That<br><em>Made the Funnel Move</em>',pt:'Os Momentos que<br><em>Moveram o Funil</em>'},'s09-lead':{en:'Seasonal campaigns consistently outperformed evergreen assets — combining timing, relevance, and a clear business value proposition for the restaurant owner.',pt:'As campanhas sazonais superaram consistentemente os ativos evergreen — combinando timing, relevância e proposta de valor clara para o dono de restaurante.'},
+  'se1-t':{en:'Easter Campaign',pt:'Campanha de Páscoa'},'se1-s':{en:'Q1 · National · Meta',pt:'T1 · Nacional · Meta'},'se1-d':{en:'Launched with "sell more at Easter with zero monthly fee" messaging. Migrated to fake refresh mid-campaign, extending performance and stabilizing cost efficiency through April.',pt:'Lançada com mensagem "venda mais na Páscoa sem mensalidade". Migrou para fake refresh no meio da campanha, estendendo performance e estabilizando eficiência de custo até abril.'},'se1-t1':{en:'23% of total sign-ups',pt:'23% dos cadastros totais'},'se1-t2':{en:'−11% vs account avg CPSU',pt:'−11% vs CPSU médio da conta'},'se1-t3':{en:'Top creative of the period',pt:'Top criativo do período'},
+  'se2-t':{en:'Consumer Month',pt:'Mês do Consumidor'},'se2-s':{en:'Q1 · National · Meta',pt:'T1 · Nacional · Meta'},'se2-d':{en:'Combined consumer demand momentum with zero monthly fee offer. Fake refresh applied on day 17 — switched from static to template format, stabilizing performance through month-end.',pt:'Combinou momentum de demanda do consumidor com oferta de mensalidade zero. Fake refresh aplicado no dia 17 — trocou de estático para template, estabilizando performance até o fim do mês.'},'se2-t1':{en:'Fake refresh mid-flight',pt:'Fake refresh durante o voo'},'se2-t2':{en:'Performance stabilized',pt:'Performance estabilizada'},
+  'se3-t':{en:'AI Bag Delivery',pt:'IA Bag Delivery'},'se3-s':{en:'Q2 · National · Meta',pt:'T2 · Nacional · Meta'},'se3-d':{en:'First AI-native creative in the pipeline. Generated strong acquisition volume with the lowest CPC of the entire account — significantly below all active campaign benchmarks.',pt:'Primeiro criativo nativo de IA no pipeline. Gerou forte volume de aquisição com o menor CPC de toda a conta — bem abaixo de todos os benchmarks.'},'se3-t1':{en:'Lowest CPC of the account',pt:'Menor CPC da conta'},'se3-t2':{en:'AI-first format',pt:'Formato IA-first'},
+  's10-ey':{en:'10 — Regional',pt:'10 — Regional'},'s10-h2':{en:'One Country,<br><em>Many Audiences</em>',pt:'Um País,<br><em>Muitas Audiências</em>'},'s10-lead':{en:'National campaigns set the base. Regional data revealed distinct conversion triggers per city — shaping creative adaptation for the 12-city expansion. Instagram Feed and Stories led across all markets.',pt:'As campanhas nacionais estabeleceram a base. Os dados regionais revelaram gatilhos distintos por cidade — moldando a adaptação criativa para o pack de 12 cidades. Feed e Stories lideraram em todos os mercados.'},
+  'rg1':{en:'Seasonal creatives drove the highest engagement. Easter "Chocolate" asset secured #1 position in the period.',pt:'Criativos sazonais geraram o maior engajamento. Ativo "Chocolate" da Páscoa garantiu a posição #1 do período.'},'rg2':{en:'Consumer Month had the strongest traction. Lifestyle-oriented messaging aligned better with local culture than ROI angles.',pt:'Mês do Consumidor teve maior tração. Mensagens de lifestyle se alinharam melhor à cultura local do que ângulos de ROI.'},'rg3':{en:'Entrepreneurship + seasonal combination outperformed. Video format led both CPC and engagement throughout the period.',pt:'Combinação empreendedorismo + sazonal superou as demais. Formato vídeo liderou em CPC e engajamento durante todo o período.'},'rg4':{en:'Only market where static had lower CPC than video — a unique audience signal that informed creative allocation for this city.',pt:'Único mercado onde estático teve CPC menor que vídeo — sinal único de audiência que informou a alocação criativa.'},'rg5':{en:'National creative consistently outperformed city-specific versions. Running the national ad was the optimal strategy for this market.',pt:'Criativo nacional superou consistentemente as versões da cidade. Rodar o anúncio nacional foi a estratégia ideal para este mercado.'},'rg6':{en:'ROI-focused messaging resonated with the entrepreneurial profile. Video led CPC efficiency with the lowest cost per engagement.',pt:'Mensagens de ROI ressoaram com o perfil empreendedor. Vídeo liderou em eficiência de CPC com o menor custo por engajamento.'},
+  's11-ey':{en:'11 — Role',pt:'11 — Função'},'s11-h2':{en:'My Role<br><em>& Impact</em>',pt:'Meu Papel<br><em>e Impacto</em>'},'s11-l1':{en:'I owned creative strategy end-to-end — from structuring the experimentation roadmap and running copystorming sessions, to analyzing biweekly performance data and presenting recommendations to stakeholders.',pt:'Fui responsável pela estratégia criativa de ponta a ponta — da estruturação do roadmap e condução de copystorming até análise quinzenal de dados e apresentação de recomendações para stakeholders.'},'s11-l2':{en:'Every brief had a hypothesis. Every campaign had a learning to extract. Every result fed the next cycle.',pt:'Cada briefing tinha uma hipótese. Cada campanha tinha um aprendizado a extrair. Cada resultado alimentava o próximo ciclo.'},
+  'role-label':{en:'Core Responsibilities',pt:'Responsabilidades Principais'},'rl1':{en:'Quarterly experimentation roadmap planning',pt:'Planejamento do roadmap de experimentação trimestral'},'rl2':{en:'Messaging strategy & structured copystorming',pt:'Estratégia de mensagem e copystorming estruturado'},'rl3':{en:'Creative direction: static, video, carousel, UGC, AI',pt:'Direção criativa: estático, vídeo, carrossel, UGC, IA'},'rl4':{en:'Biweekly performance analysis & WoW reporting',pt:'Análise quinzenal de performance e relatórios WoW'},'rl5':{en:'Seasonal campaign planning & execution',pt:'Planejamento e execução de campanhas sazonais'},'rl6':{en:'Fake refresh methodology — national + 7 cities',pt:'Metodologia de fake refresh — nacional + 7 cidades'},'rl7':{en:'Localized adaptation — 12-city expansion',pt:'Adaptação regionalizada — expansão em 12 cidades'},'rl8':{en:'AI-assisted creatives via Smartly.io',pt:'Criativos com IA via Smartly.io'},'rl9':{en:'Cross-functional: Growth · CRM · BI · Media · Agency',pt:'Colaboração: Growth · CRM · BI · Mídia · Agência'},'rl10':{en:'Stakeholder presentations & creative reviews',pt:'Apresentações para stakeholders e revisões criativas'},
+  's12-ey':{en:'12 — Learnings',pt:'12 — Aprendizados'},'s12-h2':{en:'Key <em>Learnings</em>',pt:'Principais <em>Aprendizados</em>'},'s12-l1':{en:"The biggest wins didn't come from a single brilliant creative — they came from a system that tested fast, learned consistently, and scaled what worked.",pt:'Os maiores resultados não vieram de um criativo brilhante isolado — vieram de um sistema que testou rápido, aprendeu consistentemente e escalou o que funcionou.'},'s12-l2':{en:'In B2B paid media, creative strategy is growth strategy. With +6% more spend, the right system delivered +22% more reach — proof that efficiency comes from creative thinking, not budget.',pt:'Em mídia paga B2B, estratégia criativa é estratégia de crescimento. Com +6% a mais de investimento, o sistema certo entregou +22% a mais de alcance — prova de que eficiência vem de pensamento criativo, não de verba.'},
+  'tag-sea':{en:'Seasonal Campaigns',pt:'Campanhas Sazonais'},'tag-loc':{en:'Localization',pt:'Regionalização'},'tag-data':{en:'Data Analysis',pt:'Análise de Dados'},'tag-col':{en:'Cross-functional',pt:'Colaboração Entre Times'},'back-btn':{en:'← Back to Portfolio',pt:'← Voltar ao Portfólio'}
 };
 
-/* ══ CURSOR ══ */
-const cur = document.getElementById('cursor');
-document.addEventListener('mousemove', e => {
-  cur.style.left = e.clientX + 'px';
-  cur.style.top  = e.clientY + 'px';
+const cur=document.getElementById('cursor');
+document.addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
+document.querySelectorAll('a,button,.cs-creative-card,.cs-result-card,.cs-msg-pill,.cs-season-card,.cs-region-card,.cs-signal-card').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cur.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cur.classList.remove('big'));
 });
-document.querySelectorAll('a,button,.cs-img-item,.cs-creative-card,.cs-msg-pill,.cs-result-card').forEach(el => {
-  el.addEventListener('mouseenter', () => cur.classList.add('big'));
-  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
-});
-
-/* ══ NAV SHRINK ══ */
-window.addEventListener('scroll', () => {
-  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
-}, { passive: true });
-
-/* ══ MOBILE MENU ══ */
-function toggleMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const ham  = document.getElementById('hamburger');
-  const isOpen = menu.classList.toggle('open');
-  if (ham) ham.classList.toggle('open');
-  document.body.style.overflow = isOpen ? 'hidden' : '';
+window.addEventListener('scroll',()=>{document.getElementById('mainNav').style.padding=window.scrollY>60?'10px 52px':'16px 52px';},{passive:true});
+function toggleMenu(){const menu=document.getElementById('mobileMenu');const ham=document.getElementById('hamburger');const open=menu.classList.toggle('open');if(ham)ham.classList.toggle('open');document.body.style.overflow=open?'hidden':'';}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');const ham=document.getElementById('hamburger');if(ham)ham.classList.remove('open');document.body.style.overflow='';}
+let lang='en';
+function setLang(l){
+  lang=l;document.documentElement.lang=l;
+  ['btnEN','btnENMob'].forEach(id=>{const b=document.getElementById(id);if(b)b.classList.toggle('active',l==='en');});
+  ['btnPT','btnPTMob'].forEach(id=>{const b=document.getElementById(id);if(b)b.classList.toggle('active',l==='pt');});
+  document.querySelectorAll('.t[data-key]').forEach(el=>{const k=el.dataset.key;if(!T[k]||!T[k][l])return;const v=T[k][l];if(v.includes('<'))el.innerHTML=v;else el.textContent=v;});
 }
-function closeMenu() {
-  const menu = document.getElementById('mobileMenu');
-  const ham  = document.getElementById('hamburger');
-  menu.classList.remove('open');
-  if (ham) ham.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-/* ══ LANGUAGE ══ */
-let lang = 'en';
-
-function setLang(l) {
-  lang = l;
-
-  // Button states
-  ['btnEN','btnENMob'].forEach(id => {
-    const b = document.getElementById(id);
-    if (b) b.classList.toggle('active', l === 'en');
-  });
-  ['btnPT','btnPTMob'].forEach(id => {
-    const b = document.getElementById(id);
-    if (b) b.classList.toggle('active', l === 'pt');
-  });
-
-  // Update html lang attribute
-  document.documentElement.lang = l;
-
-  // Translate all .t elements
-  document.querySelectorAll('.t[data-key]').forEach(el => {
-    const k = el.dataset.key;
-    if (!T[k]) return;
-    // Use innerHTML for keys that contain HTML tags
-    if (T[k][l] && (T[k][l].includes('<') || T[k][l].includes('&'))) {
-      el.innerHTML = T[k][l];
-    } else {
-      el.textContent = T[k][l] || el.textContent;
-    }
-  });
-}
-
-/* ══ THEME ══ */
-const SUN  = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>';
-const MOON = '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>';
-let theme = 'dark';
-
-function toggleTheme() {
-  theme = theme === 'dark' ? 'light' : 'dark';
-  document.documentElement.setAttribute('data-theme', theme);
-  const icon = theme === 'dark' ? SUN : MOON;
-  ['themeBtn','themeBtnMob'].forEach(id => {
-    const b = document.getElementById(id);
-    if (b) b.innerHTML = icon;
-  });
-  const logo = document.getElementById('navLogo');
-  if (logo) {
-    logo.src = theme === 'light'
-      ? 'https://static.wixstatic.com/media/b72a24_02ca24368e834508a23fb0a12617db96~mv2.png'
-      : 'https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png';
-  }
-}
-
-/* ══ SCROLL REVEAL ══ */
-document.addEventListener('DOMContentLoaded', () => {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.07 });
-  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-});
+const SUN='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>';
+const MOON='<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>';
+let theme='dark';
+function toggleTheme(){theme=theme==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',theme);const icon=theme==='dark'?SUN:MOON;['themeBtn','themeBtnMob'].forEach(id=>{const b=document.getElementById(id);if(b)b.innerHTML=icon;});const logo=document.getElementById('navLogo');if(logo)logo.src=theme==='light'?'https://static.wixstatic.com/media/b72a24_02ca24368e834508a23fb0a12617db96~mv2.png':'https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png';}
+document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));});
 </script>
 </body>
 </html>

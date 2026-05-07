@@ -470,7 +470,7 @@ section { padding: 96px 52px; }
 
 .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-top:32px; }
 .skill-tag {
-  background:rgba(176,108,255,0.06); border:1px solid var(--border); border-radius:3px;
+  background:rgba(176,108,255,0.06); border-left:1px solid var(--border); border-radius:3px;
   padding:8px 10px; font-size:0.64rem; color:var(--gray);
   font-family:'Space Mono',monospace; text-align:center;
   transition:border-color 0.2s, color 0.2s, background 0.2s;
@@ -550,7 +550,7 @@ section { padding: 96px 52px; }
 .know-group { margin-bottom:26px; }
 .know-group h4 {font-family: 'Bebas Neue', sans-serif;font-size: 1.2rem;letter-spacing: 0.08em;color: var(--text);margin-bottom: 10px;padding-bottom: 6px;}
 .know-tags { display:flex; flex-wrap:wrap; gap:6px; }
-.know-tag { background:rgba(176,108,255,0.06); border:1px solid var(--border); border-radius:2px; padding:5px 12px; font-size:0.71rem; color:var(--text-muted); transition:all 0.2s; }
+.know-tag { background:rgba(176,108,255,0.06); border-left:1px solid var(--border); border-radius:2px; padding:5px 12px; font-size:0.71rem; color:var(--text-muted); transition:all 0.2s; }
 .know-tag:hover { border-color:var(--accent2); color:var(--accent2); background:rgba(255,110,199,0.06); }
 
 .edu-certs { margin-top:30px; }
@@ -1161,6 +1161,7 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   <button class="lb-nav lb-next" onclick="lbShift(1)"  aria-label="Next">›</button>
   <span class="lb-counter" id="lbCount"></span>
 </div>
+</section>
 
 <!-- ══ EXPERIENCES ══ -->
 <section id="experiences">
