@@ -1,0 +1,1257 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8ZM0P67L3H"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8ZM0P67L3H');</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DiDi LP Redesign | Leticia Corredato</title>
+<meta name="description" content="DiDi Repartidor Landing Page Redesign — UX & Conversion Design 2025">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=Space+Mono:ital@0;1&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Cores de Destaque */
+  --accent: #ff2d9b;
+  --ev: #FF5C00;
+  --accent2: #ff6ec7;
+  --accent3: #c4006e;
+  
+  /* Escala DiDi */
+  --di: #FF5C00;
+  --di2: #FF7A2E;
+  --di3: #CC4900;
+  --di-bg: rgba(255, 92, 0, 0.08);
+
+  /* Estrutura de Fundo */
+  --bg: #08050a;
+  --bg-alt: #100816;
+  --bg-mid: #160c1e;
+  --card-bg: #120a18;
+
+  /* Texto e Tipografia */
+  --text: #fff0f8;
+  --text-muted: rgba(255, 240, 248, 0.62);
+  --gray: #a07890;
+
+  /* Bordas e Navegação */
+  --border: rgba(255, 45, 155, 0.18);
+  --nav-bg: rgba(8, 5, 10, 0.82);
+  --nav-bg-s: rgba(8, 5, 10, 0.97);
+  
+  /* Efeitos */
+  --cursor-blend: screen;
+}
+
+[data-theme="light"] {
+  --bg: #fff6f0;
+  --bg-alt: #ffe8d6;
+  --bg-mid: #ffd4b8;
+  --card-bg: #ffffff;
+  --text: #1a0800;
+  --text-muted: rgba(26,8,0,0.62);
+  --gray: #8a5030;
+  --border: rgba(255,92,0,0.18);
+  --nav-bg: rgba(255,246,240,0.92);
+  --cursor-blend: multiply;
+}
+
+*,*::before,*::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Outfit', sans-serif; overflow-x: hidden; cursor: none; transition: background 0.4s, color 0.4s; }
+
+/* FIX: Cursor agora usa var(--di) */
+#cursor {
+  position: fixed; width: 13px; height: 13px; background: var(--di); border-radius: 50%;
+  pointer-events: none; z-index: 9999; transform: translate(-50%, -50%);
+  mix-blend-mode: var(--cursor-blend); transition: width 0.2s, height 0.2s; will-change: left, top;
+}
+#cursor.big { width: 36px; height: 36px; background: rgba(255, 92, 0, 0.2); }
+
+@media(hover:none) { #cursor { display:none; } body { cursor:auto; } }
+
+/* PAGE STRUCTURE */
+.cs-section { padding: 88px 52px; background: var(--bg); position: relative; }
+.cs-section.alt { background: var(--bg-alt); }
+.divider { width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--di), var(--di2), transparent); opacity: 0.3; }
+
+.cover { min-height: 100vh; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 130px 52px 80px; text-align: center; background: #0b0400; }
+[data-theme="light"] .cover { background: #fff6f0; }
+
+.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s, transform 0.7s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:center;justify-content:space-between;padding:16px 52px;background:var(--nav-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border);transition:padding 0.3s,background 0.4s;}
+.nav-logo img{height:46px;filter:drop-shadow(0 0 8px var(--accent));transition:filter 0.3s;}
+[data-theme="light"] .nav-logo img{filter:drop-shadow(0 0 6px var(--accent)) brightness(0.9);}
+.nav-links{display:flex;gap:32px;list-style:none;}
+.nav-links a{color:var(--gray);text-decoration:none;font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transition:transform 0.25s;}
+.nav-links a:hover{color:var(--accent);}
+.nav-links a:hover::after{transform:scaleX(1);}
+.nav-right{display:flex;align-items:center;gap:8px;}
+.nav-controls{display:flex;align-items:stretch;border:1px solid var(--border);border-radius:4px;overflow:hidden;height:32px;}
+.lang-switch{display:flex;align-items:stretch;}
+.lang-switch button{background:transparent;border:none;color:var(--gray);padding:0 12px;cursor:pointer;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.13em;text-transform:uppercase;transition:background 0.2s,color 0.2s;height:100%;display:flex;align-items:center;}
+.lang-switch button.active{background:var(--accent);color:#fff;font-weight:700;}
+.lang-switch button:not(.active):hover{color:var(--accent);}
+.nav-sep{width:1px;background:var(--border);flex-shrink:0;align-self:stretch;}
+.theme-btn{background:transparent;border:none;border-left:1px solid var(--border);width:36px;height:100%;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:background 0.2s,color 0.2s;color:var(--gray);padding:0;flex-shrink:0;}
+.theme-btn:hover{background:rgba(255,45,155,0.09);color:var(--accent);}
+.theme-btn svg{width:14px;height:14px;fill:currentColor;display:block;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;z-index:10001;}
+.hamburger span{display:block;width:24px;height:2px;background:var(--accent);border-radius:2px;transition:transform 0.3s,opacity 0.3s;}
+.mobile-close-trigger{position:absolute;top:20px;right:28px;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-menu{position:fixed;inset:0;background:var(--bg);z-index:9999;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;visibility:hidden;transition:opacity 0.4s,visibility 0.4s;}
+.mobile-menu.open{opacity:1;visibility:visible;}
+.mobile-menu a{color:var(--text);text-decoration:none;font-family:'Bebas Neue',sans-serif;font-size:2.6rem;letter-spacing:0.1em;transition:color 0.2s;}
+.mobile-menu a:hover{color:var(--accent);}
+.mobile-controls{display:flex;align-items:stretch;border:1px solid var(--border);border-radius:4px;overflow:hidden;height:40px;margin-top:8px;}
+.mobile-controls .lang-switch button{font-size:0.72rem;padding:0 16px;height:100%;}
+.mobile-controls .theme-btn{border-left:1px solid var(--border);width:44px;height:100%;}
+.mobile-controls .theme-btn svg{width:16px;height:16px;}
+.cs-section{padding:80px 52px;background:var(--bg);}
+.cs-section.alt{background:var(--bg-alt);}
+.cs-eyebrow{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.28em;color:var(--di3);text-transform:uppercase;margin-bottom:10px;}
+.cs-h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5.5vw,4.4rem);letter-spacing:0.05em;line-height:1;color:var(--text);margin-bottom:20px;}
+.cs-h2 em{color:var(--di);font-style:normal;}
+.cs-lead{font-size:0.92rem;line-height:1.78;color:var(--text-muted);max-width:640px;margin-bottom:22px;}
+.cs-accent-line{width:48px;height:3px;background:linear-gradient(90deg,var(--di),var(--di2));border-radius:2px;margin-bottom:24px;}
+.divider{width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--di),var(--di2),transparent);opacity:0.25;}
+.cs-2col{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start;}
+.cs-3col{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.cs-4col{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;}
+.cs-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:20px 22px;}
+.cs-card-label{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;color:var(--di3);text-transform:uppercase;margin-bottom:10px;}
+.cs-card-list{list-style:none;}
+.cs-card-list li{font-size:0.82rem;color:var(--text-muted);padding:3px 0;}
+.cs-card-list li::before{content:'— ';color:var(--di);}
+.cs-challenge-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:18px 20px;border-top:3px solid var(--di);}
+.cs-challenge-card h4{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:var(--text);margin-bottom:5px;}
+.cs-challenge-card p{font-size:0.78rem;color:var(--text-muted);line-height:1.6;}
+.cs-cover{min-height:100vh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:130px 52px 80px;text-align:center;background:#0b0400;}
+[data-theme="light"] .cs-cover{background:#fff6f0;}
+.cs-cover-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,92,0,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,92,0,0.07) 1px,transparent 1px);background-size:52px 52px;}
+.cs-cover-glow{position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% 40%,rgba(255,92,0,0.18) 0%,transparent 70%);}
+.cs-cover-tag{display:inline-block;position:relative;z-index:1;border:1px solid rgba(255,92,0,0.35);border-radius:100px;padding:5px 18px;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;color:var(--di3);text-transform:uppercase;margin-bottom:24px;background:rgba(255,92,0,0.08);}
+.cs-cover-brand{font-family:'Bebas Neue',sans-serif;font-size:clamp(5rem,16vw,13rem);letter-spacing:0.02em;line-height:0.85;color:#fdf0e8;position:relative;z-index:1;}
+[data-theme="light"] .cs-cover-brand{color:#1a0800;}
+.cs-cover-brand span{color:var(--di);}
+.cs-cover-sub{position:relative;z-index:1;font-family:'Space Mono',monospace;font-size:clamp(0.55rem,1.5vw,0.72rem);letter-spacing:0.18em;color:rgba(255,92,0,0.7);text-transform:uppercase;margin-top:14px;}
+.cs-cover-desc{position:relative;z-index:1;font-size:0.9rem;line-height:1.78;color:rgba(253,240,232,0.65);max-width:520px;margin:16px auto 0;}
+[data-theme="light"] .cs-cover-desc{color:rgba(26,8,0,0.6);}
+.cs-cover-meta{position:relative;z-index:1;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:44px;}
+.cs-meta-item{text-align:center;min-width:90px;}
+.cs-meta-label{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.15em;color:rgba(255,92,0,0.5);text-transform:uppercase;margin-bottom:4px;}
+.cs-meta-val{font-size:0.84rem;color:#fdf0e8;font-weight:600;}
+[data-theme="light"] .cs-meta-val{color:#1a0800;}
+.cs-meta-div{width:1px;background:rgba(255,92,0,0.2);align-self:stretch;}
+/* ── PAGE SYSTEM ── */
+.ey{font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.28em;color:var(--di3);text-transform:uppercase;margin-bottom:10px;}
+.ch2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5.5vw,4.4rem);letter-spacing:0.05em;line-height:1;color:var(--text);margin-bottom:20px;}
+.ch2 em{color:var(--di);font-style:normal;}
+.lead{font-size:1rem;line-height:1.82;color:var(--text-muted);max-width:660px;margin-bottom:28px;}
+.aline{width:48px;height:3px;background:linear-gradient(90deg,var(--di),var(--di2));border-radius:2px;margin-bottom:28px;}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+.gcard{background:var(--card-bg);border:1px solid rgba(255,92,0,0.18);border-radius:8px;padding:20px 22px;}
+.gcard-lbl{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;color:var(--di3);text-transform:uppercase;margin-bottom:10px;}
+.gcard ul{list-style:none;}.gcard li{font-size:0.82rem;color:var(--text-muted);padding:3px 0;}
+.gcard li::before{content:'— ';color:var(--di);}
+.chal{background:var(--card-bg);border:1px solid rgba(255,92,0,0.16);border-radius:8px;padding:18px 20px;border-top:3px solid var(--di);}
+.chal h4{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.1em;color:var(--text);margin-bottom:5px;}
+.chal p{font-size:0.78rem;color:var(--text-muted);line-height:1.6;}
+.tml{position:relative;padding-left:28px;}
+.tml::before{content:'';position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--di),rgba(255,92,0,0.06));}
+.ti{position:relative;margin-bottom:28px;}
+.tdot{position:absolute;left:-22px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--di);box-shadow:0 0 8px rgba(255,92,0,0.5);}
+.tph{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;color:var(--di3);text-transform:uppercase;margin-bottom:3px;}
+.ttt{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.08em;color:var(--text);margin-bottom:4px;}
+.tde{font-size:0.78rem;color:var(--text-muted);line-height:1.6;}
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:8px;overflow:hidden;margin-bottom:24px;}
+.bac{padding:26px 22px;background:var(--card-bg);}
+.bac.af{background:rgba(255,92,0,0.07);border:1px solid rgba(255,92,0,0.22);}
+.balbl{font-family:'Space Mono',monospace;font-size:0.55rem;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:14px;padding-bottom:8px;border-bottom:1px solid var(--border);color:var(--gray);}
+.bac.af .balbl{color:var(--di3);border-color:rgba(255,92,0,0.25);}
+.bai{display:flex;align-items:flex-start;gap:8px;margin-bottom:10px;}
+.bai::before{content:'•';color:var(--di);margin-top:1px;flex-shrink:0;}
+.bai span{font-size:0.8rem;color:var(--text-muted);line-height:1.5;}
+.met{background:var(--card-bg);border:1px solid rgba(255,92,0,0.16);border-radius:8px;padding:22px 20px;border-left:3px solid var(--di);}
+.met-n{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;color:var(--di);letter-spacing:0.04em;line-height:1;margin-bottom:5px;}
+.met-t{font-size:0.82rem;color:var(--text);font-weight:600;margin-bottom:5px;}
+.met-d{font-size:0.75rem;color:var(--text-muted);line-height:1.55;}
+.msgs{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0;}
+.mpill{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(255,92,0,0.22);border-radius:6px;padding:10px 16px;background:var(--card-bg);transition:border-color 0.2s,background 0.2s;}
+.mpill:hover{border-color:var(--di);background:var(--di-bg);}
+.mdot{width:7px;height:7px;border-radius:50%;background:var(--di);flex-shrink:0;}
+.mpill span{font-size:0.78rem;color:var(--text-muted);font-weight:500;}
+.stag{display:inline-block;border:1px solid rgba(255,92,0,0.3);border-radius:100px;padding:3px 10px;font-size:0.6rem;color:var(--di3);font-family:'Space Mono',monospace;letter-spacing:0.08em;margin:2px;}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
+.tag{border:1px solid rgba(255,92,0,0.25);border-radius:4px;padding:5px 14px;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.1em;color:var(--di3);text-transform:uppercase;background:var(--di-bg);}
+/* ── COVER ── */
+.covgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,92,0,0.07) 1px,transparent 1px),linear-gradient(90deg,rgba(255,92,0,0.07) 1px,transparent 1px);background-size:52px 52px;}
+.covglow{position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 50% 40%,rgba(255,92,0,0.18) 0%,transparent 70%);}
+.covtag{display:inline-block;position:relative;z-index:1;border:1px solid rgba(255,92,0,0.38);border-radius:100px;padding:5px 18px;font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.2em;color:var(--di3);text-transform:uppercase;margin-bottom:24px;background:var(--di-bg);}
+.covbrand{font-family:'Bebas Neue',sans-serif;font-size:clamp(4.5rem,13vw,10rem);letter-spacing:0.02em;line-height:0.88;color:#fdf0e8;position:relative;z-index:1;}
+[data-theme="light"] .covbrand{color:#1a0800;}
+.covbrand span{color:var(--di);}
+.covsub{position:relative;z-index:1;font-family:'Space Mono',monospace;font-size:clamp(0.55rem,1.5vw,0.72rem);letter-spacing:0.18em;color:rgba(255,92,0,0.72);text-transform:uppercase;margin-top:14px;}
+[data-theme="light"] .covsub{color:var(--di3);}
+.covdesc{position:relative;z-index:1;font-size:0.9rem;line-height:1.78;color:rgba(253,240,232,0.65);max-width:520px;margin:16px auto 0;}
+[data-theme="light"] .covdesc{color:rgba(26,8,0,0.62);}
+.covmeta{position:relative;z-index:1;display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-top:44px;}
+.mi{text-align:center;min-width:90px;}
+.mil{font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.15em;color:rgba(255,92,0,0.5);text-transform:uppercase;margin-bottom:4px;}
+.miv{font-size:0.84rem;color:#fdf0e8;font-weight:600;}
+[data-theme="light"] .miv{color:#1a0800;}
+.mdiv{width:1px;background:rgba(255,92,0,0.2);align-self:stretch;}
+.backbtn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:'Space Mono',monospace;font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--di3);border:1px solid rgba(255,92,0,0.3);padding:11px 26px;border-radius:4px;transition:background 0.2s,border-color 0.2s;margin-top:40px;}
+.backbtn:hover{background:var(--di-bg);border-color:var(--di);}
+.backbtn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;}
+/* ── BIG NUMBERS ── */
+.bignums{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.bn-card{background:var(--card-bg);border:1px solid rgba(255,92,0,0.14);padding:40px 28px;text-align:center;position:relative;overflow:hidden;transition:border-color 0.3s,transform 0.3s;}
+.bn-card:hover{border-color:rgba(255,92,0,0.45);transform:translateY(-4px);}
+.bn-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--di),var(--di2));}
+.bn-n{font-family:'Bebas Neue',sans-serif;font-size:clamp(3rem,6vw,5rem);color:var(--di);letter-spacing:0.02em;line-height:1;margin-bottom:12px;}
+.bn-t{font-size:0.9rem;color:var(--text);font-weight:600;margin-bottom:6px;}
+.bn-d{font-size:0.72rem;color:var(--text-muted);line-height:1.55;}
+/* ── COMPETITOR TABLE ── */
+/* comp-table removed */
+.pill{display:inline-block;border-radius:100px;padding:2px 9px;font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.08em;margin:2px;}
+.pill.g{background:rgba(34,197,94,0.12);color:#4ade80;border:1px solid rgba(34,197,94,0.2);}
+.pill.r{background:rgba(239,68,68,0.1);color:#f87171;border:1px solid rgba(239,68,68,0.18);}
+.pill.y{background:rgba(255,92,0,0.1);color:var(--di2);border:1px solid rgba(255,92,0,0.22);}
+/* ── LP COMPARE ── */
+.lp-compare{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:8px;overflow:hidden;}
+.lp-col{position:relative;}
+.lp-badge{position:absolute;top:12px;left:12px;z-index:2;font-family:'Space Mono',monospace;font-size:0.52rem;letter-spacing:0.14em;text-transform:uppercase;padding:4px 12px;border-radius:2px;}
+.lp-badge.bef{background:rgba(100,100,100,0.85);color:#fff;}
+.lp-badge.aft{background:rgba(255,92,0,0.9);color:#fff;}
+.lp-frame{background:var(--card-bg);border:1px solid rgba(255,92,0,0.15);height:500px;overflow:hidden;position:relative;}
+.lp-frame img{width:100%;object-fit:cover;object-position:top;transition:transform 10s ease;}
+.lp-frame:hover img{transform:translateY(calc(-100% + 500px));}
+.lp-hint{position:absolute;bottom:10px;left:50%;transform:translateX(-50%);font-family:'Space Mono',monospace;font-size:0.45rem;letter-spacing:0.1em;color:rgba(255,255,255,0.55);background:rgba(0,0,0,0.5);padding:3px 10px;border-radius:10px;pointer-events:none;white-space:nowrap;}
+/* FOOTER */
+footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(--border);text-align:center;}
+.footer-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,5vw,3.3rem);letter-spacing:0.1em;color:var(--text);margin-bottom:6px;}
+.footer-sub{font-family:'Space Mono',monospace;font-size:0.68rem;color:var(--gray);letter-spacing:0.13em;margin-bottom:34px;}
+.social-links{display:flex;justify-content:center;gap:12px;margin-bottom:38px;}
+.social-link{width:44px;height:44px;border:1px solid var(--border);border-radius:3px;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:all 0.25s;}
+.social-link:hover{border-color:var(--accent);box-shadow:0 0 14px rgba(255,45,155,0.28);transform:translateY(-3px);}
+.social-link img{width:21px;height:21px;}
+[data-theme="light"] .social-link img{filter:brightness(0.5) saturate(1.5);}
+.footer-copy{font-size:0.67rem;color:var(--gray);font-family:'Space Mono',monospace;opacity:0.4;}
+/* ── COMP GRID 6 ── */
+.comp-grid6{
+  display:grid;
+  grid-template-columns:repeat(6,1fr);
+  gap:12px;
+  margin-top:28px;
+}
+.cmp-card{
+  background:var(--card-bg);
+  border:1px solid rgba(255,92,0,0.15);
+  border-radius:8px;
+  padding:18px 16px;
+  transition:border-color 0.25s,transform 0.25s;
+}
+.cmp-card:hover{border-color:rgba(255,92,0,0.4);transform:translateY(-3px);}
+.cmp-name{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:1.05rem;letter-spacing:0.08em;
+  color:var(--text);margin-bottom:12px;
+  padding-bottom:8px;
+  border-bottom:1px solid rgba(255,92,0,0.12);
+}
+.cmp-row{
+  display:flex;align-items:center;
+  justify-content:space-between;
+  gap:6px;margin-bottom:5px;
+  white-space:nowrap;
+}
+.cmp-lbl{
+  font-family:'Space Mono',monospace;
+  font-size:0.5rem;letter-spacing:0.1em;
+  color:var(--gray);text-transform:uppercase;
+  flex-shrink:0;
+}
+.cmp-diff{
+  margin-top:10px;padding-top:8px;
+  border-top:1px solid rgba(255,92,0,0.1);
+  font-size:0.72rem;color:var(--text-muted);
+  line-height:1.45;
+}
+
+/* ── VERDICT (DiDi before vs redesign) ── */
+.comp-verdict{
+  display:grid;
+  grid-template-columns:1fr 32px 1fr;
+  gap:0;
+  margin-top:24px;
+  border-radius:8px;
+  overflow:hidden;
+}
+.verdict-col{padding:24px 22px;}
+.verdict-before{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.07);}
+.verdict-after{background:rgba(255,92,0,0.06);border:1px solid rgba(255,92,0,0.2);}
+.verdict-arrow{
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.4rem;color:var(--di);
+  background:rgba(255,92,0,0.08);
+  border-top:1px solid rgba(255,92,0,0.15);
+  border-bottom:1px solid rgba(255,92,0,0.15);
+}
+.verdict-header{display:flex;flex-direction:column;gap:4px;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,0.07);}
+.verdict-after .verdict-header{border-bottom-color:rgba(255,92,0,0.2);}
+.verdict-badge{
+  display:inline-block;
+  font-family:'Space Mono',monospace;
+  font-size:0.54rem;letter-spacing:0.14em;text-transform:uppercase;
+  padding:3px 10px;border-radius:2px;width:fit-content;
+}
+.verdict-badge.bef{background:rgba(255,255,255,0.08);color:rgba(255,255,255,0.6);}
+.verdict-badge.aft{background:rgba(255,92,0,0.18);color:var(--di2);}
+.verdict-sub{font-family:'Space Mono',monospace;font-size:0.5rem;color:var(--gray);letter-spacing:0.08em;}
+.verdict-item{
+  display:flex;align-items:flex-start;gap:8px;
+  margin-bottom:8px;font-size:0.78rem;
+  color:var(--text-muted);line-height:1.4;
+}
+.vi-icon{flex-shrink:0;font-size:0.72rem;margin-top:1px;width:14px;}
+.verdict-item.bad .vi-icon{color:#f87171;}
+.verdict-item.good .vi-icon{color:#4ade80;}
+
+/* ══ TABLET — ≤ 1024px ══ */
+@media(max-width:1024px){
+  .bignums{grid-template-columns:1fr 1fr;}
+  .comp-grid6{grid-template-columns:repeat(3,1fr);}
+  .g2{gap:36px;}
+  .lp-compare{gap:2px;}
+  .mdiv{display:none;}
+  .covmeta{display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; justify-items: center;}
+}
+
+/* ══ MOBILE — ≤ 900px ══ */
+@media(max-width:900px){
+  nav{padding:13px 22px;}.nav-links{display:none;}.hamburger{display:flex;}
+  nav.scrolled{padding:9px 22px;}
+  .mdiv{display:none;}
+  .cs-section{padding:60px 24px;}.cs-cover{padding:100px 24px 60px;}
+  .cs-2col{grid-template-columns:1fr;gap:32px;}
+  .cs-3col{grid-template-columns:1fr 1fr;}
+  .cs-4col{grid-template-columns:1fr 1fr;}
+  .cs-creative-grid{grid-template-columns:1fr 1fr;}
+  .cs-season-grid{grid-template-columns:1fr 1fr;}
+  .cs-regions{grid-template-columns:1fr 1fr;}
+  .cs-result-grid{grid-template-columns:1fr 1fr;}
+  .cs-signal-grid{grid-template-columns:1fr;}
+  .cs-ba{grid-template-columns:1fr;}
+  .cs-hb-grid{grid-template-columns:1fr 1fr;}
+  .g2{grid-template-columns:1fr;gap:32px;}
+  .g3{grid-template-columns:1fr 1fr;}
+  .g4{grid-template-columns:1fr 1fr;}
+  .covmeta{display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; justify-items: center;}
+  .cs-cover-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}
+  .cs-meta-div{display:none;}
+  .bignums{grid-template-columns:1fr 1fr;}
+  .lp-compare{grid-template-columns:1fr;}
+  .lp-frame{height:380px;}
+  .ba{grid-template-columns:1fr;}
+  /* comp grid → 2 colunas no tablet/mobile */
+  .comp-grid6{grid-template-columns:1fr 1fr;}
+  /* verdict → empilhado */
+  .comp-verdict{grid-template-columns:1fr;gap:2px;}
+  .verdict-arrow{display:none;}
+  .verdict-before,.verdict-after{border-radius:0;}
+  .msgs{gap:8px;}
+  .mpill{padding:8px 12px;}
+  footer{padding:48px 18px 28px;}
+}
+
+/* ══ MOBILE — ≤ 560px ══ */
+@media(max-width:560px){
+  nav{padding:12px 18px;}
+  .cs-section{padding:48px 18px;}
+  .cs-cover{padding:90px 18px 50px;}
+  .cs-3col{grid-template-columns:1fr;}
+  .cs-creative-grid{grid-template-columns:1fr;}
+  .cs-season-grid{grid-template-columns:1fr;}
+  .cs-regions{grid-template-columns:1fr;}
+  .cs-result-grid{grid-template-columns:1fr;}
+  .cs-hb-grid{grid-template-columns:1fr 1fr;}
+  .cs-cover-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
+  .g3{grid-template-columns:1fr;}
+  .g4{grid-template-columns:1fr 1fr;}
+  .bignums{grid-template-columns:1fr;}
+  .bn-card{padding:28px 20px;}
+  .cs-cover-brand{font-size:clamp(3.2rem,14vw,6rem);}
+  .lp-frame{height:300px;}
+  .mobile-menu a{font-size:2rem;}
+  /* comp grid → 1 coluna no mobile pequeno */
+  .comp-grid6{grid-template-columns:1fr 1fr;}
+}
+
+/* ══ LANDSCAPE SMALL ══ */
+@media(max-height:480px) and (orientation:landscape){
+  .mobile-menu{justify-content:flex-start;padding:60px 20px;overflow-y:auto;gap:16px;}
+  .mobile-menu a{font-size:1.5rem;}
+}
+</style>
+</head>
+<body>
+<div id="cursor"></div>
+
+<nav id="mainNav">
+  <a class="nav-logo" href="https://lecorredato.github.io/portfolio/#hero">
+    <img id="navLogo" src="https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png" alt="LC">
+  </a>
+  <ul class="nav-links">
+    <li><a href="https://lecorredato.github.io/portfolio/#about"       class="t" data-key="nav-about">About</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#cases"       class="t" data-key="nav-case">Cases</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#portfolio"   class="t" data-key="nav-portfolio">Portfolio</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#experiences" class="t" data-key="nav-exp">Experience</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#contact"     class="t" data-key="nav-contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="nav-controls">
+      <div class="lang-switch">
+        <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
+        <div class="nav-sep"></div>
+        <button id="btnPT" onclick="setLang('pt')">PT</button>
+      </div>
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+      </button>
+    </div>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <div class="hamburger open mobile-close-trigger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  <a href="https://lecorredato.github.io/portfolio/#about"       onclick="closeMenu()" class="t" data-key="nav-about">About</a>
+  <a href="https://lecorredato.github.io/portfolio/#cases"       onclick="closeMenu()" class="t" data-key="nav-case">Cases</a>
+  <a href="https://lecorredato.github.io/portfolio/#portfolio"   onclick="closeMenu()" class="t" data-key="nav-portfolio">Portfolio</a>
+  <a href="https://lecorredato.github.io/portfolio/#experiences" onclick="closeMenu()" class="t" data-key="nav-exp">Experience</a>
+  <a href="https://lecorredato.github.io/portfolio/#contact"     onclick="closeMenu()" class="t" data-key="nav-contact">Contact</a>
+  <div class="mobile-controls">
+    <div class="lang-switch">
+      <button id="btnENMob" class="active" onclick="setLang('en')">EN</button>
+      <div class="nav-sep"></div>
+      <button id="btnPTMob" onclick="setLang('pt')">PT</button>
+    </div>
+    <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ══ COVER ══ -->
+<div class="cover">
+  <div class="covgrid"></div><div class="covglow"></div>
+  
+  <div class="covtag t" data-key="cover-tag">Case Study · 2025</div>
+  
+  <h1 class="covbrand"><span>LP</span> Redesign</h1>
+  
+  <p class="covsub">
+    <span data-lang="en" style="display:inline;">Landing Page · UX Research · Conversion Design</span>
+    <span data-lang="pt">Landing Page · UX Research · Design de Conversão</span>
+  </p>
+  <p class="covdesc">
+    <span data-lang="en" style="display:inline;">Restructuring DiDi's food delivery courier acquisition page — backed by a competitive audit of 6 platforms — from an information-heavy layout into a progressive conviction journey.</span>
+    <span data-lang="pt">Reestruturação da página de aquisição de entregadores DiDi — embasada por auditoria competitiva de 6 plataformas — de um layout carregado de informação para uma jornada de convencimento progressivo.</span>
+  </p>
+  
+  <div class="covmeta">
+    <div class="mi">
+      <div class="mil t" data-key="ml-role">Role</div>
+      <div class="miv">UX Designer</div>
+    </div>
+    
+    <div class="mdiv"></div>
+    
+    <div class="mi">
+      <div class="mil t" data-key="ml-plat">Company</div>
+      <div class="miv">DiDi</div>
+    </div>
+    
+    <div class="mdiv"></div>
+    
+    <div class="mi">
+      <div class="mil t" data-key="ml-focus">Type</div>
+      <div class="miv">UX · CRO · Research</div>
+    </div>
+    
+    <div class="mdiv"></div>
+    
+    <div class="mi">
+      <div class="mil t" data-key="ml-year">Year</div>
+      <div class="miv">2025</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+ 
+<!-- ══ 01 — PROJECTED IMPACT (exec summary — data first) ══ -->
+<div class="cs-section reveal">
+  <p class="ey" style="text-align:center;">01 — <span data-lang="en" style="display:inline;">Projected Impact</span><span data-lang="pt">Impacto Projetado</span></p>
+  <h2 class="ch2" style="text-align:center;margin-bottom:8px;">
+    <span data-lang="en" style="display:inline;">The case</span><span data-lang="pt">O case</span>
+    <em><span data-lang="en" style="display:inline;"> in numbers</span><span data-lang="pt"> em números</span></em>
+  </h2>
+  <div class="aline" style="margin:16px auto 10px;"></div>
+  <p style="text-align:center;font-family:'Space Mono',monospace;font-size:0.56rem;color:var(--gray);letter-spacing:0.12em;margin-bottom:52px;">
+    <span data-lang="en" style="display:inline;">* Projections grounded in CRO benchmarks and competitive research. Page designed and delivered; not yet published.</span>
+    <span data-lang="pt">* Projeções embasadas em benchmarks de CRO e research competitivo. Página desenhada e entregue; ainda não publicada.</span>
+  </p>
+ 
+  <div class="bignums">
+    <div class="bn-card">
+      <div class="bn-n">+38%</div>
+      <div class="bn-t" data-lang="en" style="display:block;">Conversion Rate</div>
+      <div class="bn-t" data-lang="pt">Taxa de Conversão</div>
+      <div class="bn-d" data-lang="en" style="display:block;">Projected lift from reducing the hero form from 2 fields (city + phone) to 1 (phone only) — the single most validated CRO lever in acquisition pages across all 6 competitors audited.</div>
+      <div class="bn-d" data-lang="pt">Aumento projetado pela redução do formulário hero de 2 campos (cidade + telefone) para 1 (só telefone) — a alavanca de CRO mais validada em páginas de aquisição nas 6 plataformas auditadas.</div>
+    </div>
+    <div class="bn-card">
+      <div class="bn-n">−52%</div>
+      <div class="bn-t" data-lang="en" style="display:block;">Cost per Lead</div>
+      <div class="bn-t" data-lang="pt">Custo por Lead</div>
+      <div class="bn-d" data-lang="en" style="display:block;">Estimated CPL reduction from higher conversion volume at equivalent media spend — a direct consequence of removing pre-intent friction and adding section-level CTAs throughout the page.</div>
+      <div class="bn-d" data-lang="pt">Redução estimada de CPL a partir de maior volume de conversão com o mesmo investimento em mídia — consequência direta de remover atrito pré-intenção e adicionar CTAs por seção ao longo da página.</div>
+    </div>
+    <div class="bn-card">
+      <div class="bn-n">−61%</div>
+      <div class="bn-t" data-lang="en" style="display:block;">Form Abandonment</div>
+      <div class="bn-t" data-lang="pt">Abandono de Formulário</div>
+      <div class="bn-d" data-lang="en" style="display:block;">Projected drop in form drop-off — validated by iFood and DoorDash patterns showing that single-field entry dramatically reduces abandonment before the candidate establishes intent.</div>
+      <div class="bn-d" data-lang="pt">Queda projetada no abandono de formulário — validada pelos padrões do iFood e DoorDash, mostrando que o campo único reduz drasticamente o abandono antes de o candidato estabelecer intenção.</div>
+    </div>
+    <div class="bn-card">
+      <div class="bn-n">2.4×</div>
+      <div class="bn-t" data-lang="en" style="display:block;">Mobile Conversion</div>
+      <div class="bn-t" data-lang="pt">Conversão Mobile</div>
+      <div class="bn-d" data-lang="en" style="display:block;">Projected multiplier for mobile sign-ups — driven by the mobile-first redesign, sticky CTA bar and thumb-optimized accordion — for an audience where the majority of traffic arrives via smartphone.</div>
+      <div class="bn-d" data-lang="pt">Multiplicador projetado para cadastros mobile — impulsionado pelo redesign mobile-first, barra CTA fixa e acordeão otimizado para polegar — para uma audiência cuja maioria do tráfego chega via smartphone.</div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+ 
+<!-- ══ 02 — CONTEXT ══ -->
+<div class="cs-section alt reveal">
+  <div class="g2">
+    <div>
+      <p class="ey">02 — <span data-lang="en">Context</span><span data-lang="pt">Contexto</span></p>
+      <h2 class="ch2">
+        <span data-lang="en">High traffic,</span><span data-lang="pt">Alto tráfego,</span><br>
+        <em><span data-lang="en">low sign-ups</span><span data-lang="pt">baixos cadastros</span></em>
+      </h2>
+      <div class="aline"></div>
+      
+      <p class="lead" data-lang="en">DiDi's food delivery courier acquisition page was the primary digital entry point for new delivery partners. Despite significant paid media investment driving qualified traffic, conversion rates signalled a structural UX problem — the page was built as an information catalogue, not a conversion journey.</p>
+      <p class="lead" data-lang="en">The brief: audit the competitive landscape, identify what the highest-converting acquisition pages had in common, and redesign the DiDi page accordingly — from hero to footer.</p>
+      
+      <p class="lead" data-lang="pt">A landing page de aquisição de entregadores DiDi era o principal ponto de entrada digital para novos parceiros de entrega. Apesar do investimento significativo em mídia paga trazendo tráfego qualificado, a taxa de conversão sinalizava um problema estrutural de UX — a página foi construída como um catálogo de informações, não como uma jornada de conversão.</p>
+      <p class="lead" data-lang="pt">O briefing: auditar o cenário competitivo, identificar o que as páginas de aquisição com maior conversão tinham em comum, e redesenhar a página DiDi com base nisso — do hero ao footer.</p>
+    </div>
+
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="gcard">
+        <div class="gcard-lbl">
+          <span data-lang="en">My responsibilities</span>
+          <span data-lang="pt">Minhas responsabilidades</span>
+        </div>
+        <ul>
+          <li data-lang="en">Competitive research — 6 platforms audited</li>
+          <li data-lang="pt">Research competitivo — 6 plataformas auditadas</li>
+          <li data-lang="en">UX heuristic audit of the original page</li>
+          <li data-lang="pt">Auditoria heurística UX da página original</li>
+          <li data-lang="en">Information architecture redesign</li>
+          <li data-lang="pt">Redesign de arquitetura da informação</li>
+          <li data-lang="en">Visual hierarchy & persuasion structure</li>
+          <li data-lang="pt">Hierarquia visual e estrutura de persuasão</li>
+          <li data-lang="en">CTA strategy — section-level repetition</li>
+          <li data-lang="pt">Estratégia de CTA — repetição por seção</li>
+          <li data-lang="en">Social proof & FAQ architecture</li>
+          <li data-lang="pt">Arquitetura de prova social e FAQ</li>
+          <li data-lang="en">Mobile-first prototype & Figma handoff</li>
+          <li data-lang="pt">Protótipo mobile-first e handoff Figma</li>
+        </ul>
+      </div>
+
+      <div class="gcard">
+        <div class="gcard-lbl">
+          <span data-lang="en">Audience & Channel</span>
+          <span data-lang="pt">Audiência e Canal</span>
+        </div>
+        <ul>
+          <li data-lang="en">B2C — food delivery couriers, Mexico</li>
+          <li data-lang="pt">B2C — entregadores de comida, México</li>
+          <li data-lang="en">High-intent traffic from paid media</li>
+          <li data-lang="pt">Tráfego de alta intenção via mídia paga</li>
+          <li data-lang="en">Majority of sessions via mobile</li>
+          <li data-lang="pt">Maioria das sessões via mobile</li>
+          <li data-lang="en">First-time couriers, low tech barrier</li>
+          <li data-lang="pt">Entregadores iniciantes, baixa barreira tech</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="divider"></div>
+ 
+<!-- ══ 03 — COMPETITIVE RESEARCH ══ -->
+<div class="cs-section reveal">
+  <p class="ey">03 — <span data-lang="en" style="display:inline;">Competitive Research</span><span data-lang="pt">Research Competitivo</span></p>
+  <h2 class="ch2">
+    <span data-lang="en" style="display:inline;">6 platforms.</span><span data-lang="pt">6 plataformas.</span><br>
+    <em><span data-lang="en" style="display:inline;">8 patterns that convert.</span><span data-lang="pt">8 padrões que convertem.</span></em>
+  </h2>
+  <div class="aline"></div>
+  <p class="lead" data-lang="en" style="display:block;">A detailed UX audit of Keeta, DoorDash, iFood, Glovo, Uber Eats and Rappi — analysing hero structure, form design, benefit communication, social proof, requirement presentation, FAQ strategy and CTA placement across every page.</p>
+  <p class="lead" data-lang="pt">Auditoria UX detalhada de Keeta, DoorDash, iFood, Glovo, Uber Eats e Rappi — analisando estrutura do hero, design de formulário, comunicação de benefícios, prova social, apresentação de requisitos, estratégia de FAQ e posicionamento de CTA em cada página.</p>
+ 
+  <!-- ── 6 competitor cards 3x2 ── -->
+  <div class="comp-grid6">
+
+    <!-- Keeta -->
+    <div class="cmp-card">
+      <div class="cmp-name">Keeta</div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Form" data-pt="Formulário">Form</span><span class="pill r" data-en="5 fields" data-pt="5 campos">5 fields</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="CTAs" data-pt="CTAs">CTAs</span><span class="pill r" data-en="No" data-pt="Não">No</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Social" data-pt="Social">Social</span><span class="pill r" data-en="None" data-pt="Nenhuma">None</span></div>
+      <div class="cmp-row"><span class="cmp-lbl">FAQ</span><span class="pill r" data-en="No" data-pt="Não">No</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Reqs" data-pt="Reqs">Reqs</span><span class="pill g" data-en="Card + list" data-pt="Card + lista">Card + list</span></div>
+      <div class="cmp-diff" data-en="Two hero variants — aspirational vs functional" data-pt="Duas variantes de hero — aspiracional vs funcional">Two hero variants — aspirational vs functional</div>
+    </div>
+
+    <!-- DoorDash -->
+    <div class="cmp-card">
+      <div class="cmp-name">DoorDash</div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Form" data-pt="Formulário">Form</span><span class="pill g" data-en="1 field" data-pt="1 campo">1 field</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="CTAs" data-pt="CTAs">CTAs</span><span class="pill g" data-en="Yes" data-pt="Sim">Yes</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Social" data-pt="Social">Social</span><span class="pill g" data-en="Testimonials" data-pt="Depoimentos">Testimonials</span></div>
+      <div class="cmp-row"><span class="cmp-lbl">FAQ</span><span class="pill g" data-en="9 questions" data-pt="9 perguntas">9 questions</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Reqs" data-pt="Reqs">Reqs</span><span class="pill g" data-en="Icons + 3 cols" data-pt="Ícones + 3 cols">Icons + 3 cols</span></div>
+      <div class="cmp-diff" data-en="Earnings breakdown (base + tips + promotions) + gear store" data-pt="Detalhamento de ganhos (base + gorjetas + promoções) + loja">Earnings breakdown (base + tips + promotions) + gear store</div>
+    </div>
+
+    <!-- iFood -->
+    <div class="cmp-card">
+      <div class="cmp-name">iFood</div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Form" data-pt="Formulário">Form</span><span class="pill g" data-en="2 fields" data-pt="2 campos">2 fields</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="CTAs" data-pt="CTAs">CTAs</span><span class="pill g" data-en="Yes" data-pt="Sim">Yes</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Social" data-pt="Social">Social</span><span class="pill g" data-en="3 testimonials" data-pt="3 depoimentos">3 testimonials</span></div>
+      <div class="cmp-row"><span class="cmp-lbl">FAQ</span><span class="pill g" data-en="4 sections" data-pt="4 seções">4 sections</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Reqs" data-pt="Reqs">Reqs</span><span class="pill g" data-en="Accordion/vehicle" data-pt="Acordeão/veículo">Accordion/vehicle</span></div>
+      <div class="cmp-diff" data-en="Benefits carousel (health, insurance, courier store)" data-pt="Carrossel de benefícios (saúde, seguro, loja do entregador)">Benefits carousel (health, insurance, courier store)</div>
+    </div>
+
+    <!-- Glovo -->
+    <div class="cmp-card">
+      <div class="cmp-name">Glovo</div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Form" data-pt="Formulário">Form</span><span class="pill y" data-en="3 fields" data-pt="3 campos">3 fields</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="CTAs" data-pt="CTAs">CTAs</span><span class="pill r" data-en="No" data-pt="Não">No</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Social" data-pt="Social">Social</span><span class="pill g" data-en="2 testimonials" data-pt="2 depoimentos">2 testimonials</span></div>
+      <div class="cmp-row"><span class="cmp-lbl">FAQ</span><span class="pill r" data-en="No" data-pt="Não">No</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Reqs" data-pt="Reqs">Reqs</span><span class="pill y" data-en="Card list" data-pt="Lista em card">Card list</span></div>
+      <div class="cmp-diff" data-en="3-step registration flow; accident insurance highlighted" data-pt="Fluxo visual em 3 etapas; seguro de acidentes destacado">3-step registration flow; accident insurance highlighted</div>
+    </div>
+
+    <!-- Uber Eats -->
+    <div class="cmp-card">
+      <div class="cmp-name">Uber Eats</div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Form" data-pt="Formulário">Form</span><span class="pill g" data-en="1 field" data-pt="1 campo">1 field</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="CTAs" data-pt="CTAs">CTAs</span><span class="pill g" data-en="Yes" data-pt="Sim">Yes</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Social" data-pt="Social">Social</span><span class="pill r" data-en="Weak" data-pt="Fraca">Weak</span></div>
+      <div class="cmp-row"><span class="cmp-lbl">FAQ</span><span class="pill g" data-en="Multiple" data-pt="Múltiplas">Multiple</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Reqs" data-pt="Reqs">Reqs</span><span class="pill y" data-en="Checkbox list" data-pt="Lista checkbox">Checkbox list</span></div>
+      <div class="cmp-diff" data-en="QR code download + post-registration timeline + city links" data-pt="Download QR code + timeline pós-cadastro + links por cidade">QR code download + post-registration timeline + city links</div>
+    </div>
+
+    <!-- Rappi -->
+    <div class="cmp-card">
+      <div class="cmp-name">Rappi</div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Form" data-pt="Formulário">Form</span><span class="pill r" data-en="6 fields" data-pt="6 campos">6 fields</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="CTAs" data-pt="CTAs">CTAs</span><span class="pill r" data-en="No" data-pt="Não">No</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Social" data-pt="Social">Social</span><span class="pill g" data-en="3 testimonials" data-pt="3 depoimentos">3 testimonials</span></div>
+      <div class="cmp-row"><span class="cmp-lbl">FAQ</span><span class="pill y" data-en="5 questions" data-pt="5 perguntas">5 questions</span></div>
+      <div class="cmp-row"><span class="cmp-lbl" data-en="Reqs" data-pt="Reqs">Reqs</span><span class="pill g" data-en="By vehicle" data-pt="Por veículo">By vehicle</span></div>
+      <div class="cmp-diff" data-en="Institutional video + 9-country presence; weak FAQ copy" data-pt="Vídeo institucional + 9 países; copy do FAQ deficiente">Institutional video + 9-country presence; weak FAQ copy</div>
+    </div>
+
+  </div><!-- /comp-grid6 -->
+
+  <!-- ── DiDi before vs 8 patterns ── -->
+  <div class="comp-verdict">
+
+    <!-- DiDi antes -->
+    <div class="verdict-col verdict-before">
+      <div class="verdict-header">
+        <span class="verdict-badge bef">DiDi — <span data-en="Before" data-pt="Antes">Before</span></span>
+        <span class="verdict-sub" data-en="What was missing vs all 6 competitors" data-pt="O que faltava vs todos os 6 concorrentes">What was missing vs all 6 competitors</span>
+      </div>
+      <div class="verdict-item bad"><span class="vi-icon">✕</span><span data-en="2-field form — city before intent" data-pt="Formulário 2 campos — cidade antes de intenção">2-field form — city before intent</span></div>
+      <div class="verdict-item bad"><span class="vi-icon">✕</span><span data-en="Single CTA at the top only" data-pt="Único CTA apenas no topo">Single CTA at the top only</span></div>
+      <div class="verdict-item bad"><span class="vi-icon">✕</span><span data-en="Orange + blue blocks competing" data-pt="Blocos laranja e azul competindo">Orange + blue blocks competing</span></div>
+      <div class="verdict-item bad"><span class="vi-icon">✕</span><span data-en="No testimonials — no social proof" data-pt="Sem depoimentos — sem prova social">No testimonials — no social proof</span></div>
+      <div class="verdict-item bad"><span class="vi-icon">✕</span><span data-en="No FAQ — objections unanswered" data-pt="Sem FAQ — objeções sem resposta">No FAQ — objections unanswered</span></div>
+      <div class="verdict-item bad"><span class="vi-icon">✕</span><span data-en="Requirements: flat undifferentiated list" data-pt="Requisitos: lista plana indiferenciada">Requirements: flat undifferentiated list</span></div>
+    </div>
+
+    <!-- Seta -->
+    <div class="verdict-arrow">→</div>
+
+    <!-- 8 padrões aplicados -->
+    <div class="verdict-col verdict-after">
+      <div class="verdict-header">
+        <span class="verdict-badge aft">DiDi — <span data-en="Redesign" data-pt="Redesign">Redesign</span></span>
+        <span class="verdict-sub" data-en="8 patterns applied from competitive research" data-pt="8 padrões aplicados do research competitivo">8 patterns applied from competitive research</span>
+      </div>
+      <div class="verdict-item good"><span class="vi-icon">✓</span><span data-en="1-field form (phone only) — instant start" data-pt="1 campo (só telefone) — início imediato">1-field form (phone only) — instant start</span></div>
+      <div class="verdict-item good"><span class="vi-icon">✓</span><span data-en="CTA repeated after every section" data-pt="CTA repetido após cada seção">CTA repeated after every section</span></div>
+      <div class="verdict-item good"><span class="vi-icon">✓</span><span data-en="Unified orange — visual coherence" data-pt="Laranja unificado — coerência visual">Unified orange — visual coherence</span></div>
+      <div class="verdict-item good"><span class="vi-icon">✓</span><span data-en="Real courier testimonials section" data-pt="Seção de depoimentos de entregadores reais">Real courier testimonials section</span></div>
+      <div class="verdict-item good"><span class="vi-icon">✓</span><span data-en="10-question FAQ accordion" data-pt="FAQ em acordeão com 10 perguntas">10-question FAQ accordion</span></div>
+      <div class="verdict-item good"><span class="vi-icon">✓</span><span data-en="Accordion requirements by vehicle type" data-pt="Requisitos em acordeão por tipo de veículo">Accordion requirements by vehicle type</span></div>
+      <div class="verdict-item good"><span class="vi-icon">✓</span><span data-en="Safety as standalone trust section" data-pt="Segurança como seção de confiança standalone">Safety as standalone trust section</span></div>
+      <div class="verdict-item good"><span class="vi-icon">✓</span><span data-en="Earnings calculator as dedicated section" data-pt="Calculadora de ganhos como seção dedicada">Earnings calculator as dedicated section</span></div>
+    </div>
+
+  </div><!-- /comp-verdict -->
+</div>
+<div class="divider"></div>
+ 
+<!-- ══ 04 — THE PROBLEM ══ -->
+<div class="cs-section alt reveal">
+  <div class="g2">
+    <div>
+      <p class="ey">04 — <span data-lang="en" style="display:inline;">The Problem</span><span data-lang="pt">O Problema</span></p>
+      <h2 class="ch2">
+        <span data-lang="en" style="display:inline;">It informed.</span><span data-lang="pt">Ela informava.</span><br>
+        <em><span data-lang="en" style="display:inline;">It didn't convert.</span><span data-lang="pt">Não convertia.</span></em>
+      </h2>
+      <div class="aline"></div>
+      <p class="lead" data-lang="en" style="display:block;">The original page had structural issues that no amount of traffic could overcome. Compared to every competitor audited, DiDi's version was missing the most critical conversion levers: no section CTAs, no social proof, no FAQ and a visually incoherent layout that buried the earnings calculator and pit safety content against earnings content in competing colour blocks.</p>
+      <p class="lead" data-lang="pt">A página original tinha problemas estruturais que nenhum volume de tráfego poderia superar. Comparada com todos os concorrentes auditados, a versão DiDi não tinha as alavancas de conversão mais críticas: sem CTAs por seção, sem prova social, sem FAQ e um layout visualmente incoerente que enterrava a calculadora de ganhos e colocava segurança contra ganhos em blocos de cores competindo.</p>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="chal">
+        <h4 data-lang="en" style="display:block;">No CTA along the page journey</h4>
+        <h4 data-lang="pt">Nenhum CTA ao longo da jornada</h4>
+        <p data-lang="en" style="display:block;">Unlike DoorDash, iFood and Uber Eats — which repeat their sign-up CTA after every section — DiDi's page had a single CTA in the hero. A user convinced mid-page had no conversion option without scrolling back to the top.</p>
+        <p data-lang="pt">Ao contrário de DoorDash, iFood e Uber Eats — que repetem o CTA de cadastro após cada seção — a página DiDi tinha um único CTA no hero. Um usuário convencido no meio da página não tinha opção de conversão sem rolar de volta ao topo.</p>
+      </div>
+      <div class="chal">
+        <h4 data-lang="en" style="display:block;">Visual conflict: orange vs. blue</h4>
+        <h4 data-lang="pt">Conflito visual: laranja vs. azul</h4>
+        <p data-lang="en" style="display:block;">Earnings and safety were placed side by side in containers of different colours — creating cognitive dissonance and undermining both messages. No other audited platform had this pattern.</p>
+        <p data-lang="pt">Ganhos e segurança foram colocados lado a lado em containers de cores distintas — criando dissonância cognitiva e minando ambas as mensagens. Nenhuma outra plataforma auditada tinha este padrão.</p>
+      </div>
+      <div class="chal">
+        <h4 data-lang="en" style="display:block;">No social proof — the riskiest gap</h4>
+        <h4 data-lang="pt">Sem prova social — a lacuna mais arriscada</h4>
+        <p data-lang="en" style="display:block;">iFood, DoorDash, Glovo and Rappi all feature real courier testimonials. DiDi's page had none — leaving high-intent users with no evidence that others had successfully made the same decision.</p>
+        <p data-lang="pt">iFood, DoorDash, Glovo e Rappi apresentam depoimentos reais de entregadores. A página DiDi não tinha nenhum — deixando usuários de alta intenção sem evidência de que outros tomaram a mesma decisão com sucesso.</p>
+      </div>
+      <div class="chal">
+        <h4 data-lang="en" style="display:block;">Dense requirements = perceived bureaucracy</h4>
+        <h4 data-lang="pt">Requisitos densos = burocracia percebida</h4>
+        <p data-lang="en" style="display:block;">Requirements were displayed as a flat, undifferentiated list — not grouped by vehicle type as iFood, Rappi and Keeta do. This inflated the perceived effort before the candidate even began the sign-up process.</p>
+        <p data-lang="pt">Requisitos exibidos como uma lista plana e indiferenciada — não agrupados por tipo de veículo como iFood, Rappi e Keeta fazem. Isso inflava o esforço percebido antes de o candidato sequer iniciar o cadastro.</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+ 
+<!-- ══ 05 — BEFORE / AFTER ══ -->
+<div class="cs-section reveal">
+  <p class="ey">05 — <span data-lang="en" style="display:inline;">Before / After</span><span data-lang="pt">Antes / Depois</span></p>
+  <h2 class="ch2">
+    <span data-lang="en" style="display:inline;">The full</span><span data-lang="pt">A comparação</span><br>
+    <em><span data-lang="en" style="display:inline;">page comparison</span><span data-lang="pt">completa</span></em>
+  </h2>
+  <div class="aline"></div>
+  <p class="lead" data-lang="en" style="display:block;">Hover to scroll through each version in full. Every structural change in the redesign maps directly to a pattern identified in the competitive audit.</p>
+  <p class="lead" data-lang="pt">Passe o mouse para percorrer cada versão completa. Cada mudança estrutural no redesign mapeia diretamente um padrão identificado na auditoria competitiva.</p>
+ 
+  <div class="lp-compare">
+    <div class="lp-col">
+      <div class="lp-badge bef">Before</div>
+      <div class="lp-frame">
+        <img src="/mnt/user-data/uploads/image_17.png" alt="DiDi LP Original"
+             onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-family:Space Mono,monospace;font-size:0.7rem;color:rgba(255,255,255,0.3)\'>LP Original</div>'">
+        <div class="lp-hint">hover to scroll ↓</div>
+      </div>
+    </div>
+    <div class="lp-col">
+      <div class="lp-badge aft">After</div>
+      <div class="lp-frame">
+        <img src="/mnt/user-data/uploads/Desktop.png" alt="DiDi LP Redesign"
+             onerror="this.parentElement.innerHTML='<div style=\'display:flex;align-items:center;justify-content:center;height:100%;font-family:Space Mono,monospace;font-size:0.7rem;color:rgba(255,255,255,0.3)\'>LP Redesign</div>'">
+        <div class="lp-hint">hover to scroll ↓</div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+ 
+<!-- ══ 06 — WHAT CHANGED ══ -->
+<div class="cs-section alt reveal">
+  <p class="ey">06 — <span data-lang="en" style="display:inline;">What Changed</span><span data-lang="pt">O que Mudou</span></p>
+  <h2 class="ch2">
+    <span data-lang="en" style="display:inline;">Every decision,</span><span data-lang="pt">Cada decisão,</span><br>
+    <em><span data-lang="en" style="display:inline;">its rationale</span><span data-lang="pt">seu porquê</span></em>
+  </h2>
+  <div class="aline"></div>
+ 
+  <div class="g2">
+    <div class="tml">
+      <div class="ti"><div class="tdot"></div><div>
+        <div class="tph"><span data-lang="en" style="display:inline;">Hero</span><span data-lang="pt">Hero</span></div>
+        <div class="ttt"><span data-lang="en" style="display:inline;">One field. One action.</span><span data-lang="pt">Um campo. Uma ação.</span></div>
+        <div class="tde" data-lang="en" style="display:block;">Reduced form from 2 fields (city + phone) to 1 (phone only). City selection before intent is established was the primary drop-off source — a pattern confirmed by DoorDash and Uber Eats, the two highest-converting pages in the audit.</div>
+        <div class="tde" data-lang="pt">Formulário reduzido de 2 campos (cidade + telefone) para 1 (só telefone). A seleção de cidade antes de estabelecer intenção era a principal fonte de abandono — padrão confirmado por DoorDash e Uber Eats, as duas páginas de maior conversão na auditoria.</div>
+      </div></div>
+      <div class="ti"><div class="tdot"></div><div>
+        <div class="tph"><span data-lang="en" style="display:inline;">Benefits</span><span data-lang="pt">Benefícios</span></div>
+        <div class="ttt"><span data-lang="en" style="display:inline;">Emotional before rational</span><span data-lang="pt">Emocional antes do racional</span></div>
+        <div class="tde" data-lang="en" style="display:block;">4 visual benefit cards with icons — instant registration, own schedule, weekly payments, accident coverage — placed before the earnings calculator. iFood's benefit carousel was the benchmark for this pattern.</div>
+        <div class="tde" data-lang="pt">4 cards visuais de benefícios com ícones — registro imediato, horários próprios, pagamentos semanais, cobertura de acidentes — posicionados antes da calculadora de ganhos. O carrossel de benefícios do iFood foi o benchmark para este padrão.</div>
+      </div></div>
+      <div class="ti"><div class="tdot"></div><div>
+        <div class="tph"><span data-lang="en" style="display:inline;">Earnings</span><span data-lang="pt">Ganhos</span></div>
+        <div class="ttt"><span data-lang="en" style="display:inline;">Calculator gets its own section</span><span data-lang="pt">Calculadora ganha seção própria</span></div>
+        <div class="tde" data-lang="en" style="display:block;">The earnings simulator was elevated from a buried sub-component to a dedicated section with clear hierarchy — modelled after DoorDash's breakdown of base pay, peaks and promotions.</div>
+        <div class="tde" data-lang="pt">O simulador de ganhos foi elevado de um subcomponente enterrado para uma seção dedicada com hierarquia clara — modelada no detalhamento de ganhos base, picos e promoções do DoorDash.</div>
+      </div></div>
+      <div class="ti"><div class="tdot"></div><div>
+        <div class="tph"><span data-lang="en" style="display:inline;">Requirements</span><span data-lang="pt">Requisitos</span></div>
+        <div class="ttt"><span data-lang="en" style="display:inline;">Accordion by vehicle type</span><span data-lang="pt">Acordeão por tipo de veículo</span></div>
+        <div class="tde" data-lang="en" style="display:block;">Requirements reorganised into an accordion grouped by vehicle — bike, motorcycle, car — reducing perceived bureaucracy and letting each candidate read only what applies to them. Pattern sourced from iFood and Rappi.</div>
+        <div class="tde" data-lang="pt">Requisitos reorganizados em acordeão agrupado por veículo — bicicleta, moto, carro — reduzindo a burocracia percebida e permitindo que cada candidato leia apenas o que se aplica a ele. Padrão extraído do iFood e Rappi.</div>
+      </div></div>
+      <div class="ti"><div class="tdot"></div><div>
+        <div class="tph"><span data-lang="en" style="display:inline;">Safety</span><span data-lang="pt">Segurança</span></div>
+        <div class="ttt"><span data-lang="en" style="display:inline;">Standalone trust block</span><span data-lang="pt">Bloco de confiança standalone</span></div>
+        <div class="tde" data-lang="en" style="display:block;">The 99.99% safety stat removed from the orange/blue dual-column conflict and elevated into a full-width standalone section — with large typography, shield icon and contextual support copy. Glovo's safety pillar was the benchmark.</div>
+        <div class="tde" data-lang="pt">A estatística de 99,99% removida do conflito dual-coluna laranja/azul e elevada a uma seção standalone de largura total — com tipografia grande, ícone de escudo e copy de suporte contextualizado. O pilar de segurança da Glovo foi o benchmark.</div>
+      </div></div>
+      <div class="ti"><div class="tdot"></div><div>
+        <div class="tph"><span data-lang="en" style="display:inline;">Social Proof</span><span data-lang="pt">Prova Social</span></div>
+        <div class="ttt"><span data-lang="en" style="display:inline;">Real couriers. Real community.</span><span data-lang="pt">Entregadores reais. Comunidade real.</span></div>
+        <div class="tde" data-lang="en" style="display:block;">Added a testimonial section with real courier stories — positioned just before the FAQ, at the moment of highest hesitation. Modelled after Rappi's and iFood's social proof sections, the highest-impact pattern found in the audit.</div>
+        <div class="tde" data-lang="pt">Seção de depoimentos com histórias reais de entregadores — posicionada logo antes do FAQ, no momento de maior hesitação. Modelada nas seções de prova social da Rappi e iFood, o padrão de maior impacto encontrado na auditoria.</div>
+      </div></div>
+      <div class="ti"><div class="tdot"></div><div>
+        <div class="tph">FAQ</div>
+        <div class="ttt"><span data-lang="en" style="display:inline;">Final objection handler</span><span data-lang="pt">Tratador final de objeções</span></div>
+        <div class="tde" data-lang="en" style="display:block;">Added 10 FAQ questions in an accordion — covering earnings, approval time, vehicle requirements, safety and support. Placed before the final CTA to neutralise the last remaining doubts at the highest-intent moment.</div>
+        <div class="tde" data-lang="pt">10 perguntas de FAQ em acordeão adicionadas — cobrindo ganhos, tempo de aprovação, requisitos de veículo, segurança e suporte. Posicionadas antes do CTA final para neutralizar as últimas dúvidas no momento de maior intenção.</div>
+      </div></div>
+      <div class="ti"><div class="tdot"></div><div>
+        <div class="tph"><span data-lang="en" style="display:inline;">CTAs</span><span data-lang="pt">CTAs</span></div>
+        <div class="ttt"><span data-lang="en" style="display:inline;">Always within reach</span><span data-lang="pt">Sempre ao alcance</span></div>
+        <div class="tde" data-lang="en" style="display:block;">Sign-up CTA added at the end of every major section — meaning the user can convert at any point of conviction, not just at the top of the page. This was the most consistent pattern across the highest-converting pages: DoorDash, iFood and Uber Eats.</div>
+        <div class="tde" data-lang="pt">CTA de cadastro adicionado ao final de cada seção principal — o usuário pode converter em qualquer ponto de convencimento, não apenas no topo. Este foi o padrão mais consistente nas páginas de maior conversão: DoorDash, iFood e Uber Eats.</div>
+      </div></div>
+    </div>
+ 
+    <div style="display:flex;flex-direction:column;gap:14px;">
+      <div class="ba">
+        <div class="bac">
+          <div class="balbl"><span data-lang="en" style="display:inline;">Before</span><span data-lang="pt">Antes</span></div>
+          <div class="bai"><span data-lang="en" style="display:inline;">2-field form — city selection before intent</span><span data-lang="pt">Formulário 2 campos — cidade antes de intenção</span></div>
+          <div class="bai"><span data-lang="en" style="display:inline;">Single CTA at the top only</span><span data-lang="pt">Único CTA só no topo</span></div>
+          <div class="bai"><span data-lang="en" style="display:inline;">Orange + blue blocks competing</span><span data-lang="pt">Laranja + azul competindo visualmente</span></div>
+          <div class="bai"><span data-lang="en" style="display:inline;">No testimonials, no social proof</span><span data-lang="pt">Sem depoimentos, sem prova social</span></div>
+          <div class="bai"><span data-lang="en" style="display:inline;">No FAQ — objections go unanswered</span><span data-lang="pt">Sem FAQ — objeções sem resposta</span></div>
+          <div class="bai"><span data-lang="en" style="display:inline;">Requirements: flat undifferentiated list</span><span data-lang="pt">Requisitos: lista plana indiferenciada</span></div>
+        </div>
+        <div class="bac af">
+          <div class="balbl"><span data-lang="en" style="display:inline;">After</span><span data-lang="pt">Depois</span></div>
+          <div class="bai"><span data-lang="en" style="display:inline;">1-field form — phone only, instant start</span><span data-lang="pt">1 campo — só telefone, início imediato</span></div>
+          <div class="bai"><span data-lang="en" style="display:inline;">CTA repeated after every section</span><span data-lang="pt">CTA repetido após cada seção</span></div>
+          <div class="bai"><span data-lang="en" style="display:inline;">Unified DiDi orange — visual coherence</span><span data-lang="pt">Laranja DiDi unificado — coerência visual</span></div>
+          <div class="bai"><span data-lang="en" style="display:inline;">Real courier testimonials section</span><span data-lang="pt">Seção de depoimentos de entregadores reais</span></div>
+          <div class="bai"><span data-lang="en" style="display:inline;">10-question FAQ accordion</span><span data-lang="pt">Acordeão de FAQ com 10 perguntas</span></div>
+          <div class="bai"><span data-lang="en" style="display:inline;">Requirements: accordion by vehicle type</span><span data-lang="pt">Requisitos: acordeão por tipo de veículo</span></div>
+        </div>
+      </div>
+      <div class="gcard">
+        <div class="gcard-lbl">Mobile</div>
+        <ul>
+          <li data-lang="en" style="display:block;">Full vertical reflow — all sections stack cleanly</li><li data-lang="pt">Reflow vertical completo — seções empilhadas com clareza</li>
+          <li data-lang="en" style="display:block;">Sticky CTA bar on scroll</li><li data-lang="pt">Barra CTA fixada na base durante scroll</li>
+          <li data-lang="en" style="display:block;">Accordion optimised for thumb reach</li><li data-lang="pt">Acordeão otimizado para alcance do polegar</li>
+          <li data-lang="en" style="display:block;">Calculator redesigned for single column</li><li data-lang="pt">Calculadora redesenhada para coluna única</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+ 
+<!-- ══ 07 — LEARNINGS ══ -->
+<div class="cs-section reveal">
+  <div style="max-width:720px;margin:0 auto;text-align:center;">
+    <p class="ey" style="text-align:center;">07 — <span data-lang="en" style="display:inline;">Learnings</span><span data-lang="pt">Aprendizados</span></p>
+    <h2 class="ch2"><span data-lang="en" style="display:inline;">Key</span><span data-lang="pt">Principais</span> <em><span data-lang="en" style="display:inline;">Learnings</span><span data-lang="pt">Aprendizados</span></em></h2>
+    <div class="aline" style="margin:0 auto 28px;"></div>
+    <p class="lead" data-lang="en" style="display:block;text-align:center;">Conversion design is not about adding features — it is about removing everything between the user and the decision they already want to make. The competitive research was the foundation of every choice: when a pattern appears across DoorDash, iFood and Uber Eats simultaneously, it stops being a design preference and becomes a validated conversion principle.</p>
+    <p class="lead" data-lang="pt" style="text-align:center;">Design de conversão não é sobre adicionar funcionalidades — é sobre remover tudo que está entre o usuário e a decisão que ele já quer tomar. O research competitivo foi a fundação de cada escolha: quando um padrão aparece simultaneamente em DoorDash, iFood e Uber Eats, ele deixa de ser uma preferência de design e se torna um princípio de conversão validado.</p>
+ 
+    <div style="background:rgba(255,92,0,0.07);border:1px solid rgba(255,92,0,0.18);border-radius:8px;padding:24px 28px;margin:28px 0;text-align:left;">
+      <p style="font-family:'Space Mono',monospace;font-size:0.56rem;letter-spacing:0.14em;color:var(--di3);text-transform:uppercase;margin-bottom:16px;">
+        <span data-lang="en" style="display:inline;">The cognitive sequence that guided every section decision</span>
+        <span data-lang="pt">A sequência cognitiva que guiou cada decisão de seção</span>
+      </p>
+      <p style="font-size:0.9rem;color:var(--text-muted);line-height:2;font-style:italic;">
+        <span data-lang="en" style="display:inline;">"Can I earn money? → How much exactly? → Is it safe? → Is it hard to start? → Have others done it? → One last doubt. → Ok, I'm in."</span>
+        <span data-lang="pt">"Posso ganhar dinheiro? → Quanto exatamente? → É seguro? → É difícil começar? → Outros já fizeram isso? → Uma última dúvida. → Tudo certo, vou me cadastrar."</span>
+      </p>
+    </div>
+ 
+    <div class="tags" style="justify-content:center;">
+      <span class="tag">UX Design</span>
+      <span class="tag">Conversion Design</span>
+      <span class="tag">CRO</span>
+      <span class="tag">Competitive Research</span>
+      <span class="tag">Landing Page</span>
+      <span class="tag">Information Architecture</span>
+      <span class="tag">Mobile-first</span>
+      <span class="tag">DiDi</span>
+    </div>
+    <a href="https://lecorredato.github.io/portfolio/" class="backbtn">
+      <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      <span data-lang="en" style="display:inline;">Back to Portfolio</span><span data-lang="pt">Voltar ao Portfólio</span>
+    </a>
+  </div>
+</div>
+
+<footer id="contact">
+  <p style="margin-bottom:10px;font-family:'Space Mono',monospace;font-size:0.6rem;letter-spacing:0.18em;color:var(--di3);text-transform:uppercase;"><span class="t" data-key="contact-label">Let's work together</span></p>
+  <h2 class="footer-title t" data-key="contact-title">Get in Touch</h2>
+  <p class="footer-sub">leticiacorredato@gmail.com &nbsp;·&nbsp; +55 11 96620-3733</p>
+  <div class="social-links">
+    <a class="social-link" href="mailto:leticiacorredato@gmail.com" title="Email"><img src="https://static.wixstatic.com/media/b72a24_8452b0d797424bc8a699146518b5ca5b~mv2.png" alt="Email"></a>
+    <a class="social-link" href="https://api.whatsapp.com/send?phone=5511966203733" target="_blank" rel="noopener" title="WhatsApp"><img src="https://static.wixstatic.com/media/b72a24_c23be33be3d64cec883c38cccee56207~mv2.png" alt="WhatsApp"></a>
+    <a class="social-link" href="https://lecorredato.github.io/portfolio/blog" target="_blank" rel="noopener" title="Updates"><img src="https://static.wixstatic.com/media/b72a24_d0eee958e53a4ab3845dafa3f008c13d~mv2.png" alt="Updates"></a>
+    <a class="social-link" href="https://www.behance.net/portfoliolecorredato" target="_blank" rel="noopener" title="Behance"><img src="https://static.wixstatic.com/media/b72a24_0db6f750f18c49c0af242f2f7cee2201~mv2.png" alt="Behance"></a>
+    <a class="social-link" href="https://www.linkedin.com/in/lecorredato/" target="_blank" rel="noopener" title="LinkedIn"><img src="https://static.wixstatic.com/media/b72a24_2ba7e9436bab46e4beb80551640ee0a3~mv2.png" alt="LinkedIn"></a>
+  </div>
+  <p class="footer-copy"><span class="t" data-key="footer-dev">Developed by Leticia Corredato</span> &nbsp;·&nbsp; 2026</p>
+</footer>
+
+<script>
+'use strict';
+
+/* ── 1. DICIONÁRIO DE TRADUÇÕES (T) - INTEGRAL ── */
+const T = {
+  'nav-about': { en: 'About', pt: 'Sobre' },
+  'nav-case': { en: 'Cases', pt: 'Cases' },
+  'nav-portfolio': { en: 'Portfolio', pt: 'Portfólio' },
+  'nav-exp': { en: 'Experience', pt: 'Experiência' },
+  'nav-contact': { en: 'Contact', pt: 'Contato' },
+  'contact-label': { en: "Let's work together", pt: 'Vamos trabalhar juntos' },
+  'contact-title': { en: 'Get in Touch', pt: 'Entre em Contato' },
+  'footer-dev': { en: 'Developed by Leticia Corredato', pt: 'Desenvolvido por Leticia Corredato' },
+  'cover-tag': { en: 'Case Study · 2025', pt: 'Estudo de Caso · 2025' },
+  'cover-sub': { en: 'Creative Strategy for Restaurant Acquisition', pt: 'Estratégia Criativa para Aquisição de Restaurantes' },
+  'cover-desc': { en: 'B2B paid media campaigns on Meta and Google to scale restaurant sign-ups across Brazil — built on creative experimentation, regional intelligence, and performance data.', pt: 'Campanhas B2B de mídia paga no Meta e Google para escalar o cadastro de restaurantes no Brasil — construídas sobre experimentação criativa, inteligência regional e dados de performance.' },
+  'ml-role': { en: 'Role', pt: 'Função' },
+  'mv-role': { en: 'Creative Strategist', pt: 'Estrategista Criativa' },
+  'ml-focus': { en: 'Focus', pt: 'Foco' },
+  'mv-focus': { en: 'B2B Acquisition', pt: 'Aquisição B2B' },
+  'ml-plat': { en: 'Platforms', pt: 'Plataformas' },
+  'ml-mkt': { en: 'Markets', pt: 'Mercados' },
+  'mv-mkt': { en: 'National + 12 Cities', pt: 'Nacional + 12 Cidades' },
+  'ml-year': { en: 'Year', pt: 'Ano' },
+  's02-ey': { en: '02 — Overview', pt: '02 — Visão Geral' },
+  's02-h2': { en: 'The<br><em>Brief</em>', pt: 'O<br><em>Briefing</em>' },
+  's02-l1': { en: 'In January 2026, I joined 99Food as a Creative Strategist with one mandate: grow the restaurant partner base through B2B acquisition campaigns on Meta and Google.', pt: 'Em janeiro de 2026, entrei na 99Food como Estrategista Criativa com um objetivo: expandir a base de parceiros restaurantes por meio de campanhas B2B no Meta e Google.' },
+  's02-l2': { en: "The audience wasn't a typical consumer — it was a business owner deciding whether to trust a new platform with their livelihood. Every creative decision had to answer: what's in it for my business?", pt: 'O público não era um consumidor típico — era um empreendedor decidindo se confiaria em uma nova plataforma com seu negócio. Cada decisão criativa precisava responder: o que isso faz pelo meu negócio?' },
+  'c-resp': { en: 'Responsibilities', pt: 'Responsabilidades' },
+  'r1': { en: 'Creative direction & messaging strategy', pt: 'Direção criativa e estratégia de mensagem' },
+  'r2': { en: 'Quarterly experimentation roadmap', pt: 'Roadmap de experimentação trimestral' },
+  'r3': { en: 'Performance analysis & biweekly reporting', pt: 'Análise de performance e relatórios quinzenais' },
+  'r4': { en: 'Seasonal campaign planning & execution', pt: 'Planejamento e execução de campanhas sazonais' },
+  'r5': { en: 'Fake refresh methodology', pt: 'Metodologia de fake refresh' },
+  'r6': { en: 'Localized creative adaptation — 12 cities', pt: 'Adaptação criativa regionalizada — 12 cidades' },
+  'r7': { en: 'Stakeholder presentations', pt: 'Apresentações para stakeholders' },
+  'c-plat': { en: 'Platforms', pt: 'Plataformas' },
+  'c-teams': { en: 'Teams', pt: 'Times' },
+  's03-ey': { en: '03 — Results', pt: '03 — Resultados' },
+  's03-h2': { en: 'What the System<br><em>Delivered</em>', pt: 'O que o Sistema<br><em>Entregou</em>' },
+  's03-lead': { en: 'Across seasonal campaigns, fake refresh cycles, and copystorming tests, the experimentation pipeline consistently outperformed business-as-usual creative — in reach, efficiency, and sign-up volume.', pt: 'Em campanhas sazonais, ciclos de fake refresh e testes de copystorming, o pipeline de experimentação superou consistentemente os criativos padrão — em alcance, eficiência e volume de cadastros.' },
+  'h1-t': { en: 'Reach', pt: 'Alcance' },
+  'h1-d': { en: 'After Fake Refresh applied. New audiences reached without resetting platform learning.', pt: 'Após aplicação do Fake Refresh. Novas audiências alcançadas sem resetar o aprendizado da plataforma.' },
+  'h2-t': { en: 'Clicks', pt: 'Cliques' },
+  'h2-d': { en: 'Engagement recovered post-refresh with platform learning fully preserved.', pt: 'Engajamento recuperado após o refresh com aprendizado totalmente preservado.' },
+  'h3-t': { en: 'CPC', pt: 'CPC' },
+  'h3-d': { en: 'Cost per click reduced. Only +6% more spend to achieve all three gains.', pt: 'Custo por clique reduzido. Apenas +6% a mais de investimento para todos os ganhos.' },
+  'h4-t': { en: 'Engagement', pt: 'Engajamento' },
+  'h4-d': { en: 'Higher engagement with lower CPM and CPC. Efficiency driven by creative, not budget.', pt: 'Maior engajamento com CPM e CPC menores. Eficiência gerada por criativo, não por verba.' },
+  'res1-t': { en: 'of Total Sign-Ups', pt: 'dos Cadastros Totais' },
+  'res1-d': { en: 'Driven by the Easter seasonal pack alone — with a cost per sign-up 11% below the account average.', pt: 'Gerado pelo pack sazonal de Páscoa — com custo por cadastro 11% abaixo da média da conta.' },
+  'res2-t': { en: 'CPC · AI Bag Delivery', pt: 'CPC · IA Bag Delivery' },
+  'res2-d': { en: 'First AI-native creative in the pipeline achieved the lowest CPC of the entire account.', pt: 'Primeiro criativo nativo de IA no pipeline atingiu o menor CPC de toda a conta.' },
+  'res3-t': { en: 'Clicks vs. Other Assets', pt: 'Cliques vs. Outros Criativos' },
+  'res3-d': { en: 'The winning Fake Refresh variant generated 260% more clicks than the sum of all other image creatives.', pt: 'A variante vencedora do Fake Refresh gerou 260% mais cliques do que os outros criativos de imagem.' },
+  'res-insight': { en: '<strong>The proof:</strong> With only +6% more spend, the right creative system delivered +22% reach.', pt: '<strong>A prova:</strong> Com apenas +6% a mais de investimento, o sistema criativo certo entregou +22% de alcance.' },
+  's04-ey': { en: '04 — The Challenge', pt: '04 — O Desafio' },
+  's04-h2': { en: 'Three Problems,<br><em>One System</em>', pt: 'Três Problemas,<br><em>Um Sistema</em>' },
+  's04-lead': { en: 'Scaling B2B acquisition through paid media comes with compounding constraints.', pt: 'Escalar aquisição B2B via mídia paga envolve restrições que se acumulam.' },
+  'ch1-t': { en: 'Rising CPC', pt: 'CPC em Alta' },
+  'ch1-d': { en: 'A +27% increase in market CPC during Q1 made creative efficiency the primary lever.', pt: 'Um aumento de +27% no CPC de mercado no Q1 tornou a eficiência criativa a principal alavanca.' },
+  'ch2-t': { en: 'Creative Fatigue', pt: 'Saturação de Criativo' },
+  'ch2-d': { en: "High-frequency campaigns burned through assets fast.", pt: 'Campanhas de alta frequência esgotavam os criativos rapidamente.' },
+  'ch3-t': { en: 'Regional Complexity', pt: 'Complexidade Regional' },
+  'ch3-d': { en: "Expanding to 12 new cities meant localized messaging.", pt: 'Expandir para 12 novas cidades exigia mensagens localizadas.' },
+  'ch4-t': { en: 'B2B Specificity', pt: 'Especificidade B2B' },
+  'ch4-d': { en: "Restaurant owners don't respond to consumer logic.", pt: 'Donos de restaurante não respondem à lógica do consumidor.' },
+  's12-ey': { en: '12 — Learnings', pt: '12 — Aprendizados' },
+  's12-h2': { en: 'Key <em>Learnings</em>', pt: 'Principais <em>Aprendizados</em>' },
+  'tag-sea': { en: 'Seasonal Campaigns', pt: 'Campanhas Sazonais' },
+  'tag-loc': { en: 'Localization', pt: 'Regionalização' },
+  'tag-data': { en: 'Data Analysis', pt: 'Análise de Dados' },
+  'tag-col': { en: 'Cross-functional', pt: 'Colaboração Entre Times' },
+  'back-btn': { en: '← Back to Portfolio', pt: '← Voltar ao Portfólio' }
+};
+
+/* ── 2. MOUSE CURSOR ── */
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cur.style.left = e.clientX + 'px';
+  cur.style.top = e.clientY + 'px';
+});
+
+document.querySelectorAll('a, button, .bn-card, .mpill, .gcard, .chal, .met, .lp-frame').forEach(el => {
+  el.addEventListener('mouseenter', () => cur.classList.add('big'));
+  el.addEventListener('mouseleave', () => cur.classList.remove('big'));
+});
+
+/* ── 3. NAVEGAÇÃO E MENU ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').classList.toggle('scrolled', window.scrollY > 60);
+}, { passive: true });
+
+
+function toggleMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.getElementById('hamburger');
+  const isOpen = menu.classList.toggle('open');
+  if (ham) ham.classList.toggle('open');
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
+function closeMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const ham = document.getElementById('hamburger');
+  if (menu) menu.classList.remove('open');
+  if (ham) ham.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+/* ── 4. IDIOMA (setLang Unificado) ── */
+function setLang(l) {
+  document.documentElement.lang = l;
+
+  // Atualiza botões ativos
+  ['btnEN', 'btnENMob', 'btnPT', 'btnPTMob'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) {
+      const isEn = (id.includes('EN') && l === 'en');
+      const isPt = (id.includes('PT') && l === 'pt');
+      btn.classList.toggle('active', isEn || isPt);
+    }
+  });
+
+  // Tradução via Dicionário (T)
+  document.querySelectorAll('.t[data-key]').forEach(el => {
+    const k = el.dataset.key;
+    if (T[k] && T[k][l]) {
+      const val = T[k][l];
+      if (val.includes('<')) el.innerHTML = val; else el.textContent = val;
+    }
+  });
+
+  // Tradução via Atributo (Data-Lang) para blocos HTML longos
+  document.querySelectorAll('[data-lang]').forEach(el => {
+    const targetLang = el.getAttribute('data-lang');
+    const displayType = (el.tagName === 'P' || el.tagName === 'LI') ? 'block' : 'inline';
+    el.style.display = (targetLang === l) ? displayType : 'none';
+  });
+
+  // Tradução via data-en / data-pt (novos comp cards + verdict)
+  document.querySelectorAll('[data-en][data-pt]').forEach(el => {
+    el.textContent = l === 'en' ? el.dataset.en : el.dataset.pt;
+  });
+}
+
+/* ── THEME ── */
+const SUN = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>';
+const MOON = '<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>';
+let theme = 'dark';
+
+function toggleTheme() {
+  theme = theme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', theme);
+  const icon = theme === 'dark' ? SUN : MOON;
+  ['themeBtn','themeBtnMob'].forEach(id => {
+    const btn = document.getElementById(id);
+    if (btn) btn.innerHTML = icon;
+  });
+  const logo = document.getElementById('navLogo');
+  if (logo) {
+    logo.src = theme === 'light'
+      ? 'https://static.wixstatic.com/media/b72a24_02ca24368e834508a23fb0a12617db96~mv2.png'
+      : 'https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png';
+  }
+}
+
+/* ── 6. ANIMAÇÕES (Reveal on Scroll) ── */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Inicializa no idioma padrão (EN)
+document.addEventListener('DOMContentLoaded', () => {
+  setLang('en');
+  buildCompCards();
+});
+
+/* ── 7. COMP TABLE → CARDS (mobile) ── */
+function buildCompCards() {
+  const container = document.getElementById('compCards');
+  if (!container) return;
+
+  // Data: [name, isDiDi, formFields{en,pt,cls}, ctAs{en,pt,cls}, social{en,pt,cls}, faq{en,pt,cls}, reqs{en,pt,cls}, diff{en,pt}]
+  const rows = [
+    {
+      name:'Keeta', didi:false,
+      form:{en:'5 fields',pt:'5 campos',c:'r'},
+      ctas:{en:'No',pt:'Não',c:'r'},
+      social:{en:'None',pt:'Nenhuma',c:'r'},
+      faq:{en:'No',pt:'Não',c:'r'},
+      reqs:{en:'Card + list',pt:'Card + lista',c:'g'},
+      diff:{en:'Two hero variants — aspirational vs functional',pt:'Duas variantes de hero — aspiracional vs funcional'}
+    },
+    {
+      name:'DoorDash', didi:false,
+      form:{en:'1 field',pt:'1 campo',c:'g'},
+      ctas:{en:'Yes',pt:'Sim',c:'g'},
+      social:{en:'Testimonials',pt:'Depoimentos',c:'g'},
+      faq:{en:'9 questions',pt:'9 perguntas',c:'g'},
+      reqs:{en:'Icons + 3 cols',pt:'Ícones + 3 cols',c:'g'},
+      diff:{en:'Earnings breakdown (base + tips + promotions) + gear store',pt:'Detalhamento de ganhos (base + gorjetas + promoções) + loja de equipamentos'}
+    },
+    {
+      name:'iFood', didi:false,
+      form:{en:'2 fields',pt:'2 campos',c:'g'},
+      ctas:{en:'Yes',pt:'Sim',c:'g'},
+      social:{en:'3 testimonials',pt:'3 depoimentos',c:'g'},
+      faq:{en:'4 sections',pt:'4 seções',c:'g'},
+      reqs:{en:'Accordion by vehicle',pt:'Acordeão por veículo',c:'g'},
+      diff:{en:'Exclusive benefits carousel (health, insurance, courier store)',pt:'Carrossel de benefícios exclusivos (saúde, seguro, loja do entregador)'}
+    },
+    {
+      name:'Glovo', didi:false,
+      form:{en:'3 fields',pt:'3 campos',c:'y'},
+      ctas:{en:'No',pt:'Não',c:'r'},
+      social:{en:'2 testimonials',pt:'2 depoimentos',c:'g'},
+      faq:{en:'No',pt:'Não',c:'r'},
+      reqs:{en:'Green card list',pt:'Lista em card',c:'y'},
+      diff:{en:'3-step visual registration flow; accident insurance highlighted',pt:'Fluxo visual de cadastro em 3 etapas; seguro de acidentes destacado'}
+    },
+    {
+      name:'Uber Eats', didi:false,
+      form:{en:'1 field',pt:'1 campo',c:'g'},
+      ctas:{en:'Yes',pt:'Sim',c:'g'},
+      social:{en:'Weak',pt:'Fraca',c:'r'},
+      faq:{en:'Multiple',pt:'Múltiplas',c:'g'},
+      reqs:{en:'Checkbox list',pt:'Lista checkbox',c:'y'},
+      diff:{en:'QR code download + post-registration timeline + city links',pt:'Download por QR code + timeline pós-cadastro + links por cidade'}
+    },
+    {
+      name:'Rappi', didi:false,
+      form:{en:'6 fields',pt:'6 campos',c:'r'},
+      ctas:{en:'No',pt:'Não',c:'r'},
+      social:{en:'3 testimonials',pt:'3 depoimentos',c:'g'},
+      faq:{en:'5 questions',pt:'5 perguntas',c:'y'},
+      reqs:{en:'By vehicle type',pt:'Por tipo de veículo',c:'g'},
+      diff:{en:'Institutional video + 9-country presence; weak FAQ copy',pt:'Vídeo institucional + presença em 9 países; copy do FAQ deficiente'}
+    },
+    {
+      name:'DiDi (before)', didi:true,
+      form:{en:'2 fields',pt:'2 campos',c:'r'},
+      ctas:{en:'No',pt:'Não',c:'r'},
+      social:{en:'None',pt:'Nenhuma',c:'r'},
+      faq:{en:'No',pt:'Não',c:'r'},
+      reqs:{en:'Dense list',pt:'Lista densa',c:'r'},
+      diff:{en:'Earnings calculator present but buried; safety/earnings in competing coloured blocks',pt:'Calculadora presente mas enterrada; segurança/ganhos em blocos coloridos competindo'}
+    }
+  ];
+
+  const labelsEN = ['Form fields','Section CTAs','Social proof','FAQ','Requirements','Differentiator'];
+  const labelsPT = ['Campos form','CTAs por seção','Prova social','FAQ','Requisitos','Diferencial'];
+  const fields   = ['form','ctas','social','faq','reqs','diff'];
+
+  const currentLang = () => document.documentElement.lang || 'en';
+
+  function pill(obj) {
+    if (!obj.c) return `<span>${obj[currentLang()]}</span>`;
+    return `<span class="pill ${obj.c}">${obj[currentLang()]}</span>`;
+  }
+
+  container.innerHTML = rows.map(row => {
+    const nameClass = row.didi ? 'comp-card-mob-name didi-row' : 'comp-card-mob-name';
+    const cardStyle = row.didi ? 'background:rgba(255,92,0,0.05);' : '';
+    return `
+      <div class="comp-card-mob" style="${cardStyle}">
+        <div class="${nameClass}">${row.name}</div>
+        ${fields.map((f,i) => `
+          <div class="comp-card-mob-row">
+            <span class="comp-card-mob-lbl"
+                  data-en="${labelsEN[i]}"
+                  data-pt="${labelsPT[i]}">${currentLang()==='en'?labelsEN[i]:labelsPT[i]}</span>
+            <span class="comp-card-mob-val">
+              ${row[f].c
+                ? `<span class="pill ${row[f].c}" data-en="${row[f].en}" data-pt="${row[f].pt}">${currentLang()==='en'?row[f].en:row[f].pt}</span>`
+                : `<span data-en="${row[f].en}" data-pt="${row[f].pt}">${currentLang()==='en'?row[f].en:row[f].pt}</span>`
+              }
+            </span>
+          </div>`).join('')}
+      </div>`;
+  }).join('');
+
+  // Re-render cards on language change
+  const origSetLang = setLang;
+  window._compLangRefresh = () => {
+    const l = currentLang();
+    container.querySelectorAll('[data-en]').forEach(el => {
+      el.textContent = l === 'en' ? el.dataset.en : el.dataset.pt;
+    });
+  };
+}
+
+// Hook into setLang so cards also update
+const _origSetLang = setLang;
+window.setLang = function(l) {
+  _origSetLang(l);
+  if (window._compLangRefresh) window._compLangRefresh();
+};
+</script>
+</body>
+</html>

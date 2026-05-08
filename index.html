@@ -470,7 +470,7 @@ section { padding: 96px 52px; }
 
 .skills-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:7px; margin-top:32px; }
 .skill-tag {
-  background:rgba(176,108,255,0.06); border-left:1px solid var(--border); border-radius:3px;
+  background:rgba(176,108,255,0.06); border-left:2px solid var(--border); border-radius:3px;
   padding:8px 10px; font-size:0.64rem; color:var(--gray);
   font-family:'Space Mono',monospace; text-align:center;
   transition:border-color 0.2s, color 0.2s, background 0.2s;
@@ -550,7 +550,7 @@ section { padding: 96px 52px; }
 .know-group { margin-bottom:26px; }
 .know-group h4 {font-family: 'Bebas Neue', sans-serif;font-size: 1.2rem;letter-spacing: 0.08em;color: var(--text);margin-bottom: 10px;padding-bottom: 6px;}
 .know-tags { display:flex; flex-wrap:wrap; gap:6px; }
-.know-tag { background:rgba(176,108,255,0.06); border-left:1px solid var(--border); border-radius:2px; padding:5px 12px; font-size:0.71rem; color:var(--text-muted); transition:all 0.2s; }
+.know-tag { background:rgba(176,108,255,0.06); border-left: 2px solid var(--border); border-radius:2px; padding:5px 12px; font-size:0.71rem; color:var(--text-muted); transition:all 0.2s; }
 .know-tag:hover { border-color:var(--accent2); color:var(--accent2); background:rgba(255,110,199,0.06); }
 
 .edu-certs { margin-top:30px; }
@@ -994,9 +994,9 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
       <img src="https://static.wixstatic.com/media/b72a24_0009555bb5144378aaf885a65b24d8ec~mv2.png" alt="E-visita" loading="lazy">
       <div class="case-overlay"><span class="case-cat">UX/UI · Hypera Pharma</span><h3 class="case-title">E-visita Digital Platform</h3></div>
     </div>
-    <div class="case-card" onclick="lb(5)">
-      <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png" alt="Dashboard" loading="lazy">
-      <div class="case-overlay"><span class="case-cat">Data Visualization · Looker Studio</span><h3 class="case-title">Dashboard & Analytics</h3></div>
+    <div class="case-card" onclick="window.location.href='case/didi.html'" style="cursor:pointer;">
+      <img src="https://static.wixstatic.com/media/b72a24_ff0dc2e118514061b7517a1abd3a3ad0~mv2.png" alt="Dashboard" loading="lazy">
+      <div class="case-overlay"><span class="case-cat"> · DiDi</span><h3 class="case-title">Dashboards & Analytics</h3></div>
     </div>
   </div>
 
@@ -1010,9 +1010,9 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
       <img src="https://static.wixstatic.com/media/b72a24_0009555bb5144378aaf885a65b24d8ec~mv2.png" alt="E-visita" loading="lazy">
       <div class="case-overlay"><span class="case-cat">UX/UI · Hypera Pharma</span><h3 class="case-title">Plataforma E-visita</h3></div>
     </div>
-    <div class="case-card" onclick="lb(5)">
-      <img src="https://static.wixstatic.com/media/b72a24_76471497300b4340aef18b6d7463c7d1~mv2.png" alt="Dashboard" loading="lazy">
-      <div class="case-overlay"><span class="case-cat">Visualização de Dados · Looker Studio</span><h3 class="case-title">Dashboards & Analytics</h3></div>
+    <div class="case-card" onclick="window.location.href='case/didi.html'" style="cursor:pointer;">
+      <img src="https://static.wixstatic.com/media/b72a24_ff0dc2e118514061b7517a1abd3a3ad0~mv2.png" alt="Dashboard" loading="lazy">
+      <div class="case-overlay"><span class="case-cat"> · DiDi</span><h3 class="case-title">Dashboards & Analytics</h3></div>
     </div>
   </div>
   </section>
@@ -1682,7 +1682,8 @@ const galleries = {
            'https://static.wixstatic.com/media/b72a24_c7fe5260e7bd4675a4908f443526fd37~mv2.png',
            'https://static.wixstatic.com/media/b72a24_ec74b8445a2145dfb7ad5f47dc536a0a~mv2.png/v1/fit/w_2709,h_1291,q_90,enc_avif,quality_auto/b72a24_ec74b8445a2145dfb7ad5f47dc536a0a~mv2.png',
            'https://static.wixstatic.com/media/b72a24_6e9968ee7a1b468a8dcd4e537d622298~mv2.png',
-           'https://static.wixstatic.com/media/b72a24_64097c99b5eb4cb4a897718e66db775a~mv2.png/v1/fit/w_3096,h_1476,q_90,enc_avif,quality_auto/b72a24_64097c99b5eb4cb4a897718e66db775a~mv2.png'],
+           'https://static.wixstatic.com/media/b72a24_64097c99b5eb4cb4a897718e66db775a~mv2.png/v1/fit/w_3096,h_1476,q_90,enc_avif,quality_auto/b72a24_64097c99b5eb4cb4a897718e66db775a~mv2.png'
+],
     'pt': ['https://static.wixstatic.com/media/b72a24_4ed8c4a854a4472ca87d0403e26443ec~mv2.png',
            'https://static.wixstatic.com/media/b72a24_c7fe5260e7bd4675a4908f443526fd37~mv2.png',
            'https://static.wixstatic.com/media/b72a24_ec74b8445a2145dfb7ad5f47dc536a0a~mv2.png/v1/fit/w_2709,h_1291,q_90,enc_avif,quality_auto/b72a24_ec74b8445a2145dfb7ad5f47dc536a0a~mv2.png',
