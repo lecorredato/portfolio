@@ -522,6 +522,10 @@ section { padding: 96px 52px; }
 [data-theme="light"] .lightbox { background:rgba(30,20,60,0.96); }
 .lightbox.open { display:flex; }
 .lightbox img { max-width:90vw; max-height:88vh; object-fit:contain; border-radius:4px; box-shadow:0 0 80px rgba(176,108,255,0.2); user-select:none; }
+#lbVideo { max-width:90vw; max-height:88vh; object-fit:contain; border-radius:4px; box-shadow:0 0 80px rgba(176,108,255,0.2); cursor:pointer; }
+#lbIframe { width:90vw; max-width:960px; height:80vh; border:none; border-radius:4px; box-shadow:0 0 80px rgba(176,108,255,0.2); }
+.lb-play-pause { position:absolute; bottom:46px; left:50%; transform:translateX(-50%); background:rgba(0,0,0,0.65); border:1px solid rgba(255,255,255,0.25); color:#fff; font-size:1rem; padding:7px 22px; cursor:pointer; border-radius:20px; z-index:10; transition:background 0.2s; letter-spacing:0.05em; }
+.lb-play-pause:hover { background:rgba(255,45,155,0.55); }
 .lb-close { position:absolute; top:18px; right:26px; font-size:1.9rem; color:var(--gray); cursor:pointer; background:none; border:none; transition:color 0.2s; }
 .lb-close:hover { color:var(--accent); }
 .lb-nav { position:absolute; top:50%; transform:translateY(-50%); background:rgba(176,108,255,0.1); border:1px solid var(--border); color:white; font-size:1.7rem; padding:11px 16px; cursor:pointer; border-radius:2px; transition:background 0.2s; user-select:none; }
@@ -1164,6 +1168,9 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   <button class="lb-close" onclick="lbClose()">✕</button>
   <button class="lb-nav lb-prev" onclick="lbShift(-1)" aria-label="Prev">‹</button>
   <img id="lbImg" src="" alt="">
+  <video id="lbVideo" muted playsinline style="display:none" onclick="lbTogglePlay()"></video>
+  <iframe id="lbIframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="display:none"></iframe>
+  <button id="lbPlayPause" class="lb-play-pause" onclick="lbTogglePlay()" style="display:none" aria-label="Play/Pause">⏸ Pause</button>
   <button class="lb-nav lb-next" onclick="lbShift(1)"  aria-label="Next">›</button>
   <span class="lb-counter" id="lbCount"></span>
 </div>
@@ -1638,12 +1645,18 @@ const T = {
 
 const galleries = {
   'projeto1': {
-    'en': [],
-    'pt': []
+    'en': ['https://drive.google.com/file/d/1BO4P7AqbEY03_sce3GDZe4rPmmmfoMCG/view?pli=1?autoplay=true',
+           '',
+           ''],
+    'pt': ['https://drive.google.com/file/d/1BO4P7AqbEY03_sce3GDZe4rPmmmfoMCG/view?pli=1?autoplay=true',
+           '',
+           '']
   },
   'projeto2': {
-    'en': [],
-    'pt': []
+    'en': ['',
+           ''],
+    'pt': ['',
+           '']
   },
   'projeto3': {
     'en': [
@@ -1797,19 +1810,84 @@ function lb(galleryKey, i) {
   document.body.style.overflow = 'hidden';
 }
 
-function updateLightbox() {
-  const imgElement = document.getElementById('lbImg');
-  const countElement = document.getElementById('lbCount');
-  
-  if (currentGallery[lbIdx]) {
-    imgElement.src = currentGallery[lbIdx];
-    countElement.textContent = `${lbIdx + 1} / ${currentGallery.length}`;
-  }
+function getMediaType(url) {
+  if (/\.(mp4|webm|ogg|mov|m4v)(\?|$)/i.test(url)) return 'video';
+  if (/drive\.google\.com/.test(url)) return 'gdrive';
+  if (/youtube\.com|youtu\.be/.test(url)) return 'youtube';
+  if (/vimeo\.com/.test(url)) return 'vimeo';
+  return 'image';
 }
 
-function lbClose() { 
-  document.getElementById('lightbox').classList.remove('open'); 
-  document.body.style.overflow = ''; 
+function toEmbedUrl(url, type) {
+  if (type === 'gdrive') {
+    const m = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
+    return m ? `https://drive.google.com/file/d/${m[1]}/preview?autoplay=true` : url;
+  }
+  if (type === 'youtube') {
+    const m = url.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]+)/);
+    return m ? `https://www.youtube.com/embed/${m[1]}?autoplay=1&mute=1` : url;
+  }
+  if (type === 'vimeo') {
+    const m = url.match(/vimeo\.com\/(\d+)/);
+    return m ? `https://player.vimeo.com/video/${m[1]}?autoplay=1&muted=1` : url;
+  }
+  return url;
+}
+
+function lbTogglePlay() {
+  const vid = document.getElementById('lbVideo');
+  const btn = document.getElementById('lbPlayPause');
+  if (vid.paused) { vid.play(); btn.textContent = '⏸ Pause'; }
+  else            { vid.pause(); btn.textContent = '▶ Play'; }
+}
+
+function updateLightbox() {
+  const imgEl   = document.getElementById('lbImg');
+  const vidEl   = document.getElementById('lbVideo');
+  const ifrEl   = document.getElementById('lbIframe');
+  const countEl = document.getElementById('lbCount');
+  const playBtn = document.getElementById('lbPlayPause');
+
+  // stop previous video / iframe
+  vidEl.pause();
+  vidEl.src = '';
+  ifrEl.src = '';
+
+  // hide all
+  imgEl.style.display = 'none';
+  vidEl.style.display = 'none';
+  ifrEl.style.display = 'none';
+  playBtn.style.display = 'none';
+
+  const url = currentGallery[lbIdx];
+  if (!url) return;
+
+  const type = getMediaType(url);
+
+  if (type === 'video') {
+    vidEl.src = url;
+    vidEl.style.display = 'block';
+    vidEl.muted = true;
+    vidEl.play();
+    playBtn.textContent = '⏸ Pause';
+    playBtn.style.display = 'flex';
+  } else if (type === 'gdrive' || type === 'youtube' || type === 'vimeo') {
+    ifrEl.src = toEmbedUrl(url, type);
+    ifrEl.style.display = 'block';
+  } else {
+    imgEl.src = url;
+    imgEl.style.display = 'block';
+  }
+
+  countEl.textContent = `${lbIdx + 1} / ${currentGallery.length}`;
+}
+
+function lbClose() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+  const vid = document.getElementById('lbVideo');
+  vid.pause(); vid.src = '';
+  document.getElementById('lbIframe').src = '';
 }
 
 function lbOutside(e) { 
