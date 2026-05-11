@@ -244,17 +244,17 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 <body>
 <div id="cursor"></div>
 
-<!-- NAV -->
+<!-- ══ NAV ══ -->
 <nav id="mainNav">
-  <a class="nav-logo" href="leticia-portfolio-v5.html">
-    <img src="https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png" alt="LC">
+  <a class="nav-logo" href="https://lecorredato.github.io/portfolio/#hero">
+    <img id="navLogo" src="https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png" alt="LC">
   </a>
   <ul class="nav-links">
-    <li><a href="leticia-portfolio-v5.html#about"      class="t" data-key="nav-about">About</a></li>
-    <li><a href="leticia-portfolio-v5.html#cases"       class="t" data-key="nav-cases">Cases</a></li>
-    <li><a href="leticia-portfolio-v5.html#portfolio"   class="t" data-key="nav-portfolio">Portfolio</a></li>
-    <li><a href="leticia-portfolio-v5.html#experiences" class="t" data-key="nav-exp">Experience</a></li>
-    <li><a href="leticia-portfolio-v5.html#contact"     class="t" data-key="nav-contact">Contact</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#about"       class="t" data-key="nav-about">About</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#cases"       class="t" data-key="nav-case">Cases</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#portfolio"   class="t" data-key="nav-portfolio">Portfolio</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#experiences" class="t" data-key="nav-exp">Experience</a></li>
+    <li><a href="https://lecorredato.github.io/portfolio/#contact"     class="t" data-key="nav-contact">Contact</a></li>
   </ul>
   <div class="nav-right">
     <div class="nav-controls">
@@ -267,28 +267,30 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
       </button>
     </div>
-    <div class="hamburger" id="hamburger" onclick="openMenu()">
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
     </div>
   </div>
 </nav>
 
-<!-- MOBILE MENU -->
+<!-- ══ MOBILE MENU ══ -->
 <div class="mobile-menu" id="mobileMenu">
-  <button class="mobile-close" onclick="closeMenu()">✕</button>
-  <a href="leticia-portfolio-v5.html#about"      onclick="closeMenu()" class="t" data-key="nav-about">About</a>
-  <a href="leticia-portfolio-v5.html#cases"       onclick="closeMenu()" class="t" data-key="nav-cases">Cases</a>
-  <a href="leticia-portfolio-v5.html#portfolio"   onclick="closeMenu()" class="t" data-key="nav-portfolio">Portfolio</a>
-  <a href="leticia-portfolio-v5.html#experiences" onclick="closeMenu()" class="t" data-key="nav-exp">Experience</a>
-  <a href="leticia-portfolio-v5.html#contact"     onclick="closeMenu()" class="t" data-key="nav-contact">Contact</a>
-  <div class="mob-ctrl">
+  <div class="hamburger open mobile-close-trigger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+  <a href="https://lecorredato.github.io/portfolio/#about"       onclick="closeMenu()" class="t" data-key="nav-about">About</a>
+  <a href="https://lecorredato.github.io/portfolio/#cases"       onclick="closeMenu()" class="t" data-key="nav-case">Cases</a>
+  <a href="https://lecorredato.github.io/portfolio/#portfolio"   onclick="closeMenu()" class="t" data-key="nav-portfolio">Portfolio</a>
+  <a href="https://lecorredato.github.io/portfolio/#experiences" onclick="closeMenu()" class="t" data-key="nav-exp">Experience</a>
+  <a href="https://lecorredato.github.io/portfolio/#contact"     onclick="closeMenu()" class="t" data-key="nav-contact">Contact</a>
+  <div class="mobile-controls">
     <div class="lang-switch">
       <button id="btnENMob" class="active" onclick="setLang('en')">EN</button>
-      <div class="nav-sep"></div>
+      <div class="lang-sep"></div>
       <button id="btnPTMob" onclick="setLang('pt')">PT</button>
     </div>
-    <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()">
-      <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()" aria-label="Toggle theme">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
     </button>
   </div>
 </div>
