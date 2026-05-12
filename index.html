@@ -3,26 +3,21 @@
 <head>
   <link rel="icon" type="image/png" href="https://static.wixstatic.com/media/b72a24_d4103973c3324e58be536fd787f7414e~mv2.png">
 
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8ZM0P67L3H"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8ZM0P67L3H');
-</script>
-
-<!-- iubenda - (cookies) -->
-<script type="text/javascript">
-var _iub = _iub || [];
-_iub.csConfiguration = {"siteId":4522238,"cookiePolicyId":10202253,"lang":"en","storage":{"useSiteId":true}};
-</script>
-
-
-<script type="text/javascript" src="https://cs.iubenda.com/autoblocking/4522238.js"></script>
-<script type="text/javascript" src="//cdn.iubenda.com/cs/gpp/stub.js"></script>
-<script type="text/javascript" src="//cdn.iubenda.com/cs/iubenda_cs.js" charset="UTF-8" async></script>
+  <!-- Google tag (gtag.js) — carrega só após consentimento -->
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('consent', 'default', {
+      analytics_storage: 'denied',
+      ad_storage: 'denied',
+      wait_for_update: 500
+    });
+  </script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8ZM0P67L3H"></script>
+  <script>
+    gtag('js', new Date());
+    gtag('config', 'G-8ZM0P67L3H', { send_page_view: false });
+  </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Leticia Corredato | Product & UX/UI Designer</title>
@@ -856,6 +851,51 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
 .rp-sub { font-family: 'Space Mono', monospace; font-size: 0.68rem; letter-spacing: 0.16em; color: rgba(255,45,155,0.8); text-transform: uppercase; margin: 0; }
 .rp-skip { font-family: 'Space Mono', monospace; font-size: 0.66rem; letter-spacing: 0.12em; color: rgba(255,240,248,0.3); text-transform: uppercase; background: none; border: none; cursor: pointer; padding: 6px 10px; transition: color 0.2s; margin-top: 8px; }
 .rp-skip:hover { color: rgba(255,240,248,0.6); }
+
+/* ══════════════════════════════════════════
+   COOKIE BANNER
+══════════════════════════════════════════ */
+#cookieBanner {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 4000;
+  background: var(--bg-mid);
+  border-top: 1px solid var(--border);
+  padding: 18px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  flex-wrap: wrap;
+  transform: translateY(100%);
+  transition: transform 0.45s cubic-bezier(.25,.46,.45,.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+#cookieBanner.visible { transform: translateY(0); }
+.cb-text {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.08em;
+  color: var(--text-muted); line-height: 1.6;
+  flex: 1; min-width: 220px;
+}
+.cb-text a { color: var(--accent); text-decoration: none; }
+.cb-text a:hover { text-decoration: underline; }
+.cb-actions { display: flex; gap: 10px; flex-shrink: 0; }
+.cb-btn {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.72rem; letter-spacing: 0.10em; text-transform: uppercase;
+  padding: 9px 20px; border-radius: 2px; cursor: pointer;
+  border: 1px solid var(--border); transition: all 0.2s;
+}
+.cb-btn-accept {
+  background: var(--accent); color: #fff; border-color: var(--accent);
+}
+.cb-btn-accept:hover { box-shadow: 0 0 18px rgba(255,45,155,0.45); }
+.cb-btn-decline {
+  background: transparent; color: var(--gray);
+}
+.cb-btn-decline:hover { border-color: var(--gray); color: var(--text); }
+@media (max-width: 560px) {
+  #cookieBanner { padding: 16px 18px; flex-direction: column; align-items: flex-start; }
+  .cb-actions { width: 100%; }
+  .cb-btn { flex: 1; text-align: center; }
+}
 
 @media (max-height: 480px) and (orientation: landscape) {
   .mobile-menu {
@@ -1967,6 +2007,9 @@ function lb(galleryKey, i) {
   // Mostra prompt de rotação se aplicável
   rpCheck(galleryKey);
 
+  // GA4 — abertura de galeria
+  gaEvent('gallery_open', { gallery: altSlug || galleryKey });
+
   // 3. Atualiza a URL com o hash baseado no alt da imagem do item clicado
   const clickedItem = activeGrid
     ? activeGrid.querySelector(`[onclick*="'${galleryKey}'"] img`)
@@ -2077,6 +2120,155 @@ document.addEventListener('keydown', e => {
   if (e.key === 'ArrowLeft')  lbShift(-1);
 });
 
+/* ══════════════════════════════════════════
+   COOKIE CONSENT
+══════════════════════════════════════════ */
+function cbAccept() {
+  localStorage.setItem('lc_cookie_consent', 'accepted');
+  gtag('consent', 'update', { analytics_storage: 'granted' });
+  gtag('event', 'page_view');
+  gtag('event', 'cookie_consent', { choice: 'accepted' });
+  document.getElementById('cookieBanner').classList.remove('visible');
+}
+function cbDecline() {
+  localStorage.setItem('lc_cookie_consent', 'declined');
+  gtag('consent', 'update', { analytics_storage: 'denied' });
+  gtag('event', 'cookie_consent', { choice: 'declined' });
+  document.getElementById('cookieBanner').classList.remove('visible');
+}
+function cbInit() {
+  const saved = localStorage.getItem('lc_cookie_consent');
+  if (!saved) {
+    setTimeout(() => document.getElementById('cookieBanner').classList.add('visible'), 1200);
+  } else if (saved === 'accepted') {
+    gtag('consent', 'update', { analytics_storage: 'granted' });
+    gtag('event', 'page_view');
+  }
+}
+
+/* ══════════════════════════════════════════
+   HASH → GALERIA (abre ao carregar pela URL)
+══════════════════════════════════════════ */
+
+// Mapa slug → chave da galeria (baseado nos alts dos portfolio-item)
+const SLUG_MAP = {
+  '99food':           'projeto1',
+  'didi':             'projeto2',
+  'e-visita':         'projeto3',
+  'mantecorp-saude':  'projeto4',
+  'bild':             'projeto5',
+  'vitta':            'projeto6',
+  'life-diversico':   'projeto7',
+  'acabine':          'projeto8',
+  'melua':            'projeto9',
+  'leporem':          'projeto10',
+  'art-velas':        'projeto11',
+  'kmgru':            'projeto12',
+};
+
+function openGalleryFromHash() {
+  const hash = window.location.hash.replace('#', '').toLowerCase();
+  if (!hash) return;
+  const key = SLUG_MAP[hash];
+  if (key) {
+    // Garante que os grids já estão montados antes de abrir
+    setTimeout(() => lb(key, 0), 120);
+  }
+}
+
+/* ══════════════════════════════════════════
+   GA4 — EVENTOS ESTRATÉGICOS
+══════════════════════════════════════════ */
+function gaEvent(name, params) {
+  if (typeof gtag === 'function') gtag('event', name, params || {});
+}
+
+function gaInitEvents() {
+
+  // ── 1. Abertura de galeria (já disparado dentro de lb())
+  // ver função lb() — chama gaEvent('gallery_open', ...)
+
+  // ── 2. Clique nos cases (links externos)
+  document.querySelectorAll('.case-card[onclick]').forEach(card => {
+    const href = card.getAttribute('onclick').match(/href='([^']+)'/);
+    const url  = href ? href[1] : 'unknown';
+    const title = card.querySelector('.case-title');
+    card.addEventListener('click', () => {
+      gaEvent('case_click', {
+        case_name: title ? title.textContent.trim() : url,
+        destination: url
+      });
+    });
+  });
+
+  // ── 3. Troca de idioma
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      gaEvent('language_switch', { lang: btn.textContent.trim() });
+    });
+  });
+
+  // ── 4. Troca de tema (dark/light)
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const theme = document.documentElement.getAttribute('data-theme');
+      gaEvent('theme_toggle', { theme_selected: theme === 'dark' ? 'light' : 'dark' });
+    });
+  });
+
+  // ── 5. Filtro do portfolio
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      gaEvent('portfolio_filter', { category: btn.dataset.cat });
+    });
+  });
+
+  // ── 6. Scroll até seções — via IntersectionObserver
+  const sections = ['about', 'cases', 'portfolio', 'experiences', 'contact'];
+  const sectionSeen = new Set();
+  const sectionObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !sectionSeen.has(e.target.id)) {
+        sectionSeen.add(e.target.id);
+        gaEvent('section_view', { section: e.target.id });
+      }
+    });
+  }, { threshold: 0.35 });
+  sections.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) sectionObs.observe(el);
+  });
+
+  // ── 7. Clique nos CTAs do hero
+  document.querySelectorAll('.hero-cta-primary, .hero-cta-secondary').forEach(btn => {
+    btn.addEventListener('click', () => {
+      gaEvent('hero_cta_click', { label: btn.textContent.trim() });
+    });
+  });
+
+  // ── 8. Clique nos links sociais do footer
+  document.querySelectorAll('.social-link').forEach(link => {
+    link.addEventListener('click', () => {
+      gaEvent('social_click', { url: link.href });
+    });
+  });
+
+  // ── 9. Abertura do menu mobile
+  const hamburger = document.getElementById('hamburger');
+  if (hamburger) {
+    hamburger.addEventListener('click', () => {
+      gaEvent('mobile_menu_open');
+    });
+  }
+
+  // ── 10. Engajamento com lightbox — navegação entre slides
+  document.querySelectorAll('.lb-nav').forEach(btn => {
+    btn.addEventListener('click', () => {
+      gaEvent('gallery_navigate', { direction: btn.classList.contains('lb-prev') ? 'prev' : 'next' });
+    });
+  });
+}
+
 /* ── FILTER ── */
 function filterGrid(cat, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -2108,15 +2300,37 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.07 });
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
-  // Smooth anchors
+  // Smooth anchors — ignora hashes de galeria
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
+      const href = a.getAttribute('href');
+      const t = document.querySelector(href);
       if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
     });
   });
+
+  // Inicializa cookie consent
+  cbInit();
+
+  // Inicializa eventos GA4
+  gaInitEvents();
+
+  // Abre galeria se a URL já tem um hash de projeto
+  openGalleryFromHash();
 });
 </script>
+
+<!-- ══ COOKIE BANNER ══ -->
+<div id="cookieBanner">
+  <p class="cb-text">
+    Uso cookies para analisar o tráfego e melhorar a experiência no site.
+    Nenhum dado é vendido ou compartilhado com terceiros para publicidade.
+  </p>
+  <div class="cb-actions">
+    <button class="cb-btn cb-btn-decline" onclick="cbDecline()">Recusar</button>
+    <button class="cb-btn cb-btn-accept"  onclick="cbAccept()">Aceitar</button>
+  </div>
+</div>
 
 <!-- ══ ROTATE PROMPT ══ -->
 <div id="rotatePrompt" class="rp-overlay" onclick="rpSkip()">
