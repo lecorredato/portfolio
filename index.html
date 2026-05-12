@@ -663,6 +663,41 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
    RESPONSIVE — MOBILE (≤ 560px)
 ══════════════════════════════════════════ */
 @media (max-width: 560px) {
+
+  /* ── Cases: overlay estático no mobile (sem hover) ── */
+  .case-overlay {
+    opacity: 1 !important;
+    background: linear-gradient(to top, rgba(196,0,110,0.88) 0%, rgba(255,45,155,0.45) 50%, transparent 100%) !important;
+  }
+  .case-cat, .case-title {
+    transform: translateY(0) !important;
+    opacity: 1 !important;
+    transition: none !important;
+  }
+  .case-card img {
+    filter: brightness(0.72) saturate(0.9) !important;
+  }
+
+  /* ── Portfolio: ícone + no canto inferior direito ── */
+  .portfolio-overlay {
+    background: none !important;
+    opacity: 1 !important;
+    align-items: flex-end !important;
+    justify-content: flex-end !important;
+    padding: 8px !important;
+    pointer-events: none;
+  }
+  .po-label { display: none !important; }
+  .po-icon {
+    transform: scale(1) !important;
+    opacity: 1 !important;
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 1.1rem !important;
+    background: rgba(196,0,110,0.82) !important;
+    border-color: rgba(255,255,255,0.6) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  }
   section { padding: 60px 18px; }
 
   #about .reveal {
@@ -1846,6 +1881,15 @@ function lb(galleryKey, i) {
   updateLightbox();
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
+
+  // 3. Atualiza a URL com o hash baseado no alt da imagem do item clicado
+  const clickedItem = activeGrid
+    ? activeGrid.querySelector(`[onclick*="'${galleryKey}'"] img`)
+    : document.querySelector(`[onclick*="'${galleryKey}'"] img`);
+  const altSlug = clickedItem
+    ? clickedItem.getAttribute('alt').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '')
+    : galleryKey;
+  history.pushState({ gallery: galleryKey }, '', '#' + altSlug);
 }
 
 function getMediaType(url) {
@@ -1926,6 +1970,8 @@ function lbClose() {
   const vid = document.getElementById('lbVideo');
   vid.pause(); vid.src = '';
   document.getElementById('lbIframe').src = '';
+  // Remove o hash da URL ao fechar
+  history.pushState('', document.title, window.location.pathname + window.location.search);
 }
 
 function lbOutside(e) { 
