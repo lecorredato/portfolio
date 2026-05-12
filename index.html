@@ -1235,7 +1235,7 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
     </div>
 
     <div class="portfolio-item" data-cat="digital" onclick="lb('projeto2', 0)"> 
-      <img src="https://static.wixstatic.com/media/b72a24_2120fbd441a3422f90c9dbcd991f0233~mv2.png" alt="" loading="lazy">
+      <img src="https://static.wixstatic.com/media/b72a24_2120fbd441a3422f90c9dbcd991f0233~mv2.png" alt="DiDi" loading="lazy">
       <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
     </div>
 
@@ -1990,34 +1990,34 @@ function lb(galleryKey, i) {
 
   // 2. Acessar o projeto e o idioma
   const project = galleries[galleryKey];
-  
   if (project && project[lang]) {
-    // .filter(Boolean) remove qualquer string vazia que tenha sobrado
-    currentGallery = project[lang].filter(Boolean); 
+    currentGallery = project[lang].filter(Boolean);
   } else {
-    console.error("Erro: Galeria ou Idioma não encontrado", galleryKey, lang);
+    console.error("Galeria ou idioma não encontrado:", galleryKey, lang);
     return;
   }
+
+  // 3. Calcular slug ANTES de usar (era bug: usava antes de declarar)
+  const clickedItem = document.querySelector(
+    `[onclick*="'${galleryKey}'"] img, [onclick*='"${galleryKey}"'] img`
+  );
+  const altSlug = clickedItem
+    ? clickedItem.getAttribute('alt').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '')
+    : galleryKey;
+
+  // 4. Atualiza URL com o hash
+  history.pushState({ gallery: galleryKey }, '', '#' + altSlug);
 
   lbIdx = i;
   updateLightbox();
   document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 
-  // Mostra prompt de rotação se aplicável
+  // 5. Mostra prompt de rotação se aplicável
   rpCheck(galleryKey);
 
-  // GA4 — abertura de galeria
-  gaEvent('gallery_open', { gallery: altSlug || galleryKey });
-
-  // 3. Atualiza a URL com o hash baseado no alt da imagem do item clicado
-  const clickedItem = activeGrid
-    ? activeGrid.querySelector(`[onclick*="'${galleryKey}'"] img`)
-    : document.querySelector(`[onclick*="'${galleryKey}'"] img`);
-  const altSlug = clickedItem
-    ? clickedItem.getAttribute('alt').toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9\-]/g, '')
-    : galleryKey;
-  history.pushState({ gallery: galleryKey }, '', '#' + altSlug);
+  // 6. GA4 — abertura de galeria
+  gaEvent('gallery_open', { gallery: altSlug });
 }
 
 function getMediaType(url) {
@@ -2167,14 +2167,25 @@ const SLUG_MAP = {
 };
 
 function openGalleryFromHash() {
-  const hash = window.location.hash.replace('#', '').toLowerCase();
+  const hash = window.location.hash.replace('#', '').toLowerCase().trim();
   if (!hash) return;
   const key = SLUG_MAP[hash];
-  if (key) {
-    // Garante que os grids já estão montados antes de abrir
-    setTimeout(() => lb(key, 0), 120);
-  }
+  if (!key) return;
+  // Aguarda grids inicializados (display:grid já definido no init acima)
+  // e imagens começarem a carregar antes de abrir o lightbox
+  setTimeout(() => lb(key, 0), 200);
 }
+
+// Também responde se o usuário navegar pelo histórico (botão voltar/avançar)
+window.addEventListener('popstate', () => {
+  const hash = window.location.hash.replace('#', '').toLowerCase().trim();
+  if (!hash) {
+    lbClose();
+  } else {
+    const key = SLUG_MAP[hash];
+    if (key) lb(key, 0);
+  }
+});
 
 /* ══════════════════════════════════════════
    GA4 — EVENTOS ESTRATÉGICOS
