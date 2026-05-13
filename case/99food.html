@@ -202,6 +202,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 [data-theme="light"] .cs-carousel-btn{background:rgba(255,255,255,0.55);color:rgba(100,80,0,0.7);}
 [data-theme="light"] .cs-carousel-btn:hover{background:rgba(200,162,0,0.18);}
 [data-theme="light"] .cs-carousel-dot{background:rgba(100,80,0,0.25);}
+/* PLAY OVERLAY */
+.cs-play-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:6;background:rgba(0,0,0,0.18);transition:background 0.2s;}
+.cs-play-overlay:hover{background:rgba(0,0,0,0.08);}
+.cs-play-circle{width:56px;height:56px;border-radius:50%;background:rgba(200,162,0,0.92);display:flex;align-items:center;justify-content:center;transition:transform 0.18s,background 0.18s;pointer-events:none;}
+.cs-play-overlay:hover .cs-play-circle{transform:scale(1.1);background:var(--gold);}
+.cs-play-circle svg{width:22px;height:22px;fill:#1a1600;margin-left:4px;}
+.cs-play-overlay.hidden{display:none;}
 
 .cs-season-header{background:linear-gradient(135deg,var(--gold),var(--gold2));padding:16px 20px;flex-shrink:0;}
 .cs-season-header h3{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.08em;color:#1a1600;margin-bottom:2px;}
@@ -607,13 +614,19 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
           <!-- Slide 1 — imagem -->
           <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_583edf16d1f64ffbac18635c835e581b~mv2.png" alt="Easter creative 1" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
           <!-- Slide 2 — vídeo novo -->
-          <div class="cs-carousel-slide"><iframe src="https://drive.google.com/file/d/1y2HEqKs74-hejNuD9I96rVLZAcaqpmVv/preview?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+          <div class="cs-carousel-slide">
+            <iframe src="https://drive.google.com/file/d/1y2HEqKs74-hejNuD9I96rVLZAcaqpmVv/preview?mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="cs-play-overlay" onclick="playVideo(this)"><div class="cs-play-circle"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          </div>
           <!-- Slide 3 — imagem -->
           <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_9853c08160354f91ac1e1ab94c5672b7~mv2.png" alt="Easter creative 3" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
           <!-- Slide 4 — imagem -->
           <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_4657c027d4da4bb48f678a8e27beb005~mv2.png" alt="Easter creative 4" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
           <!-- Slide 5 — vídeo existente -->
-          <div class="cs-carousel-slide"><iframe src="https://drive.google.com/file/d/18XEf523M0DWxVjVn7_4BqCEJUDQlDvkS/preview?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+          <div class="cs-carousel-slide">
+            <iframe src="https://drive.google.com/file/d/18XEf523M0DWxVjVn7_4BqCEJUDQlDvkS/preview?mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <div class="cs-play-overlay" onclick="playVideo(this)"><div class="cs-play-circle"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
+          </div>
         </div>
         <button class="cs-carousel-btn cs-carousel-prev" onclick="carouselMove('easter',-1)" aria-label="Previous">&#8249;</button>
         <button class="cs-carousel-btn cs-carousel-next" onclick="carouselMove('easter', 1)" aria-label="Next">&#8250;</button>
@@ -644,11 +657,12 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
       <div class="cs-season-video-slot">
         <iframe
           id="drive-video-ai"
-          src="https://drive.google.com/file/d/1BO4P7AqbEY03_sce3GDZe4rPmmmfoMCG/preview?autoplay=1&mute=1"
+          src="https://drive.google.com/file/d/1BO4P7AqbEY03_sce3GDZe4rPmmmfoMCG/preview?mute=1"
           allow="autoplay; encrypted-media"
           allowfullscreen
           title="AI Bag Delivery creative"
         ></iframe>
+        <div class="cs-play-overlay" onclick="playVideo(this)"><div class="cs-play-circle"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div></div>
       </div>
     </div>
 
@@ -811,7 +825,6 @@ document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObse
   gaInitEvents();
   fsInit();
   carouselInit('easter');
-  initVideoAutoplay();
 });
 
 /* ══ GA4 — ANALYTICS EVENTS ══ */
@@ -993,53 +1006,19 @@ function carouselStopAuto(id) {
   if (c && c.timer) { clearTimeout(c.timer); c.timer = null; }
 }
 
-/* ══ VIDEO AUTOPLAY ══
-   Browsers bloqueiam autoplay em iframes cross-origin sem gesto do usuário.
-   Estratégia: ao primeiro scroll/clique na página, recarregamos o src com
-   autoplay=1 (o browser libera pois já houve interação). Se após 5s o vídeo
-   ainda não iniciou (ex: tab em background), simulamos um clique no elemento
-   para forçar o play nativo do Drive. */
-function initVideoAutoplay() {
-  const iframes = Array.from(document.querySelectorAll(
-    '.cs-season-video-slot iframe, .cs-carousel-slide iframe'
-  ));
-  if (!iframes.length) return;
-
-  let triggered = false;
-
-  function triggerAll() {
-    if (triggered) return;
-    triggered = true;
-    iframes.forEach(iframe => reloadAutoplay(iframe));
-    // Fallback: após 5s clica programaticamente no container de cada iframe
-    // para garantir que o player nativo do Drive receba o gesto
-    setTimeout(() => {
-      iframes.forEach(iframe => {
-        // Tenta focar e clicar no iframe — funciona quando Drive já carregou
-        try { iframe.contentWindow.focus(); } catch(e) {}
-        iframe.click();
-        // Recarga forçada como último recurso
-        reloadAutoplay(iframe);
-      });
-    }, 5000);
-  }
-
-  function reloadAutoplay(iframe) {
-    let src = iframe.getAttribute('src') || '';
-    if (!src.includes('drive.google.com')) return;
-    // Garante autoplay=1 e mute=1 na URL
-    src = src.replace(/[&?](autoplay|mute)=\d/g, '');
-    const sep = src.includes('?') ? '&' : '?';
-    iframe.setAttribute('src', src + sep + 'autoplay=1&mute=1');
-  }
-
-  // Dispara no primeiro scroll ou clique do usuário
-  ['scroll', 'click', 'touchstart', 'keydown'].forEach(evt => {
-    window.addEventListener(evt, triggerAll, { once: true, passive: true });
-  });
-
-  // Fallback incondicional após 5s mesmo sem interação
-  setTimeout(triggerAll, 5000);
+/* ══ PLAY OVERLAY ══ */
+function playVideo(overlay) {
+  // Esconde o overlay
+  overlay.classList.add('hidden');
+  // Encontra o iframe no mesmo container
+  const container = overlay.parentElement;
+  const iframe = container.querySelector('iframe');
+  if (!iframe) return;
+  // Recarrega src com autoplay=1 — agora com gesto do usuário, o browser libera
+  let src = iframe.getAttribute('src') || '';
+  src = src.replace(/[&?]autoplay=\d/g, '');
+  const sep = src.includes('?') ? '&' : '?';
+  iframe.setAttribute('src', src + sep + 'autoplay=1');
 }
 </script>
 </body>
