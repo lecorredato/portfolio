@@ -175,21 +175,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 /* SEASONAL */
 .cs-season-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 .cs-season-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-.cs-season-img-slot{width:100%;height:280px;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.cs-season-img-slot{width:100%;height:260px;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .cs-season-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;}
 .cs-season-img-slot:has(img[src=""]){display:none;}
-.cs-season-video-slot{width:100%;height:280px;border-top:1px solid var(--border);position:relative;background:#000;overflow:hidden;}
-.cs-season-video-slot iframe{position:absolute;top:-40px;left:0;width:100%;height:calc(100% + 80px);border:none;display:block;}
+.cs-season-video-slot{width:100%;height:260px;border-top:1px solid var(--border);position:relative;background:#000;overflow:hidden;}
+.cs-season-video-slot iframe{position:absolute;top:-42px;left:0;width:100%;height:calc(100% + 84px);border:none;display:block;}
 .cs-video-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(200,162,0,0.06);pointer-events:none;}
 .cs-video-placeholder span{font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.1em;color:var(--gold3);text-transform:uppercase;text-align:center;padding:0 16px;}
 /* hide placeholder once iframe has a real src */
 .cs-season-video-slot:not([data-empty]) .cs-video-placeholder{display:none;}
 /* CAROUSEL */
-.cs-carousel{position:relative;width:100%;height:280px;overflow:hidden;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);}
+.cs-carousel{position:relative;width:100%;height:260px;overflow:hidden;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);}
 .cs-carousel-track{display:flex;height:100%;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);will-change:transform;}
 .cs-carousel-slide{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(200,162,0,0.04);}
 .cs-carousel-slide img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;border:none;}
-.cs-carousel-slide iframe{position:absolute;top:-40px;left:0;width:100%;height:calc(100% + 80px);border:none;display:block;}
+.cs-carousel-slide iframe{position:absolute;top:-42px;left:0;width:100%;height:calc(100% + 84px);border:none;display:block;}
 .cs-slide-empty{background:rgba(200,162,0,0.04);}
 .cs-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.32);border:1px solid rgba(200,162,0,0.18);color:rgba(255,240,200,0.7);font-size:1.3rem;width:28px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:3px;transition:background 0.2s,color 0.2s;padding:0;line-height:1;z-index:4;}
 .cs-carousel-btn:hover{background:rgba(200,162,0,0.22);color:var(--gold);}
@@ -205,8 +205,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .cs-season-header{background:linear-gradient(135deg,var(--gold),var(--gold2));padding:16px 20px;}
 .cs-season-header h3{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.08em;color:#1a1600;margin-bottom:2px;}
 .cs-season-header p{font-size:0.84rem;color:rgba(26,22,0,0.7);}
-.cs-season-body{padding:14px 18px;}
+.cs-season-body{padding:14px 18px 0;}
 .cs-season-body p{font-size:0.92rem;color:var(--text-muted);line-height:1.55;margin-bottom:10px;}
+.cs-season-body .cs-season-tag:last-of-type{margin-bottom:14px;display:inline-block;}
 .cs-season-tag{display:inline-block;border:1px solid rgba(200,162,0,0.3);border-radius:100px;padding:3px 10px;font-size:0.76rem;color:var(--gold3);font-family:'Space Mono',monospace;letter-spacing:0.08em;margin:2px;}
 /* REGION */
 .cs-regions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
@@ -929,6 +930,8 @@ function fsInit() {
 
 /* ══ CAROUSEL ══ */
 const carousels = {};
+const IMG_DELAY   = 4000;   // 4s para imagens — tempo confortável para ler/ver
+const VIDEO_DELAY = 30000;  // 30s para slides de vídeo — deixa o vídeo rodar
 
 function carouselInit(id) {
   const track  = document.getElementById('track-' + id);
@@ -945,7 +948,7 @@ function carouselInit(id) {
     d.addEventListener('click', () => { carouselStopAuto(id); carouselGoTo(id, i); carouselStartAuto(id); });
     dotsEl.appendChild(d);
   });
-  carousels[id] = { current: 0, total, timer: null };
+  carousels[id] = { current: 0, total, timer: null, slides };
   carouselStartAuto(id);
   const wrap = document.getElementById('carousel-' + id);
   if (wrap) {
@@ -954,6 +957,11 @@ function carouselInit(id) {
     wrap.addEventListener('touchstart',  () => carouselStopAuto(id),  { passive: true });
     wrap.addEventListener('touchend',    () => carouselStartAuto(id), { passive: true });
   }
+}
+
+function slideIsVideo(c) {
+  // Returns true if the current slide contains an iframe (video)
+  return c.slides[c.current] && !!c.slides[c.current].querySelector('iframe');
 }
 
 function carouselGoTo(id, index) {
@@ -977,31 +985,34 @@ function carouselMove(id, dir) {
 
 function carouselStartAuto(id) {
   carouselStopAuto(id);
-  if (carousels[id]) carousels[id].timer = setInterval(() => carouselGoTo(id, carousels[id].current + 1), 1500);
+  const c = carousels[id];
+  if (!c) return;
+  // Schedule next advance after the appropriate delay for the current slide
+  const delay = slideIsVideo(c) ? VIDEO_DELAY : IMG_DELAY;
+  c.timer = setTimeout(() => {
+    carouselGoTo(id, c.current + 1);
+    carouselStartAuto(id); // reschedule with correct delay for the new slide
+  }, delay);
 }
 
 function carouselStopAuto(id) {
-  if (carousels[id] && carousels[id].timer) { clearInterval(carousels[id].timer); carousels[id].timer = null; }
+  const c = carousels[id];
+  if (c && c.timer) { clearTimeout(c.timer); c.timer = null; }
 }
 
 /* ══ DRIVE VIDEO INIT ══ */
 function driveVideoInit() {
-  // Fix ALL Drive iframes on the page: /view → /preview, add autoplay+mute
   document.querySelectorAll('iframe[src*="drive.google.com"]').forEach(iframe => {
     let src = iframe.getAttribute('src') || '';
     if (!src) return;
-    // /view or /view?... → /preview
+    // /view → /preview
     src = src.replace(/\/view(\?[^#]*)?/, '/preview');
-    // strip any malformed duplicate ? (e.g. ?pli=1?autoplay)
+    // strip malformed duplicate ? and old params
     src = src.replace(/\?([^?]*)(\?)/, '?$1&');
-    // remove old autoplay/mute params to rebuild cleanly
     src = src.replace(/[&?](autoplay|mute|pli)=[^&]*/g, '');
-    // add autoplay+mute
     const sep = src.includes('?') ? '&' : '?';
-    src = src + sep + 'autoplay=1&mute=1';
-    iframe.setAttribute('src', src);
+    iframe.setAttribute('src', src + sep + 'autoplay=1&mute=1');
   });
-  // Mark video slots that still have FILE_ID as placeholder
   document.querySelectorAll('.cs-season-video-slot').forEach(slot => {
     const iframe = slot.querySelector('iframe');
     if (iframe && (iframe.getAttribute('src') || '').includes('FILE_ID')) {
