@@ -175,21 +175,25 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 /* SEASONAL */
 .cs-season-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 .cs-season-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-.cs-season-img-slot{width:100%;height:260px;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.cs-season-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;}
+.cs-season-img-slot{width:100%;height:260px;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:auto;}
+.cs-season-img{max-width:100%;max-height:260px;width:auto;height:auto;object-fit:contain;display:block;}
 .cs-season-img-slot:has(img[src=""]){display:none;}
-.cs-season-video-slot{width:100%;height:260px;border-top:1px solid var(--border);position:relative;background:#000;overflow:hidden;}
+/* VIDEO SLOT — sem autoplay, com botão de play */
+.cs-season-video-slot{width:100%;height:260px;border-top:1px solid var(--border);position:relative;background:#000;overflow:hidden;margin-top:auto;}
 .cs-season-video-slot iframe{position:absolute;top:-42px;left:0;width:100%;height:calc(100% + 84px);border:none;display:block;}
-.cs-video-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(200,162,0,0.06);pointer-events:none;}
-.cs-video-placeholder span{font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.1em;color:var(--gold3);text-transform:uppercase;text-align:center;padding:0 16px;}
-/* hide placeholder once iframe has a real src */
-.cs-season-video-slot:not([data-empty]) .cs-video-placeholder{display:none;}
+.cs-video-play-btn{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(0,0,0,0.38);cursor:pointer;transition:background 0.2s;z-index:5;border:none;width:100%;padding:0;}
+.cs-video-play-btn:hover{background:rgba(0,0,0,0.18);}
+.cs-video-play-icon{width:52px;height:52px;border-radius:50%;background:rgba(200,162,0,0.9);display:flex;align-items:center;justify-content:center;transition:transform 0.2s,background 0.2s;}
+.cs-video-play-btn:hover .cs-video-play-icon{transform:scale(1.1);background:var(--gold);}
+.cs-video-play-icon svg{width:20px;height:20px;fill:#1a1600;margin-left:3px;}
+.cs-video-play-label{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,240,200,0.75);}
+.cs-video-play-btn.hidden{display:none;}
 /* CAROUSEL */
 .cs-carousel{position:relative;width:100%;height:260px;overflow:hidden;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);}
-.cs-carousel-track{display:flex;height:100%;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);will-change:transform;}
-.cs-carousel-slide{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(200,162,0,0.04);}
-.cs-carousel-slide img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;border:none;}
-.cs-carousel-slide iframe{position:absolute;top:-42px;left:0;width:100%;height:calc(100% + 84px);border:none;display:block;}
+.cs-carousel-track{display:flex;width:100%;height:260px;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);will-change:transform;}
+.cs-carousel-slide{flex:0 0 100%;width:100%;height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(200,162,0,0.04);position:relative;}
+.cs-carousel-slide img{max-width:100%;max-height:260px;width:auto;height:auto;object-fit:contain;display:block;border:none;}
+.cs-carousel-slide iframe{position:absolute;top:-42px;left:0;width:100%;height:calc(260px + 84px);border:none;display:block;}
 .cs-slide-empty{background:rgba(200,162,0,0.04);}
 .cs-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.32);border:1px solid rgba(200,162,0,0.18);color:rgba(255,240,200,0.7);font-size:1.3rem;width:28px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:3px;transition:background 0.2s,color 0.2s;padding:0;line-height:1;z-index:4;}
 .cs-carousel-btn:hover{background:rgba(200,162,0,0.22);color:var(--gold);}
@@ -611,7 +615,13 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
           <!-- Slide 4 -->
           <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_4657c027d4da4bb48f678a8e27beb005~mv2.png" alt="Easter creative 4" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
           <!-- Slide 5 — vídeo: -->
-           <div class="cs-carousel-slide"><iframe src="https://drive.google.com/file/d/18XEf523M0DWxVjVn7_4BqCEJUDQlDvkS/preview?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+           <div class="cs-carousel-slide" style="position:relative;">
+            <iframe src="https://drive.google.com/file/d/18XEf523M0DWxVjVn7_4BqCEJUDQlDvkS/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            <button class="cs-video-play-btn" id="play-easter-video" onclick="playVideoSlide(this)" aria-label="Play video">
+              <div class="cs-video-play-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+              <span class="cs-video-play-label">Play video</span>
+            </button>
+          </div>
           </div>
         <button class="cs-carousel-btn cs-carousel-prev" onclick="carouselMove('easter',-1)" aria-label="Previous">&#8249;</button>
         <button class="cs-carousel-btn cs-carousel-next" onclick="carouselMove('easter', 1)" aria-label="Next">&#8250;</button>
@@ -643,14 +653,15 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
       <div class="cs-season-video-slot">
         <iframe
           id="drive-video-ai"
-          src="https://drive.google.com/file/d/1BO4P7AqbEY03_sce3GDZe4rPmmmfoMCG/preview?autoplay=1&mute=1"
+          src="https://drive.google.com/file/d/1BO4P7AqbEY03_sce3GDZe4rPmmmfoMCG/preview"
           allow="autoplay; encrypted-media"
           allowfullscreen
           title="AI Bag Delivery creative"
         ></iframe>
-        <div class="cs-video-placeholder">
-          <span>▶ Inserir ID do vídeo no src do iframe acima</span>
-        </div>
+        <button class="cs-video-play-btn" id="play-ai-video" onclick="playVideoSlide(this)" aria-label="Play video">
+          <div class="cs-video-play-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
+          <span class="cs-video-play-label">Play video</span>
+        </button>
       </div>
     </div>
 
@@ -813,7 +824,6 @@ document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObse
   gaInitEvents();
   fsInit();
   carouselInit('easter');
-  driveVideoInit();
 });
 
 /* ══ GA4 — ANALYTICS EVENTS ══ */
@@ -930,14 +940,14 @@ function fsInit() {
 
 /* ══ CAROUSEL ══ */
 const carousels = {};
-const IMG_DELAY   = 4000;   // 4s para imagens — tempo confortável para ler/ver
-const VIDEO_DELAY = 30000;  // 30s para slides de vídeo — deixa o vídeo rodar
+const IMG_DELAY   = 4000;
+const VIDEO_DELAY = 30000;
 
 function carouselInit(id) {
   const track  = document.getElementById('track-' + id);
   const dotsEl = document.getElementById('dots-' + id);
   if (!track) return;
-  const slides = track.querySelectorAll('.cs-carousel-slide');
+  const slides = Array.from(track.querySelectorAll('.cs-carousel-slide'));
   const total  = slides.length;
   if (total === 0) return;
   dotsEl.innerHTML = '';
@@ -960,7 +970,6 @@ function carouselInit(id) {
 }
 
 function slideIsVideo(c) {
-  // Returns true if the current slide contains an iframe (video)
   return c.slides[c.current] && !!c.slides[c.current].querySelector('iframe');
 }
 
@@ -987,12 +996,8 @@ function carouselStartAuto(id) {
   carouselStopAuto(id);
   const c = carousels[id];
   if (!c) return;
-  // Schedule next advance after the appropriate delay for the current slide
   const delay = slideIsVideo(c) ? VIDEO_DELAY : IMG_DELAY;
-  c.timer = setTimeout(() => {
-    carouselGoTo(id, c.current + 1);
-    carouselStartAuto(id); // reschedule with correct delay for the new slide
-  }, delay);
+  c.timer = setTimeout(() => { carouselGoTo(id, c.current + 1); carouselStartAuto(id); }, delay);
 }
 
 function carouselStopAuto(id) {
@@ -1000,26 +1005,21 @@ function carouselStopAuto(id) {
   if (c && c.timer) { clearTimeout(c.timer); c.timer = null; }
 }
 
-/* ══ DRIVE VIDEO INIT ══ */
-function driveVideoInit() {
-  document.querySelectorAll('iframe[src*="drive.google.com"]').forEach(iframe => {
-    let src = iframe.getAttribute('src') || '';
-    if (!src) return;
-    // /view → /preview
-    src = src.replace(/\/view(\?[^#]*)?/, '/preview');
-    // strip malformed duplicate ? and old params
-    src = src.replace(/\?([^?]*)(\?)/, '?$1&');
-    src = src.replace(/[&?](autoplay|mute|pli)=[^&]*/g, '');
-    const sep = src.includes('?') ? '&' : '?';
-    iframe.setAttribute('src', src + sep + 'autoplay=1&mute=1');
-  });
-  document.querySelectorAll('.cs-season-video-slot').forEach(slot => {
-    const iframe = slot.querySelector('iframe');
-    if (iframe && (iframe.getAttribute('src') || '').includes('FILE_ID')) {
-      slot.setAttribute('data-empty', '1');
-    }
-  });
+/* ══ VIDEO PLAY BUTTON ══ */
+function playVideoSlide(btn) {
+  // Hide the overlay so the iframe is fully interactive
+  btn.classList.add('hidden');
+  // Reload the iframe src with autoplay param so Drive starts playing
+  const slide = btn.closest('.cs-carousel-slide, .cs-season-video-slot');
+  if (!slide) return;
+  const iframe = slide.querySelector('iframe');
+  if (!iframe) return;
+  let src = iframe.getAttribute('src') || '';
+  src = src.replace(/[&?]autoplay=[^&]*/g, '');
+  const sep = src.includes('?') ? '&' : '?';
+  iframe.setAttribute('src', src + sep + 'autoplay=1');
 }
+</script>
 </script>
 </body>
 </html>
