@@ -175,6 +175,33 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 /* SEASONAL */
 .cs-season-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 .cs-season-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
+.cs-season-img-slot{width:100%;aspect-ratio:16/9;background:rgba(200,162,0,0.06);border-top:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.cs-season-img{width:100%;height:100%;object-fit:cover;display:block;}
+.cs-season-img-slot:has(img[src=""]){display:none;}
+.cs-season-video-slot{width:100%;aspect-ratio:16/9;border-top:1px solid var(--border);position:relative;background:#000;overflow:hidden;}
+.cs-season-video-slot iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block;}
+.cs-video-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(200,162,0,0.06);pointer-events:none;}
+.cs-video-placeholder span{font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.1em;color:var(--gold3);text-transform:uppercase;text-align:center;padding:0 16px;}
+/* hide placeholder once iframe has a real src */
+.cs-season-video-slot:not([data-empty]) .cs-video-placeholder{display:none;}
+/* CAROUSEL */
+.cs-carousel{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:rgba(200,162,0,0.04);border-bottom:1px solid var(--border);}
+.cs-carousel-track{display:flex;height:100%;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);will-change:transform;}
+.cs-carousel-slide{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.cs-carousel-slide img,.cs-carousel-slide iframe{width:100%;height:100%;object-fit:cover;display:block;border:none;}
+.cs-carousel-slide iframe{aspect-ratio:unset;}
+.cs-slide-empty{background:rgba(200,162,0,0.04);}
+.cs-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.32);border:1px solid rgba(200,162,0,0.18);color:rgba(255,240,200,0.7);font-size:1.3rem;width:28px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:3px;transition:background 0.2s,color 0.2s;padding:0;line-height:1;z-index:4;}
+.cs-carousel-btn:hover{background:rgba(200,162,0,0.22);color:var(--gold);}
+.cs-carousel-prev{left:8px;}
+.cs-carousel-next{right:8px;}
+.cs-carousel-dots{position:absolute;bottom:7px;left:50%;transform:translateX(-50%);display:flex;gap:5px;z-index:4;}
+.cs-carousel-dot{width:5px;height:5px;border-radius:50%;background:rgba(255,240,200,0.35);cursor:pointer;transition:background 0.2s,transform 0.2s;border:none;padding:0;}
+.cs-carousel-dot.active{background:var(--gold);transform:scale(1.25);}
+[data-theme="light"] .cs-carousel-btn{background:rgba(255,255,255,0.55);color:rgba(100,80,0,0.7);}
+[data-theme="light"] .cs-carousel-btn:hover{background:rgba(200,162,0,0.18);}
+[data-theme="light"] .cs-carousel-dot{background:rgba(100,80,0,0.25);}
+
 .cs-season-header{background:linear-gradient(135deg,var(--gold),var(--gold2));padding:16px 20px;}
 .cs-season-header h3{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.08em;color:#1a1600;margin-bottom:2px;}
 .cs-season-header p{font-size:0.84rem;color:rgba(26,22,0,0.7);}
@@ -189,8 +216,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 /* TAGS */
 .cs-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px;}
 .cs-tag{border:1px solid rgba(200,162,0,0.25);border-radius:4px;padding:5px 14px;font-family:'Space Mono',monospace;font-size:0.76rem;letter-spacing:0.1em;color:var(--gold3);text-transform:uppercase;background:rgba(200,162,0,0.05);}
-/* IMG */
-.cs-img-full{width:100%;border-radius:10px;border:1px solid rgba(212,168,0,0.18);box-shadow:0 8px 40px rgba(0,0,0,0.25);display:block;object-fit:cover;}
+html{font-size:16px;transition:font-size 0.22s ease;}
+html[data-fs="large"]{font-size:19px;}
+.fs-nav-btn svg{width:18px;height:14px;overflow:visible;}
+.fs-nav-btn.fs-on{color:var(--gold);background:rgba(200,162,0,0.09);}
+.fs-mob-header{display:none;background:transparent;border:none;color:var(--gray);cursor:pointer;width:36px;height:36px;align-items:center;justify-content:center;transition:color 0.2s;padding:0;flex-shrink:0;}
+.fs-mob-header svg{width:20px;height:16px;overflow:visible;}
+.fs-mob-header.fs-on{color:var(--gold);}
+.mobile-controls .fs-mob-menu{background:transparent;border:none;border-left:1px solid var(--border);width:44px;height:100%;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--gray);padding:0;transition:color 0.2s;}
+.mobile-controls .fs-mob-menu svg{width:20px;height:16px;overflow:visible;}
+.mobile-controls .fs-mob-menu.fs-on{color:var(--gold);}
+/* Section 07 — force 4 columns on desktop */
+.cs-result-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
 .cs-img-caption{font-family:'Space Mono',monospace;font-size:0.70rem;letter-spacing:0.12em;color:var(--gray);text-transform:uppercase;text-align:center;margin-top:10px;}
 /* REVEAL */
 .reveal{opacity:0;transform:translateY(20px);transition:opacity 0.7s ease,transform 0.7s ease;}
@@ -214,6 +251,8 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
   .cs-result-grid{grid-template-columns:1fr 1fr;}.cs-signal-grid{grid-template-columns:1fr;}
   .cs-ba{grid-template-columns:1fr;}.cs-hb-grid{grid-template-columns:1fr 1fr;}
   .cs-hb-4sep{grid-template-columns:1fr 1fr!important;}
+  .cs-result-grid-4{grid-template-columns:1fr 1fr!important;}
+  .fs-nav-btn{display:none;}.fs-mob-header{display:flex;}
   .cs-cover-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;}.cs-meta-div{display:none;}
   footer{padding:48px 18px 28px;}
 }
@@ -222,6 +261,7 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
   .cs-3col{grid-template-columns:1fr;}.cs-creative-grid{grid-template-columns:1fr;}
   .cs-season-grid{grid-template-columns:1fr;}.cs-regions{grid-template-columns:1fr;}
   .cs-result-grid{grid-template-columns:1fr;}.cs-hb-grid{grid-template-columns:1fr 1fr;}
+  .cs-result-grid-4{grid-template-columns:1fr 1fr!important;}
   .cs-cover-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;}
 }
 @media(max-height:480px) and (orientation:landscape){
@@ -254,7 +294,19 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
       <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
       </button>
+      <button class="theme-btn fs-nav-btn" onclick="fsToggle()" aria-label="Font size">
+        <svg viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:14px;overflow:visible">
+          <text x="0" y="13" font-family="serif" font-size="13" fill="currentColor" font-weight="700">A</text>
+          <text x="11" y="15" font-family="serif" font-size="9" fill="currentColor">A</text>
+        </svg>
+      </button>
     </div>
+    <button class="fs-mob-header" id="fsMobHeader" onclick="event.stopPropagation();fsToggle()" aria-label="Tamanho do texto">
+      <svg viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="13" font-family="serif" font-size="13" fill="currentColor" font-weight="700">A</text>
+        <text x="11" y="15" font-family="serif" font-size="9" fill="currentColor">A</text>
+      </svg>
+    </button>
     <div class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
   </div>
 </nav>
@@ -274,6 +326,12 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
     </div>
     <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()" aria-label="Toggle theme">
       <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </button>
+    <button class="fs-mob-menu" id="fsMobMenu" onclick="event.stopPropagation();fsToggle()" aria-label="Tamanho do texto">
+      <svg viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="13" font-family="serif" font-size="13" fill="currentColor" font-weight="700">A</text>
+        <text x="11" y="15" font-family="serif" font-size="9" fill="currentColor">A</text>
+      </svg>
     </button>
   </div>
 </div>
@@ -499,7 +557,7 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
       <div class="cs-ba-item"><span class="t" data-key="ba-a4">Platform learning preserved → lower CPC</span></div>
     </div>
   </div>
-  <div class="cs-result-grid">
+  <div class="cs-result-grid-4">
     <div class="cs-result-card">
       <div class="cs-result-num">+22%</div>
       <div class="cs-result-title t" data-key="fr1-t">Reach</div>
@@ -528,34 +586,73 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
 </div>
 <div class="divider"></div>
 
-<!-- 08 SEASONAL -->
+<!-- 08 CAMPAIGN HIGHLIGHTS -->
 <div class="cs-section reveal">
-  <p class="cs-eyebrow t" data-key="s09-ey">08 — Seasonal</p>
+  <p class="cs-eyebrow t" data-key="s09-ey">08 — Campaign Highlights</p>
   <h2 class="cs-h2 t" data-key="s09-h2">The Moments That<br><em>Made the Funnel Move</em></h2>
   <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s09-lead">Seasonal campaigns consistently outperformed evergreen assets — combining timing, relevance, and a clear business value proposition for the restaurant owner.</p>
+  <p class="cs-lead t" data-key="s09-lead">Seasonal and performance campaigns consistently outperformed evergreen assets — combining timing, relevance, and a clear business value proposition for the restaurant owner.</p>
   <div class="cs-season-grid">
+
+    <!-- EASTER — texto primeiro, carrossel abaixo -->
     <div class="cs-season-card">
       <div class="cs-season-header"><h3 class="t" data-key="se1-t">Easter Campaign</h3><p class="t" data-key="se1-s">Q1 · National · Meta</p></div>
       <div class="cs-season-body">
         <p class="t" data-key="se1-d">Launched with "sell more at Easter with zero monthly fee" messaging. Migrated to fake refresh mid-campaign, extending performance and stabilizing cost efficiency through April.</p>
         <span class="cs-season-tag t" data-key="se1-t1">23% of total sign-ups</span><span class="cs-season-tag t" data-key="se1-t2">−11% vs account avg CPSU</span><span class="cs-season-tag t" data-key="se1-t3">Top creative of the period</span>
       </div>
+      <div class="cs-carousel" id="carousel-easter">
+        <div class="cs-carousel-track" id="track-easter">
+          <!-- Slide 1 — substitua src pela URL da imagem ou descomente o iframe para vídeo -->
+          <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_583edf16d1f64ffbac18635c835e581b~mv2.png" alt="Easter creative 1" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
+          <!-- Slide 2 -->
+          <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_9853c08160354f91ac1e1ab94c5672b7~mv2.png" alt="Easter creative 3" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
+          <!-- Slide 4 -->
+          <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_4657c027d4da4bb48f678a8e27beb005~mv2.png" alt="Easter creative 4" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
+          <!-- Slide 5 — vídeo: <div class="cs-carousel-slide"><iframe src="https://drive.google.com/file/d/FILE_ID/preview" allow="autoplay" allowfullscreen></iframe></div> -->
+          <!-- <div class="cs-carousel-slide"><img src="" alt="Easter creative 6" onerror="this.parentElement.classList.add('cs-slide-empty')"></div> -->
+        </div>
+        <button class="cs-carousel-btn cs-carousel-prev" onclick="carouselMove('easter',-1)" aria-label="Previous">&#8249;</button>
+        <button class="cs-carousel-btn cs-carousel-next" onclick="carouselMove('easter', 1)" aria-label="Next">&#8250;</button>
+        <div class="cs-carousel-dots" id="dots-easter"></div>
+      </div>
     </div>
+
+    <!-- CONSUMER MONTH — texto primeiro, foto abaixo -->
     <div class="cs-season-card">
       <div class="cs-season-header"><h3 class="t" data-key="se2-t">Consumer Month</h3><p class="t" data-key="se2-s">Q1 · National · Meta</p></div>
       <div class="cs-season-body">
         <p class="t" data-key="se2-d">Combined consumer demand momentum with zero monthly fee offer. Fake refresh applied on day 17 — switched from static to template format, stabilizing performance through month-end.</p>
         <span class="cs-season-tag t" data-key="se2-t1">Fake refresh mid-flight</span><span class="cs-season-tag t" data-key="se2-t2">Performance stabilized</span>
       </div>
+      <!-- Substitua src pela URL da imagem do Mês do Consumidor -->
+      <div class="cs-season-img-slot">
+        <img src="https://static.wixstatic.com/media/b72a24_e48a082693db4a14996889c494470839~mv2.png" alt="Consumer Month creative" class="cs-season-img" onerror="this.parentElement.style.display='none'">
+      </div>
     </div>
+
+    <!-- AI BAG DELIVERY — texto primeiro, vídeo do Drive abaixo -->
     <div class="cs-season-card">
       <div class="cs-season-header"><h3 class="t" data-key="se3-t">AI Bag Delivery</h3><p class="t" data-key="se3-s">Q2 · National · Meta</p></div>
       <div class="cs-season-body">
         <p class="t" data-key="se3-d">First AI-native creative in the pipeline. Generated strong acquisition volume with the lowest CPC of the entire account — significantly below all active campaign benchmarks.</p>
         <span class="cs-season-tag">$0.05 CPC</span><span class="cs-season-tag t" data-key="se3-t1">Lowest CPC of the account</span><span class="cs-season-tag t" data-key="se3-t2">AI-first format</span>
       </div>
+      <!-- Vídeo do Google Drive: substitua FILE_ID pelo ID do arquivo (URL: drive.google.com/file/d/FILE_ID/view) -->
+      <div class="cs-season-video-slot">
+        <iframe
+          id="drive-video-ai"
+          src="https://drive.google.com/file/d/1BO4P7AqbEY03_sce3GDZe4rPmmmfoMCG/view?pli=1?autoplay=true"
+          allow="autoplay; encrypted-media"
+          allowfullscreen
+          title="AI Bag Delivery creative"
+        ></iframe>
+        <div class="cs-video-placeholder">
+          <span>▶ Inserir ID do vídeo no src do iframe acima</span>
+        </div>
+      </div>
     </div>
+
   </div>
 </div>
 <div class="divider"></div>
@@ -608,25 +705,29 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
 
 <!-- 11 KEY LEARNINGS -->
 <div class="cs-section alt reveal" style="background:var(--bg-mid);">
-  <div style="max-width:700px;margin:0 auto;text-align:center;">
-    <p class="cs-eyebrow t" data-key="s12-ey" style="text-align:center;">11 — Learnings</p>
-    <h2 class="cs-h2 t" data-key="s12-h2">Key <em>Learnings</em></h2>
-    <div class="cs-accent-line" style="margin:0 auto 24px;"></div>
-    <p class="cs-lead t" data-key="s12-l1" style="margin:0 auto 18px;text-align:center;">The biggest wins didn't come from a single brilliant creative — they came from a disciplined approach that tested fast, learned consistently, and scaled what worked.</p>
-    <p class="cs-lead t" data-key="s12-l2" style="margin:0 auto 28px;text-align:center;">In B2B paid media, creative strategy is growth strategy. With +6% more spend, the right experimentation approach delivered +22% more reach — proof that efficiency comes from creative thinking, not budget.</p>
-    <div class="cs-tags" style="justify-content:center;">
-      <span class="cs-tag">Creative Strategy</span><span class="cs-tag">B2B Communication</span>
-      <span class="cs-tag">Meta Ads</span><span class="cs-tag">Google Ads</span>
-      <span class="cs-tag">Copystorming</span><span class="cs-tag">Fake Refresh</span>
-      <span class="cs-tag">AI Creatives</span><span class="cs-tag t" data-key="tag-sea">Seasonal Campaigns</span>
-      <span class="cs-tag t" data-key="tag-loc">Localization</span><span class="cs-tag">Smartly.io</span>
-      <span class="cs-tag t" data-key="tag-data">Data Analysis</span><span class="cs-tag t" data-key="tag-col">Cross-functional</span>
+  <div class="cs-2col">
+    <div>
+      <p class="cs-eyebrow t" data-key="s12-ey">11 — Learnings</p>
+      <h2 class="cs-h2 t" data-key="s12-h2">Key <em>Learnings</em></h2>
+      <div class="cs-accent-line"></div>
+      <p class="cs-lead t" data-key="s12-l1">The biggest wins didn't come from a single brilliant creative — they came from a disciplined approach that tested fast, learned consistently, and scaled what worked.</p>
+      <p class="cs-lead t" data-key="s12-l2">In B2B paid media, creative strategy is growth strategy. With +6% more spend, the right experimentation approach delivered +22% more reach — proof that efficiency comes from creative thinking, not budget.</p>
     </div>
-    <div style="margin-top:40px;">
-      <a href="https://lecorredato.github.io/portfolio/" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,162,0,0.3);padding:12px 28px;border-radius:4px;transition:background 0.2s,border-color 0.2s;" onmouseover="this.style.background='rgba(200,162,0,0.08)';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(200,162,0,0.3)'">
-        <span class="t" data-key="back-btn">← Back to Portfolio</span>
-      </a>
+    <div>
+      <div class="cs-tags" style="margin-top:0;">
+        <span class="cs-tag">Creative Strategy</span><span class="cs-tag">B2B Communication</span>
+        <span class="cs-tag">Meta Ads</span><span class="cs-tag">Google Ads</span>
+        <span class="cs-tag">Copystorming</span><span class="cs-tag">Fake Refresh</span>
+        <span class="cs-tag">AI Creatives</span><span class="cs-tag t" data-key="tag-sea">Seasonal Campaigns</span>
+        <span class="cs-tag t" data-key="tag-loc">Localization</span><span class="cs-tag">Smartly.io</span>
+        <span class="cs-tag t" data-key="tag-data">Data Analysis</span><span class="cs-tag t" data-key="tag-col">Cross-functional</span>
+      </div>
     </div>
+  </div>
+  <div style="margin-top:48px;text-align:center;">
+    <a href="https://lecorredato.github.io/portfolio/" style="display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(200,162,0,0.3);padding:12px 28px;border-radius:4px;transition:background 0.2s,border-color 0.2s;" onmouseover="this.style.background='rgba(200,162,0,0.08)';this.style.borderColor='var(--gold)'" onmouseout="this.style.background='transparent';this.style.borderColor='rgba(200,162,0,0.3)'">
+      <span class="t" data-key="back-btn">← Back to Portfolio</span>
+    </a>
   </div>
 </div>
 
@@ -674,7 +775,7 @@ const T={
   's08-ey':{en:'08 — Key Strategy',pt:'08 — Estratégia Principal'},'s08-h2':{en:'Fake Refresh<br><em>Strategy</em>',pt:'Estratégia de<br><em>Fake Refresh</em>'},'s08-l1':{en:"The strategy emerged from a pattern observed through Smartly.io's creative feed: by monitoring performance changes across creatives published simultaneously via the platform's live feed, it became clear that lightweight visual updates on top-performing ads were extending delivery without triggering a new learning phase.",pt:'A estratégia surgiu de um padrão observado no feed criativo da Smartly.io: ao monitorar mudanças de performance em criativos publicados simultaneamente via feed da plataforma, ficou claro que atualizações visuais leves em anúncios top estendiam a entrega sem acionar uma nova fase de aprendizado.'},'s08-l2':{en:"Instead of rebuilding ads from scratch — which resets platform learning, spikes CPC, and loses accumulated delivery efficiency — Fake Refresh applied BG swaps and copy angle updates to preserve the ad's identity while giving the algorithm a renewed signal.",pt:'Em vez de reconstruir anúncios do zero — o que reseta o aprendizado, dispara o CPC e perde a eficiência acumulada — o Fake Refresh aplicou trocas de BG e atualizações de copy para preservar a identidade do anúncio dando ao algoritmo um sinal renovado.'},
   'ba-bef':{en:'Before — Original',pt:'Antes — Original'},'ba-b1':{en:'Same background across all variants',pt:'Mesmo fundo em todas as variantes'},'ba-b2':{en:'Single copy angle per campaign',pt:'Único ângulo de copy por campanha'},'ba-b3':{en:'Fatigue building, CPC rising',pt:'Saturação crescendo, CPC subindo'},'ba-b4':{en:'Learning reset on full rebuild',pt:'Aprendizado resetado ao reconstruir'},'ba-aft':{en:'After — Fake Refresh',pt:'Depois — Fake Refresh'},'ba-a1':{en:'BG swap using Template Winner',pt:'Troca de BG com Template Vencedor'},'ba-a2':{en:'New persona/angle refreshed in copy',pt:'Nova persona/ângulo atualizado no copy'},'ba-a3':{en:'Visual update maintains ad identity',pt:'Atualização visual mantém identidade do anúncio'},'ba-a4':{en:'Platform learning preserved → lower CPC',pt:'Aprendizado preservado → CPC menor'},
   'fr1-t':{en:'Reach',pt:'Alcance'},'fr1-d':{en:'Extended to new segments without learning reset',pt:'Estendido a novos segmentos sem resetar aprendizado'},'fr2-t':{en:'Clicks',pt:'Cliques'},'fr2-d':{en:'Engagement recovered post-refresh',pt:'Engajamento recuperado após o refresh'},'fr3-t':{en:'CPC',pt:'CPC'},'fr3-d':{en:'Costs reduced, learning maintained',pt:'Custos reduzidos, aprendizado mantido'},'fr4-t':{en:'Clicks vs. All Others',pt:'Cliques vs. Todos os Outros'},'fr4-d':{en:'Text Swap winner vs. all image creatives combined',pt:'Text Swap vencedor vs. todos os criativos de imagem combinados'},'fr-insight':{en:'<strong>Key insight:</strong> The national creative converted 61% of total share clicks across 7 tested cities simultaneously, confirming that the national + refresh approach outperformed city-only executions in most markets.',pt:'<strong>Insight principal:</strong> O criativo nacional converteu 61% do share total de cliques em 7 cidades testadas simultaneamente, confirmando que a abordagem nacional + refresh superou as execuções exclusivas por cidade na maioria dos mercados.'},
-  's09-ey':{en:'09 — Seasonal',pt:'09 — Sazonal'},'s09-h2':{en:'The Moments That<br><em>Made the Funnel Move</em>',pt:'Os Momentos que<br><em>Moveram o Funil</em>'},'s09-lead':{en:'Seasonal campaigns consistently outperformed evergreen assets — combining timing, relevance, and a clear business value proposition for the restaurant owner.',pt:'As campanhas sazonais superaram consistentemente os ativos evergreen — combinando timing, relevância e proposta de valor clara para o dono de restaurante.'},
+  's09-ey':{en:'08 — Campaign Highlights',pt:'08 — Destaques de Campanha'},'s09-h2':{en:'The Moments That<br><em>Made the Funnel Move</em>',pt:'Os Momentos que<br><em>Moveram o Funil</em>'},'s09-lead':{en:'Seasonal and performance campaigns consistently outperformed evergreen assets — combining timing, relevance, and a clear business value proposition for the restaurant owner.',pt:'Campanhas sazonais e de performance superaram consistentemente os ativos evergreen — combinando timing, relevância e proposta de valor clara para o dono de restaurante.'},
   'se1-t':{en:'Easter Campaign',pt:'Campanha de Páscoa'},'se1-s':{en:'Q1 · National · Meta',pt:'T1 · Nacional · Meta'},'se1-d':{en:'Launched with "sell more at Easter with zero monthly fee" messaging. Migrated to fake refresh mid-campaign, extending performance and stabilizing cost efficiency through April.',pt:'Lançada com mensagem "venda mais na Páscoa sem mensalidade". Migrou para fake refresh no meio da campanha, estendendo performance e estabilizando eficiência de custo até abril.'},'se1-t1':{en:'23% of total sign-ups',pt:'23% dos cadastros totais'},'se1-t2':{en:'−11% vs account avg CPSU',pt:'−11% vs CPSU médio da conta'},'se1-t3':{en:'Top creative of the period',pt:'Top criativo do período'},
   'se2-t':{en:'Consumer Month',pt:'Mês do Consumidor'},'se2-s':{en:'Q1 · National · Meta',pt:'T1 · Nacional · Meta'},'se2-d':{en:'Combined consumer demand momentum with zero monthly fee offer. Fake refresh applied on day 17 — switched from static to template format, stabilizing performance through month-end.',pt:'Combinou momentum de demanda do consumidor com oferta de mensalidade zero. Fake refresh aplicado no dia 17 — trocou de estático para template, estabilizando performance até o fim do mês.'},'se2-t1':{en:'Fake refresh mid-flight',pt:'Fake refresh durante o voo'},'se2-t2':{en:'Performance stabilized',pt:'Performance estabilizada'},
   'se3-t':{en:'AI Bag Delivery',pt:'IA Bag Delivery'},'se3-s':{en:'Q2 · National · Meta',pt:'T2 · Nacional · Meta'},'se3-d':{en:'First AI-native creative in the pipeline. Generated strong acquisition volume with the lowest CPC of the entire account — significantly below all active campaign benchmarks.',pt:'Primeiro criativo nativo de IA no pipeline. Gerou forte volume de aquisição com o menor CPC de toda a conta — bem abaixo de todos os benchmarks.'},'se3-t1':{en:'Lowest CPC of the account',pt:'Menor CPC da conta'},'se3-t2':{en:'AI-first format',pt:'Formato IA-first'},
@@ -707,7 +808,200 @@ const SUN='<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 
 const MOON='<svg viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>';
 let theme='dark';
 function toggleTheme(){theme=theme==='dark'?'light':'dark';document.documentElement.setAttribute('data-theme',theme);const icon=theme==='dark'?SUN:MOON;['themeBtn','themeBtnMob'].forEach(id=>{const b=document.getElementById(id);if(b)b.innerHTML=icon;});const logo=document.getElementById('navLogo');if(logo)logo.src=theme==='light'?'https://static.wixstatic.com/media/b72a24_02ca24368e834508a23fb0a12617db96~mv2.png':'https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png';}
-document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));});
+document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.07});document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  gaInitEvents();
+  fsInit();
+  carouselInit('easter');
+  driveVideoInit();
+});
+
+/* ══ GA4 — ANALYTICS EVENTS ══ */
+function gaEvent(name, params) {
+  if (typeof gtag === 'function') gtag('event', name, params || {});
+}
+
+function gaInitEvents() {
+  // 1. Page view (manual — GA config has send_page_view: false)
+  gaEvent('page_view', { page_title: '99Food Case Study', page_location: window.location.href });
+
+  // 2. Language switch
+  document.querySelectorAll('.lang-switch button').forEach(btn => {
+    btn.addEventListener('click', () => {
+      gaEvent('language_switch', { lang: btn.textContent.trim(), page: '99food' });
+    });
+  });
+
+  // 3. Theme toggle
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme');
+      gaEvent('theme_toggle', { theme_selected: current === 'dark' ? 'light' : 'dark', page: '99food' });
+    });
+  });
+
+  // 4. Section visibility — tracks which sections recruiter reads
+  const sections = [
+    { id: 'overview',   label: '01_overview' },
+    { id: 'results',    label: '02_results' },
+    { id: 'challenge',  label: '03_challenge' },
+    { id: 'pipeline',   label: '04_pipeline' },
+    { id: 'formats',    label: '05_formats' },
+    { id: 'messaging',  label: '06_messaging' },
+    { id: 'refresh',    label: '07_fake_refresh' },
+    { id: 'campaigns',  label: '08_campaigns' },
+    { id: 'regional',   label: '09_regional' },
+    { id: 'role',       label: '10_role' },
+    { id: 'learnings',  label: '11_learnings' },
+  ];
+  const seen = new Set();
+  const sectionObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !seen.has(e.target.dataset.section)) {
+        seen.add(e.target.dataset.section);
+        gaEvent('section_view', { section: e.target.dataset.section, page: '99food' });
+      }
+    });
+  }, { threshold: 0.3 });
+
+  // Assign data-section to each cs-section block by order
+  document.querySelectorAll('.cs-section').forEach((el, i) => {
+    if (sections[i]) {
+      el.dataset.section = sections[i].label;
+      sectionObs.observe(el);
+    }
+  });
+
+  // 5. Back to portfolio click
+  document.querySelectorAll('a[href*="portfolio"]').forEach(link => {
+    link.addEventListener('click', () => {
+      gaEvent('back_to_portfolio', { from: '99food' });
+    });
+  });
+
+  // 6. Social / footer links
+  document.querySelectorAll('.social-link').forEach(link => {
+    link.addEventListener('click', () => {
+      gaEvent('social_click', { url: link.href, page: '99food' });
+    });
+  });
+
+  // 7. Scroll depth (25 / 50 / 75 / 100%)
+  const depths = [25, 50, 75, 100];
+  const depthSeen = new Set();
+  window.addEventListener('scroll', () => {
+    const pct = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+    depths.forEach(d => {
+      if (pct >= d && !depthSeen.has(d)) {
+        depthSeen.add(d);
+        gaEvent('scroll_depth', { depth: d + '%', page: '99food' });
+      }
+    });
+  }, { passive: true });
+}
+
+/* ══ FONT SIZE TOGGLE ══ */
+let fsIsLarge = false;
+
+function fsToggle() {
+  fsIsLarge = !fsIsLarge;
+  fsApply(fsIsLarge ? 'large' : 'normal');
+  localStorage.setItem('lc_fs', fsIsLarge ? 'large' : 'normal');
+  gaEvent('font_size_change', { size: fsIsLarge ? 'large' : 'normal', page: '99food' });
+}
+
+function fsApply(size) {
+  if (size === 'large') {
+    document.documentElement.setAttribute('data-fs', 'large');
+  } else {
+    document.documentElement.removeAttribute('data-fs');
+  }
+  const on = size === 'large';
+  document.querySelectorAll('.fs-nav-btn, .fs-mob-header, .fs-mob-menu').forEach(b => {
+    b.classList.toggle('fs-on', on);
+  });
+}
+
+function fsInit() {
+  const saved = localStorage.getItem('lc_fs') || 'normal';
+  fsIsLarge = saved === 'large';
+  fsApply(saved);
+}
+
+/* ══ CAROUSEL ══ */
+const carousels = {};
+
+function carouselInit(id) {
+  const track  = document.getElementById('track-' + id);
+  const dotsEl = document.getElementById('dots-' + id);
+  if (!track) return;
+  const slides = track.querySelectorAll('.cs-carousel-slide');
+  const total  = slides.length;
+  if (total === 0) return;
+  dotsEl.innerHTML = '';
+  slides.forEach((_, i) => {
+    const d = document.createElement('button');
+    d.className = 'cs-carousel-dot' + (i === 0 ? ' active' : '');
+    d.setAttribute('aria-label', 'Slide ' + (i + 1));
+    d.addEventListener('click', () => { carouselStopAuto(id); carouselGoTo(id, i); carouselStartAuto(id); });
+    dotsEl.appendChild(d);
+  });
+  carousels[id] = { current: 0, total, timer: null };
+  carouselStartAuto(id);
+  const wrap = document.getElementById('carousel-' + id);
+  if (wrap) {
+    wrap.addEventListener('mouseenter', () => carouselStopAuto(id));
+    wrap.addEventListener('mouseleave',  () => carouselStartAuto(id));
+    wrap.addEventListener('touchstart',  () => carouselStopAuto(id),  { passive: true });
+    wrap.addEventListener('touchend',    () => carouselStartAuto(id), { passive: true });
+  }
+}
+
+function carouselGoTo(id, index) {
+  const c = carousels[id];
+  if (!c) return;
+  c.current = ((index % c.total) + c.total) % c.total;
+  const track = document.getElementById('track-' + id);
+  if (track) track.style.transform = 'translateX(-' + (c.current * 100) + '%)';
+  document.querySelectorAll('#dots-' + id + ' .cs-carousel-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === c.current);
+  });
+}
+
+function carouselMove(id, dir) {
+  const c = carousels[id];
+  if (!c) return;
+  carouselStopAuto(id);
+  carouselGoTo(id, c.current + dir);
+  carouselStartAuto(id);
+}
+
+function carouselStartAuto(id) {
+  carouselStopAuto(id);
+  if (carousels[id]) carousels[id].timer = setInterval(() => carouselGoTo(id, carousels[id].current + 1), 1500);
+}
+
+function carouselStopAuto(id) {
+  if (carousels[id] && carousels[id].timer) { clearInterval(carousels[id].timer); carousels[id].timer = null; }
+}
+
+/* ══ DRIVE VIDEO INIT ══ */
+function driveVideoInit() {
+  const slot = document.querySelector('.cs-season-video-slot');
+  if (!slot) return;
+  const iframe = slot.querySelector('iframe');
+  if (!iframe) return;
+  const src = iframe.getAttribute('src') || '';
+  // If placeholder FILE_ID not replaced, show placeholder overlay
+  if (src.includes('FILE_ID')) {
+    slot.setAttribute('data-empty', '1');
+    return;
+  }
+  // Append autoplay + mute params to Drive preview URL
+  if (!src.includes('autoplay=1')) {
+    const sep = src.includes('?') ? '&' : '?';
+    iframe.setAttribute('src', src + sep + 'autoplay=1&mute=1');
+  }
+}
 </script>
 </body>
 </html>
