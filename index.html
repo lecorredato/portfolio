@@ -527,6 +527,19 @@ section { padding: 96px 52px; }
 .lb-nav:hover { background:rgba(176,108,255,0.28); }
 .lb-prev { left:14px; } .lb-next { right:14px; }
 .lb-counter { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); font-family:'Space Mono',monospace; font-size:0.80rem; color:#8880a8; letter-spacing:0.12em; }
+.lb-cta {
+  position: absolute; bottom: 14px; right: 26px;
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Space Mono', monospace; font-size: 0.72rem;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #fff; text-decoration: none;
+  background: var(--accent);
+  border: 1px solid var(--accent2);
+  padding: 7px 14px; border-radius: 3px;
+  transition: box-shadow 0.2s, background 0.2s;
+  z-index: 10;
+}
+.lb-cta:hover { box-shadow: 0 0 18px rgba(255,45,155,0.55); background: var(--accent3); }
 
 /* ══════════════════════════════════════════
    EXPERIENCES
@@ -801,6 +814,46 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   footer { padding: 48px 18px 28px; }
 
 /* ══════════════════════════════════════════
+   FONT SIZE SYSTEM
+══════════════════════════════════════════ */
+
+html { font-size: 16px; transition: font-size 0.22s ease; }
+html[data-fs="large"] { font-size: 19px; }
+
+/* Botão desktop — herda .theme-btn, ícone ativo fica rosa */
+.fs-nav-btn svg { width: 18px; height: 14px; overflow: visible; }
+.fs-nav-btn.fs-on { color: var(--accent); background: rgba(255,45,155,0.09); }
+
+/* Mobile: botão no header (ao lado do hamburger) */
+.fs-mob-header {
+  display: none;
+  background: transparent; border: none;
+  color: var(--gray); cursor: pointer;
+  width: 36px; height: 36px;
+  align-items: center; justify-content: center;
+  transition: color 0.2s;
+  padding: 0; flex-shrink: 0;
+}
+.fs-mob-header svg { width: 20px; height: 16px; overflow: visible; }
+.fs-mob-header.fs-on { color: var(--accent); }
+
+/* Botão dentro do mobile-controls (menu aberto) — igual ao theme-btn mob */
+.mobile-controls .fs-mob-menu {
+  background: transparent; border: none; border-left: 1px solid var(--border);
+  width: 44px; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; color: var(--gray); padding: 0;
+  transition: color 0.2s;
+}
+.mobile-controls .fs-mob-menu svg { width: 20px; height: 16px; overflow: visible; }
+.mobile-controls .fs-mob-menu.fs-on { color: var(--accent); }
+
+@media (max-width: 768px) {
+  .fs-nav-btn  { display: none; }
+  .fs-mob-header { display: flex; }
+}
+
+/* ══════════════════════════════════════════
    ROTATE PROMPT
 ══════════════════════════════════════════ */
 .rp-overlay {
@@ -938,15 +991,28 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
         <div class="nav-sep"></div>
         <button id="btnPT" onclick="setLang('pt')">PT</button>
       </div>
-    <!-- Sun / Moon -->
+      <!-- Sun / Moon -->
       <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
       </button>
-     </div> 
-      <!-- Hamburger -->
-      <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-        <span></span><span></span><span></span>
-      </div>
+      <!-- Font size / Acessibilidade -->
+      <button class="theme-btn fs-nav-btn" onclick="fsTrigger(event)" aria-label="Font size">
+        <svg viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg" style="width:18px;height:14px;overflow:visible">
+          <text x="0" y="13" font-family="serif" font-size="13" fill="currentColor" font-weight="700">A</text>
+          <text x="11" y="15" font-family="serif" font-size="9" fill="currentColor">A</text>
+        </svg>
+      </button>
+    </div>
+    <!-- Hamburger + font toggle mobile (header) -->
+    <button class="fs-mob-header" id="fsMobHeader" onclick="event.stopPropagation();fsToggle()" aria-label="Tamanho do texto">
+      <svg viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="13" font-family="serif" font-size="13" fill="currentColor" font-weight="700">A</text>
+        <text x="11" y="15" font-family="serif" font-size="9" fill="currentColor">A</text>
+      </svg>
+    </button>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
   </div>
 </nav>
 
@@ -972,6 +1038,12 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
     </div>
     <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()" aria-label="Toggle theme">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
+    </button>
+    <button class="fs-mob-menu" id="fsMobMenu" onclick="event.stopPropagation();fsToggle()" aria-label="Tamanho do texto">
+      <svg viewBox="0 0 20 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <text x="0" y="13" font-family="serif" font-size="13" fill="currentColor" font-weight="700">A</text>
+        <text x="11" y="15" font-family="serif" font-size="9" fill="currentColor">A</text>
+      </svg>
     </button>
   </div>
 </div>
@@ -1300,6 +1372,11 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   <button id="lbPlayPause" class="lb-play-pause" onclick="lbTogglePlay()" style="display:none" aria-label="Play/Pause">⏸ Pause</button>
   <button class="lb-nav lb-next" onclick="lbShift(1)"  aria-label="Next">›</button>
   <span class="lb-counter" id="lbCount"></span>
+  <!-- CTA link — aparece só na última imagem de galerias configuradas -->
+  <a id="lbCta" class="lb-cta" href="#" target="_blank" rel="noopener" style="display:none">
+    <svg viewBox="0 0 20 20" fill="none" width="14" height="14"><path d="M11 3h6v6M17 3l-9 9M8 5H4a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    Ver protótipo
+  </a>
 </div>
 </section>
 
@@ -1983,6 +2060,15 @@ window.addEventListener('orientationchange', () => {
   }, 200);
 });
 
+// Configuração de CTAs por galeria: { chave: { lastSlide: true, url, label } }
+const GALLERY_CTAS = {
+  'projeto3': {
+    url: 'https://www.figma.com/proto/JlPcB7k2cUsIWdJAnjIwAy/e-Visita-%7C-Mantecorp-Sa%C3%BAde-%7C-Hypera?page-id=0%3A1&node-id=186-10186&viewport=195%2C273%2C0.02&t=QTYUKm0GXEoGt3j7-1&scaling=contain&content-scaling=responsive&starting-point-node-id=186%3A10186&show-proto-sidebar=1',
+    label: 'Ver protótipo'
+  }
+};
+let currentGalleryKey = '';
+
 function lb(galleryKey, i) {
   // 1. Descobrir qual grid está visível (EN ou PT)
   const activeGrid = document.querySelector('.portfolio-grid.active');
@@ -2007,6 +2093,8 @@ function lb(galleryKey, i) {
 
   // 4. Atualiza URL com o hash
   history.pushState({ gallery: galleryKey }, '', '#' + altSlug);
+
+  currentGalleryKey = galleryKey;
 
   lbIdx = i;
   updateLightbox();
@@ -2090,6 +2178,19 @@ function updateLightbox() {
   }
 
   countEl.textContent = `${lbIdx + 1} / ${currentGallery.length}`;
+
+  // CTA link na última imagem de galerias configuradas
+  const ctaEl = document.getElementById('lbCta');
+  if (ctaEl) {
+    const ctaCfg = GALLERY_CTAS[currentGalleryKey];
+    const isLast = lbIdx === currentGallery.length - 1;
+    if (ctaCfg && isLast) {
+      ctaEl.href = ctaCfg.url;
+      ctaEl.style.display = 'flex';
+    } else {
+      ctaEl.style.display = 'none';
+    }
+  }
 }
 
 function lbClose() {
@@ -2280,6 +2381,36 @@ function gaInitEvents() {
   });
 }
 
+/* ══════════════════════════════════════════
+   FONT SIZE — toggle normal / grande
+══════════════════════════════════════════ */
+let fsIsLarge = false;
+
+function fsToggle() {
+  fsIsLarge = !fsIsLarge;
+  fsApply(fsIsLarge ? 'large' : 'normal');
+  localStorage.setItem('lc_fs', fsIsLarge ? 'large' : 'normal');
+  gaEvent('font_size_change', { size: fsIsLarge ? 'large' : 'normal' });
+}
+
+function fsApply(size) {
+  if (size === 'large') {
+    document.documentElement.setAttribute('data-fs', 'large');
+  } else {
+    document.documentElement.removeAttribute('data-fs');
+  }
+  const on = size === 'large';
+  document.querySelectorAll('.fs-nav-btn, .fs-mob-header, .fs-mob-menu').forEach(b => {
+    b.classList.toggle('fs-on', on);
+  });
+}
+
+function fsInit() {
+  const saved = localStorage.getItem('lc_fs') || 'normal';
+  fsIsLarge = saved === 'large';
+  fsApply(saved);
+}
+
 /* ── FILTER ── */
 function filterGrid(cat, btn) {
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
@@ -2322,6 +2453,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Inicializa cookie consent
   cbInit();
+
+  // Inicializa font size
+  fsInit();
 
   // Inicializa eventos GA4
   gaInitEvents();
