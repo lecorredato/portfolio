@@ -203,10 +203,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 [data-theme="light"] .cs-carousel-btn:hover{background:rgba(200,162,0,0.18);}
 [data-theme="light"] .cs-carousel-dot{background:rgba(100,80,0,0.25);}
 
-.cs-season-header{background:linear-gradient(135deg,var(--gold),var(--gold2));padding:16px 20px;}
+/* SEASONAL */
+.cs-season-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start;}
+.cs-season-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
+.cs-season-header{background:linear-gradient(135deg,var(--gold),var(--gold2));padding:16px 20px;flex-shrink:0;}
 .cs-season-header h3{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.08em;color:#1a1600;margin-bottom:2px;}
 .cs-season-header p{font-size:0.84rem;color:rgba(26,22,0,0.7);}
-.cs-season-body{padding:14px 18px 0 18px;}
+.cs-season-body{padding:14px 18px 0 18px;flex:1;}
 .cs-season-body p{font-size:0.92rem;color:var(--text-muted);line-height:1.55;margin-bottom:10px;}
 .cs-season-tag{display:inline-block;border:1px solid rgba(200,162,0,0.3);border-radius:100px;padding:3px 10px;font-size:0.76rem;color:var(--gold3);font-family:'Space Mono',monospace;letter-spacing:0.08em;margin:2px 2px 12px 2px;}
 /* REGION */
@@ -811,6 +814,7 @@ document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObse
   gaInitEvents();
   fsInit();
   carouselInit('easter');
+  initVideoSlots();
 });
 
 /* ══ GA4 — ANALYTICS EVENTS ══ */
@@ -969,6 +973,22 @@ function carouselGoTo(id, index) {
   document.querySelectorAll('#dots-' + id + ' .cs-carousel-dot').forEach((d, i) => {
     d.classList.toggle('active', i === c.current);
   });
+  // Trigger play on video slides via src reload with autoplay
+  const slide = c.slides[c.current];
+  if (slide) {
+    const iframe = slide.querySelector('iframe');
+    if (iframe) drivePlay(iframe);
+  }
+}
+
+// Reload iframe src with autoplay — only reliable cross-origin trigger
+function drivePlay(iframe) {
+  const src = iframe.src || '';
+  if (!src.includes('drive.google.com')) return;
+  // Strip existing autoplay param and re-add to force reload
+  const clean = src.replace(/[&?]autoplay=[^&]*/g, '');
+  const sep = clean.includes('?') ? '&' : '?';
+  iframe.src = clean + sep + 'autoplay=1';
 }
 
 function carouselMove(id, dir) {
@@ -990,6 +1010,18 @@ function carouselStartAuto(id) {
 function carouselStopAuto(id) {
   const c = carousels[id];
   if (c && c.timer) { clearTimeout(c.timer); c.timer = null; }
+}
+
+// Auto-play standalone Drive video slots when scrolled into view
+function initVideoSlots() {
+  document.querySelectorAll('.cs-season-video-slot iframe').forEach(iframe => {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { drivePlay(iframe); obs.disconnect(); }
+      });
+    }, { threshold: 0.5 });
+    obs.observe(iframe.closest('.cs-season-video-slot'));
+  });
 }
 </script>
 </script>
