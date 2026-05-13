@@ -175,26 +175,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 /* SEASONAL */
 .cs-season-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 .cs-season-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-.cs-season-img-slot{width:100%;height:260px;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;margin-top:auto;}
-.cs-season-img{max-width:100%;max-height:260px;width:auto;height:auto;object-fit:contain;display:block;}
+/* IMAGE SLOT */
+.cs-season-img-slot{width:100%;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:0;}
+.cs-season-img{max-width:100%;width:auto;height:auto;object-fit:contain;display:block;}
 .cs-season-img-slot:has(img[src=""]){display:none;}
-/* VIDEO SLOT — sem autoplay, com botão de play */
-.cs-season-video-slot{width:100%;height:260px;border-top:1px solid var(--border);position:relative;background:#000;overflow:hidden;margin-top:auto;}
-.cs-season-video-slot iframe{position:absolute;top:-42px;left:0;width:100%;height:calc(100% + 84px);border:none;display:block;}
-.cs-video-play-btn{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;background:rgba(0,0,0,0.38);cursor:pointer;transition:background 0.2s;z-index:5;border:none;width:100%;padding:0;}
-.cs-video-play-btn:hover{background:rgba(0,0,0,0.18);}
-.cs-video-play-icon{width:52px;height:52px;border-radius:50%;background:rgba(200,162,0,0.9);display:flex;align-items:center;justify-content:center;transition:transform 0.2s,background 0.2s;}
-.cs-video-play-btn:hover .cs-video-play-icon{transform:scale(1.1);background:var(--gold);}
-.cs-video-play-icon svg{width:20px;height:20px;fill:#1a1600;margin-left:3px;}
-.cs-video-play-label{font-family:'Space Mono',monospace;font-size:0.62rem;letter-spacing:0.12em;text-transform:uppercase;color:rgba(255,240,200,0.75);}
-.cs-video-play-btn.hidden{display:none;}
-/* CAROUSEL */
-.cs-carousel{position:relative;width:100%;height:260px;overflow:hidden;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);}
-.cs-carousel-track{display:flex;width:100%;height:260px;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);will-change:transform;}
-.cs-carousel-slide{flex:0 0 100%;width:100%;height:260px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(200,162,0,0.04);position:relative;}
-.cs-carousel-slide img{max-width:100%;max-height:260px;width:auto;height:auto;object-fit:contain;display:block;border:none;}
-.cs-carousel-slide iframe{position:absolute;top:-42px;left:0;width:100%;height:calc(260px + 84px);border:none;display:block;}
-.cs-slide-empty{background:rgba(200,162,0,0.04);}
+/* VIDEO SLOT — altura auto para mostrar o player nativo completo sem corte */
+.cs-season-video-slot{width:100%;border-top:1px solid var(--border);position:relative;background:#000;line-height:0;}
+.cs-season-video-slot iframe{width:100%;aspect-ratio:16/9;border:none;display:block;}
+.cs-video-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(200,162,0,0.06);pointer-events:none;}
+.cs-video-placeholder span{font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.1em;color:var(--gold3);text-transform:uppercase;text-align:center;padding:0 16px;}
+.cs-season-video-slot:not([data-empty]) .cs-video-placeholder{display:none;}
+/* CAROUSEL — altura fixa, iframe ocupa tudo sem corte */
+.cs-carousel{position:relative;width:100%;overflow:hidden;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);}
+.cs-carousel-track{display:flex;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);will-change:transform;align-items:stretch;}
+.cs-carousel-slide{flex:0 0 100%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(200,162,0,0.04);min-height:260px;}
+.cs-carousel-slide img{max-width:100%;max-height:320px;width:auto;height:auto;object-fit:contain;display:block;border:none;}
+.cs-carousel-slide iframe{width:100%;aspect-ratio:16/9;border:none;display:block;flex-shrink:0;}
+.cs-slide-empty{background:rgba(200,162,0,0.04);min-height:260px;}
 .cs-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.32);border:1px solid rgba(200,162,0,0.18);color:rgba(255,240,200,0.7);font-size:1.3rem;width:28px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:3px;transition:background 0.2s,color 0.2s;padding:0;line-height:1;z-index:4;}
 .cs-carousel-btn:hover{background:rgba(200,162,0,0.22);color:var(--gold);}
 .cs-carousel-prev{left:8px;}
@@ -209,10 +206,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .cs-season-header{background:linear-gradient(135deg,var(--gold),var(--gold2));padding:16px 20px;}
 .cs-season-header h3{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.08em;color:#1a1600;margin-bottom:2px;}
 .cs-season-header p{font-size:0.84rem;color:rgba(26,22,0,0.7);}
-.cs-season-body{padding:14px 18px 0;}
+.cs-season-body{padding:14px 18px 0 18px;}
 .cs-season-body p{font-size:0.92rem;color:var(--text-muted);line-height:1.55;margin-bottom:10px;}
-.cs-season-body .cs-season-tag:last-of-type{margin-bottom:14px;display:inline-block;}
-.cs-season-tag{display:inline-block;border:1px solid rgba(200,162,0,0.3);border-radius:100px;padding:3px 10px;font-size:0.76rem;color:var(--gold3);font-family:'Space Mono',monospace;letter-spacing:0.08em;margin:2px;}
+.cs-season-tag{display:inline-block;border:1px solid rgba(200,162,0,0.3);border-radius:100px;padding:3px 10px;font-size:0.76rem;color:var(--gold3);font-family:'Space Mono',monospace;letter-spacing:0.08em;margin:2px 2px 12px 2px;}
 /* REGION */
 .cs-regions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
 .cs-region-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:16px 18px;}
@@ -608,21 +604,17 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
       </div>
       <div class="cs-carousel" id="carousel-easter">
         <div class="cs-carousel-track" id="track-easter">
-          <!-- Slide 1 — substitua src pela URL da imagem ou descomente o iframe para vídeo -->
+          <!-- Slide 1 — imagem -->
           <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_583edf16d1f64ffbac18635c835e581b~mv2.png" alt="Easter creative 1" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
-          <!-- Slide 2 -->
+          <!-- Slide 2 — vídeo novo -->
+          <div class="cs-carousel-slide"><iframe src="https://drive.google.com/file/d/1y2HEqKs74-hejNuD9I96rVLZAcaqpmVv/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+          <!-- Slide 3 — imagem -->
           <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_9853c08160354f91ac1e1ab94c5672b7~mv2.png" alt="Easter creative 3" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
-          <!-- Slide 4 -->
+          <!-- Slide 4 — imagem -->
           <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_4657c027d4da4bb48f678a8e27beb005~mv2.png" alt="Easter creative 4" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
-          <!-- Slide 5 — vídeo: -->
-           <div class="cs-carousel-slide" style="position:relative;">
-            <iframe src="https://drive.google.com/file/d/18XEf523M0DWxVjVn7_4BqCEJUDQlDvkS/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            <button class="cs-video-play-btn" id="play-easter-video" onclick="playVideoSlide(this)" aria-label="Play video">
-              <div class="cs-video-play-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-              <span class="cs-video-play-label">Play video</span>
-            </button>
-          </div>
-          </div>
+          <!-- Slide 5 — vídeo existente -->
+          <div class="cs-carousel-slide"><iframe src="https://drive.google.com/file/d/18XEf523M0DWxVjVn7_4BqCEJUDQlDvkS/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        </div>
         <button class="cs-carousel-btn cs-carousel-prev" onclick="carouselMove('easter',-1)" aria-label="Previous">&#8249;</button>
         <button class="cs-carousel-btn cs-carousel-next" onclick="carouselMove('easter', 1)" aria-label="Next">&#8250;</button>
         <div class="cs-carousel-dots" id="dots-easter"></div>
@@ -649,7 +641,6 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
         <p class="t" data-key="se3-d">First AI-native creative in the pipeline. Generated strong acquisition volume with the lowest CPC of the entire account — significantly below all active campaign benchmarks.</p>
         <span class="cs-season-tag">$0.05 CPC</span><span class="cs-season-tag t" data-key="se3-t1">Lowest CPC of the account</span><span class="cs-season-tag t" data-key="se3-t2">AI-first format</span>
       </div>
-      <!-- Vídeo do Google Drive: substitua FILE_ID pelo ID do arquivo (URL: drive.google.com/file/d/FILE_ID/view) -->
       <div class="cs-season-video-slot">
         <iframe
           id="drive-video-ai"
@@ -658,10 +649,6 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
           allowfullscreen
           title="AI Bag Delivery creative"
         ></iframe>
-        <button class="cs-video-play-btn" id="play-ai-video" onclick="playVideoSlide(this)" aria-label="Play video">
-          <div class="cs-video-play-icon"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>
-          <span class="cs-video-play-label">Play video</span>
-        </button>
       </div>
     </div>
 
@@ -824,6 +811,7 @@ document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObse
   gaInitEvents();
   fsInit();
   carouselInit('easter');
+  driveVideoInit();
 });
 
 /* ══ GA4 — ANALYTICS EVENTS ══ */
@@ -970,7 +958,7 @@ function carouselInit(id) {
 }
 
 function slideIsVideo(c) {
-  return c.slides[c.current] && !!c.slides[c.current].querySelector('iframe');
+  return !!(c.slides[c.current] && c.slides[c.current].querySelector('iframe'));
 }
 
 function carouselGoTo(id, index) {
@@ -1003,21 +991,6 @@ function carouselStartAuto(id) {
 function carouselStopAuto(id) {
   const c = carousels[id];
   if (c && c.timer) { clearTimeout(c.timer); c.timer = null; }
-}
-
-/* ══ VIDEO PLAY BUTTON ══ */
-function playVideoSlide(btn) {
-  // Hide the overlay so the iframe is fully interactive
-  btn.classList.add('hidden');
-  // Reload the iframe src with autoplay param so Drive starts playing
-  const slide = btn.closest('.cs-carousel-slide, .cs-season-video-slot');
-  if (!slide) return;
-  const iframe = slide.querySelector('iframe');
-  if (!iframe) return;
-  let src = iframe.getAttribute('src') || '';
-  src = src.replace(/[&?]autoplay=[^&]*/g, '');
-  const sep = src.includes('?') ? '&' : '?';
-  iframe.setAttribute('src', src + sep + 'autoplay=1');
 }
 </script>
 </script>
