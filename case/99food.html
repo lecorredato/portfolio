@@ -173,20 +173,23 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .cs-creative-card h4{font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.1em;color:var(--text);margin-bottom:4px;}
 .cs-creative-card p{font-size:0.88rem;color:var(--text-muted);line-height:1.5;}
 /* SEASONAL */
-.cs-season-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
-.cs-season-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-/* IMAGE SLOT — altura fixa, imagem centralizada com contain */
-.cs-season-img-slot{width:100%;height:340px;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.cs-season-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;}
+.cs-season-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
+.cs-season-header{background:linear-gradient(135deg,var(--gold),var(--gold2));padding:16px 20px;flex-shrink:0;}
+.cs-season-header h3{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.08em;color:#1a1600;margin-bottom:2px;}
+.cs-season-header p{font-size:0.84rem;color:rgba(26,22,0,0.7);}
+.cs-season-body{padding:14px 18px 12px;flex:1;}
+.cs-season-body p{font-size:0.92rem;color:var(--text-muted);line-height:1.55;margin-bottom:10px;}
+.cs-season-tag{display:inline-block;border:1px solid rgba(200,162,0,0.3);border-radius:100px;padding:3px 10px;font-size:0.76rem;color:var(--gold3);font-family:'Space Mono',monospace;letter-spacing:0.08em;margin:2px;}
+/* IMAGE SLOT */
+.cs-season-img-slot{width:100%;height:340px;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0;}
 .cs-season-img{max-width:100%;max-height:340px;width:auto;height:auto;object-fit:contain;display:block;}
 .cs-season-img-slot:has(img[src=""]){display:none;}
-/* VIDEO SLOT — quadrado 340×340, sem corte */
-.cs-season-video-slot{width:100%;height:340px;border-top:1px solid var(--border);position:relative;background:#000;overflow:hidden;line-height:0;}
+/* VIDEO SLOT */
+.cs-season-video-slot{width:100%;height:340px;border-top:1px solid var(--border);background:#000;overflow:hidden;flex-shrink:0;position:relative;}
 .cs-season-video-slot iframe{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:340px;height:340px;border:none;display:block;}
-.cs-video-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(200,162,0,0.06);pointer-events:none;}
-.cs-video-placeholder span{font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.1em;color:var(--gold3);text-transform:uppercase;text-align:center;padding:0 16px;}
-.cs-season-video-slot:not([data-empty]) .cs-video-placeholder{display:none;}
-/* CAROUSEL — mesma altura fixa 340px, slides quadrados para vídeo */
-.cs-carousel{position:relative;width:100%;height:340px;overflow:hidden;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);}
+/* CAROUSEL */
+.cs-carousel{position:relative;width:100%;height:340px;overflow:hidden;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);flex-shrink:0;}
 .cs-carousel-track{display:flex;height:340px;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);will-change:transform;}
 .cs-carousel-slide{flex:0 0 100%;width:100%;height:340px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(200,162,0,0.04);position:relative;}
 .cs-carousel-slide img{max-width:100%;max-height:340px;width:auto;height:auto;object-fit:contain;display:block;border:none;}
@@ -203,15 +206,6 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 [data-theme="light"] .cs-carousel-btn:hover{background:rgba(200,162,0,0.18);}
 [data-theme="light"] .cs-carousel-dot{background:rgba(100,80,0,0.25);}
 
-/* SEASONAL */
-.cs-season-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:start;}
-.cs-season-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;display:flex;flex-direction:column;}
-.cs-season-header{background:linear-gradient(135deg,var(--gold),var(--gold2));padding:16px 20px;flex-shrink:0;}
-.cs-season-header h3{font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:0.08em;color:#1a1600;margin-bottom:2px;}
-.cs-season-header p{font-size:0.84rem;color:rgba(26,22,0,0.7);}
-.cs-season-body{padding:14px 18px 0 18px;flex:1;}
-.cs-season-body p{font-size:0.92rem;color:var(--text-muted);line-height:1.55;margin-bottom:10px;}
-.cs-season-tag{display:inline-block;border:1px solid rgba(200,162,0,0.3);border-radius:100px;padding:3px 10px;font-size:0.76rem;color:var(--gold3);font-family:'Space Mono',monospace;letter-spacing:0.08em;margin:2px 2px 12px 2px;}
 /* REGION */
 .cs-regions{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
 .cs-region-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:16px 18px;}
@@ -607,16 +601,11 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
       </div>
       <div class="cs-carousel" id="carousel-easter">
         <div class="cs-carousel-track" id="track-easter">
-          <!-- Slide 1 — imagem -->
           <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_583edf16d1f64ffbac18635c835e581b~mv2.png" alt="Easter creative 1" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
-          <!-- Slide 2 — vídeo novo -->
-          <div class="cs-carousel-slide"><iframe src="https://drive.google.com/file/d/1y2HEqKs74-hejNuD9I96rVLZAcaqpmVv/preview?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
-          <!-- Slide 3 — imagem -->
+          <div class="cs-carousel-slide"><iframe src="https://drive.google.com/file/d/1y2HEqKs74-hejNuD9I96rVLZAcaqpmVv/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
           <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_9853c08160354f91ac1e1ab94c5672b7~mv2.png" alt="Easter creative 3" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
-          <!-- Slide 4 — imagem -->
           <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_4657c027d4da4bb48f678a8e27beb005~mv2.png" alt="Easter creative 4" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
-          <!-- Slide 5 — vídeo existente -->
-          <div class="cs-carousel-slide"><iframe src="https://drive.google.com/file/d/18XEf523M0DWxVjVn7_4BqCEJUDQlDvkS/preview?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+          <div class="cs-carousel-slide"><iframe src="https://drive.google.com/file/d/18XEf523M0DWxVjVn7_4BqCEJUDQlDvkS/preview" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
         </div>
         <button class="cs-carousel-btn cs-carousel-prev" onclick="carouselMove('easter',-1)" aria-label="Previous">&#8249;</button>
         <button class="cs-carousel-btn cs-carousel-next" onclick="carouselMove('easter', 1)" aria-label="Next">&#8250;</button>
@@ -646,8 +635,7 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
       </div>
       <div class="cs-season-video-slot">
         <iframe
-          id="drive-video-ai"
-          src="https://drive.google.com/file/d/1BO4P7AqbEY03_sce3GDZe4rPmmmfoMCG/preview?autoplay=1&mute=1"
+          src="https://drive.google.com/file/d/1BO4P7AqbEY03_sce3GDZe4rPmmmfoMCG/preview"
           allow="autoplay; encrypted-media"
           allowfullscreen
           title="AI Bag Delivery creative"
@@ -814,7 +802,7 @@ document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObse
   gaInitEvents();
   fsInit();
   carouselInit('easter');
-  initVideoSlots();
+});
 });
 
 /* ══ GA4 — ANALYTICS EVENTS ══ */
@@ -973,22 +961,6 @@ function carouselGoTo(id, index) {
   document.querySelectorAll('#dots-' + id + ' .cs-carousel-dot').forEach((d, i) => {
     d.classList.toggle('active', i === c.current);
   });
-  // Trigger play on video slides via src reload with autoplay
-  const slide = c.slides[c.current];
-  if (slide) {
-    const iframe = slide.querySelector('iframe');
-    if (iframe) drivePlay(iframe);
-  }
-}
-
-// Reload iframe src with autoplay — only reliable cross-origin trigger
-function drivePlay(iframe) {
-  const src = iframe.src || '';
-  if (!src.includes('drive.google.com')) return;
-  // Strip existing autoplay param and re-add to force reload
-  const clean = src.replace(/[&?]autoplay=[^&]*/g, '');
-  const sep = clean.includes('?') ? '&' : '?';
-  iframe.src = clean + sep + 'autoplay=1';
 }
 
 function carouselMove(id, dir) {
@@ -1010,18 +982,6 @@ function carouselStartAuto(id) {
 function carouselStopAuto(id) {
   const c = carousels[id];
   if (c && c.timer) { clearTimeout(c.timer); c.timer = null; }
-}
-
-// Auto-play standalone Drive video slots when scrolled into view
-function initVideoSlots() {
-  document.querySelectorAll('.cs-season-video-slot iframe').forEach(iframe => {
-    const obs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (e.isIntersecting) { drivePlay(iframe); obs.disconnect(); }
-      });
-    }, { threshold: 0.5 });
-    obs.observe(iframe.closest('.cs-season-video-slot'));
-  });
 }
 </script>
 </script>
