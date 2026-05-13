@@ -811,6 +811,7 @@ document.addEventListener('DOMContentLoaded',()=>{const obs=new IntersectionObse
   gaInitEvents();
   fsInit();
   carouselInit('easter');
+  initVideoAutoplay();
 });
 
 /* ══ GA4 — ANALYTICS EVENTS ══ */
@@ -990,6 +991,55 @@ function carouselStartAuto(id) {
 function carouselStopAuto(id) {
   const c = carousels[id];
   if (c && c.timer) { clearTimeout(c.timer); c.timer = null; }
+}
+
+/* ══ VIDEO AUTOPLAY ══
+   Browsers bloqueiam autoplay em iframes cross-origin sem gesto do usuário.
+   Estratégia: ao primeiro scroll/clique na página, recarregamos o src com
+   autoplay=1 (o browser libera pois já houve interação). Se após 5s o vídeo
+   ainda não iniciou (ex: tab em background), simulamos um clique no elemento
+   para forçar o play nativo do Drive. */
+function initVideoAutoplay() {
+  const iframes = Array.from(document.querySelectorAll(
+    '.cs-season-video-slot iframe, .cs-carousel-slide iframe'
+  ));
+  if (!iframes.length) return;
+
+  let triggered = false;
+
+  function triggerAll() {
+    if (triggered) return;
+    triggered = true;
+    iframes.forEach(iframe => reloadAutoplay(iframe));
+    // Fallback: após 5s clica programaticamente no container de cada iframe
+    // para garantir que o player nativo do Drive receba o gesto
+    setTimeout(() => {
+      iframes.forEach(iframe => {
+        // Tenta focar e clicar no iframe — funciona quando Drive já carregou
+        try { iframe.contentWindow.focus(); } catch(e) {}
+        iframe.click();
+        // Recarga forçada como último recurso
+        reloadAutoplay(iframe);
+      });
+    }, 5000);
+  }
+
+  function reloadAutoplay(iframe) {
+    let src = iframe.getAttribute('src') || '';
+    if (!src.includes('drive.google.com')) return;
+    // Garante autoplay=1 e mute=1 na URL
+    src = src.replace(/[&?](autoplay|mute)=\d/g, '');
+    const sep = src.includes('?') ? '&' : '?';
+    iframe.setAttribute('src', src + sep + 'autoplay=1&mute=1');
+  }
+
+  // Dispara no primeiro scroll ou clique do usuário
+  ['scroll', 'click', 'touchstart', 'keydown'].forEach(evt => {
+    window.addEventListener(evt, triggerAll, { once: true, passive: true });
+  });
+
+  // Fallback incondicional após 5s mesmo sem interação
+  setTimeout(triggerAll, 5000);
 }
 </script>
 </body>
