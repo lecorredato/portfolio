@@ -527,19 +527,6 @@ section { padding: 96px 52px; }
 .lb-nav:hover { background:rgba(176,108,255,0.28); }
 .lb-prev { left:14px; } .lb-next { right:14px; }
 .lb-counter { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); font-family:'Space Mono',monospace; font-size:0.80rem; color:#8880a8; letter-spacing:0.12em; }
-.lb-cta {
-  position: absolute; bottom: 14px; right: 26px;
-  display: flex; align-items: center; gap: 7px;
-  font-family: 'Space Mono', monospace; font-size: 0.72rem;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: #fff; text-decoration: none;
-  background: var(--accent);
-  border: 1px solid var(--accent2);
-  padding: 7px 14px; border-radius: 3px;
-  transition: box-shadow 0.2s, background 0.2s;
-  z-index: 10;
-}
-.lb-cta:hover { box-shadow: 0 0 18px rgba(255,45,155,0.55); background: var(--accent3); }
 
 /* ══════════════════════════════════════════
    EXPERIENCES
@@ -1366,17 +1353,12 @@ html[data-fs="large"] { font-size: 19px; }
 <div class="lightbox" id="lightbox" onclick="lbOutside(event)">
   <button class="lb-close" onclick="lbClose()">✕</button>
   <button class="lb-nav lb-prev" onclick="lbShift(-1)" aria-label="Prev">‹</button>
-  <img id="lbImg" src="" alt="">
+  <img id="lbImg" src="" alt="" style="cursor:pointer" onclick="lbImgClick()">
   <video id="lbVideo" muted playsinline style="display:none" onclick="lbTogglePlay()"></video>
   <iframe id="lbIframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen style="display:none"></iframe>
   <button id="lbPlayPause" class="lb-play-pause" onclick="lbTogglePlay()" style="display:none" aria-label="Play/Pause">⏸ Pause</button>
   <button class="lb-nav lb-next" onclick="lbShift(1)"  aria-label="Next">›</button>
   <span class="lb-counter" id="lbCount"></span>
-  <!-- CTA link — aparece só na última imagem de galerias configuradas -->
-  <a id="lbCta" class="lb-cta" href="#" target="_blank" rel="noopener" style="display:none">
-    <svg viewBox="0 0 20 20" fill="none" width="14" height="14"><path d="M11 3h6v6M17 3l-9 9M8 5H4a1 1 0 00-1 1v10a1 1 0 001 1h10a1 1 0 001-1v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    Ver protótipo
-  </a>
 </div>
 </section>
 
@@ -2060,13 +2042,19 @@ window.addEventListener('orientationchange', () => {
   }, 200);
 });
 
-// Configuração de CTAs por galeria: { chave: { lastSlide: true, url, label } }
-const GALLERY_CTAS = {
+// Links abertos ao clicar na imagem — { chave: { lastSlide: url } }
+const IMAGE_LINKS = {
   'projeto3': {
-    url: 'https://www.figma.com/proto/JlPcB7k2cUsIWdJAnjIwAy/e-Visita-%7C-Mantecorp-Sa%C3%BAde-%7C-Hypera?page-id=0%3A1&node-id=186-10186&viewport=195%2C273%2C0.02&t=QTYUKm0GXEoGt3j7-1&scaling=contain&content-scaling=responsive&starting-point-node-id=186%3A10186&show-proto-sidebar=1',
-    label: 'Ver protótipo'
+    last: 'https://www.figma.com/proto/JlPcB7k2cUsIWdJAnjIwAy/e-Visita-%7C-Mantecorp-Sa%C3%BAde-%7C-Hypera?page-id=0%3A1&node-id=186-10186&viewport=195%2C273%2C0.02&t=QTYUKm0GXEoGt3j7-1&scaling=contain&content-scaling=responsive&starting-point-node-id=186%3A10186&show-proto-sidebar=1'
   }
 };
+
+function lbImgClick() {
+  const cfg = IMAGE_LINKS[currentGalleryKey];
+  if (!cfg) return;
+  const isLast = lbIdx === currentGallery.length - 1;
+  if (cfg.last && isLast) window.open(cfg.last, '_blank', 'noopener');
+}
 let currentGalleryKey = '';
 
 function lb(galleryKey, i) {
@@ -2179,18 +2167,11 @@ function updateLightbox() {
 
   countEl.textContent = `${lbIdx + 1} / ${currentGallery.length}`;
 
-  // CTA link na última imagem de galerias configuradas
-  const ctaEl = document.getElementById('lbCta');
-  if (ctaEl) {
-    const ctaCfg = GALLERY_CTAS[currentGalleryKey];
-    const isLast = lbIdx === currentGallery.length - 1;
-    if (ctaCfg && isLast) {
-      ctaEl.href = ctaCfg.url;
-      ctaEl.style.display = 'flex';
-    } else {
-      ctaEl.style.display = 'none';
-    }
-  }
+  // Cursor pointer na última imagem se houver link configurado
+  const imgEl2 = document.getElementById('lbImg');
+  const hasCfg = IMAGE_LINKS[currentGalleryKey];
+  const isLast = lbIdx === currentGallery.length - 1;
+  imgEl2.style.cursor = (hasCfg && isLast) ? 'pointer' : 'default';
 }
 
 function lbClose() {

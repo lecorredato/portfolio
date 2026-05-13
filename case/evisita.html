@@ -417,15 +417,15 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
       <p class="lead" data-lang="pt">Fluxo de UI completo — cobrindo dashboard, agendamento, perfis médicos, módulos de conteúdo e sistema de notificações — projetado para clareza, usabilidade e alinhamento de marca.</p>
       <p class="img-cap" style="text-align:left;margin-top:24px;"><span data-lang="en">Interactive Prototype · e-Visita Platform · Mantecorp Saúde · Hypera Pharma</span><span data-lang="pt">Protótipo Interativo · Plataforma e-Visita · Mantecorp Saúde · Hypera Pharma</span></p>
     </div>
-    <!-- RIGHT: Figma prototype at mobile width -->
+    <!-- RIGHT: Figma embed -->
     <div class="proto-frame" style="flex:0 0 390px;width:390px;">
-      <div style="width:390px;height:720px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,96,26,0.25);box-shadow:0 12px 48px rgba(0,0,0,0.4);">
+      <div style="border-radius:12px;overflow:hidden;border:1px solid rgba(232,96,26,0.25);box-shadow:0 12px 48px rgba(0,0,0,0.4);">
         <iframe
-          src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FJlPcB7k2cUsIWdJAnjIwAy%2Fe-Visita-%257C-Mantecorp-Sa%25C3%25BAde-%257C-Hypera%3Fpage-id%3D0%253A1%26node-id%3D186-10186%26viewport%3D195%252C273%252C0.02%26t%3DQTYUKm0GXEoGt3j7-1%26scaling%3Dscale-down%26content-scaling%3Dfixed%26starting-point-node-id%3D186%253A10186%26show-proto-sidebar%3D1"
-          style="width:100%;height:100%;border:none;"
+          style="border:none;display:block;"
+          width="390"
+          height="720"
+          src="https://embed.figma.com/proto/JlPcB7k2cUsIWdJAnjIwAy/e-Visita-%7C-Mantecorp-Sa%C3%BAde-%7C-Hypera?page-id=0%3A1&node-id=186-10186&viewport=195%2C273%2C0.02&scaling=scale-down&content-scaling=fixed&starting-point-node-id=186%3A10186&embed-host=share"
           allowfullscreen
-          loading="lazy"
-          title="e-Visita Prototype — Mantecorp Saúde · Hypera Pharma"
         ></iframe>
       </div>
     </div>
@@ -718,6 +718,14 @@ function toggleTheme() {
 
 // Init: set EN as default and trigger display
 setLang('en');
+
+/* ── PROTO CARD HOVER ── */
+const protoCard = document.querySelector('.proto-card');
+const protoHover = document.querySelector('.proto-hover');
+if (protoCard && protoHover) {
+  protoCard.addEventListener('mouseenter', () => { protoHover.style.opacity = '1'; });
+  protoCard.addEventListener('mouseleave', () => { protoHover.style.opacity = '0'; });
+}
 </script>
 </body>
 </html>
