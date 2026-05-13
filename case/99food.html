@@ -175,21 +175,21 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 /* SEASONAL */
 .cs-season-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
 .cs-season-card{background:var(--card-bg);border:1px solid var(--border);border-radius:10px;overflow:hidden;}
-.cs-season-img-slot{width:100%;aspect-ratio:16/9;background:rgba(200,162,0,0.06);border-top:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;}
-.cs-season-img{width:100%;height:100%;object-fit:cover;display:block;}
+.cs-season-img-slot{width:100%;height:280px;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;}
+.cs-season-img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;}
 .cs-season-img-slot:has(img[src=""]){display:none;}
-.cs-season-video-slot{width:100%;aspect-ratio:16/9;border-top:1px solid var(--border);position:relative;background:#000;overflow:hidden;}
-.cs-season-video-slot iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block;}
+.cs-season-video-slot{width:100%;height:280px;border-top:1px solid var(--border);position:relative;background:#000;overflow:hidden;}
+.cs-season-video-slot iframe{position:absolute;top:-40px;left:0;width:100%;height:calc(100% + 80px);border:none;display:block;}
 .cs-video-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(200,162,0,0.06);pointer-events:none;}
 .cs-video-placeholder span{font-family:'Space Mono',monospace;font-size:0.66rem;letter-spacing:0.1em;color:var(--gold3);text-transform:uppercase;text-align:center;padding:0 16px;}
 /* hide placeholder once iframe has a real src */
 .cs-season-video-slot:not([data-empty]) .cs-video-placeholder{display:none;}
 /* CAROUSEL */
-.cs-carousel{position:relative;width:100%;aspect-ratio:4/3;overflow:hidden;background:rgba(200,162,0,0.04);border-bottom:1px solid var(--border);}
+.cs-carousel{position:relative;width:100%;height:280px;overflow:hidden;background:rgba(200,162,0,0.04);border-top:1px solid var(--border);}
 .cs-carousel-track{display:flex;height:100%;transition:transform 0.45s cubic-bezier(0.4,0,0.2,1);will-change:transform;}
-.cs-carousel-slide{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.cs-carousel-slide img,.cs-carousel-slide iframe{width:100%;height:100%;object-fit:cover;display:block;border:none;}
-.cs-carousel-slide iframe{aspect-ratio:unset;}
+.cs-carousel-slide{flex:0 0 100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;background:rgba(200,162,0,0.04);}
+.cs-carousel-slide img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;display:block;border:none;}
+.cs-carousel-slide iframe{position:absolute;top:-40px;left:0;width:100%;height:calc(100% + 80px);border:none;display:block;}
 .cs-slide-empty{background:rgba(200,162,0,0.04);}
 .cs-carousel-btn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(0,0,0,0.32);border:1px solid rgba(200,162,0,0.18);color:rgba(255,240,200,0.7);font-size:1.3rem;width:28px;height:42px;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:3px;transition:background 0.2s,color 0.2s;padding:0;line-height:1;z-index:4;}
 .cs-carousel-btn:hover{background:rgba(200,162,0,0.22);color:var(--gold);}
@@ -610,7 +610,7 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
           <!-- Slide 4 -->
           <div class="cs-carousel-slide"><img src="https://static.wixstatic.com/media/b72a24_4657c027d4da4bb48f678a8e27beb005~mv2.png" alt="Easter creative 4" onerror="this.parentElement.classList.add('cs-slide-empty')"></div>
           <!-- Slide 5 — vídeo: -->
-           <div class="cs-carousel-slide"><iframe src="https://drive.google.com/file/d/18XEf523M0DWxVjVn7_4BqCEJUDQlDvkS/view" allow="autoplay" allowfullscreen></iframe></div> 
+           <div class="cs-carousel-slide"><iframe src="https://drive.google.com/file/d/18XEf523M0DWxVjVn7_4BqCEJUDQlDvkS/preview?autoplay=1&mute=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
           </div>
         <button class="cs-carousel-btn cs-carousel-prev" onclick="carouselMove('easter',-1)" aria-label="Previous">&#8249;</button>
         <button class="cs-carousel-btn cs-carousel-next" onclick="carouselMove('easter', 1)" aria-label="Next">&#8250;</button>
@@ -642,7 +642,7 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
       <div class="cs-season-video-slot">
         <iframe
           id="drive-video-ai"
-          src="https://drive.google.com/file/d/1BO4P7AqbEY03_sce3GDZe4rPmmmfoMCG/view?pli=1?autoplay=true"
+          src="https://drive.google.com/file/d/1BO4P7AqbEY03_sce3GDZe4rPmmmfoMCG/preview?autoplay=1&mute=1"
           allow="autoplay; encrypted-media"
           allowfullscreen
           title="AI Bag Delivery creative"
@@ -986,21 +986,28 @@ function carouselStopAuto(id) {
 
 /* ══ DRIVE VIDEO INIT ══ */
 function driveVideoInit() {
-  const slot = document.querySelector('.cs-season-video-slot');
-  if (!slot) return;
-  const iframe = slot.querySelector('iframe');
-  if (!iframe) return;
-  const src = iframe.getAttribute('src') || '';
-  // If placeholder FILE_ID not replaced, show placeholder overlay
-  if (src.includes('FILE_ID')) {
-    slot.setAttribute('data-empty', '1');
-    return;
-  }
-  // Append autoplay + mute params to Drive preview URL
-  if (!src.includes('autoplay=1')) {
+  // Fix ALL Drive iframes on the page: /view → /preview, add autoplay+mute
+  document.querySelectorAll('iframe[src*="drive.google.com"]').forEach(iframe => {
+    let src = iframe.getAttribute('src') || '';
+    if (!src) return;
+    // /view or /view?... → /preview
+    src = src.replace(/\/view(\?[^#]*)?/, '/preview');
+    // strip any malformed duplicate ? (e.g. ?pli=1?autoplay)
+    src = src.replace(/\?([^?]*)(\?)/, '?$1&');
+    // remove old autoplay/mute params to rebuild cleanly
+    src = src.replace(/[&?](autoplay|mute|pli)=[^&]*/g, '');
+    // add autoplay+mute
     const sep = src.includes('?') ? '&' : '?';
-    iframe.setAttribute('src', src + sep + 'autoplay=1&mute=1');
-  }
+    src = src + sep + 'autoplay=1&mute=1';
+    iframe.setAttribute('src', src);
+  });
+  // Mark video slots that still have FILE_ID as placeholder
+  document.querySelectorAll('.cs-season-video-slot').forEach(slot => {
+    const iframe = slot.querySelector('iframe');
+    if (iframe && (iframe.getAttribute('src') || '').includes('FILE_ID')) {
+      slot.setAttribute('data-empty', '1');
+    }
+  });
 }
 </script>
 </body>
