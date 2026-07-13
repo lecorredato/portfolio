@@ -596,6 +596,8 @@ section { padding: 96px 52px; }
 /* Gallery */
 .portfolio-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:3px; }
 .portfolio-item { position:relative; aspect-ratio:1; overflow:hidden; cursor:pointer; background:var(--card-bg); }
+.portfolio-actions { display:none; justify-content:center; margin-top:18px; }
+.portfolio-actions.active { display:flex; }
 .portfolio-item img { width:100%; height:100%; object-fit:cover; display:block; transition:transform 0.4s cubic-bezier(.25,.46,.45,.94), filter 0.4s; filter:brightness(0.85) saturate(0.88); }
 .portfolio-item:hover img { transform:scale(1.06); filter:brightness(0.48) saturate(1.2); }
 .portfolio-badge {
@@ -615,7 +617,6 @@ section { padding: 96px 52px; }
 .portfolio-item:hover .po-icon { transform:scale(1); }
 .po-label { font-family:'Space Mono',monospace; font-size:0.74rem; letter-spacing:0.12em; color:rgba(255,255,255,0.88); text-transform:uppercase; transform:translateY(6px); opacity:0; transition:transform 0.26s 0.07s, opacity 0.26s 0.07s; }
 .portfolio-item:hover .po-label { transform:translateY(0); opacity:1; }
-.portfolio-actions { display:flex; justify-content:center; margin-top:18px; }
 .portfolio-more-btn {
   border:1px solid var(--border); background:transparent; color:var(--gray);
   padding:10px 18px; border-radius:2px; cursor:pointer;
@@ -1424,9 +1425,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 
   <!-- Gallery EN -->
+<div class="portfolio-lang-group" data-lang="en">
 <div class="portfolio-grid active" data-lang="en" id="gridEN">
+    <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto2', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_2120fbd441a3422f90c9dbcd991f0233~mv2.png" alt="DiDi" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+
     <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto3', 0)"> 
       <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png" alt="E-Visita" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto1', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_956691c1ef2747ada04a10102383a3e8~mv2.png" alt="99Food" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto4', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png" alt="Mantecorp Saude" loading="lazy">
       <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
     </div>
 
@@ -1437,21 +1454,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto8', 0)"> 
       <img src="https://static.wixstatic.com/media/b72a24_62dbd9a80b56417bac09320a09028a16~mv2.jpg" alt="A.cabine" loading="lazy">
-      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
-    </div>
-
-    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto1', 0)"> 
-      <img src="https://static.wixstatic.com/media/b72a24_956691c1ef2747ada04a10102383a3e8~mv2.png" alt="99Food" loading="lazy">
-      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
-    </div>
-
-    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto2', 0)"> 
-      <img src="https://static.wixstatic.com/media/b72a24_2120fbd441a3422f90c9dbcd991f0233~mv2.png" alt="DiDi" loading="lazy">
-      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
-    </div>
-
-    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto4', 0)"> 
-      <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png" alt="Mantecorp Saude" loading="lazy">
       <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
     </div>
 
@@ -1485,14 +1487,31 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">View</span></div>
     </div>
 </div>
-<div class="portfolio-actions">
+<div class="portfolio-actions active" data-lang="en">
   <button class="portfolio-more-btn" type="button" data-grid="gridEN">View more</button>
+</div>
 </div>
 
 <!-- Gallery PT (Repetir a mesma lógica de ID) -->
+<div class="portfolio-lang-group" data-lang="pt">
 <div class="portfolio-grid" data-lang="pt" id="gridPT">
+    <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto2', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_2120fbd441a3422f90c9dbcd991f0233~mv2.png" alt="DiDi" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+
     <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto3', 0)"> 
       <img src="https://static.wixstatic.com/media/b72a24_219efe395ea2446db3f481b81bf47b39~mv2.png" alt="E-Visita" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto1', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_956691c1ef2747ada04a10102383a3e8~mv2.png" alt="99Food" loading="lazy">
+      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
+    </div>
+
+    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto4', 0)"> 
+      <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png" alt="Mantecorp Saude" loading="lazy">
       <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
     </div>
 
@@ -1508,21 +1527,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="portfolio-item" data-cat="uxui" onclick="lb('projeto10', 0)"> 
       <img src="https://static.wixstatic.com/media/b72a24_e2608e088b364db49383ae9a1e3b1488~mv2.png" alt="Leporem" loading="lazy">
-      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
-    </div>
-
-    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto1', 0)"> 
-      <img src="https://static.wixstatic.com/media/b72a24_956691c1ef2747ada04a10102383a3e8~mv2.png" alt="99Food" loading="lazy">
-      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
-    </div>
-
-    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto2', 0)"> 
-      <img src="https://static.wixstatic.com/media/b72a24_2120fbd441a3422f90c9dbcd991f0233~mv2.png" alt="DiDi" loading="lazy">
-      <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
-    </div>
-
-    <div class="portfolio-item" data-cat="digital" onclick="lb('projeto4', 0)"> 
-      <img src="https://static.wixstatic.com/media/b72a24_c2845bec77764fc9aedcac73f3a6d96d~mv2.png" alt="Mantecorp Saude" loading="lazy">
       <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
     </div>
 
@@ -1551,8 +1555,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="portfolio-overlay"><div class="po-icon">+</div><span class="po-label">Ver</span></div>
     </div>
 </div>
-<div class="portfolio-actions">
+<div class="portfolio-actions" data-lang="pt">
   <button class="portfolio-more-btn" type="button" data-grid="gridPT">Ver mais</button>
+</div>
 </div>
 
 <!-- Lightbox -->
@@ -1971,10 +1976,16 @@ function setLang(l) {
     else el.textContent = T[k][l];
   });
 
-  // Toggle [data-lang] blocks (exclude grids)
+  // Toggle [data-lang] blocks (exclude grids and portfolio actions)
   document.querySelectorAll('[data-lang]').forEach(el => {
-    if (el.classList.contains('portfolio-grid') || el.classList.contains('cases-grid')) return;
+    if (el.classList.contains('portfolio-grid') || el.classList.contains('cases-grid') || el.classList.contains('portfolio-actions')) return;
     el.style.display = el.dataset.lang === l ? 'block' : 'none';
+  });
+
+  document.querySelectorAll('.portfolio-actions').forEach(el => {
+    const isActive = el.dataset.lang === l;
+    el.style.display = isActive ? 'flex' : 'none';
+    el.classList.toggle('active', isActive);
   });
 
   // Portfolio grids
@@ -2794,7 +2805,8 @@ function syncPortfolioGrid(grid, activeCat = null) {
   const cat = activeCat || document.querySelector('.filter-btn.active')?.dataset.cat || 'all';
   const limit = getPortfolioLimit();
   const isExpanded = grid.classList.contains('is-expanded');
-  const button = grid.nextElementSibling;
+  const group = grid.closest('.portfolio-lang-group');
+  const button = group?.querySelector('.portfolio-more-btn');
   const items = Array.from(grid.querySelectorAll('.portfolio-item'));
 
   let matchedCount = 0;
@@ -2859,6 +2871,10 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('casesPT').style.display = 'none';
 
   addPortfolioBadges();
+  document.querySelectorAll('.portfolio-actions').forEach(el => {
+    el.style.display = el.dataset.lang === 'en' ? 'flex' : 'none';
+    el.classList.toggle('active', el.dataset.lang === 'en');
+  });
   syncAllPortfolioGrids('all');
 
   document.querySelectorAll('.portfolio-more-btn').forEach(btn => {
