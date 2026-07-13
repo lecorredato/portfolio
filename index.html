@@ -2035,6 +2035,7 @@ function setLang(l, fromUserAction = false) {
   cPT.classList.toggle('active', !showEN);
 
   // Re-apply active filter
+  resetPortfolioGridState();
   const activeBtn = document.querySelector('.filter-btn.active');
   if (activeBtn) filterGrid(activeBtn.dataset.cat || 'all', activeBtn);
 
@@ -2863,6 +2864,12 @@ function syncPortfolioGrid(grid, activeCat = null) {
   }
 }
 
+function resetPortfolioGridState() {
+  document.querySelectorAll('.portfolio-grid').forEach(grid => {
+    grid.classList.remove('is-expanded');
+  });
+}
+
 function syncAllPortfolioGrids(activeCat = null) {
   document.querySelectorAll('.portfolio-grid').forEach(grid => syncPortfolioGrid(grid, activeCat));
 }
@@ -2886,6 +2893,7 @@ function filterGrid(cat, btn) {
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
   const initialLang = getPreferredLanguage();
+  resetPortfolioGridState();
   setLang(initialLang);
 
   addPortfolioBadges();
