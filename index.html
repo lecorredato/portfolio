@@ -1958,8 +1958,23 @@ function handleGesture() {
 /* ── LANGUAGE ── */
 let lang = 'en';
 
+function getPreferredLanguage() {
+  const rawHash = window.location.hash.replace('#', '').toLowerCase().trim();
+  if (rawHash === 'pt' || rawHash === 'en') return rawHash;
+
+  const saved = localStorage.getItem('lc_lang_pref');
+  if (saved === 'pt' || saved === 'en') return saved;
+
+  return 'en';
+}
+
+function persistLanguagePreference(l) {
+  localStorage.setItem('lc_lang_pref', l);
+}
+
 function setLang(l) {
   lang = l;
+  persistLanguagePreference(l);
 
   // Button states — desktop
   document.getElementById('btnEN').classList.toggle('active', l === 'en');
@@ -1996,6 +2011,14 @@ function setLang(l) {
   gPT.style.display = showEN ? 'none' : 'grid';
   gEN.classList.toggle('active', showEN);
   gPT.classList.toggle('active', !showEN);
+
+  const currentHash = window.location.hash.replace('#', '').toLowerCase().trim();
+  const isLangHash = currentHash === 'pt' || currentHash === 'en';
+  const isProjectHash = currentHash && !isLangHash && SLUG_MAP[currentHash];
+  if (!isProjectHash && !isLangHash) {
+    const nextHash = l === 'en' ? 'en' : 'pt';
+    history.replaceState(null, '', `${window.location.pathname}#${nextHash}`);
+  }
 
   // Featured cases
   const cEN = document.getElementById('casesEN');
@@ -2856,19 +2879,8 @@ function filterGrid(cat, btn) {
 
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
-  // Default: EN visible
-  document.querySelectorAll('[data-lang="en"]').forEach(el => {
-    if (!el.classList.contains('portfolio-grid') && !el.classList.contains('cases-grid'))
-      el.style.display = 'block';
-  });
-  document.querySelectorAll('[data-lang="pt"]').forEach(el => {
-    if (!el.classList.contains('portfolio-grid') && !el.classList.contains('cases-grid'))
-      el.style.display = 'none';
-  });
-  document.getElementById('gridEN').style.display  = 'grid';
-  document.getElementById('gridPT').style.display  = 'none';
-  document.getElementById('casesEN').style.display = 'grid';
-  document.getElementById('casesPT').style.display = 'none';
+  const initialLang = getPreferredLanguage();
+  setLang(initialLang);
 
   addPortfolioBadges();
   document.querySelectorAll('.portfolio-actions').forEach(el => {
