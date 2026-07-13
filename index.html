@@ -1094,9 +1094,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- EN | PT side-by-side -->
     <div class="nav-controls">
       <div class="lang-switch">
-        <button id="btnEN" class="active" onclick="setLang('en')">EN</button>
+        <button id="btnEN" class="active" onclick="setLang('en', true)">EN</button>
         <div class="nav-sep"></div>
-        <button id="btnPT" onclick="setLang('pt')">PT</button>
+        <button id="btnPT" onclick="setLang('pt', true)">PT</button>
       </div>
       <!-- Sun / Moon -->
       <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">
@@ -1139,9 +1139,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   
   <div class="mobile-controls">
     <div class="lang-switch">
-      <button id="btnENMob" class="active" onclick="setLang('en')">EN</button>
+      <button id="btnENMob" class="active" onclick="setLang('en', true)">EN</button>
       <div class="lang-sep"></div>
-      <button id="btnPTMob" onclick="setLang('pt')">PT</button>
+      <button id="btnPTMob" onclick="setLang('pt', true)">PT</button>
     </div>
     <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()" aria-label="Toggle theme">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
@@ -1976,7 +1976,12 @@ function persistLanguagePreference(l) {
   localStorage.setItem('lc_lang_pref', l);
 }
 
-function setLang(l) {
+function updateLanguageHash(l) {
+  const nextHash = l === 'en' ? 'en' : 'pt';
+  history.replaceState(null, '', `${window.location.pathname}#${nextHash}`);
+}
+
+function setLang(l, fromUserAction = false) {
   lang = l;
   persistLanguagePreference(l);
 
@@ -2017,11 +2022,8 @@ function setLang(l) {
   gPT.classList.toggle('active', !showEN);
 
   const currentHash = window.location.hash.replace('#', '').toLowerCase().trim();
-  const isLangHash = currentHash === 'pt' || currentHash === 'en';
-  const isProjectHash = currentHash && !isLangHash && SLUG_MAP[currentHash];
-  if (!isProjectHash && !isLangHash) {
-    const nextHash = l === 'en' ? 'en' : 'pt';
-    history.replaceState(null, '', `${window.location.pathname}#${nextHash}`);
+  if (fromUserAction || !currentHash) {
+    updateLanguageHash(l);
   }
 
   // Featured cases
@@ -2888,8 +2890,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   addPortfolioBadges();
   document.querySelectorAll('.portfolio-actions').forEach(el => {
-    el.style.display = el.dataset.lang === 'en' ? 'flex' : 'none';
-    el.classList.toggle('active', el.dataset.lang === 'en');
+    const shouldShow = el.dataset.lang === initialLang;
+    el.style.display = shouldShow ? 'flex' : 'none';
+    el.classList.toggle('active', shouldShow);
   });
   syncAllPortfolioGrids('all');
 
