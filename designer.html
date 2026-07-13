@@ -341,16 +341,6 @@ nav.scrolled { padding: 10px 52px; background: var(--nav-bg-s); }
 }
 .hero-content { position: relative; z-index: 1; max-width: 900px; }
 
-/* ── Name (eyebrow, kept at the very top) ── */
-.hero-eyebrow-name {
-  font-family: 'Space Mono', monospace;
-  font-size: clamp(0.78rem, 1.8vw, 0.92rem);
-  letter-spacing: 0.28em; text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 18px;
-  animation: fadeUp 0.85s ease both;
-}
-
 /* ── Name ── */
 .hero-name {
   font-family: 'Bebas Neue', sans-serif;
@@ -358,37 +348,27 @@ nav.scrolled { padding: 10px 52px; background: var(--nav-bg-s); }
   letter-spacing: 0.04em; line-height: 0.9;
   color: var(--text);
   text-shadow: 0 0 60px rgba(255,45,155,0.32), 0 0 120px rgba(255,45,155,0.12);
-  animation: fadeUp 0.85s 0.06s ease both;
+  animation: fadeUp 0.85s ease both;
 }
 [data-theme="light"] .hero-name { text-shadow: 0 2px 24px rgba(255,45,155,0.15); }
 .hero-name span { color: var(--accent); }
 
-/* ── Subtitle (role line, pink) ── */
-.hero-subtitle {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(1.3rem, 3.4vw, 2.1rem);
-  letter-spacing: 0.06em;
-  color: var(--accent);
-  margin-top: 6px;
-  animation: fadeUp 0.85s 0.1s ease both;
-}
-
-/* ── Badge / quote box ── */
+/* ── Badge ── */
 .hero-badge {
-  display: inline-flex; align-items: center; justify-content: center;
+  display: inline-flex; align-items: center;
   border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 14px 24px;
+  border-radius: 100px;
+  padding: 6px 32px;
   font-family: 'Space Mono', monospace;
-  font-size: clamp(0.74rem, 1.6vw, 0.86rem);
-  letter-spacing: 0.05em; color: var(--accent);
-  text-transform: uppercase; margin-top: 28px;
+  font-size: clamp(0.78rem, 1.8vw, 0.92rem);
+  letter-spacing: 0.16em; color: var(--accent);
+  text-transform: uppercase; margin-top: 16px;
   background: rgba(255,45,155,0.07);
-  animation: fadeUp 0.85s 0.16s ease both;
-  max-width: 620px;
+  animation: fadeUp 0.85s 0.12s ease both;
+  max-width: 600px;
+  margin-top: 20px;
   margin-left: auto;
   margin-right: auto;
-  line-height: 1.6;
 }
 [data-theme="light"] .hero-badge { background: rgba(255,45,155,0.07); border-color: rgba(255,45,155,0.22); }
 
@@ -397,8 +377,8 @@ nav.scrolled { padding: 10px 52px; background: var(--nav-bg-s); }
   margin-top: 20px;
   font-size: clamp(1rem, 2.2vw, 1.18rem);
   line-height: 1.68; color: var(--text-muted);
-  max-width: 640px; margin-left: auto; margin-right: auto;
-  animation: fadeUp 0.85s 0.22s ease both;
+  max-width: 600px; margin-left: auto; margin-right: auto;
+  animation: fadeUp 0.85s 0.2s ease both;
 }
 .hero-value strong { color: var(--text); font-weight: 600; }
 
@@ -407,73 +387,6 @@ nav.scrolled { padding: 10px 52px; background: var(--nav-bg-s); }
   display: flex; justify-content: center; gap: 12px; margin-top: 36px;
   flex-wrap: wrap;
   animation: fadeUp 0.85s 0.32s ease both;
-}
-
-/* ── Metric highlights row ── */
-.hero-highlights {
-  display: grid; grid-template-columns: repeat(4, minmax(0,1fr));
-  gap: 14px; margin-top: 52px;
-  width: 100%; max-width: 900px; margin-left: auto; margin-right: auto;
-  animation: fadeUp 0.85s 0.4s ease both;
-}
-.highlight {
-  display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 18px 22px;
-  background: rgba(255,45,155,0.04);
-  text-align: left;
-  cursor: default;
-  transition: border-color 0.25s, transform 0.2s;
-}
-.highlight:hover { border-color: var(--border-h); transform: translateY(-2px); }
-.highlight svg { width: 22px; height: 22px; color: var(--accent); }
-.highlight h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.03em; color: var(--text); line-height: 1; }
-.highlight span { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.06em; color: var(--text-muted); text-transform: uppercase; line-height: 1.4; }
-
-@media (max-width: 860px) {
-  .hero-highlights { grid-template-columns: repeat(2, minmax(0,1fr)); }
-}
-@media (max-width: 480px) {
-  .hero-highlights { grid-template-columns: 1fr; }
-}
-
-/* ══════════════════════════════════════════
-   HOW I WORK
-══════════════════════════════════════════ */
-#how-i-work { background: var(--bg-alt); text-align: center; }
-.process-row {
-  display: flex; align-items: flex-start; justify-content: center;
-  gap: 0; flex-wrap: wrap; margin-top: 12px;
-}
-.process-step {
-  display: flex; flex-direction: column; align-items: center;
-  width: 190px; padding: 0 12px;
-}
-.process-icon {
-  width: 64px; height: 64px; border-radius: 50%;
-  border: 1.5px solid var(--border-h);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--accent); background: rgba(255,45,155,0.06);
-  margin-bottom: 18px;
-}
-.process-icon svg { width: 26px; height: 26px; }
-.process-step h3 {
-  font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem;
-  letter-spacing: 0.08em; color: var(--text); margin-bottom: 10px;
-}
-.process-step p {
-  font-size: 0.86rem; line-height: 1.55; color: var(--text-muted);
-}
-.process-arrow {
-  display: flex; align-items: center; justify-content: center;
-  width: 60px; height: 64px; color: var(--border-h);
-  flex-shrink: 0;
-}
-.process-arrow svg { width: 100%; height: 8px; }
-@media (max-width: 900px) {
-  .process-arrow { display: none; }
-  .process-row { gap: 36px; }
 }
 .hero-cta-primary {
   display: inline-block; padding: 13px 34px;
@@ -1141,99 +1054,25 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="hero-grid"></div>
   <div class="hero-content" style="padding-bottom: 24px;">
 
-    <!-- NAME kept at the very top -->
-    <p class="hero-eyebrow-name">Leticia Corredato</p>
+    <!-- NAME first -->
+    <h1 class="hero-name">Leticia<br><span>Corredato</span></h1>
 
-    <!-- Big title -->
-    <h1 class="hero-name t" data-key="hero-title">Product Designer</h1>
-
-    <!-- Subtitle -->
-    <h2 class="hero-subtitle t" data-key="hero-subtitle">UX/UI · Data-Driven Growth</h2>
-
-    <!-- Quote / value proposition box -->
-    <div class="hero-badge t" data-key="hero-badge">Designing digital experiences that combine UX, data and CRM to build products people love and businesses grow.</div>
+    <!-- Role badge: AFTER name, no bullet dot -->
+    <div class="hero-badge t" data-key="hero-badge">Creative Strategist & Product Designer <br> · UX/UI, CRM & Performance Marketing</div>
 
     <!-- Value prop -->
     <p class="hero-value t" data-key="hero-value">
-      <strong>8+ years</strong> designing digital products and CRM experiences across
-      healthcare, mobility, retail and B2B. I use UX, design systems and data
-      to create intuitive solutions that drive impact and generate results.
+      <strong>9+ years</strong> turning data into products people actually use —
+      from digital interfaces and design systems to paid media campaigns that convert.
     </p>
 
     <!-- CTAs -->
     <div class="hero-ctas">
-      <a href="#cases" class="hero-cta-primary  t" data-key="hero-cta1">View Projects</a>
-      <a id="resumeBtn" href="assets/Product-UXUi-Designer_Leticia-Corredato_en.pdf" target="_blank" class="hero-cta-secondary t" data-key="hero-cta2">Download Resume</a>
-    </div>
-
-    <!-- Metric highlights -->
-    <div class="hero-highlights">
-      <div class="highlight">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/></svg>
-        <h3>8+</h3>
-        <span class="t" data-key="hl-1">Years of Experience</span>
-      </div>
-      <div class="highlight">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M3 9l9-6 9 6-9 6-9-6z" stroke="currentColor" stroke-width="1.6"/><path d="M3 9v6l9 6 9-6V9" stroke="currentColor" stroke-width="1.6"/></svg>
-        <h3>20+</h3>
-        <span class="t" data-key="hl-2">Products &amp; Campaigns</span>
-      </div>
-      <div class="highlight">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 20V10M11 20V4M18 20v-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-        <h3 class="t" data-key="hl-3-title">Data-Driven</h3>
-        <span class="t" data-key="hl-3">Decisions &amp; Experimentation</span>
-      </div>
-      <div class="highlight">
-        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="9" cy="8" r="3" stroke="currentColor" stroke-width="1.6"/><path d="M2 20c0-3.3 3-6 7-6s7 2.7 7 6" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="9" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M15.5 20c.3-2.6 2-4.6 4.5-5" stroke="currentColor" stroke-width="1.6"/></svg>
-        <h3>CRM</h3>
-        <span class="t" data-key="hl-4">Healthcare · Mobility · Retail · B2B</span>
-      </div>
+      <a href="#cases" class="hero-cta-primary  t" data-key="hero-cta1">View Success Cases</a>
+      <a href="#contact"   class="hero-cta-secondary t" data-key="hero-cta2">Let's Talk</a>
     </div>
   </div>
   <div class="scroll-hint"><span>scroll</span><div class="scroll-line"></div></div>
-</section>
-
-<div class="divider"></div>
-
-<!-- ══ HOW I WORK ══ -->
-<section id="how-i-work">
-  <div class="reveal">
-    <p class="section-label t" data-key="how-label">How I Work</p>
-    <h2 class="section-title t" data-key="how-title">My Design Process</h2>
-    <div class="neon-line" style="margin-left:auto;margin-right:auto;"></div>
-  </div>
-
-  <div class="process-row reveal">
-    <div class="process-step">
-      <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21s-7.5-4.6-9.5-9C1 8.2 3 5 6.5 5c2 0 3.3 1.1 4 2.1.7-1 2-2.1 4-2.1C18 5 20 8.2 18.5 12c-2 4.4-9.5 9-9.5 9z" stroke="currentColor" stroke-width="1.6"/></svg></div>
-      <h3 class="t" data-key="how-1-title">Discover</h3>
-      <p class="t" data-key="how-1-text">Understand users, data and business context.</p>
-    </div>
-    <div class="process-arrow"><svg viewBox="0 0 60 8" preserveAspectRatio="none"><line x1="0" y1="4" x2="60" y2="4" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 4"/></svg></div>
-    <div class="process-step">
-      <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></div>
-      <h3 class="t" data-key="how-2-title">Define</h3>
-      <p class="t" data-key="how-2-text">Frame the problem and define opportunities for impact.</p>
-    </div>
-    <div class="process-arrow"><svg viewBox="0 0 60 8" preserveAspectRatio="none"><line x1="0" y1="4" x2="60" y2="4" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 4"/></svg></div>
-    <div class="process-step">
-      <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 5.5l3 3L7 20H4v-3L15.5 5.5z" stroke="currentColor" stroke-width="1.6"/></svg></div>
-      <h3 class="t" data-key="how-3-title">Design</h3>
-      <p class="t" data-key="how-3-text">Ideate and design intuitive, scalable and accessible solutions.</p>
-    </div>
-    <div class="process-arrow"><svg viewBox="0 0 60 8" preserveAspectRatio="none"><line x1="0" y1="4" x2="60" y2="4" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 4"/></svg></div>
-    <div class="process-step">
-      <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 3h6M10 3v4L5 16a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3" stroke="currentColor" stroke-width="1.6"/></svg></div>
-      <h3 class="t" data-key="how-4-title">Validate</h3>
-      <p class="t" data-key="how-4-text">Prototype, test and iterate with users and data to refine the solution.</p>
-    </div>
-    <div class="process-arrow"><svg viewBox="0 0 60 8" preserveAspectRatio="none"><line x1="0" y1="4" x2="60" y2="4" stroke="currentColor" stroke-width="1.4" stroke-dasharray="3 4"/></svg></div>
-    <div class="process-step">
-      <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 20V10M11 20V4M18 20v-7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
-      <h3 class="t" data-key="how-5-title">Measure</h3>
-      <p class="t" data-key="how-5-text">Analyze results, learn and optimize continuously.</p>
-    </div>
-  </div>
 </section>
 
 <div class="divider"></div>
@@ -1263,52 +1102,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
       <div data-lang="en" class="active">
         <p>
-          Product Designer with <strong>8+ years</strong> of experience designing
-          digital products, interfaces and user experiences across healthcare,
-          mobility, retail and B2B.
+          UI/UX, Product and Growth Designer with 
+          <strong>9+ years</strong> of experience designing digital products,
+          data-driven interfaces, and high-conversion marketing experiences.
         </p>
 
         <p>
-          My work combines UX, UI and data analysis to create user-centered
-          solutions, optimize journeys and improve digital products.
+          Strong background in user experience, paid media, and performance-driven design —
+          combining visual design with data analysis to optimize user journeys and business outcomes.
         </p>
 
         <p>
-          I have collaborated with Product, Engineering, CRM, Marketing and
-          Business teams, transforming user needs into scalable experiences
-          through Design Systems, prototyping, experimentation and metrics.
-        </p>
-
-        <p>
-          Experienced with Figma, HTML/CSS, Looker Studio, Salesforce and
-          AI tools such as Claude and ChatGPT to accelerate research,
-          documentation and design exploration.
+          Recently expanded into creative strategy and data visualization —
+          dashboards, campaign performance, and paid media channels
+          (Meta, Google, YouTube). Proficient in Figma, Design Systems,
+          CRM, and front-end fundamentals (HTML/CSS).
+          Currently advancing in AI-driven design and product strategy.
         </p>
       </div>
 
       <div data-lang="pt">
         <p>
-          Product Designer com mais de <strong>8 anos</strong> de experiência
-          projetando produtos digitais, interfaces e experiências de usuário
-          nos setores de saúde, mobilidade, varejo e B2B.
+          UI/UX, Produto e Growth Designer com mais de 
+          <strong>9 anos</strong> de experiência na criação de produtos digitais,
+          interfaces orientadas por dados e soluções de marketing focadas em conversão.
         </p>
 
         <p>
-          Meu trabalho une UX, UI e análise de dados para criar soluções
-          centradas no usuário, otimizar jornadas e evoluir produtos digitais.
+          Experiência sólida em UX, mídia paga e design orientado à performance —
+          unindo criação visual e análise de dados para otimizar jornadas e resultados de negócio.
         </p>
 
         <p>
-          Já colaborei com times de Produto, Engenharia, CRM, Marketing e
-          Negócios, transformando necessidades de usuários em experiências
-          escaláveis por meio de Design Systems, prototipação, experimentação
-          e métricas.
-        </p>
-
-        <p>
-          Experiência com Figma, HTML/CSS, Looker Studio, Salesforce e
-          ferramentas de IA como Claude e ChatGPT para acelerar pesquisa,
-          documentação e exploração de design.
+          Atuação recente em estratégia criativa e visualização de dados —
+          dashboards, campanhas e canais de mídia paga
+          (Meta, Google, YouTube). Conhecimento em Figma,
+          Design System, CRM e front-end (HTML/CSS).
+          Aprimorando habilidades em IA e estratégia de produto.
         </p>
       </div>
 
@@ -1317,31 +1147,33 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- SKILLS -->
     <div class="skills-grid">
       
-      <!-- Grupo 1: Product Design -->
-      <span class="skill-tag">Product Design</span>
-      <span class="skill-tag">UX/UI</span>
-      <span class="skill-tag">Design Systems</span>
-      <span class="skill-tag">User Flows</span>
-
-      <!-- Grupo 2: Ferramentas de Design -->
+      <!-- Grupo 1: UI/UX e Design de Interface -->
+      <span class="skill-tag">UI/UX Design</span>
       <span class="skill-tag">Figma</span>
-      <span class="skill-tag">Prototyping</span>
+      <span class="skill-tag">Design Systems</span>
+
+      <!-- Grupo 2: Implementação/Front-end -->
       <span class="skill-tag">HTML / CSS</span>
       <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag">GitHub</span>
 
-      <!-- Grupo 3: CRM & Product Analytics -->
-      <span class="skill-tag">CRM</span>
-      <span class="skill-tag">Product Analytics</span>
+      <!-- Grupo 3: Criação Visual e Motion -->
+      <span class="skill-tag">Photoshop</span>
+      <span class="skill-tag">Illustrator</span>
+      <span class="skill-tag">After Effects</span>
+
+      <!-- Grupo 4: Estratégia e Performance (Onde os dados e CRM se encontram) -->
+      <span class="skill-tag">Meta Ads</span>
+      <span class="skill-tag">Google Ads</span>
+      <span class="skill-tag">Smartly.io</span>
+      <span class="skill-tag">Salesforce CRM</span>
+      <span class="skill-tag">RD Station</span>
       <span class="skill-tag">Looker Studio</span>
-      <span class="skill-tag">A/B Testing</span>
-      <span class="skill-tag">CRO</span>
-      <span class="skill-tag">Salesforce</span>
-
-      <!-- Grupo 4: AI Workflows -->
-      <span class="skill-tag">AI Workflows</span>
       
     </div>
 
+  </div>
+</section>
   </div>
 </section>
 
@@ -1581,18 +1413,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p class="tl-period" data-lang="en" style="display:block;">May 2024 – Aug 2025</p>
     <p class="tl-period" data-lang="pt">Mai 2024 – Ago 2025</p>
     <h3 class="tl-company">Hypera Pharma</h3>
-    <p class="tl-role">Product Designer (CRM &amp; Digital Experience)</p>
+    <p class="tl-role">Digital Designer / UI</p>
     <ul class="tl-desc" data-lang="en" style="display:block">
-    <li>Designed digital experiences for healthcare professionals across CRM, landing pages and digital platforms</li>
-    <li>Developed reusable components and Design Systems to ensure scalable and consistent experiences</li>
-    <li>Collaborated with Product, CRM and Business teams to improve user experience through data and continuous optimization</li>
-    <li>Designed the e-visita digital medical platform, prototyped in Figma</li>
+    <li>Created email marketing templates &amp; components using Salesforce</li>
+    <li>Designed CRM and WhatsApp journey flows; prototyped in Figma</li>
+    <li>Developed visual components with HTML/CSS</li>
+    <li>Designed the e-visita digital medical platform</li>
+    <li>Collaborated with BI, MarTech &amp; strategy teams to enhance KPIs and UX</li>
     </ul>
     <ul class="tl-desc" data-lang="pt">
-    <li>Projetou experiências digitais para profissionais de saúde em CRM, landing pages e plataformas digitais</li>
-    <li>Desenvolveu componentes reutilizáveis e Design Systems para garantir experiências escaláveis e consistentes</li>
-    <li>Colaborou com times de Produto, CRM e Negócios para melhorar a experiência do usuário por meio de dados e otimização contínua</li>
-    <li>Projetou a plataforma médica digital e-visita, prototipada no Figma</li>
+    <li>Criou templates e componentes de email marketing no Salesforce</li>
+    <li>Projetou fluxos de jornada CRM e WhatsApp; prototipou no Figma</li>
+    <li>Desenvolveu componentes visuais com HTML/CSS</li>
+    <li>Projetou a plataforma médica digital e-visita</li>
+    <li>Colaborou com equipes de BI, MarTech e estratégia</li>
     </ul>
     </div>
     </div>
@@ -1972,14 +1806,6 @@ function setLang(l) {
   // Re-apply active filter
   const activeBtn = document.querySelector('.filter-btn.active');
   if (activeBtn) filterGrid(activeBtn.dataset.cat || 'all', activeBtn);
-
-  // Update resume PDF link based on language
-  const resumeBtn = document.getElementById('resumeBtn');
-  if (resumeBtn) {
-    resumeBtn.href = l === 'en' 
-      ? 'assets/Product-UXUi-Designer_Leticia-Corredato_en.pdf'
-      : 'assets/Product-UXUi-Designer_Leticia-Corredato_pt.pdf';
-  }
 }
 
 const T = {
@@ -1988,33 +1814,13 @@ const T = {
   'nav-portfolio': { en:'Portfolio',        pt:'Portfólio' },
   'nav-exp':       { en:'Experience',       pt:'Experiência' },
   'nav-contact':   { en:'Contact',          pt:'Contato' },
-  'hero-title':    { en:'Product Designer', pt:'Product Designer' },
-  'hero-subtitle': { en:'UX/UI · Data-Driven Growth', pt:'UX/UI · Data-Driven Growth' },
-  'hero-badge':    { en:'Designing digital experiences that combine UX, data and CRM to build products people love and businesses grow.',
-                     pt:'Criando experiências digitais que unem UX, dados e CRM para desenvolver produtos que geram valor para usuários e negócios.' },
-  'hero-value':    { en:'<strong>8+ years</strong> designing digital products and CRM experiences across healthcare, mobility, retail and B2B. I use UX, design systems and data to create intuitive solutions that drive impact and generate results.',
-                     pt:'<strong>8+ anos</strong> projetando produtos digitais e experiências de CRM nos setores de saúde, mobilidade, varejo e B2B. Uso UX, design systems e dados para criar soluções intuitivas que geram impacto e resultados.' },
+  'hero-badge':    { en:'Creative Strategist & Product Designer · UX/UI, CRM & Performance Marketing', pt:'Creative Strategist & Product Designer · UX/UI, CRM & Performance Marketing' },
+  'hero-value':    { en:'<strong>9+ years</strong> turning data into products people actually use — from digital interfaces and design systems to paid media campaigns that convert.',
+                     pt:'<strong>9+ anos</strong> transformando dados em produtos que as pessoas realmente usam — de interfaces e design systems a campanhas de mídia paga que convertem.' },
   'stat-exp':      { en:'Years exp.',  pt:'Anos exp.' },
   'stat-co':       { en:'Companies',   pt:'Empresas' },
-  'hero-cta1':     { en:'View Projects', pt:'Ver Projetos' },
-  'hero-cta2':     { en:'Download Resume', pt:'Baixar Currículo' },
-  'hl-1':          { en:'Years of Experience', pt:'Anos de Experiência' },
-  'hl-2':          { en:'Products & Campaigns', pt:'Produtos & Campanhas' },
-  'hl-3-title':    { en:'Data-Driven', pt:'Data-Driven' },
-  'hl-3':          { en:'Decisions & Experimentation', pt:'Decisões & Experimentação' },
-  'hl-4':          { en:'Healthcare · Mobility · Retail · B2B', pt:'Saúde · Mobilidade · Varejo · B2B' },
-  'how-label':     { en:'How I Work', pt:'Como Eu Trabalho' },
-  'how-title':     { en:'My Design Process', pt:'Meu Processo de Design' },
-  'how-1-title':   { en:'Discover', pt:'Descobrir' },
-  'how-1-text':    { en:'Understand users, data and business context.', pt:'Entender usuários, dados e o contexto do negócio.' },
-  'how-2-title':   { en:'Define', pt:'Definir' },
-  'how-2-text':    { en:'Frame the problem and define opportunities for impact.', pt:'Definir o problema e mapear oportunidades de impacto.' },
-  'how-3-title':   { en:'Design', pt:'Desenhar' },
-  'how-3-text':    { en:'Ideate and design intuitive, scalable and accessible solutions.', pt:'Idealizar e desenhar soluções intuitivas, escaláveis e acessíveis.' },
-  'how-4-title':   { en:'Validate', pt:'Validar' },
-  'how-4-text':    { en:'Prototype, test and iterate with users and data to refine the solution.', pt:'Prototipar, testar e iterar com usuários e dados para refinar a solução.' },
-  'how-5-title':   { en:'Measure', pt:'Medir' },
-  'how-5-text':    { en:'Analyze results, learn and optimize continuously.', pt:'Analisar resultados, aprender e otimizar continuamente.' },
+  'hero-cta1':     { en:'View Success Cases', pt:'Ver Cases de Sucesso' },
+  'hero-cta2':     { en:"Let's Talk",     pt:'Fale Comigo' },
   'about-label':   { en:'Who I am',       pt:'Quem sou' },
   'about-title':   { en:'About',          pt:'Sobre' },
   'case-label':    { en:'Selected Works', pt:'Projetos Selecionados' },
@@ -2482,12 +2288,7 @@ window.addEventListener('popstate', () => {
    GA4 — EVENTOS ESTRATÉGICOS
 ══════════════════════════════════════════ */
 function gaEvent(name, params) {
-  // 1) Envia direto pro GA4 (gtag.js)
   if (typeof gtag === 'function') gtag('event', name, params || {});
-  // 2) Também empurra um objeto padrão { event: name, ... } no dataLayer
-  //    para que o GTM (GTM-KTT2SGNH) possa usar isso como gatilho de Evento Personalizado
-  window.dataLayer = window.dataLayer || [];
-  window.dataLayer.push(Object.assign({ event: name }, params || {}));
 }
 
 function gaInitEvents() {
@@ -2530,39 +2331,20 @@ function gaInitEvents() {
     });
   });
 
-  // ── 6. Scroll até seções — via IntersectionObserver (visita + tempo de permanência)
-  const sections = ['hero', 'how-i-work', 'about', 'cases', 'portfolio', 'experiences', 'contact'];
+  // ── 6. Scroll até seções — via IntersectionObserver
+  const sections = ['about', 'cases', 'portfolio', 'experiences', 'contact'];
   const sectionSeen = new Set();
-  const sectionEnterTime = {};
   const sectionObs = new IntersectionObserver(entries => {
     entries.forEach(e => {
-      const id = e.target.id;
-      if (e.isIntersecting) {
-        sectionEnterTime[id] = Date.now();
-        if (!sectionSeen.has(id)) {
-          sectionSeen.add(id);
-          gaEvent('section_view', { section: id });
-        }
-      } else if (sectionEnterTime[id]) {
-        const seconds = Math.round((Date.now() - sectionEnterTime[id]) / 1000);
-        delete sectionEnterTime[id];
-        if (seconds >= 1) {
-          gaEvent('section_time', { section: id, seconds_spent: seconds });
-        }
+      if (e.isIntersecting && !sectionSeen.has(e.target.id)) {
+        sectionSeen.add(e.target.id);
+        gaEvent('section_view', { section: e.target.id });
       }
     });
   }, { threshold: 0.35 });
   sections.forEach(id => {
     const el = document.getElementById(id);
     if (el) sectionObs.observe(el);
-  });
-
-  // Ao fechar/sair da página, fecha as seções ainda "abertas" e reporta o tempo
-  window.addEventListener('beforeunload', () => {
-    Object.keys(sectionEnterTime).forEach(id => {
-      const seconds = Math.round((Date.now() - sectionEnterTime[id]) / 1000);
-      if (seconds >= 1) gaEvent('section_time', { section: id, seconds_spent: seconds });
-    });
   });
 
   // ── 7. Clique nos CTAs do hero
@@ -2593,135 +2375,6 @@ function gaInitEvents() {
       gaEvent('gallery_navigate', { direction: btn.classList.contains('lb-prev') ? 'prev' : 'next' });
     });
   });
-
-  // ── 11. Cliques no menu de navegação (desktop + mobile)
-  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
-    a.addEventListener('click', () => {
-      gaEvent('nav_click', {
-        link_label: a.textContent.trim(),
-        menu_type: a.closest('.mobile-menu') ? 'mobile' : 'desktop'
-      });
-    });
-  });
-
-  // ── 12. Interesse em Skills (quais tags o usuário clica)
-  document.querySelectorAll('.skill-tag').forEach(tag => {
-    tag.addEventListener('click', () => {
-      gaEvent('skill_interest', { skill: tag.textContent.trim() });
-    });
-  });
-
-  // ── 13. Métricas do Hero (clique + hover com permanência mínima)
-  document.querySelectorAll('.hero-highlights .highlight').forEach(card => {
-    const label = (card.querySelector('h3')?.textContent.trim() || '') + ' - ' +
-                  (card.querySelector('span')?.textContent.trim() || '');
-    card.addEventListener('click', () => gaEvent('metric_click', { metric: label }));
-    let hoverTimer;
-    card.addEventListener('mouseenter', () => {
-      hoverTimer = setTimeout(() => gaEvent('metric_hover', { metric: label }), 600);
-    });
-    card.addEventListener('mouseleave', () => clearTimeout(hoverTimer));
-  });
-
-  // ── 14. Etapas do "How I Work" (clique + hover)
-  document.querySelectorAll('.process-step').forEach(step => {
-    const label = step.querySelector('h3')?.textContent.trim();
-    step.addEventListener('click', () => gaEvent('process_step_click', { step: label }));
-    let hoverTimer;
-    step.addEventListener('mouseenter', () => {
-      hoverTimer = setTimeout(() => gaEvent('process_step_hover', { step: label }), 600);
-    });
-    step.addEventListener('mouseleave', () => clearTimeout(hoverTimer));
-  });
-
-  // ── 15. Interesse por empresa na timeline de Experiência (hover)
-  document.querySelectorAll('.tl-item').forEach(item => {
-    const company = item.querySelector('.tl-company')?.textContent.trim();
-    const role = item.querySelector('.tl-role')?.textContent.trim();
-    let hoverTimer;
-    item.addEventListener('mouseenter', () => {
-      hoverTimer = setTimeout(() => gaEvent('experience_interest', { company, role }), 800);
-    });
-    item.addEventListener('mouseleave', () => clearTimeout(hoverTimer));
-  });
-
-  // ── 16. Cliques nos itens do Portfolio geral (categoria de interesse)
-  document.querySelectorAll('.portfolio-item').forEach(item => {
-    item.addEventListener('click', () => {
-      gaEvent('portfolio_item_click', { category: item.dataset.cat || 'unknown' });
-    });
-  });
-
-  // ── 17. Download de currículo / links externos e arquivos
-  document.querySelectorAll('a[href]').forEach(a => {
-    if (a.closest('.social-link') || a.classList.contains('social-link')) return;
-    if (a.closest('.case-card')) return; // já rastreado via case_click
-    const href = a.getAttribute('href') || '';
-    const isFile = /\.(pdf|docx?|xlsx?|zip)$/i.test(href);
-    const isExternal = /^https?:\/\//i.test(href) && href.indexOf(window.location.hostname) === -1;
-    if (isFile || isExternal) {
-      a.addEventListener('click', () => {
-        gaEvent(isFile ? 'file_download' : 'outbound_click', {
-          link_url: href,
-          link_text: a.textContent.trim().slice(0, 60)
-        });
-      });
-    }
-  });
-
-  // ── 18. Contato — cliques em email / telefone / endereço
-  document.querySelectorAll('a[href^="mailto:"], a[href^="tel:"]').forEach(a => {
-    a.addEventListener('click', () => {
-      gaEvent('contact_click', {
-        type: a.getAttribute('href').startsWith('mailto:') ? 'email' : 'phone',
-        value: a.getAttribute('href').replace('mailto:', '').replace('tel:', '')
-      });
-    });
-  });
-
-  // ── 19. Profundidade de scroll (25% / 50% / 75% / 90% / 100%)
-  (function initScrollDepth() {
-    const marks = [25, 50, 75, 90, 100];
-    const seen = new Set();
-    let ticking = false;
-    function checkScroll() {
-      ticking = false;
-      const scrollTop = window.scrollY || document.documentElement.scrollTop;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight <= 0) return;
-      const pct = Math.round((scrollTop / docHeight) * 100);
-      marks.forEach(m => {
-        if (pct >= m && !seen.has(m)) {
-          seen.add(m);
-          gaEvent('scroll_depth', { percent_scrolled: m });
-        }
-      });
-    }
-    window.addEventListener('scroll', () => {
-      if (!ticking) { requestAnimationFrame(checkScroll); ticking = true; }
-    }, { passive: true });
-  })();
-
-  // ── 20. Tempo de permanência na página (heartbeat + total ao sair)
-  (function initEngagementTime() {
-    const start = Date.now();
-    const pings = [15, 30, 60, 120, 180, 300]; // segundos
-    pings.forEach(sec => {
-      setTimeout(() => {
-        if (document.visibilityState !== 'hidden') {
-          gaEvent('time_on_page', { seconds: sec });
-        }
-      }, sec * 1000);
-    });
-    function sendTotal() {
-      const totalSeconds = Math.round((Date.now() - start) / 1000);
-      gaEvent('page_engagement_time', { seconds: totalSeconds });
-    }
-    window.addEventListener('beforeunload', sendTotal);
-    document.addEventListener('visibilitychange', () => {
-      if (document.visibilityState === 'hidden') sendTotal();
-    });
-  })();
 }
 
 /* ══════════════════════════════════════════
