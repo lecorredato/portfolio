@@ -2328,7 +2328,14 @@ function lbImgClick() {
   const cfg = IMAGE_LINKS[currentGalleryKey];
   if (!cfg) return;
   const isLast = lbIdx === currentGallery.length - 1;
-  if (cfg.last && isLast) window.open(cfg.last, '_blank', 'noopener');
+  if (cfg.last && isLast) {
+    gaEvent('gallery_image_link_click', {
+      gallery: currentGalleryKey || 'unknown',
+      slide: lbIdx + 1,
+      destination: cfg.last
+    });
+    window.open(cfg.last, '_blank', 'noopener');
+  }
 }
 let currentGalleryKey = '';
 
@@ -2368,7 +2375,11 @@ function lb(galleryKey, i) {
   rpCheck(galleryKey);
 
   // 6. GA4 — abertura de galeria
-  gaEvent('gallery_open', { gallery: altSlug });
+  gaEvent('gallery_open', {
+    gallery: altSlug,
+    language: lang,
+    project_name: altSlug
+  });
 }
 
 function getMediaType(url) {
@@ -2398,8 +2409,14 @@ function toEmbedUrl(url, type) {
 function lbTogglePlay() {
   const vid = document.getElementById('lbVideo');
   const btn = document.getElementById('lbPlayPause');
+  const action = vid.paused ? 'play' : 'pause';
   if (vid.paused) { vid.play(); btn.textContent = '⏸ Pause'; }
   else            { vid.pause(); btn.textContent = '▶ Play'; }
+  gaEvent('gallery_media_toggle', {
+    action,
+    gallery: currentGalleryKey || 'unknown',
+    slide: lbIdx + 1
+  });
 }
 
 function updateLightbox() {
@@ -2450,6 +2467,10 @@ function updateLightbox() {
 }
 
 function lbClose() {
+  gaEvent('gallery_close', {
+    gallery: currentGalleryKey || 'unknown',
+    slide: lbIdx + 1
+  });
   document.getElementById('lightbox').classList.remove('open');
   document.body.style.overflow = '';
   const vid = document.getElementById('lbVideo');
@@ -2656,7 +2677,11 @@ function gaInitEvents() {
   // ── 10. Engajamento com lightbox — navegação entre slides
   document.querySelectorAll('.lb-nav').forEach(btn => {
     btn.addEventListener('click', () => {
-      gaEvent('gallery_navigate', { direction: btn.classList.contains('lb-prev') ? 'prev' : 'next' });
+      gaEvent('gallery_navigate', {
+        direction: btn.classList.contains('lb-prev') ? 'prev' : 'next',
+        gallery: currentGalleryKey || 'unknown',
+        slide: lbIdx + 1
+      });
     });
   });
 
@@ -2714,7 +2739,13 @@ function gaInitEvents() {
   // ── 16. Cliques nos itens do Portfolio geral (categoria de interesse)
   document.querySelectorAll('.portfolio-item').forEach(item => {
     item.addEventListener('click', () => {
-      gaEvent('portfolio_item_click', { category: item.dataset.cat || 'unknown' });
+      const img = item.querySelector('img');
+      const activeGrid = document.querySelector('.portfolio-grid.active');
+      gaEvent('portfolio_item_click', {
+        category: item.dataset.cat || 'unknown',
+        project_name: img?.getAttribute('alt') || 'unknown',
+        language: activeGrid?.getAttribute('data-lang') || 'en'
+      });
     });
   });
 
@@ -2908,8 +2939,14 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       const grid = document.getElementById(btn.dataset.grid);
       if (!grid) return;
+      const wasExpanded = grid.classList.contains('is-expanded');
       grid.classList.toggle('is-expanded');
       syncPortfolioGrid(grid);
+      gaEvent('portfolio_expand_toggle', {
+        action: wasExpanded ? 'collapse' : 'expand',
+        grid: btn.dataset.grid,
+        language: grid.getAttribute('data-lang') || 'en'
+      });
     });
   });
 
