@@ -1099,7 +1099,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <button id="btnPT" onclick="setLang('pt', true)">PT</button>
       </div>
       <!-- Sun / Moon -->
-      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme(true)" aria-label="Toggle theme">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
       </button>
       <!-- Font size / Acessibilidade -->
@@ -1143,7 +1143,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="lang-sep"></div>
       <button id="btnPTMob" onclick="setLang('pt', true)">PT</button>
     </div>
-    <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme()" aria-label="Toggle theme">
+    <button class="theme-btn" id="themeBtnMob" onclick="toggleTheme(true)" aria-label="Toggle theme">
       <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="5"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none"/></svg>
     </button>
     <button class="fs-mob-menu" id="fsMobMenu" onclick="event.stopPropagation();fsToggle()" aria-label="Tamanho do texto">
@@ -1898,13 +1898,20 @@ window.addEventListener('scroll', () => {
 /* ── MOBILE MENU ── */
 const ham = document.getElementById('hamburger');
 
+function closeMenu() {
+  const menu = document.getElementById('mobileMenu');
+  if (menu) menu.classList.remove('open');
+  if (ham) ham.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
 function toggleMenu() {
   const menu = document.getElementById('mobileMenu');
-  const ham = document.getElementById('hamburger');
+  const hamburger = document.getElementById('hamburger');
 
   // Alterna a classe 'open' em ambos ao mesmo tempo
   const isOpen = menu.classList.toggle('open');
-  if (ham) ham.classList.toggle('open');
+  if (hamburger) hamburger.classList.toggle('open');
 
   // Trava ou libera o scroll do corpo da página
   document.body.style.overflow = isOpen ? 'hidden' : '';
@@ -1915,7 +1922,7 @@ const SUN = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><circle
 const MOON = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" fill="currentColor"/></svg>';
 let theme = 'dark';
 
-function toggleTheme() {
+function toggleTheme(fromUserAction = false) {
   theme = theme === 'dark' ? 'light' : 'dark';
   document.documentElement.setAttribute('data-theme', theme);
   const icon = theme === 'dark' ? SUN : MOON;
@@ -1928,6 +1935,10 @@ function toggleTheme() {
     logo.src = 'https://static.wixstatic.com/media/b72a24_02ca24368e834508a23fb0a12617db96~mv2.png';
   } else {
     logo.src = 'https://static.wixstatic.com/media/b72a24_3acfa2609c654e7cbef5f9d6bc270343~mv2.png';
+  }
+
+  if (fromUserAction && window.innerWidth <= 560) {
+    closeMenu();
   }
 }
 
@@ -1969,6 +1980,9 @@ function getPreferredLanguage() {
   const saved = localStorage.getItem('lc_lang_pref');
   if (saved === 'pt' || saved === 'en') return saved;
 
+  const browserLang = (navigator.language || navigator.languages?.[0] || '').toLowerCase();
+  if (browserLang.startsWith('pt')) return 'pt';
+
   return 'en';
 }
 
@@ -1983,6 +1997,7 @@ function updateLanguageHash(l) {
 
 function setLang(l, fromUserAction = false) {
   lang = l;
+  document.documentElement.lang = l;
   persistLanguagePreference(l);
 
   // Button states — desktop
@@ -2038,6 +2053,10 @@ function setLang(l, fromUserAction = false) {
   resetPortfolioGridState();
   const activeBtn = document.querySelector('.filter-btn.active');
   if (activeBtn) filterGrid(activeBtn.dataset.cat || 'all', activeBtn);
+
+  if (fromUserAction && window.innerWidth <= 560) {
+    closeMenu();
+  }
 
   // Update resume PDF link based on language
   const resumeBtn = document.getElementById('resumeBtn');
