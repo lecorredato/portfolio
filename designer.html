@@ -1762,8 +1762,32 @@ function handleGesture() {
 /* ── LANGUAGE ── */
 let lang = 'en';
 
-function setLang(l) {
+function getPreferredLanguage() {
+  const rawHash = window.location.hash.replace('#', '').toLowerCase().trim();
+  if (rawHash === 'pt' || rawHash === 'en') return rawHash;
+
+  const saved = localStorage.getItem('lc_lang_pref');
+  if (saved === 'pt' || saved === 'en') return saved;
+
+  const browserLang = (navigator.language || navigator.languages?.[0] || '').toLowerCase();
+  if (browserLang.startsWith('pt')) return 'pt';
+
+  return 'en';
+}
+
+function persistLanguagePreference(l) {
+  localStorage.setItem('lc_lang_pref', l);
+}
+
+function updateLanguageHash(l) {
+  const nextHash = l === 'en' ? 'en' : 'pt';
+  history.replaceState(null, '', `${window.location.pathname}#${nextHash}`);
+}
+
+function setLang(l, fromUserAction = false) {
   lang = l;
+  persistLanguagePreference(l);
+  updateCookieBannerLanguage();
 
   // Button states — desktop
   document.getElementById('btnEN').classList.toggle('active', l === 'en');
@@ -1802,6 +1826,11 @@ function setLang(l) {
   cPT.style.display = showEN ? 'none' : 'grid';
   cEN.classList.toggle('active', showEN);
   cPT.classList.toggle('active', !showEN);
+
+  const currentHash = window.location.hash.replace('#', '').toLowerCase().trim();
+  if (fromUserAction || !currentHash) {
+    updateLanguageHash(l);
+  }
 
   // Re-apply active filter
   const activeBtn = document.querySelector('.filter-btn.active');
@@ -2448,21 +2477,9 @@ function filterGrid(cat, btn) {
 
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
+  const initialLang = getPreferredLanguage();
+  setLang(initialLang);
   updateCookieBannerLanguage();
-
-  // Default: EN visible
-  document.querySelectorAll('[data-lang="en"]').forEach(el => {
-    if (!el.classList.contains('portfolio-grid') && !el.classList.contains('cases-grid'))
-      el.style.display = 'block';
-  });
-  document.querySelectorAll('[data-lang="pt"]').forEach(el => {
-    if (!el.classList.contains('portfolio-grid') && !el.classList.contains('cases-grid'))
-      el.style.display = 'none';
-  });
-  document.getElementById('gridEN').style.display  = 'grid';
-  document.getElementById('gridPT').style.display  = 'none';
-  document.getElementById('casesEN').style.display = 'grid';
-  document.getElementById('casesPT').style.display = 'none';
 
   // Scroll reveal
   const obs = new IntersectionObserver(entries => {
