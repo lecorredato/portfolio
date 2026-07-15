@@ -2220,6 +2220,36 @@ document.addEventListener('keydown', e => {
 /* ══════════════════════════════════════════
    COOKIE CONSENT
 ══════════════════════════════════════════ */
+function getCookieBannerLanguage() {
+  const browserLang = (navigator.language || navigator.languages?.[0] || '').toLowerCase();
+  return browserLang.startsWith('pt') ? 'pt' : 'en';
+}
+
+function updateCookieBannerLanguage() {
+  const banner = document.getElementById('cookieBanner');
+  if (!banner) return;
+
+  const bannerLang = getCookieBannerLanguage();
+  const isPt = bannerLang === 'pt';
+  const textEl = banner.querySelector('.cb-text');
+  const declineBtn = banner.querySelector('.cb-btn-decline');
+  const acceptBtn = banner.querySelector('.cb-btn-accept');
+
+  if (textEl) {
+    textEl.textContent = isPt
+      ? 'Usamos cookies para analisar o tráfego e melhorar a experiência no site. Nenhum dado é vendido ou compartilhado com terceiros para publicidade.'
+      : 'We use cookies to analyze traffic and improve your experience on this site. No data is sold or shared with third parties for advertising.';
+  }
+
+  if (declineBtn) {
+    declineBtn.textContent = isPt ? 'Recusar' : 'Decline';
+  }
+
+  if (acceptBtn) {
+    acceptBtn.textContent = isPt ? 'Aceitar' : 'Accept';
+  }
+}
+
 function cbAccept() {
   localStorage.setItem('lc_cookie_consent', 'accepted');
   gtag('consent', 'update', { analytics_storage: 'granted' });
@@ -2418,6 +2448,8 @@ function filterGrid(cat, btn) {
 
 /* ── INIT ── */
 document.addEventListener('DOMContentLoaded', () => {
+  updateCookieBannerLanguage();
+
   // Default: EN visible
   document.querySelectorAll('[data-lang="en"]').forEach(el => {
     if (!el.classList.contains('portfolio-grid') && !el.classList.contains('cases-grid'))
@@ -2463,13 +2495,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- ══ COOKIE BANNER ══ -->
 <div id="cookieBanner">
-  <p class="cb-text">
-    Uso cookies para analisar o tráfego e melhorar a experiência no site.
-    Nenhum dado é vendido ou compartilhado com terceiros para publicidade.
-  </p>
+  <p class="cb-text"></p>
   <div class="cb-actions">
-    <button class="cb-btn cb-btn-decline" onclick="cbDecline()">Recusar</button>
-    <button class="cb-btn cb-btn-accept"  onclick="cbAccept()">Aceitar</button>
+    <button class="cb-btn cb-btn-decline" onclick="cbDecline()"></button>
+    <button class="cb-btn cb-btn-accept"  onclick="cbAccept()"></button>
   </div>
 </div>
 
