@@ -9,7 +9,10 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'G-8ZM0P67L3H');
+  gtag('config', 'G-8ZM0P67L3H', {
+    page_title: document.title,
+    page_location: window.location.href
+  });
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -219,10 +222,10 @@ nav {
 .met-d{font-size:0.96rem;line-height:1.7;color:var(--text-muted);}
 .tag{border:1px solid rgba(232,96,26,0.25);border-radius:4px;padding:5px 14px;font-family:'Space Mono',monospace;font-size:0.76rem;letter-spacing:0.1em;color:#c44a10;text-transform:uppercase;background:rgba(232,96,26,0.05);}
 
-.proto-layout{display:grid;grid-template-columns:1fr 390px;grid-template-areas:"text proto" "cards cards";gap:18px 52px;align-items:start;}
+.proto-layout{display:grid;grid-template-columns:minmax(0,1fr) 390px;grid-template-areas:"text proto" "cards proto";gap:18px 52px;align-items:start;}
 .proto-text{grid-area:text;}
-.proto-frame{grid-area:proto;width:390px;}
-.proto-cards{grid-area:cards;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-content:start;}
+.proto-frame{grid-area:proto;width:390px;justify-self:end;}
+.proto-cards{grid-area:cards;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-content:start;}
 
 .num-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 32px;}
 
@@ -332,6 +335,8 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
   .covmeta{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
   .mdiv{display:none;}
   footer{padding:48px 18px 28px;}
+}
+@media(max-width:760px){
   .proto-layout{grid-template-columns:1fr;grid-template-areas:"text" "proto" "cards";}
   .proto-frame{width:100%!important;justify-self:center;}
   .proto-frame .proto-card{width:100%!important;height:520px!important;}
@@ -593,24 +598,40 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
   <p class="ey">05 — <span data-lang="en">Touchpoints</span><span data-lang="pt">Pontos de Contato</span></p>
   <h2 class="ch2"><span data-lang="en">From Journey to</span><span data-lang="pt">Da Jornada à</span><br><em><span data-lang="en">Digital Experience</span><span data-lang="pt">Experiência Digital</span></em></h2>
   <div class="aline"></div>
-  <p class="lead" data-lang="en" style="max-width:760px;">The journey was translated into a solution organized across <strong>several connected touchpoints</strong>, rather than a single standalone screen. The goal was a more continuous and coherent experience across all of them.</p>
-  <p class="lead" data-lang="pt" style="max-width:760px;">A jornada foi traduzida em uma solução organizada em <strong>vários pontos de contato conectados</strong>, em vez de uma única tela isolada. O objetivo era uma experiência mais contínua e coerente entre todos eles.</p>
-  <div class="touch-row">
+  <p class="lead" data-lang="en" style="max-width:760px;">The journey was translated into a solution organized across <strong>connected touchpoints</strong>, rather than a single standalone screen. CRM was the engine that triggered delivery — through email, SMS or WhatsApp — of the link that opened the e-Visita content experience.</p>
+  <p class="lead" data-lang="pt" style="max-width:760px;">A jornada foi traduzida em uma solução organizada em <strong>pontos de contato conectados</strong>, em vez de uma única tela isolada. O CRM era o motor que disparava a entrega — por e-mail, SMS ou WhatsApp — do link que abria a experiência de conteúdo da e-Visita.</p>
+
+  <div class="flow-row">
+    <div class="flow-step">
+      <div class="flow-num">1</div>
+      <svg class="flow-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 8h18M8 4v4" stroke="currentColor" stroke-width="1.6"/></svg>
+      <p><span data-lang="en">CRM (Salesforce) — journey engine</span><span data-lang="pt">CRM (Salesforce) — motor da jornada</span></p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-num">2</div>
+      <svg class="flow-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <p><span data-lang="en">Delivered via Email, SMS &amp; WhatsApp</span><span data-lang="pt">Entregue por E-mail, SMS e WhatsApp</span></p>
+    </div>
+    <div class="flow-arrow">→</div>
+    <div class="flow-step">
+      <div class="flow-num">3</div>
+      <svg class="flow-icon" viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="1.6"/><line x1="10" y1="19" x2="14" y2="19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <p><span data-lang="en">Doctor opens the e-Visita experience</span><span data-lang="pt">Médico abre a experiência e-Visita</span></p>
+    </div>
+  </div>
+
+  <p class="lead" data-lang="en" style="max-width:760px;margin-top:32px;">Two more touchpoints ran in parallel, <strong>always available</strong> regardless of the CRM cadence:</p>
+  <p class="lead" data-lang="pt" style="max-width:760px;margin-top:32px;">Mais dois pontos de contato funcionavam em paralelo, <strong>sempre disponíveis</strong> independentemente da cadência do CRM:</p>
+
+  <div class="touch-row" style="grid-template-columns:repeat(2,1fr);max-width:600px;">
     <div class="touch-box">
-      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 8h18M8 4v4" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span data-lang="en">CRM (Salesforce)</span><span data-lang="pt">CRM (Salesforce)</span>
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span data-lang="en">Company portal — access anytime</span><span data-lang="pt">Portal da empresa — acesso a qualquer momento</span>
     </div>
     <div class="touch-box">
-      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <span data-lang="en">Email</span><span data-lang="pt">E-mail</span>
-    </div>
-    <div class="touch-box">
-      <svg viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-3.3-6.4L20 4l-1 3.9A7.96 7.96 0 0 1 20 12z" stroke="currentColor" stroke-width="1.6"/></svg>
-      <span data-lang="en">WhatsApp</span><span data-lang="pt">WhatsApp</span>
-    </div>
-    <div class="touch-box">
-      <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="1.6"/><line x1="10" y1="19" x2="14" y2="19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
-      <span data-lang="en">e-Visita content experience</span><span data-lang="pt">Experiência de conteúdo e-Visita</span>
+      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="17.2" cy="6.8" r="0.8" fill="currentColor"/></svg>
+      <span data-lang="en">Instagram — events &amp; brand awareness</span><span data-lang="pt">Instagram — eventos e reconhecimento de marca</span>
     </div>
   </div>
 </div>
@@ -649,6 +670,8 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
         target="_blank"
         rel="noopener"
         class="proto-card"
+        data-ga-event="prototype_click"
+        data-ga-label="Figma Prototype"
         style="display:flex;flex-direction:column;width:390px;height:720px;border-radius:12px;overflow:hidden;border:1px solid rgba(232,96,26,0.28);box-shadow:0 12px 48px rgba(0,0,0,0.45);position:relative;text-decoration:none;background:var(--card-bg);transition:border-color 0.3s,box-shadow 0.3s;"
         onmouseenter="this.style.borderColor='#e8601a';this.style.boxShadow='0 16px 60px rgba(232,96,26,0.25)'"
         onmouseleave="this.style.borderColor='rgba(232,96,26,0.28)';this.style.boxShadow='0 12px 48px rgba(0,0,0,0.45)'"
@@ -809,14 +832,14 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
       </div>
     </div>
     <div class="tags" style="justify-content:center;margin-top:28px;">
-      <span class="tag">UX/UI Design</span>
-      <span class="tag">User Journeys</span>
-      <span class="tag">Information Architecture</span>
-      <span class="tag">Digital Experiences</span>
-      <span class="tag">CRM Experience</span>
-      <span class="tag">Cross-functional Collaboration</span>
+      <span class="tag" data-ga-event="tag_click" data-ga-label="UX/UI Design">UX/UI Design</span>
+      <span class="tag" data-ga-event="tag_click" data-ga-label="User Journeys">User Journeys</span>
+      <span class="tag" data-ga-event="tag_click" data-ga-label="Information Architecture">Information Architecture</span>
+      <span class="tag" data-ga-event="tag_click" data-ga-label="Digital Experiences">Digital Experiences</span>
+      <span class="tag" data-ga-event="tag_click" data-ga-label="CRM Experience">CRM Experience</span>
+      <span class="tag" data-ga-event="tag_click" data-ga-label="Cross-functional Collaboration">Cross-functional Collaboration</span>
     </div>
-    <a href="https://lecorredato.github.io/portfolio/" class="backbtn">
+    <a href="https://lecorredato.github.io/portfolio/" class="backbtn" data-ga-event="back_to_portfolio_click" data-ga-label="Back to Portfolio">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
       <span data-lang="en">Back to Portfolio</span><span data-lang="pt">Voltar ao Portfólio</span>
     </a>
@@ -833,19 +856,19 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
 </h2>
   <p class="footer-sub">leticiacorredato@gmail.com &nbsp;·&nbsp; +55 11 96620-3733</p>
   <div class="social-links">
-    <a class="social-link" href="mailto:leticiacorredato@gmail.com" title="Email">
+    <a class="social-link" href="mailto:leticiacorredato@gmail.com" title="Email" data-ga-event="social_click" data-ga-label="Email">
       <img src="https://static.wixstatic.com/media/b72a24_8452b0d797424bc8a699146518b5ca5b~mv2.png" alt="Email">
     </a>
-    <a class="social-link" href="https://api.whatsapp.com/send?phone=5511966203733" target="_blank" rel="noopener" title="WhatsApp">
+    <a class="social-link" href="https://api.whatsapp.com/send?phone=5511966203733" target="_blank" rel="noopener" title="WhatsApp" data-ga-event="social_click" data-ga-label="WhatsApp">
       <img src="https://static.wixstatic.com/media/b72a24_c23be33be3d64cec883c38cccee56207~mv2.png" alt="WhatsApp">
     </a>
-    <a class="social-link" href="https://lecorredato.github.io/portfolio/blog" target="_blank" rel="noopener" title="Updates">
+    <a class="social-link" href="https://lecorredato.github.io/portfolio/blog" target="_blank" rel="noopener" title="Updates" data-ga-event="social_click" data-ga-label="Updates">
       <img src="https://static.wixstatic.com/media/b72a24_d0eee958e53a4ab3845dafa3f008c13d~mv2.png" alt="Updates">
     </a>
-    <a class="social-link" href="https://www.behance.net/portfoliolecorredato" target="_blank" rel="noopener" title="Behance">
+    <a class="social-link" href="https://www.behance.net/portfoliolecorredato" target="_blank" rel="noopener" title="Behance" data-ga-event="social_click" data-ga-label="Behance">
       <img src="https://static.wixstatic.com/media/b72a24_0db6f750f18c49c0af242f2f7cee2201~mv2.png" alt="Behance">
     </a>
-    <a class="social-link" href="https://www.linkedin.com/in/lecorredato/" target="_blank" rel="noopener" title="LinkedIn">
+    <a class="social-link" href="https://www.linkedin.com/in/lecorredato/" target="_blank" rel="noopener" title="LinkedIn" data-ga-event="social_click" data-ga-label="LinkedIn">
       <img src="https://static.wixstatic.com/media/b72a24_2ba7e9436bab46e4beb80551640ee0a3~mv2.png" alt="LinkedIn">
     </a>
   </div>
@@ -976,7 +999,41 @@ function gaEvent(name, params) {
   window.dataLayer.push(Object.assign({ event: name }, params || {}));
 }
 
+function trackCustomInteractions() {
+  document.querySelectorAll('[data-ga-event]').forEach(el => {
+    el.addEventListener('click', () => {
+      const eventName = el.getAttribute('data-ga-event');
+      const label = el.getAttribute('data-ga-label') || el.textContent.trim() || 'element';
+      gaEvent(eventName, {
+        element_label: label,
+        element_type: el.tagName.toLowerCase()
+      });
+    });
+  });
+
+  document.querySelectorAll('a[href]').forEach(a => {
+    const href = a.getAttribute('href') || '';
+    const isExternal = /^https?:\/\//i.test(href) && !href.includes(window.location.hostname);
+    if (!isExternal) return;
+    if (a.classList.contains('social-link') || a.classList.contains('backbtn')) return;
+
+    a.addEventListener('click', () => {
+      gaEvent('outbound_click', {
+        link_url: href,
+        link_label: a.textContent.trim() || a.getAttribute('title') || 'external_link'
+      });
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  gaEvent('case_study_view', {
+    page_title: document.title,
+    page_location: window.location.href
+  });
+
+  trackCustomInteractions();
 
   // ── Visualização de seções (até onde a pessoa está lendo) ──
   const sectionSeen = new Set();
@@ -1025,34 +1082,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   })();
 
-  // ── Clique no botão de visualizar o protótipo (Figma) ──
-  if (protoCard) {
-    protoCard.addEventListener('click', () => {
-      gaEvent('view_prototype', { link_url: protoCard.getAttribute('href') });
-    });
-  }
-
-  // ── Interesse por tags (Key Learnings) ──
-  document.querySelectorAll('.tag').forEach(tag => {
-    tag.addEventListener('click', () => gaEvent('tag_interest', { tag: tag.textContent.trim() }));
-  });
-
   // ── Cliques no menu de navegação (desktop + mobile) ──
   document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
     a.addEventListener('click', () => {
       gaEvent('nav_click', { link_label: a.textContent.trim(), menu_type: a.closest('.mobile-menu') ? 'mobile' : 'desktop' });
-    });
-  });
-
-  // ── Botão "Voltar ao Portfólio" ──
-  document.querySelectorAll('.backbtn').forEach(a => {
-    a.addEventListener('click', () => gaEvent('back_to_portfolio_click', {}));
-  });
-
-  // ── Links de contato / redes sociais no rodapé ──
-  document.querySelectorAll('.social-link').forEach(a => {
-    a.addEventListener('click', () => {
-      gaEvent('social_click', { network: a.getAttribute('title') || a.href });
     });
   });
 
