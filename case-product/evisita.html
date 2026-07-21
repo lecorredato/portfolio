@@ -234,15 +234,18 @@ nav {
 
 .num-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 32px;}
 
-.touch-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;}
-.touch-box{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;border:1px solid rgba(232,96,26,0.2);border-radius:8px;padding:22px 14px;background:var(--card-bg);}
-.touch-box svg{width:26px;height:26px;color:#e8601a;}
-.touch-box span{font-size:0.92rem;color:var(--text);font-weight:500;}
-@media(max-width:900px){.touch-row{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:560px){.touch-row{grid-template-columns:1fr;}}
+.touch-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:28px;width:100%;max-width:100%;}
+.touch-box{display:flex;flex-direction:row;align-items:flex-start;justify-content:flex-start;text-align:left;gap:12px;border:1px solid rgba(232,96,26,0.2);border-radius:8px;padding:20px 18px;background:var(--card-bg);min-width:0;}
+.touch-box svg{width:26px;height:26px;color:#e8601a;flex-shrink:0;margin-top:2px;}
+.touch-box span{display:block;font-size:0.95rem;color:var(--text);font-weight:500;line-height:1.55;}
+@media(max-width:900px){.touch-row{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:560px){.touch-row{grid-template-columns:1fr;}.touch-box{padding:18px 16px;}}
 .num-stat{border:1px solid rgba(232,96,26,0.2);border-radius:8px;padding:18px 16px;background:var(--card-bg);text-align:left;border-top:3px solid #e8601a;}
 .num-stat .num-n{font-family:'Bebas Neue',sans-serif;font-size:3.2rem;color:#e8601a;letter-spacing:0.03em;line-height:1;margin-bottom:8px;}
-.num-stat .num-l{font-size:0.8rem;line-height:1.4;color:var(--text-muted);}
+.num-stat .num-l{font-size:0.8rem;line-height:1.4;color:var(--text-muted);} 
+.outcome-grid{grid-template-columns:repeat(3,minmax(0,1fr));}
+@media(max-width:900px){.outcome-grid{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:560px){.outcome-grid{grid-template-columns:1fr;}}
 @media(max-width:900px){.num-row{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.num-row{grid-template-columns:1fr;}}
 
@@ -629,7 +632,7 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
   <p class="lead" data-lang="en" style="max-width:760px;margin-top:32px;">Two more touchpoints ran in parallel, <strong>always available</strong> regardless of the CRM cadence:</p>
   <p class="lead" data-lang="pt" style="max-width:760px;margin-top:32px;">Mais dois pontos de contato funcionavam em paralelo, <strong>sempre disponíveis</strong> independentemente da cadência do CRM:</p>
 
-  <div class="touch-row" style="grid-template-columns:repeat(2,1fr);max-width:600px;">
+  <div class="touch-row">
     <div class="touch-box">
       <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M8 12h8M12 8v8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
       <span data-lang="en">Company portal — access anytime</span><span data-lang="pt">Portal da empresa — acesso a qualquer momento</span>
@@ -802,7 +805,7 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
   <p class="lead" data-lang="en" style="max-width:780px;">These are the <strong>project's overall results</strong>, tracked by the CRM and BI teams over the first 3 months of platform use — shared here as context, not as individually attributed metrics. What follows is the experience that was designed:</p>
   <p class="lead" data-lang="pt" style="max-width:780px;">Esses são os <strong>resultados gerais do projeto</strong>, acompanhados pelos times de CRM e BI ao longo dos primeiros 3 meses de uso da plataforma — compartilhados aqui como contexto, não como métricas de atribuição individual. A seguir, a experiência que foi desenhada:</p>
 
-  <div class="g3" style="margin-top:24px;">
+  <div class="g3 outcome-grid" style="margin-top:24px;">
     <div class="met"><div class="met-n">✦</div><div class="met-t"><span data-lang="en">Complementary digital layer</span><span data-lang="pt">Camada digital complementar</span></div><p class="met-d" data-lang="en">A digital layer to complement field communication, not replace it.</p><p class="met-d" data-lang="pt">Uma camada digital para complementar a comunicação de campo, não substituí-la.</p></div>
     <div class="met"><div class="met-n">◉</div><div class="met-t"><span data-lang="en">Continuous, multi-channel reach</span><span data-lang="pt">Alcance contínuo e multicanal</span></div><p class="met-d" data-lang="en">A more continuous experience across CRM, email, WhatsApp and the platform.</p><p class="met-d" data-lang="pt">Uma experiência mais contínua entre CRM, e-mail, WhatsApp e a plataforma.</p></div>
     <div class="met"><div class="met-n">◆</div><div class="met-t"><span data-lang="en">A hook that earns attention</span><span data-lang="pt">Um hook que conquista atenção</span></div><p class="met-d" data-lang="en">Content built relevant enough to keep doctors reading.</p><p class="met-d" data-lang="pt">Conteúdo relevante o suficiente para manter o médico lendo.</p></div>
