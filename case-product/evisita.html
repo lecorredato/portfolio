@@ -219,12 +219,31 @@ nav {
 .met-d{font-size:0.96rem;line-height:1.7;color:var(--text-muted);}
 .tag{border:1px solid rgba(232,96,26,0.25);border-radius:4px;padding:5px 14px;font-family:'Space Mono',monospace;font-size:0.76rem;letter-spacing:0.1em;color:#c44a10;text-transform:uppercase;background:rgba(232,96,26,0.05);}
 
+.proto-layout{display:grid;grid-template-columns:1fr 390px;grid-template-areas:"text proto" "cards cards";gap:18px 52px;align-items:start;}
+.proto-text{grid-area:text;}
+.proto-frame{grid-area:proto;width:390px;}
+.proto-cards{grid-area:cards;display:grid;grid-template-columns:repeat(2,1fr);gap:16px;align-content:start;}
+
 .num-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 32px;}
+
+.touch-row{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px;}
+.touch-box{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;border:1px solid rgba(232,96,26,0.2);border-radius:8px;padding:22px 14px;background:var(--card-bg);}
+.touch-box svg{width:26px;height:26px;color:#e8601a;}
+.touch-box span{font-size:0.92rem;color:var(--text);font-weight:500;}
+@media(max-width:900px){.touch-row{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:560px){.touch-row{grid-template-columns:1fr;}}
 .num-stat{border:1px solid rgba(232,96,26,0.2);border-radius:8px;padding:18px 16px;background:var(--card-bg);text-align:left;border-top:3px solid #e8601a;}
-.num-stat .num-n{font-family:'Bebas Neue',sans-serif;font-size:2.2rem;color:#e8601a;letter-spacing:0.03em;line-height:1;margin-bottom:6px;}
+.num-stat .num-n{font-family:'Bebas Neue',sans-serif;font-size:3.2rem;color:#e8601a;letter-spacing:0.03em;line-height:1;margin-bottom:8px;}
 .num-stat .num-l{font-size:0.8rem;line-height:1.4;color:var(--text-muted);}
 @media(max-width:900px){.num-row{grid-template-columns:repeat(2,1fr);}}
 @media(max-width:560px){.num-row{grid-template-columns:1fr;}}
+
+.hmw-quote{border-left:3px solid #e8601a;background:rgba(232,96,26,0.05);border-radius:0 8px 8px 0;padding:26px 32px;margin:8px 0 32px;}
+.hmw-quote p{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.4rem,3.4vw,2.1rem);letter-spacing:0.02em;line-height:1.25;color:var(--text);}
+.hmw-quote p em{color:#e8601a;font-style:normal;}
+.role-banner{border:1px solid rgba(232,96,26,0.22);background:rgba(232,96,26,0.05);border-radius:10px;padding:26px 30px;margin-bottom:8px;}
+.role-banner p{font-size:1.02rem;line-height:1.78;color:var(--text);}
+.role-banner strong{color:#e8601a;}
 
 /* ══ NEW STORYTELLING BLOCKS ══ */
 .cov-headline{font-size:clamp(1.05rem,2.4vw,1.4rem);font-weight:500;color:var(--text);max-width:640px;margin:20px auto 0;line-height:1.55;position:relative;z-index:1;}
@@ -313,9 +332,10 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
   .covmeta{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
   .mdiv{display:none;}
   footer{padding:48px 18px 28px;}
-  .proto-layout{flex-direction:column!important;}
-  .proto-frame{width:100%!important;flex:1 1 auto!important;}
-  .proto-frame > div{width:100%!important;height:520px!important;}
+  .proto-layout{grid-template-columns:1fr;grid-template-areas:"text" "proto" "cards";}
+  .proto-frame{width:100%!important;justify-self:center;}
+  .proto-frame .proto-card{width:100%!important;height:520px!important;}
+  .proto-cards{grid-template-columns:1fr;}
 }
 @media(max-width:560px){
   nav{padding:12px 18px;}
@@ -324,7 +344,7 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
   .cs-section{padding:52px 18px;}
   .cover{padding:90px 18px 50px;}
   .g3{grid-template-columns:1fr;}
-  .g4{grid-template-columns:1fr 1fr;}
+  .g4{grid-template-columns:1fr;}
   .igrid.c2{grid-template-columns:1fr;}
   .igrid.c3{grid-template-columns:1fr;}
   .igrid.c4{grid-template-columns:1fr 1fr;}
@@ -391,7 +411,7 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
 </div>
 
 <!-- ══ COVER ══ -->
-<div class="cover">
+<div class="cover" data-section="00-hero">
   <div class="covgrid"></div>
   <div class="covglow"></div>
   <div class="covtag"><span data-lang="en">Case Study · Product Design</span><span data-lang="pt">Estudo de Caso · Product Design</span></div>
@@ -401,78 +421,74 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
     <span data-lang="pt">Digitalizando a comunicação farmacêutica para ampliar o acesso além das visitas médicas presenciais.</span>
   </p>
   <p class="covdesc">
-    <span data-lang="en">e-Visita was conceived to reduce the dependence on unscheduled, irregular in-person visits from pharmaceutical representatives, helping doctors access product information more consistently — especially in regions where physical coverage was limited.</span>
-    <span data-lang="pt">A e-Visita foi criada para reduzir a dependência das visitas presenciais não agendadas e irregulares dos representantes farmacêuticos, ajudando médicos a acessar informações de produto de forma mais consistente — especialmente em regiões onde a cobertura física era limitada.</span>
+    <span data-lang="en">A digital layer built to complement — not replace — the relationship between pharmaceutical representatives and doctors. This case focuses on my contribution as Product Designer.</span>
+    <span data-lang="pt">Uma camada digital criada para complementar — não substituir — o relacionamento entre representantes farmacêuticos e médicos. Este case foca na minha contribuição como Product Designer.</span>
   </p>
   <p class="cov-meta-line">
-    <span data-lang="en"><strong>Role:</strong> Product Designer (UX/UI) &nbsp;·&nbsp; <strong>Company:</strong> Hypera Pharma · Mantecorp Saúde &nbsp;·&nbsp; <strong>Year:</strong> 2024–2025</span>
-    <span data-lang="pt"><strong>Papel:</strong> Product Designer (UX/UI) &nbsp;·&nbsp; <strong>Empresa:</strong> Hypera Pharma · Mantecorp Saúde &nbsp;·&nbsp; <strong>Ano:</strong> 2024–2025</span>
+    <span data-lang="en"><strong>Role:</strong> Product Designer (UX/UI) &nbsp;·&nbsp; <strong>Company:</strong> Mantecorp Saúde/Hypera Pharma &nbsp;·&nbsp; <strong>Year:</strong> 2024–2025</span>
+    <span data-lang="pt"><strong>Papel:</strong> Product Designer (UX/UI) &nbsp;·&nbsp; <strong>Empresa:</strong> Mantecorp Saúde/Hypera Pharma &nbsp;·&nbsp; <strong>Ano:</strong> 2024–2025</span>
   </p>
 
   <div class="icard-row">
     <div class="icard">
       <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg>
       <div class="icard-lbl"><span data-lang="en">Focus</span><span data-lang="pt">Foco</span></div>
-      <div class="icard-val"><span data-lang="en">Product Strategy, UX/UI, Journey Design</span><span data-lang="pt">Estratégia de Produto, UX/UI, Design de Jornada</span></div>
+      <div class="icard-val"><span data-lang="en">UX/UI, journey design &amp; information architecture</span><span data-lang="pt">UX/UI, design de jornada e arquitetura da informação</span></div>
     </div>
     <div class="icard">
       <svg viewBox="0 0 24 24" fill="none"><path d="M12 3l9 16H3L12 3z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><line x1="12" y1="10" x2="12" y2="14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="17" r="0.8" fill="currentColor"/></svg>
       <div class="icard-lbl"><span data-lang="en">Challenge</span><span data-lang="pt">Desafio</span></div>
-      <div class="icard-val"><span data-lang="en">Access, continuity, and scale</span><span data-lang="pt">Acesso, continuidade e escala</span></div>
+      <div class="icard-val"><span data-lang="en">Extend the relationship beyond the physical visit</span><span data-lang="pt">Estender o relacionamento além da visita física</span></div>
     </div>
     <div class="icard">
       <svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10.5A7 7 0 0 1 19 10.5C19 16.4 12 21 12 21z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10.4" r="2.2" stroke="currentColor" stroke-width="1.6"/></svg>
       <div class="icard-lbl"><span data-lang="en">Context</span><span data-lang="pt">Contexto</span></div>
-      <div class="icard-val"><span data-lang="en">Pharmaceutical communication</span><span data-lang="pt">Comunicação farmacêutica</span></div>
+      <div class="icard-val"><span data-lang="en">Pharmaceutical communication, cross-functional project</span><span data-lang="pt">Comunicação farmacêutica, projeto multidisciplinar</span></div>
     </div>
     <div class="icard">
       <svg viewBox="0 0 24 24" fill="none"><path d="M4 3v18M4 4h13l-2.5 3.5L17 11H4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
-      <div class="icard-lbl"><span data-lang="en">Outcome</span><span data-lang="pt">Resultado</span></div>
-      <div class="icard-val"><span data-lang="en">A digital layer for ongoing engagement</span><span data-lang="pt">Uma camada digital para engajamento contínuo</span></div>
+      <div class="icard-lbl"><span data-lang="en">My Contribution</span><span data-lang="pt">Minha Contribuição</span></div>
+      <div class="icard-val"><span data-lang="en">Experience design &amp; structure</span><span data-lang="pt">Design e estrutura da experiência</span></div>
     </div>
   </div>
 </div>
 <div class="divider"></div>
 
 <!-- 01 CONTEXT -->
-<div class="cs-section alt reveal">
+<div data-section="01-context" class="cs-section alt reveal">
   <p class="ey">01 — <span data-lang="en">Context</span><span data-lang="pt">Contexto</span></p>
-  <h2 class="ch2"><span data-lang="en">Where It</span><span data-lang="pt">Onde Tudo</span><br><em><span data-lang="en">All Began</span><span data-lang="pt">Começou</span></em></h2>
+  <h2 class="ch2"><span data-lang="en">From Field-dependent Communication to a </span><span data-lang="pt">De uma Comunicação Dependente de Campo para uma </span><em><span data-lang="en">Continuous Digital Experience</span><span data-lang="pt">Experiência Digital Contínua</span></em></h2>
   <div class="aline"></div>
   <div class="g2">
     <div>
-      <p class="lead" data-lang="en">Before the product existed, communication with doctors depended almost entirely on <strong>in-person visits that weren't actually scheduled with the doctor</strong>. Representatives covered a region and would simply show up, hoping to catch each doctor roughly <strong>every 2 to 6 weeks</strong> — the interval varied a lot depending on the region and the rep's route.</p>
-      <p class="lead" data-lang="en">Because visits weren't confirmed in advance, they often landed on a bad day: the doctor could be swamped with patients or away at an event, with no way for the rep to know beforehand. Most doctors don't have close, proactive communication with reps — their days are busy and unpredictable, and they're visited at random by multiple representatives from different pharmaceutical companies.</p>
-      <p class="lead" data-lang="en">This uncertainty also shaped how reps used their limited time. When a visit did happen, they'd often <strong>mention older, already-known medications alongside new ones</strong> — not because doctors needed the reminder, but to <strong>stay top-of-mind at the moment of prescribing</strong>. Prescriptions are the metric that ultimately signals whether a go-to-market or digitalization effort is working, so every visit carried real commercial weight.</p>
-      <p class="lead" data-lang="en">Delivering samples in person was part of this same visit — and once they ran out, doctors had to wait for the rep's next unpredictable pass to receive more. It was a <strong>secondary friction inside a bigger scheduling problem</strong>, not the core issue itself (more on how e-Visita addressed it further below).</p>
-      <p class="lead" data-lang="pt">Antes do produto existir, a comunicação com os médicos dependia quase inteiramente de <strong>visitas presenciais que, na prática, não eram agendadas com o médico</strong>. Os representantes cobriam uma região e simplesmente apareciam, na esperança de encontrar cada médico a cada <strong>2 a 6 semanas, aproximadamente</strong> — o intervalo variava bastante conforme a região e a rota do representante.</p>
-      <p class="lead" data-lang="pt">Como as visitas não eram confirmadas com antecedência, muitas vezes aconteciam num dia ruim: o médico podia estar com a agenda cheia de pacientes ou fora do consultório em algum evento, sem que o representante tivesse como saber antes. A maioria dos médicos não tem uma comunicação próxima e ativa com os representantes — seus dias são corridos e imprevisíveis, e eles recebem visitas aleatórias de vários representantes de diferentes farmacêuticas.</p>
-      <p class="lead" data-lang="pt">Essa incerteza também moldava como os representantes usavam seu tempo limitado. Quando a visita acontecia, era comum <strong>mencionar medicamentos antigos já conhecidos junto com os novos</strong> — não porque o médico precisasse do lembrete, mas para <strong>seguir na memória dele no momento da prescrição</strong>. A prescrição é a métrica que sinaliza se um esforço de go-to-market ou digitalização está funcionando, então cada visita carregava peso comercial real.</p>
-      <p class="lead" data-lang="pt">A entrega de amostras fazia parte dessa mesma visita — e quando acabavam, o médico precisava esperar a próxima passagem imprevisível do representante para receber mais. Era uma <strong>fricção secundária dentro de um problema maior de agendamento</strong>, não a questão central (mais sobre como a e-Visita resolveu isso adiante).</p>
+      <p class="lead" data-lang="en">From the pharmaceutical company's perspective, the real objective was never simply "a doctor receiving a visit." The goal was to <strong>expand medication sales through prescriptions</strong> — which depend on doctors knowing and remembering a product's name and brand at the moment they're writing one. In-person visits already existed as the main channel for that; the challenge was <strong>expanding their reach</strong> and the delivery of content, so more doctors built that recall consistently enough for it to translate into prescriptions.</p>
+      <p class="lead" data-lang="en">That channel was fragile: representatives covered a region and would simply show up, hoping to catch each doctor roughly <strong>every 2 to 6 weeks</strong>, without a confirmed appointment — and the doctor wasn't always free to receive them. <strong>e-Visita emerged as a digital layer to reinforce that content and product presentation</strong> between visits — complementing the representative's work, not replacing it, in service of the same goal: staying top-of-mind when the prescription is written.</p>
+      <p class="lead" data-lang="pt">Do ponto de vista da farmacêutica, o objetivo real nunca foi simplesmente "o médico receber uma visita". A meta era <strong>expandir a venda de medicamentos por meio das receitas médicas</strong> — que dependem do médico conhecer e lembrar do nome e da marca do produto no momento em que está receitando. As visitas presenciais já existiam como o principal canal para isso; o desafio era <strong>ampliar seu alcance</strong> e a entrega de conteúdo, para que mais médicos construíssem essa lembrança de forma consistente o suficiente para se traduzir em prescrições.</p>
+      <p class="lead" data-lang="pt">Esse caminho era frágil: os representantes cobriam uma região e simplesmente apareciam, na esperança de encontrar cada médico a cada <strong>2 a 6 semanas, aproximadamente</strong>, sem um horário de fato marcado — e o médico nem sempre estava livre para recebê-los. <strong>A e-Visita surgiu como uma camada digital para reforçar essa apresentação de conteúdo e produto</strong> entre as visitas — complementando o trabalho do representante, não o substituindo, a serviço do mesmo objetivo: permanecer na memória do médico na hora de prescrever.</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:14px;">
       <div class="gcard">
-        <div class="gcard-lbl"><span data-lang="en">Operational Reality</span><span data-lang="pt">Realidade Operacional</span></div>
+        <div class="gcard-lbl"><span data-lang="en">The Company's Real Goal</span><span data-lang="pt">O Objetivo Real da Empresa</span></div>
         <ul>
-          <li data-lang="en">Regional field teams</li><li data-lang="pt">Times regionais de campo</li>
+          <li data-lang="en">Expand sales through prescriptions</li><li data-lang="pt">Expandir vendas por meio das prescrições</li>
+          <li data-lang="en">Build product name &amp; brand recall</li><li data-lang="pt">Construir lembrança de nome e marca do produto</li>
+          <li data-lang="en">Expand the reach of visits &amp; content delivery</li><li data-lang="pt">Ampliar a abrangência das visitas e da entrega de conteúdo</li>
+        </ul>
+      </div>
+      <div class="gcard">
+        <div class="gcard-lbl"><span data-lang="en">Why That Channel Struggled</span><span data-lang="pt">Por Que Esse Caminho Falhava</span></div>
+        <ul>
           <li data-lang="en">Visits not scheduled with doctors</li><li data-lang="pt">Visitas não agendadas com os médicos</li>
-          <li data-lang="en">Irregular cadence — roughly every 2–6 weeks</li><li data-lang="pt">Cadência irregular — cerca de 2 a 6 semanas</li>
+          <li data-lang="en">Visits happened every 2 to 6 weeks, depending on the region and the rep's route</li><li data-lang="pt">Visitas entre 2 e 6 semanas dependendo da região e da rota do representante</li>
+          <li data-lang="en">Reach depended entirely on physical presence</li><li data-lang="pt">Alcance dependia inteiramente da presença física</li>
         </ul>
       </div>
       <div class="gcard">
-        <div class="gcard-lbl"><span data-lang="en">Main Constraint</span><span data-lang="pt">Principal Restrição</span></div>
+        <div class="gcard-lbl"><span data-lang="en">The Opportunity</span><span data-lang="pt">A Oportunidade</span></div>
         <ul>
-          <li data-lang="en">Reach depended on physical presence</li><li data-lang="pt">Alcance dependia de presença física</li>
-          <li data-lang="en">No advance notice for either side</li><li data-lang="pt">Sem aviso prévio para nenhum dos lados</li>
-          <li data-lang="en">Uneven geographic coverage</li><li data-lang="pt">Cobertura geográfica desigual</li>
-        </ul>
-      </div>
-      <div class="gcard">
-        <div class="gcard-lbl"><span data-lang="en">Business Implication</span><span data-lang="pt">Implicação de Negócio</span></div>
-        <ul>
-          <li data-lang="en">Limited product awareness</li><li data-lang="pt">Conhecimento limitado do produto</li>
-          <li data-lang="en">Prescription volume tied directly to visit success</li><li data-lang="pt">Volume de prescrição ligado diretamente ao sucesso da visita</li>
-          <li data-lang="en">Relationship scale was hard to expand</li><li data-lang="pt">Escala do relacionamento difícil de expandir</li>
+          <li data-lang="en">A digital layer to reinforce recall between visits</li><li data-lang="pt">Uma camada digital para reforçar a lembrança entre visitas</li>
+          <li data-lang="en">Continuous, not episodic, brand presence</li><li data-lang="pt">Presença de marca contínua, não episódica</li>
+          <li data-lang="en">Support, not replace, the rep relationship</li><li data-lang="pt">Apoiar, não substituir, o relacionamento com o representante</li>
         </ul>
       </div>
     </div>
@@ -480,152 +496,154 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
 </div>
 <div class="divider"></div>
 
-<!-- 02 JOURNEY -->
-<div class="cs-section reveal">
-  <p class="ey">02 — <span data-lang="en">Journey</span><span data-lang="pt">Jornada</span></p>
-  <h2 class="ch2"><span data-lang="en">How the Flow Worked</span><span data-lang="pt">Como o Fluxo Funcionava</span><br><em><span data-lang="en">Before Digital Communication</span><span data-lang="pt">Antes da Comunicação Digital</span></em></h2>
+<!-- 02 MY ROLE -->
+<div data-section="02-my-role" class="cs-section reveal">
+  <p class="ey">02 — <span data-lang="en">My Role</span><span data-lang="pt">Meu Papel</span></p>
+  <h2 class="ch2"><span data-lang="en">Where I Fit in the</span><span data-lang="pt">Onde Eu Entrei</span><br><em><span data-lang="en">Bigger Picture</span><span data-lang="pt">no Projeto</span></em></h2>
   <div class="aline"></div>
-  <div class="flow-row">
-    <div class="flow-step">
-      <div class="flow-num">1</div>
-      <svg class="flow-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M3 10h18M8 3v4M16 3v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="7" y1="14" x2="10" y2="14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <p><span data-lang="en">Rep drops by without a confirmed time</span><span data-lang="pt">Representante aparece sem horário confirmado</span></p>
+  <div class="g2">
+    <div>
+      <p class="lead" data-lang="en"><strong>e-Visita was built by a cross-functional MarTech team</strong> — CRM, UX/UI, Dev, BI, art direction, content writers, copywriters, commercial and effectiveness. My scope as UX/UI was, first, to design and structure the digital pieces — the email templates — and then the screens and experience of e-Visita itself.</p>
+      <p class="lead" data-lang="en">The <strong>CRM team owned the journey logic</strong>: when, how often and to whom each communication was sent. I owned the <strong>structure, layout and content flow</strong> of what doctors actually saw.</p>
+      <p class="lead" data-lang="pt"><strong>A e-Visita foi construída por um time multidisciplinar de MarTech</strong> — CRM, UX/UI, Dev, BI, direção de arte, conteudistas, redatores, área comercial e de efetividade. Meu escopo como UX/UI era resumido primeiramente em desenhar e estruturar as peças digitais, como os templates de e-mail, e em seguida as telas e a experiência da e-Visita.</p>
+      <p class="lead" data-lang="pt">O <strong>time de CRM era responsável pela lógica da jornada</strong>: quando, com que frequência e para quem cada comunicação era enviada. Eu era responsável pela <strong>estrutura, o layout e o fluxo de conteúdo</strong> do que o médico via de fato.</p>
     </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="flow-num">2</div>
-      <svg class="flow-icon" viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10.5A7 7 0 0 1 19 10.5C19 16.4 12 21 12 21z" stroke="currentColor" stroke-width="1.5"/><path d="M9 10.5l2 2 4-4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <p><span data-lang="en">Doctor may or may not be available that day</span><span data-lang="pt">Médico pode ou não estar disponível naquele dia</span></p>
+    <div class="gcard">
+      <div class="gcard-lbl"><span data-lang="en">What I Focused On</span><span data-lang="pt">Meu Foco</span></div>
+      <ul>
+        <li data-lang="en">UX/UI Design</li><li data-lang="pt">Design UX/UI</li>
+        <li data-lang="en">Structure of email &amp; CRM templates</li><li data-lang="pt">Estrutura dos templates de email e CRM</li>
+        <li data-lang="en">Content structure of the e-Visita experience</li><li data-lang="pt">Estrutura de conteúdo da experiência e-Visita</li>
+        <li data-lang="en">User flows &amp; information architecture</li><li data-lang="pt">Fluxos de usuário e arquitetura da informação</li>
+        <li data-lang="en">Interface design</li><li data-lang="pt">Design de interface</li>
+        <li data-lang="en">Prototyping (Figma)</li><li data-lang="pt">Prototipagem (Figma)</li>
+        <li data-lang="en">Collaboration with CRM, MarTech, BI &amp; content teams</li><li data-lang="pt">Colaboração com CRM, MarTech, BI e times de conteúdo</li>
+      </ul>
     </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="flow-num">3</div>
-      <svg class="flow-icon" viewBox="0 0 24 24" fill="none"><rect x="2" y="4" width="20" height="13" rx="2" stroke="currentColor" stroke-width="1.5"/><path d="M8 21h8M12 17v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <p><span data-lang="en">When possible, rep presents new &amp; existing products</span><span data-lang="pt">Quando possível, representante apresenta produtos novos e já conhecidos</span></p>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="flow-num">4</div>
-      <svg class="flow-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2l9 5-9 5-9-5 9-5zM3 12l9 5 9-5M3 17l9 5 9-5" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>
-      <p><span data-lang="en">Samples handed over, while still available</span><span data-lang="pt">Amostras entregues, enquanto ainda disponíveis</span></p>
-    </div>
-    <div class="flow-arrow">→</div>
-    <div class="flow-step">
-      <div class="flow-num">5</div>
-      <svg class="flow-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
-      <p><span data-lang="en">Next contact depends on the rep's next pass through the region</span><span data-lang="pt">Próximo contato depende da próxima passagem do representante pela região</span></p>
-    </div>
-  </div>
-  <p class="flow-caption"><span data-lang="en">The core friction was <strong>unpredictability</strong>, not the samples — the experience was episodic, hard to plan around, and difficult to scale.</span><span data-lang="pt">A fricção central era a <strong>imprevisibilidade</strong>, não as amostras — a experiência era episódica, difícil de planejar e difícil de escalar.</span></p>
-
-  <div class="met" style="margin-top:28px;max-width:820px;margin-left:auto;margin-right:auto;">
-    <div class="met-n">✦</div>
-    <div class="met-t"><span data-lang="en">A secondary delay, still worth solving</span><span data-lang="pt">Uma fricção secundária, mas que merecia solução</span></div>
-    <p class="met-d" data-lang="en">Running low on samples was never the main problem — but it was designed for. Inside e-Visita, a doctor who received the digital communication could <strong>request samples directly through a form</strong>, informing their <strong>CRM number</strong> (to confirm they're a licensed physician) and <strong>delivery address</strong>. Based on their registered specialty, they would only receive <strong>samples relevant to their practice</strong> — turning a passive wait into a self-service request, filtered by relevance.</p>
-    <p class="met-d" data-lang="pt">A falta de amostras nunca foi o problema principal — mas ainda assim teve uma solução pensada. Dentro da e-Visita, um médico que recebia a comunicação digital podia <strong>solicitar amostras diretamente por um formulário</strong>, informando seu <strong>CRM</strong> (para confirmar que é um médico licenciado) e <strong>endereço de entrega</strong>. Com base na especialidade cadastrada, ele recebia apenas <strong>amostras relevantes à sua prática</strong> — transformando uma espera passiva em uma solicitação self-service, filtrada por relevância.</p>
   </div>
 </div>
 <div class="divider"></div>
 
-<!-- 03 PROBLEM -->
-<div class="cs-section alt reveal">
-  <p class="ey">03 — <span data-lang="en">Problem</span><span data-lang="pt">Problema</span></p>
-  <h2 class="ch2"><span data-lang="en">What Needed</span><span data-lang="pt">O Que Precisava</span><br><em><span data-lang="en">to Change</span><span data-lang="pt">Mudar</span></em></h2>
+<!-- 03 DESIGN CHALLENGE -->
+<div data-section="03-design-challenge" class="cs-section alt reveal">
+  <p class="ey">03 — <span data-lang="en">The Design Challenge</span><span data-lang="pt">O Desafio de Design</span></p>
+  <h2 class="ch2"><span data-lang="en">How Might We Extend the</span><span data-lang="pt">Como Poderíamos Estender o</span><br><em><span data-lang="en">Relationship Beyond the Visit?</span><span data-lang="pt">Relacionamento Além da Visita?</span></em></h2>
   <div class="aline"></div>
-  <p class="lead" data-lang="en" style="max-width:760px;">The opportunity was not simply to replicate the visit online. The real challenge was to <strong>create continuity</strong>: a way for doctors to stay informed and connected to the brand even when no representative was physically present.</p>
-  <p class="lead" data-lang="pt" style="max-width:760px;">A oportunidade não era simplesmente replicar a visita online. O verdadeiro desafio era <strong>criar continuidade</strong>: uma forma dos médicos se manterem informados e conectados à marca mesmo quando nenhum representante estivesse fisicamente presente.</p>
+  <p class="lead" data-lang="en" style="max-width:760px;">Framed as an experience question rather than a pure business one, the challenge was to design something that felt like a <strong>natural extension</strong> of the existing relationship — not a replacement for it. That meant thinking beyond a single screen, toward an <strong>omnichannel system</strong> that could reach doctors consistently across CRM, email, WhatsApp and the platform itself.</p>
+  <p class="lead" data-lang="pt" style="max-width:760px;">Formulado como uma questão de experiência, e não apenas de negócio, o desafio era desenhar algo que parecesse uma <strong>extensão natural</strong> do relacionamento existente — não um substituto para ele. Isso significava pensar além de uma única tela, em direção a um <strong>sistema omnichannel</strong> capaz de alcançar os médicos de forma consistente entre CRM, e-mail, WhatsApp e a própria plataforma.</p>
   <div class="g4" style="margin-top:28px;">
     <div class="chal">
-      <h4 data-lang="en">Limited access</h4><h4 data-lang="pt">Acesso limitado</h4>
-      <p data-lang="en">Doctors outside major urban centers had less exposure to the product.</p>
-      <p data-lang="pt">Médicos fora dos grandes centros urbanos tinham menos exposição ao produto.</p>
+      <h4 data-lang="en">Accessible beyond the visit</h4><h4 data-lang="pt">Acessível além da visita</h4>
+      <p data-lang="en">Product information accessible to doctors at any moment, not just during the representative's time slot.</p>
+      <p data-lang="pt">Informações de produtos acessíveis para os médicos a qualquer momento, não apenas na janela de tempo do representante.</p>
     </div>
     <div class="chal">
-      <h4 data-lang="en">Broken continuity</h4><h4 data-lang="pt">Continuidade quebrada</h4>
-      <p data-lang="en">Communication happened in <strong>isolated, unpredictable</strong> touchpoints.</p>
-      <p data-lang="pt">A comunicação acontecia em pontos de contato <strong>isolados e imprevisíveis</strong>.</p>
+      <h4 data-lang="en">Clearly organized</h4><h4 data-lang="pt">Claramente organizada</h4>
+      <p data-lang="en">Content and information structured in a way that was easy to scan and understand.</p>
+      <p data-lang="pt">Conteúdo e informações estruturados de forma fácil de escanear e entender.</p>
     </div>
     <div class="chal">
-      <h4 data-lang="en">Low scalability</h4><h4 data-lang="pt">Baixa escalabilidade</h4>
-      <p data-lang="en">Coverage depended on the number of representatives and travel logistics.</p>
-      <p data-lang="pt">A cobertura dependia do número de representantes e da logística de deslocamento.</p>
+      <h4 data-lang="en">More continuous</h4><h4 data-lang="pt">Mais contínua</h4>
+      <p data-lang="en">Allowing communication to happen between visits, not only during them.</p>
+      <p data-lang="pt">Permitindo que a comunicação acontecesse entre as visitas, não apenas durante elas.</p>
     </div>
     <div class="chal">
-      <h4 data-lang="en">Knowledge gap</h4><h4 data-lang="pt">Lacuna de conhecimento</h4>
-      <p data-lang="en">Without regular contact, awareness and recall of the product decreased.</p>
-      <p data-lang="pt">Sem contato regular, a percepção e a lembrança do produto diminuíam.</p>
+      <h4 data-lang="en">Easy to explore</h4><h4 data-lang="pt">Fácil de explorar</h4>
+      <p data-lang="en">Simple enough for a busy doctor to navigate in a few spare minutes.</p>
+      <p data-lang="pt">Simples o suficiente para um médico ocupado navegar em poucos minutos livres.</p>
     </div>
   </div>
 </div>
 <div class="divider"></div>
 
-<!-- 04 GOAL -->
-<div class="cs-section reveal">
-  <p class="ey">04 — <span data-lang="en">Goal</span><span data-lang="pt">Objetivo</span></p>
-  <h2 class="ch2"><span data-lang="en">What We</span><span data-lang="pt">O Que</span><br><em><span data-lang="en">Aimed For</span><span data-lang="pt">Buscávamos</span></em></h2>
+<!-- 04 JOURNEY & EXPERIENCE STRUCTURE -->
+<div data-section="04-journey-structure" class="cs-section reveal">
+  <p class="ey">04 — <span data-lang="en">Journey &amp; Structure</span><span data-lang="pt">Jornada e Estrutura</span></p>
+  <h2 class="ch2"><span data-lang="en">Journey &amp; Experience</span><span data-lang="pt">Jornada e Estrutura</span><br><em><span data-lang="en">Structure</span><span data-lang="pt">da Experiência</span></em></h2>
   <div class="aline"></div>
-  <div class="g3">
-    <div class="chal">
-      <h4 data-lang="en">Extend access</h4><h4 data-lang="pt">Estender o acesso</h4>
-      <p data-lang="en">Bring product information to doctors beyond the physical visit.</p>
-      <p data-lang="pt">Levar informação de produto aos médicos além da visita física.</p>
-    </div>
-    <div class="chal">
-      <h4 data-lang="en">Broaden continuity</h4><h4 data-lang="pt">Ampliar a continuidade</h4>
-      <p data-lang="en">Create an ongoing communication layer between field interactions.</p>
-      <p data-lang="pt">Criar uma camada de comunicação contínua entre as interações de campo.</p>
-    </div>
-    <div class="chal">
-      <h4 data-lang="en">Support scale</h4><h4 data-lang="pt">Apoiar a escala</h4>
-      <p data-lang="en">Help the pharmaceutical company reach more professionals more efficiently.</p>
-      <p data-lang="pt">Ajudar a farmacêutica a alcançar mais profissionais com mais eficiência.</p>
-    </div>
-  </div>
-</div>
-<div class="divider"></div>
-
-<!-- 05 DIRECTION -->
-<div class="cs-section alt reveal">
-  <p class="ey">05 — <span data-lang="en">Direction</span><span data-lang="pt">Direção</span></p>
-  <h2 class="ch2"><span data-lang="en">From Field-only Contact to a</span><span data-lang="pt">De Contato Apenas Presencial para um</span><br><em><span data-lang="en">Digital Touchpoint</span><span data-lang="pt">Ponto de Contato Digital</span></em></h2>
-  <div class="aline"></div>
-  <div class="compare">
+  <p class="lead" data-lang="en" style="max-width:760px;">My work focused on helping <strong>translate this context into a structured digital experience</strong> — mapping where continuity broke down, and where a digital layer could pick it back up.</p>
+  <p class="lead" data-lang="pt" style="max-width:760px;">Meu trabalho foi ajudar a <strong>traduzir esse contexto em uma experiência digital estruturada</strong> — mapeando onde a continuidade se quebrava, e onde uma camada digital poderia retomá-la.</p>
+  <div class="compare" style="margin-top:24px;">
     <div class="comp-col before">
       <div class="comp-lbl"><span data-lang="en">Before</span><span data-lang="pt">Antes</span></div>
       <ul>
-        <li data-lang="en">In-person only</li><li data-lang="pt">Apenas presencial</li>
-        <li data-lang="en">Monthly cadence</li><li data-lang="pt">Cadência mensal</li>
-        <li data-lang="en">Dependent on territory coverage</li><li data-lang="pt">Dependente de cobertura de território</li>
-        <li data-lang="en">Samples and information tied to the visit</li><li data-lang="pt">Amostras e informações atreladas à visita</li>
+        <li data-lang="en">Communication mainly in person</li><li data-lang="pt">Comunicação principalmente presencial</li>
+        <li data-lang="en">Information presented at specific moments only</li><li data-lang="pt">Informação apresentada apenas em momentos específicos</li>
+        <li data-lang="en">Low continuity between contacts</li><li data-lang="pt">Baixa continuidade entre os contatos</li>
+        <li data-lang="en">Dependent on rep coverage &amp; availability</li><li data-lang="pt">Dependente da cobertura e disponibilidade do representante</li>
       </ul>
     </div>
     <div class="comp-vs">VS</div>
     <div class="comp-col after">
       <div class="comp-lbl"><span data-lang="en">With e-Visita</span><span data-lang="pt">Com a e-Visita</span></div>
       <ul>
-        <li data-lang="en">Digital access to product information</li><li data-lang="pt">Acesso digital a informações do produto</li>
-        <li data-lang="en">More continuous communication</li><li data-lang="pt">Comunicação mais contínua</li>
-        <li data-lang="en">Broader geographic reach</li><li data-lang="pt">Alcance geográfico mais amplo</li>
-        <li data-lang="en">A stronger bridge between doctors and the brand</li><li data-lang="pt">Uma ponte mais forte entre médicos e a marca</li>
+        <li data-lang="en">Continuous digital access</li><li data-lang="pt">Acesso digital contínuo</li>
+        <li data-lang="en">Content organized and easy to find</li><li data-lang="pt">Conteúdo organizado e fácil de encontrar</li>
+        <li data-lang="en">Complementary, ongoing communication</li><li data-lang="pt">Comunicação complementar e contínua</li>
+        <li data-lang="en">A more structured journey overall</li><li data-lang="pt">Uma jornada mais estruturada no geral</li>
       </ul>
     </div>
   </div>
-  <p class="comp-note">ⓘ <span data-lang="en">The solution aimed to complement the representative's role, not replace it.</span><span data-lang="pt">A solução tinha como objetivo complementar o papel do representante, não substituí-lo.</span></p>
+  <p class="comp-note">ⓘ <span data-lang="en">I didn't define the business strategy behind this shift — but the design and structure of the experience were critical to it working: a poor digital experience wouldn't have driven the results the strategy was aiming for.</span><span data-lang="pt">Eu não defini a estratégia de negócio por trás dessa mudança — mas o design e a estrutura da experiência foram determinantes para que ela funcionasse: uma experiência digital ruim não traria os resultados que a estratégia buscava.</span></p>
 </div>
 <div class="divider"></div>
 
-<!-- 06 INTERFACE -->
-<div class="cs-section reveal">
-  <div class="proto-layout" style="display:flex;gap:52px;align-items:flex-start;">
-    <div style="flex:1;min-width:0;">
-      <p class="ey">06 — <span data-lang="en">Interface</span><span data-lang="pt">Interface</span></p>
-      <h2 class="ch2"><span data-lang="en">Platform</span><span data-lang="pt">Telas da</span><br><em><span data-lang="en">Screens</span><span data-lang="pt">Plataforma</span></em></h2>
-      <div class="aline"></div>
-      <p class="lead" data-lang="en">Complete UI flow — covering the doctor dashboard, product library, content modules and notification system — designed for clarity, usability and brand alignment.</p>
-      <p class="lead" data-lang="pt">Fluxo de UI completo — cobrindo dashboard do médico, biblioteca de produtos, módulos de conteúdo e sistema de notificações — projetado para clareza, usabilidade e alinhamento de marca.</p>
-      <p class="img-cap" style="text-align:left;margin-top:24px;"><span data-lang="en">Interactive Prototype · e-Visita Platform · Mantecorp Saúde · Hypera Pharma</span><span data-lang="pt">Protótipo Interativo · Plataforma e-Visita · Mantecorp Saúde · Hypera Pharma</span></p>
+<!-- 05 FROM JOURNEY TO EXPERIENCE -->
+<div data-section="05-touchpoints" class="cs-section alt reveal">
+  <p class="ey">05 — <span data-lang="en">Touchpoints</span><span data-lang="pt">Pontos de Contato</span></p>
+  <h2 class="ch2"><span data-lang="en">From Journey to</span><span data-lang="pt">Da Jornada à</span><br><em><span data-lang="en">Digital Experience</span><span data-lang="pt">Experiência Digital</span></em></h2>
+  <div class="aline"></div>
+  <p class="lead" data-lang="en" style="max-width:760px;">The journey was translated into a solution organized across <strong>several connected touchpoints</strong>, rather than a single standalone screen. The goal was a more continuous and coherent experience across all of them.</p>
+  <p class="lead" data-lang="pt" style="max-width:760px;">A jornada foi traduzida em uma solução organizada em <strong>vários pontos de contato conectados</strong>, em vez de uma única tela isolada. O objetivo era uma experiência mais contínua e coerente entre todos eles.</p>
+  <div class="touch-row">
+    <div class="touch-box">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 8h18M8 4v4" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span data-lang="en">CRM (Salesforce)</span><span data-lang="pt">CRM (Salesforce)</span>
     </div>
-    <div class="proto-frame" style="flex:0 0 390px;width:390px;">
+    <div class="touch-box">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <span data-lang="en">Email</span><span data-lang="pt">E-mail</span>
+    </div>
+    <div class="touch-box">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-3.3-6.4L20 4l-1 3.9A7.96 7.96 0 0 1 20 12z" stroke="currentColor" stroke-width="1.6"/></svg>
+      <span data-lang="en">WhatsApp</span><span data-lang="pt">WhatsApp</span>
+    </div>
+    <div class="touch-box">
+      <svg viewBox="0 0 24 24" fill="none"><rect x="5" y="2" width="14" height="20" rx="2" stroke="currentColor" stroke-width="1.6"/><line x1="10" y1="19" x2="14" y2="19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <span data-lang="en">e-Visita content experience</span><span data-lang="pt">Experiência de conteúdo e-Visita</span>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- 06 DESIGNING THE EXPERIENCE -->
+<div data-section="06-process" class="cs-section reveal">
+  <p class="ey">06 — <span data-lang="en">Process</span><span data-lang="pt">Processo</span></p>
+  <h2 class="ch2"><span data-lang="en">Designing the</span><span data-lang="pt">Desenhando a</span><br><em><span data-lang="en">Experience</span><span data-lang="pt">Experiência</span></em></h2>
+  <div class="aline"></div>
+  <div class="tml" style="margin-top:24px;">
+    <div class="ti"><div class="tdot"></div><div><div class="tph">01</div><div class="ttt"><span data-lang="en">Understanding the Journey</span><span data-lang="pt">Entendendo a Jornada</span></div><p class="tde" data-lang="en">Understanding the communication moments and the needs of the experience, through sessions with CRM, growth and medical teams.</p><p class="tde" data-lang="pt">Entendimento dos momentos de comunicação e das necessidades da experiência, por meio de sessões com equipes de CRM, growth e médica.</p></div></div>
+    <div class="ti"><div class="tdot"></div><div><div class="tph">02</div><div class="ttt"><span data-lang="en">Structuring the Information</span><span data-lang="pt">Estruturando a Informação</span></div><p class="tde" data-lang="en">Organizing content, categories and navigation paths so a busy doctor could find what mattered quickly.</p><p class="tde" data-lang="pt">Organização de conteúdos, categorias e caminhos de navegação para que um médico ocupado encontrasse o que importava rapidamente.</p></div></div>
+    <div class="ti"><div class="tdot"></div><div><div class="tph">03</div><div class="ttt"><span data-lang="en">Designing the Interface</span><span data-lang="pt">Desenhando a Interface</span></div><p class="tde" data-lang="en">Creating the visual structure and digital interfaces, building a scalable design system with Auto Layout components.</p><p class="tde" data-lang="pt">Criação da estrutura visual e das interfaces digitais, com um design system escalável e componentes Auto Layout.</p></div></div>
+    <div class="ti"><div class="tdot"></div><div><div class="tph">04</div><div class="ttt"><span data-lang="en">Prototyping</span><span data-lang="pt">Prototipagem</span></div><p class="tde" data-lang="en">Creating and validating flows and solutions in Figma with stakeholders before development.</p><p class="tde" data-lang="pt">Criação e validação de fluxos e soluções no Figma com os stakeholders antes do desenvolvimento.</p></div></div>
+    <div class="ti"><div class="tdot"></div><div><div class="tph">05</div><div class="ttt"><span data-lang="en">Cross-functional Collaboration</span><span data-lang="pt">Colaboração Multidisciplinar</span></div><p class="tde" data-lang="en">Working together with Product, Technology, CRM and Marketing to evolve the solution and prepare it for implementation.</p><p class="tde" data-lang="pt">Trabalho conjunto com Produto, Tecnologia, CRM e Marketing para evoluir a solução e prepará-la para implementação.</p></div></div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- 07 THE PRODUCT EXPERIENCE -->
+<div data-section="07-product-experience" class="cs-section alt reveal">
+  <div class="proto-layout">
+    <div class="proto-text">
+      <p class="ey">07 — <span data-lang="en">Interface</span><span data-lang="pt">Interface</span></p>
+      <h2 class="ch2"><span data-lang="en">The Product</span><span data-lang="pt">A Experiência</span><br><em><span data-lang="en">Experience</span><span data-lang="pt">do Produto</span></em></h2>
+      <div class="aline"></div>
+      <p class="lead" data-lang="en">e-Visita is a <strong>vertical, scroll-based content experience</strong>, accessed via a link sent through the portal, email or WhatsApp. I designed its <strong>content structure</strong> — informing first, connecting to a product second.</p>
+      <p class="lead" data-lang="pt">A e-Visita é uma <strong>experiência de conteúdo vertical, em formato de scroll</strong>, acessada por um link enviado via portal, e-mail ou WhatsApp. Eu desenhei a <strong>estrutura de conteúdo</strong> — informando primeiro, conectando a um produto depois.</p>
+      <p class="img-cap" style="text-align:left;margin-top:24px;"><span data-lang="en">Interactive Prototype · e-Visita Platform · Mantecorp Saúde/Hypera Pharma</span><span data-lang="pt">Protótipo Interativo · Plataforma e-Visita · Mantecorp Saúde/Hypera Pharma</span></p>
+    </div>
+
+    <div class="proto-frame">
       <a
         href="https://www.figma.com/proto/JlPcB7k2cUsIWdJAnjIwAy/e-Visita-%7C-Mantecorp-Sa%C3%BAde-%7C-Hypera?page-id=0%3A1&node-id=186-10186&viewport=195%2C273%2C0.02&t=QTYUKm0GXEoGt3j7-1&scaling=scale-down&content-scaling=fixed&starting-point-node-id=186%3A10186"
         target="_blank"
@@ -661,119 +679,142 @@ footer{background:var(--bg-mid);padding:76px 52px 38px;border-top:1px solid var(
           </div>
         </div>
         <div style="position:absolute;bottom:0;left:0;right:0;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(232,96,26,0.1);background:rgba(232,96,26,0.04);">
-          <span style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;color:rgba(232,96,26,0.45);text-transform:uppercase;">Mantecorp Saúde · Hypera Pharma</span>
+          <span style="font-family:'Space Mono',monospace;font-size:0.58rem;letter-spacing:0.14em;color:rgba(232,96,26,0.45);text-transform:uppercase;">Mantecorp Saúde/Hypera Pharma</span>
           <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(232,96,26,0.5)" stroke-width="2" stroke-linecap="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
         </div>
       </a>
     </div>
-  </div>
-</div>
-<div class="divider"></div>
 
-<!-- 07 PROCESS -->
-<div class="cs-section alt reveal">
-  <p class="ey">07 — <span data-lang="en">Process</span><span data-lang="pt">Processo</span></p>
-  <h2 class="ch2"><span data-lang="en">From Discovery</span><span data-lang="pt">Da Descoberta</span><br><em><span data-lang="en">to Delivery</span><span data-lang="pt">à Entrega</span></em></h2>
-  <div class="aline"></div>
-  <p class="lead" data-lang="en">A <strong>structured approach</strong> built around user needs, technical constraints, brand guidelines and business goals — five steps that took the project from an internal alignment problem to a shipped, cross-team product.</p>
-  <p class="lead" data-lang="pt">Uma <strong>abordagem estruturada</strong> construída em torno das necessidades dos usuários, restrições técnicas, diretrizes de marca e objetivos de negócio — cinco etapas que levaram o projeto de um problema de alinhamento interno a um produto entregue, multi-times.</p>
-  <div class="tml" style="margin-top:24px;">
-    <div class="ti"><div class="tdot"></div><div><div class="tph">Step 01</div><div class="ttt"><span data-lang="en">Discovery &amp; Stakeholder Alignment</span><span data-lang="pt">Descoberta e Alinhamento com Stakeholders</span></div><p class="tde" data-lang="en">Mapped the existing medical visit process and its friction points through sessions with CRM, growth and medical teams.</p><p class="tde" data-lang="pt">Mapeamento do processo de visita médica existente e seus pontos de fricção por meio de sessões com equipes de CRM, growth e médica.</p></div></div>
-    <div class="ti"><div class="tdot"></div><div><div class="tph">Step 02</div><div class="ttt"><span data-lang="en">User Flows &amp; Wireframes</span><span data-lang="pt">Fluxos de Usuário e Wireframes</span></div><p class="tde" data-lang="en">Created detailed flows for each user role, then low-fidelity wireframes to validate structure before visual design.</p><p class="tde" data-lang="pt">Criação de fluxos detalhados para cada papel de usuário e wireframes de baixa fidelidade para validar a estrutura.</p></div></div>
-    <div class="ti"><div class="tdot"></div><div><div class="tph">Step 03</div><div class="ttt"><span data-lang="en">Design System &amp; Figma Prototyping</span><span data-lang="pt">Design System e Prototipagem no Figma</span></div><p class="tde" data-lang="en">Built a scalable design system with Auto Layout components. Prototyped key flows for stakeholder validation.</p><p class="tde" data-lang="pt">Design system escalável com componentes Auto Layout. Prototipagem dos fluxos principais para validação dos stakeholders.</p></div></div>
-    <div class="ti"><div class="tdot"></div><div><div class="tph">Step 04</div><div class="ttt"><span data-lang="en">HTML/CSS Development</span><span data-lang="pt">Desenvolvimento HTML/CSS</span></div><p class="tde" data-lang="en">Developed visual components in HTML/CSS for Salesforce integration, bridging design and development teams.</p><p class="tde" data-lang="pt">Componentes visuais em HTML/CSS para integração Salesforce, conectando design e desenvolvimento.</p></div></div>
-    <div class="ti"><div class="tdot"></div><div><div class="tph">Step 05</div><div class="ttt"><span data-lang="en">CRM &amp; WhatsApp Journey Design</span><span data-lang="pt">Design de Jornadas CRM e WhatsApp</span></div><p class="tde" data-lang="en">Designed email and WhatsApp automation flows to drive platform adoption and post-visit engagement with HCPs.</p><p class="tde" data-lang="pt">Design de fluxos de automação de email e WhatsApp para impulsionar adoção da plataforma e engajamento pós-visita.</p></div></div>
-  </div>
-</div>
-<div class="divider"></div>
-
-<!-- 08 APPROACH -->
-<div class="cs-section reveal">
-  <p class="ey">08 — <span data-lang="en">Approach</span><span data-lang="pt">Abordagem</span></p>
-  <h2 class="ch2"><span data-lang="en">The Thinking</span><span data-lang="pt">O Raciocínio</span><br><em><span data-lang="en">Behind the Design</span><span data-lang="pt">por Trás do Design</span></em></h2>
-  <div class="aline"></div>
-  <div class="g4">
-    <div class="met">
-      <div class="met-n">✦</div>
-      <div class="met-t"><span data-lang="en">Problem framing</span><span data-lang="pt">Enquadramento do problema</span></div>
-      <p class="met-d" data-lang="en">Started from an operational and access problem, not just an interface request.</p>
-      <p class="met-d" data-lang="pt">Partiu de um problema operacional e de acesso, não apenas de um pedido de interface.</p>
-    </div>
-    <div class="met">
-      <div class="met-n">↗</div>
-      <div class="met-t"><span data-lang="en">Journey thinking</span><span data-lang="pt">Pensamento de jornada</span></div>
-      <p class="met-d" data-lang="en">Mapped how communication broke down across time, geography and visit cadence.</p>
-      <p class="met-d" data-lang="pt">Mapeou como a comunicação se quebrava ao longo do tempo, geografia e cadência de visitas.</p>
-    </div>
-    <div class="met">
-      <div class="met-n">⚖</div>
-      <div class="met-t"><span data-lang="en">Business + user balance</span><span data-lang="pt">Equilíbrio negócio + usuário</span></div>
-      <p class="met-d" data-lang="en">Considered both doctors' access needs and the company's reach limitations.</p>
-      <p class="met-d" data-lang="pt">Considerou tanto as necessidades de acesso dos médicos quanto as limitações de alcance da empresa.</p>
-    </div>
-    <div class="met">
-      <div class="met-n">⇄</div>
-      <div class="met-t"><span data-lang="en">Service transformation</span><span data-lang="pt">Transformação de serviço</span></div>
-      <p class="met-d" data-lang="en">Turned a field-dependent relationship into a more continuous digital experience.</p>
-      <p class="met-d" data-lang="pt">Transformou um relacionamento dependente de campo numa experiência digital mais contínua.</p>
-    </div>
-  </div>
-</div>
-<div class="divider"></div>
-
-<!-- 09 RESULTS -->
-<div class="cs-section alt reveal">
-  <p class="ey">09 — <span data-lang="en">Insights</span><span data-lang="pt">Insights</span></p>
-  <h2 class="ch2"><span data-lang="en">Results &amp;</span><span data-lang="pt">Resultados e</span><br><em><span data-lang="en">Impact</span><span data-lang="pt">Impacto</span></em></h2>
-  <div class="aline"></div>
-
-  <div class="num-row">
-    <div class="num-stat"><div class="num-n">3</div><div class="num-l"><span data-lang="en">Cross-functional teams aligned — CRM, MarTech &amp; BI</span><span data-lang="pt">Times multidisciplinares alinhados — CRM, MarTech e BI</span></div></div>
-    <div class="num-stat"><div class="num-n">2</div><div class="num-l"><span data-lang="en">Communication channels unified — Email + WhatsApp</span><span data-lang="pt">Canais de comunicação unificados — Email + WhatsApp</span></div></div>
-    <div class="num-stat"><div class="num-n">4</div><div class="num-l"><span data-lang="en">Core platform modules shipped — dashboard, library, content, notifications</span><span data-lang="pt">Módulos principais entregues — dashboard, biblioteca, conteúdo, notificações</span></div></div>
-    <div class="num-stat"><div class="num-n">2024–25</div><div class="num-l"><span data-lang="en">Design &amp; delivery timeframe</span><span data-lang="pt">Período de design e entrega</span></div></div>
-  </div>
-
-  <div class="g2">
-    <div>
-      <p class="lead" data-lang="en">The platform improved <strong>engagement efficiency</strong> for pharmaceutical representatives, enabling digital medical visits that <strong>maintained relationship quality</strong> while reducing dependence on unpredictable physical coverage.</p>
-      <p class="lead" data-lang="pt">A plataforma melhorou a <strong>eficiência de engajamento</strong> dos representantes farmacêuticos, permitindo visitas médicas digitais que <strong>mantiveram a qualidade do relacionamento</strong> reduzindo a dependência de uma cobertura física imprevisível.</p>
-      <div style="margin-top:20px;">
-        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;color:#c44a10;text-transform:uppercase;margin-bottom:14px;"><span data-lang="en">Performance Signal (relative)</span><span data-lang="pt">Sinal de Performance (relativo)</span></div>
-        <div class="barchart">
-          <div class="bar-row"><span class="bar-lbl">Design System</span><div class="bar-track"><div class="bar-fill" style="width:95%"></div></div><span class="bar-val" data-lang="en">Faster Delivery</span><span class="bar-val" data-lang="pt">Entrega Ágil</span></div>
-          <div class="bar-row"><span class="bar-lbl">CRM Journey</span><div class="bar-track"><div class="bar-fill" style="width:88%"></div></div><span class="bar-val" data-lang="en">+Engagement</span><span class="bar-val" data-lang="pt">+Engajamento</span></div>
-          <div class="bar-row"><span class="bar-lbl">HTML/CSS Dev</span><div class="bar-track"><div class="bar-fill" style="width:82%"></div></div><span class="bar-val" data-lang="en">Less Handoff</span><span class="bar-val" data-lang="pt">Menos Handoff</span></div>
-          <div class="bar-row"><span class="bar-lbl">Cross-team</span><div class="bar-track"><div class="bar-fill" style="width:90%"></div></div><span class="bar-val" data-lang="en">+KPI Align.</span><span class="bar-val" data-lang="pt">+Alinhamento</span></div>
-        </div>
+    <div class="proto-cards">
+      <div class="chal">
+        <h4 data-lang="en">Cover &amp; Hook</h4><h4 data-lang="pt">Capa e Hook</h4>
+        <p data-lang="en">Grabs attention with the week's clinical topic.</p>
+        <p data-lang="pt">Captura atenção com o assunto clínico da semana.</p>
+      </div>
+      <div class="chal">
+        <h4 data-lang="en">Topic + Product — repeats twice</h4><h4 data-lang="pt">Assunto + Produto — repete 2x</h4>
+        <p data-lang="en">A content carousel on a topic, connected to a Mantecorp product with composition/usage info in a pop-up.</p>
+        <p data-lang="pt">Carrossel de conteúdo sobre um assunto, conectado a um produto Mantecorp com composição/uso em pop-up.</p>
+      </div>
+      <div class="chal">
+        <h4 data-lang="en">Recall Block</h4><h4 data-lang="pt">Bloco Recordatório</h4>
+        <p data-lang="en">Closes with 2 already-known products, shown with lighter info.</p>
+        <p data-lang="pt">Encerra com 2 produtos já conhecidos, com menos informação.</p>
+      </div>
+      <div class="chal">
+        <h4 data-lang="en">Conversion &amp; Closing</h4><h4 data-lang="pt">Conversão e Fechamento</h4>
+        <p data-lang="en">Free sample request, feedback, related links and social follow.</p>
+        <p data-lang="pt">Solicitação de amostra grátis, feedback, links relacionados e redes sociais.</p>
       </div>
     </div>
-    <div style="display:flex;flex-direction:column;gap:14px;">
-      <div class="met"><div class="met-n">↑</div><div class="met-t"><span data-lang="en">Engagement Quality</span><span data-lang="pt">Qualidade do Engajamento</span></div><p class="met-d" data-lang="en">Digital visits maintained relationship depth while extending reach beyond the field team's cadence.</p><p class="met-d" data-lang="pt">Visitas digitais mantiveram a profundidade do relacionamento ampliando o alcance além da cadência do time de campo.</p></div>
-      <div class="met"><div class="met-n">◉</div><div class="met-t"><span data-lang="en">CRM Integration</span><span data-lang="pt">Integração CRM</span></div><p class="met-d" data-lang="en">Email and WhatsApp journeys increased post-visit content consumption and medical engagement.</p><p class="met-d" data-lang="pt">Jornadas de email e WhatsApp aumentaram o consumo de conteúdo pós-visita e o engajamento médico.</p></div>
-      <div class="met"><div class="met-n">▶</div><div class="met-t"><span data-lang="en">Development Bridge</span><span data-lang="pt">Ponte com Desenvolvimento</span></div><p class="met-d" data-lang="en">HTML/CSS delivery reduced handoff friction and accelerated implementation cycles significantly.</p><p class="met-d" data-lang="pt">Entrega em HTML/CSS reduziu atrito de handoff e acelerou os ciclos de implementação.</p></div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- 08 MY DESIGN CONTRIBUTION -->
+<div data-section="08-my-contribution" class="cs-section reveal">
+  <p class="ey">08 — <span data-lang="en">Contribution</span><span data-lang="pt">Contribuição</span></p>
+  <h2 class="ch2"><span data-lang="en">My Design</span><span data-lang="pt">Minha Contribuição</span><br><em><span data-lang="en">Contribution</span><span data-lang="pt">de Design</span></em></h2>
+  <div class="aline"></div>
+  <div class="g4">
+    <div class="gcard">
+      <div class="gcard-lbl"><span data-lang="en">UX &amp; Journey</span><span data-lang="pt">UX e Jornada</span></div>
+      <ul>
+        <li data-lang="en">User flows</li><li data-lang="pt">Fluxos de usuário</li>
+        <li data-lang="en">Journey structure</li><li data-lang="pt">Estrutura de jornada</li>
+        <li data-lang="en">Information architecture</li><li data-lang="pt">Arquitetura da informação</li>
+        <li data-lang="en">Navigation logic</li><li data-lang="pt">Lógica de navegação</li>
+      </ul>
     </div>
+    <div class="gcard">
+      <div class="gcard-lbl"><span data-lang="en">UI &amp; Interaction</span><span data-lang="pt">UI e Interação</span></div>
+      <ul>
+        <li data-lang="en">Interface design</li><li data-lang="pt">Design de interface</li>
+        <li data-lang="en">Visual hierarchy</li><li data-lang="pt">Hierarquia visual</li>
+        <li data-lang="en">Interaction patterns</li><li data-lang="pt">Padrões de interação</li>
+        <li data-lang="en">Responsive considerations</li><li data-lang="pt">Considerações responsivas</li>
+      </ul>
+    </div>
+    <div class="gcard">
+      <div class="gcard-lbl"><span data-lang="en">Content &amp; CRM Experience</span><span data-lang="pt">Conteúdo e Experiência CRM</span></div>
+      <ul>
+        <li data-lang="en">Content organization</li><li data-lang="pt">Organização de conteúdo</li>
+        <li data-lang="en">Email experience</li><li data-lang="pt">Experiência de e-mail</li>
+        <li data-lang="en">Digital communication flows</li><li data-lang="pt">Fluxos de comunicação digital</li>
+        <li data-lang="en">CRM ↔ product connection</li><li data-lang="pt">Conexão CRM ↔ produto</li>
+      </ul>
+    </div>
+    <div class="gcard">
+      <div class="gcard-lbl"><span data-lang="en">Collaboration</span><span data-lang="pt">Colaboração</span></div>
+      <ul>
+        <li data-lang="en">CRM, Dev &amp; BI (MarTech)</li><li data-lang="pt">CRM, Dev e BI (MarTech)</li>
+        <li data-lang="en">Art Direction</li><li data-lang="pt">Direção de Arte</li>
+        <li data-lang="en">Content Writers &amp; Copywriters</li><li data-lang="pt">Conteudistas e Redatores</li>
+        <li data-lang="en">Commercial &amp; Effectiveness</li><li data-lang="pt">Comercial e Efetividade</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>
+
+<!-- 09 OUTCOME -->
+<div data-section="09-outcome" class="cs-section alt reveal">
+  <p class="ey">09 — <span data-lang="en">Outcome</span><span data-lang="pt">Resultado</span></p>
+  <h2 class="ch2"><span data-lang="en">What the</span><span data-lang="pt">O Que a</span><br><em><span data-lang="en">Experience Achieved</span><span data-lang="pt">Experiência Alcançou</span></em></h2>
+  <div class="aline"></div>
+
+  <p class="lead" data-lang="en" style="max-width:780px;">The experience I designed helped sustain this engagement — the numbers below reflect the platform's overall adoption:</p>
+  <p class="lead" data-lang="pt" style="max-width:780px;">A experiência que desenhei ajudou a sustentar esse engajamento — os números abaixo refletem a adesão geral da plataforma:</p>
+
+  <div class="num-row" style="grid-template-columns:repeat(2,1fr);">
+    <div class="num-stat"><div class="num-n">+30%</div><div class="num-l"><span data-lang="en">Engagement in CRM communications — above the pharmaceutical market average</span><span data-lang="pt">Engajamento nas comunicações de CRM — acima da média do mercado farmacêutico</span></div></div>
+    <div class="num-stat"><div class="num-n">70%</div><div class="num-l"><span data-lang="en">Average engagement on the e-Visita platform</span><span data-lang="pt">Engajamento médio na plataforma e-Visita</span></div></div>
+  </div>
+
+  <p class="lead" data-lang="en" style="max-width:780px;">These are the <strong>project's overall results</strong>, tracked by the CRM and BI teams over the first 3 months of platform use — shared here as context, not as individually attributed metrics. What follows is the experience that was designed:</p>
+  <p class="lead" data-lang="pt" style="max-width:780px;">Esses são os <strong>resultados gerais do projeto</strong>, acompanhados pelos times de CRM e BI ao longo dos primeiros 3 meses de uso da plataforma — compartilhados aqui como contexto, não como métricas de atribuição individual. A seguir, a experiência que foi desenhada:</p>
+
+  <div class="g3" style="margin-top:24px;">
+    <div class="met"><div class="met-n">✦</div><div class="met-t"><span data-lang="en">Complementary digital layer</span><span data-lang="pt">Camada digital complementar</span></div><p class="met-d" data-lang="en">A digital layer to complement field communication, not replace it.</p><p class="met-d" data-lang="pt">Uma camada digital para complementar a comunicação de campo, não substituí-la.</p></div>
+    <div class="met"><div class="met-n">◉</div><div class="met-t"><span data-lang="en">Continuous, multi-channel reach</span><span data-lang="pt">Alcance contínuo e multicanal</span></div><p class="met-d" data-lang="en">A more continuous experience across CRM, email, WhatsApp and the platform.</p><p class="met-d" data-lang="pt">Uma experiência mais contínua entre CRM, e-mail, WhatsApp e a plataforma.</p></div>
+    <div class="met"><div class="met-n">◆</div><div class="met-t"><span data-lang="en">A hook that earns attention</span><span data-lang="pt">Um hook que conquista atenção</span></div><p class="met-d" data-lang="en">Content built relevant enough to keep doctors reading.</p><p class="met-d" data-lang="pt">Conteúdo relevante o suficiente para manter o médico lendo.</p></div>
+    <div class="met"><div class="met-n">◐</div><div class="met-t"><span data-lang="en">Relevance, not advertising</span><span data-lang="pt">Relevância, não propaganda</span></div><p class="met-d" data-lang="en">Product connections that felt earned by the content, not intrusive.</p><p class="met-d" data-lang="pt">Conexões com produto que surgiam do conteúdo, sem parecer intrusivas.</p></div>
+    <div class="met"><div class="met-n">☆</div><div class="met-t"><span data-lang="en">Recall at the point of prescribing</span><span data-lang="pt">Lembrança na hora de prescrever</span></div><p class="met-d" data-lang="en">Known products reinforced right when it mattered most.</p><p class="met-d" data-lang="pt">Produtos conhecidos reforçados no momento que mais importava.</p></div>
+    <div class="met"><div class="met-n">▶</div><div class="met-t"><span data-lang="en">A clear next step</span><span data-lang="pt">Um próximo passo claro</span></div><p class="met-d" data-lang="en">Sample requests and feedback gave doctors a direct way to act.</p><p class="met-d" data-lang="pt">Solicitação de amostras e feedback davam ao médico uma forma direta de agir.</p></div>
   </div>
 </div>
 <div class="divider"></div>
 
 <!-- 10 LEARNINGS -->
-<div class="cs-section reveal">
-  <div style="max-width:760px;margin:0 auto;text-align:center;">
+<div data-section="10-learnings" class="cs-section reveal">
+  <div style="max-width:780px;margin:0 auto;text-align:center;">
     <p class="ey" style="text-align:center;">10 — <span data-lang="en">Learnings</span><span data-lang="pt">Aprendizados</span></p>
     <h2 class="ch2"><span data-lang="en">What This</span><span data-lang="pt">O Que Isso</span> <em><span data-lang="en">Taught Me</span><span data-lang="pt">Me Ensinou</span></em></h2>
     <div class="aline" style="margin:0 auto 28px;"></div>
-    <p class="lead" data-lang="en" style="text-align:center;">This project reinforced that product design often begins by <strong>revealing the invisible friction</strong> in an existing service model. In this case, the core issue was not visual communication — it was the <strong>lack of continuity and predictability</strong> in how the relationship worked.</p>
-    <p class="lead" data-lang="en" style="text-align:center;">It also highlighted how digital products can <strong>amplify, rather than replace, human channels</strong>. By creating a digital layer around the representative visit, the experience could become more accessible, more scalable, and more valuable over time.</p>
-    <p class="lead" data-lang="pt" style="text-align:center;">Este projeto reforçou que o product design frequentemente começa <strong>revelando a fricção invisível</strong> em um modelo de serviço existente. Neste caso, a questão central não era a comunicação visual — era a <strong>falta de continuidade e previsibilidade</strong> em como o relacionamento funcionava.</p>
-    <p class="lead" data-lang="pt" style="text-align:center;">Também evidenciou como produtos digitais podem <strong>amplificar, em vez de substituir, canais humanos</strong>. Ao criar uma camada digital em torno da visita do representante, a experiência pôde se tornar mais acessível, mais escalável e mais valiosa ao longo do tempo.</p>
-    <div class="tags" style="justify-content:center;margin-top:24px;">
-      <span class="tag">Journey Design</span>
-      <span class="tag">Service Design</span>
-      <span class="tag">Product Thinking</span>
-      <span class="tag">Access Strategy</span>
-      <span class="tag">UX/UI</span>
-      <span class="tag">Digital Transformation</span>
+    <div class="g2" style="text-align:left;align-items:stretch;">
+      <div class="gcard">
+        <ul>
+          <li data-lang="en">Digital products are not just interfaces.</li><li data-lang="pt">Produtos digitais não são apenas interfaces.</li>
+          <li data-lang="en">The experience begins before the screen.</li><li data-lang="pt">A experiência começa antes da tela.</li>
+          <li data-lang="en">Journey mapping helps identify opportunities for continuity.</li><li data-lang="pt">Journey mapping ajuda a identificar oportunidades de continuidade.</li>
+          <li data-lang="en">Information architecture is essential with high content volume.</li><li data-lang="pt">Arquitetura da informação é essencial quando há grande volume de conteúdo.</li>
+        </ul>
+      </div>
+      <div class="gcard">
+        <ul>
+          <li data-lang="en">CRM and product can work together to create more continuous experiences.</li><li data-lang="pt">CRM e produto podem trabalhar juntos para criar experiências mais contínuas.</li>
+          <li data-lang="en">A designer's role also means connecting user needs, business context and different touchpoints.</li><li data-lang="pt">O papel do designer também é conectar necessidades do usuário, contexto de negócio e diferentes pontos de contato.</li>
+          <li data-lang="en">Working in a multidisciplinary team requires constant collaboration and alignment.</li><li data-lang="pt">Trabalhar em um time multidisciplinar exige colaboração e alinhamento constantes.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="tags" style="justify-content:center;margin-top:28px;">
+      <span class="tag">UX/UI Design</span>
+      <span class="tag">User Journeys</span>
+      <span class="tag">Information Architecture</span>
+      <span class="tag">Digital Experiences</span>
+      <span class="tag">CRM Experience</span>
+      <span class="tag">Cross-functional Collaboration</span>
     </div>
     <a href="https://lecorredato.github.io/portfolio/" class="backbtn">
       <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -925,6 +966,110 @@ if (protoCard && protoHover) {
   protoCard.addEventListener('mouseenter', () => { protoHover.style.opacity = '1'; });
   protoCard.addEventListener('mouseleave', () => { protoHover.style.opacity = '0'; });
 }
+
+/* ══════════════════════════════════════════
+   GA4 — EVENTOS DE ENGAJAMENTO E LEITURA
+══════════════════════════════════════════ */
+function gaEvent(name, params) {
+  if (typeof gtag === 'function') gtag('event', name, params || {});
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push(Object.assign({ event: name }, params || {}));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  // ── Visualização de seções (até onde a pessoa está lendo) ──
+  const sectionSeen = new Set();
+  const sectionObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting && !sectionSeen.has(e.target.dataset.section)) {
+        sectionSeen.add(e.target.dataset.section);
+        gaEvent('section_view', { section: e.target.dataset.section });
+      }
+    });
+  }, { threshold: 0.35 });
+  document.querySelectorAll('[data-section]').forEach(el => sectionObs.observe(el));
+
+  // ── Profundidade de scroll (25/50/75/90/100%) — onde a pessoa abandona a página ──
+  (function initScrollDepth() {
+    const marks = [25, 50, 75, 90, 100];
+    const seen = new Set();
+    let ticking = false;
+    function checkScroll() {
+      ticking = false;
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      if (docHeight <= 0) return;
+      const pct = Math.round((scrollTop / docHeight) * 100);
+      marks.forEach(m => {
+        if (pct >= m && !seen.has(m)) {
+          seen.add(m);
+          gaEvent('scroll_depth', { percent_scrolled: m });
+        }
+      });
+    }
+    window.addEventListener('scroll', () => {
+      if (!ticking) { requestAnimationFrame(checkScroll); ticking = true; }
+    }, { passive: true });
+  })();
+
+  // ── Tempo total na página, reportado ao sair ──
+  (function initEngagementTime() {
+    const start = Date.now();
+    function sendTotal() {
+      gaEvent('page_engagement_time', { seconds: Math.round((Date.now() - start) / 1000) });
+    }
+    window.addEventListener('beforeunload', sendTotal);
+    document.addEventListener('visibilitychange', () => {
+      if (document.visibilityState === 'hidden') sendTotal();
+    });
+  })();
+
+  // ── Clique no botão de visualizar o protótipo (Figma) ──
+  if (protoCard) {
+    protoCard.addEventListener('click', () => {
+      gaEvent('view_prototype', { link_url: protoCard.getAttribute('href') });
+    });
+  }
+
+  // ── Interesse por tags (Key Learnings) ──
+  document.querySelectorAll('.tag').forEach(tag => {
+    tag.addEventListener('click', () => gaEvent('tag_interest', { tag: tag.textContent.trim() }));
+  });
+
+  // ── Cliques no menu de navegação (desktop + mobile) ──
+  document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(a => {
+    a.addEventListener('click', () => {
+      gaEvent('nav_click', { link_label: a.textContent.trim(), menu_type: a.closest('.mobile-menu') ? 'mobile' : 'desktop' });
+    });
+  });
+
+  // ── Botão "Voltar ao Portfólio" ──
+  document.querySelectorAll('.backbtn').forEach(a => {
+    a.addEventListener('click', () => gaEvent('back_to_portfolio_click', {}));
+  });
+
+  // ── Links de contato / redes sociais no rodapé ──
+  document.querySelectorAll('.social-link').forEach(a => {
+    a.addEventListener('click', () => {
+      gaEvent('social_click', { network: a.getAttribute('title') || a.href });
+    });
+  });
+
+  // ── Toggle de idioma e tema ──
+  ['btnEN','btnENMob'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', () => gaEvent('language_switch', { lang: 'en' }));
+  });
+  ['btnPT','btnPTMob'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', () => gaEvent('language_switch', { lang: 'pt' }));
+  });
+  ['themeBtn','themeBtnMob'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('click', () => gaEvent('theme_toggle', {}));
+  });
+});
 </script>
 </body>
 </html>
