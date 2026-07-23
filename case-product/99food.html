@@ -276,6 +276,36 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
   .mobile-menu{justify-content:flex-start;padding:60px 20px;overflow-y:auto;gap:16px;}
   .mobile-menu a{font-size:1.5rem;}
 }
+.cs-funnel{display:flex;flex-direction:column;align-items:center;gap:2px;margin-top:8px;}
+.cs-funnel-step{width:100%;margin:0 auto;text-align:center;background:var(--card-bg);border:1px solid var(--border);border-left:4px solid var(--gold);border-radius:6px;padding:14px 20px;font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:0.1em;color:var(--text);}
+.cs-funnel-arrow{color:var(--gold3);font-size:0.85rem;line-height:1;}
+.cs-hyp5{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:20px;}
+.cs-hyp-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:18px 16px;text-align:center;}
+.cs-hyp-card .cs-signal-title{font-family:'Bebas Neue',sans-serif;font-size:0.98rem;letter-spacing:0.08em;color:var(--gold);margin-bottom:8px;}
+.cs-hyp-card .cs-signal-desc{font-size:0.82rem;color:var(--text-muted);line-height:1.5;}
+.cs-icon-list{list-style:none;display:flex;flex-direction:column;gap:18px;}
+.cs-icon-list li{display:flex;gap:14px;align-items:flex-start;}
+.cs-icon-list li::before{content:none;}
+.cs-icon-ico{flex:0 0 24px;width:24px;height:24px;color:var(--gold);margin-top:2px;}
+.cs-icon-list h4{font-family:'Bebas Neue',sans-serif;font-size:0.98rem;letter-spacing:0.06em;color:var(--text);margin-bottom:3px;}
+.cs-icon-list p{font-size:0.88rem;color:var(--text-muted);line-height:1.5;margin:0;}
+
+.cs-hyp-list{display:flex;flex-direction:column;gap:16px;margin-top:24px;}
+.cs-hyp-row{display:flex;gap:16px;align-items:flex-start;background:var(--card-bg);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:8px;padding:16px 20px;}
+.cs-hyp-row .cs-icon-ico{flex:0 0 26px;width:26px;height:26px;}
+.cs-hyp-row .cs-signal-title{font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:0.06em;color:var(--gold);margin-bottom:4px;}
+.cs-hyp-row .cs-signal-desc{font-size:0.88rem;color:var(--text-muted);line-height:1.5;}
+
+.cs-mod-icon{width:22px;height:22px;color:var(--gold);margin-bottom:8px;display:inline-block;}
+.cs-creative-icon svg{width:20px;height:20px;}
+
+.no-dash li::before{content:none;}
+
+@media(max-width:900px){
+  .cs-3col{grid-template-columns:1fr!important;}
+  .cs-season-grid{grid-template-columns:1fr!important;}
+  .cs-result-grid{grid-template-columns:1fr!important;}
+}
 </style>
 </head>
 <body>
@@ -347,43 +377,43 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
 <!-- COVER -->
 <div class="cs-cover">
   <div class="cs-cover-grid"></div><div class="cs-cover-glow"></div>
-  <div class="cs-cover-tag t" data-key="cover-tag">Case Study · 2026</div>
+  <div class="cs-cover-tag t" data-key="cover-tag">Case Study · Growth Product Design</div>
   <h1 class="cs-cover-brand"><span>99</span>Food</h1>
-  <p class="cs-cover-sub t" data-key="cover-sub">Creative Strategy for Restaurant Acquisition</p>
-  <p class="cs-cover-desc t" data-key="cover-desc">B2B paid media campaigns on Meta and Google to scale restaurant sign-ups across Brazil — built on creative experimentation, regional intelligence, and performance data.</p>
+  <p class="cs-cover-sub t" data-key="cover-sub">From Campaigns to a Product-Led Growth System</p>
+  <p class="cs-cover-desc t" data-key="cover-desc">At 99Food, my work was to translate acquisition needs into design hypotheses, modular systems, and experiments that helped restaurant owners understand value, build trust, and move through the funnel.</p>
   <div class="cs-cover-meta">
-    <div class="cs-meta-item"><div class="cs-meta-label t" data-key="ml-role">Role</div><div class="cs-meta-val t" data-key="mv-role">Creative Strategist</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label t" data-key="ml-role">Role</div><div class="cs-meta-val t" data-key="mv-role2">Designer &amp; Creative Strategist</div></div>
     <div class="cs-meta-div"></div>
-    <div class="cs-meta-item"><div class="cs-meta-label t" data-key="ml-focus">Focus</div><div class="cs-meta-val t" data-key="mv-focus">B2B National Acquisition</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label t" data-key="ml-focus">Focus</div><div class="cs-meta-val t" data-key="mv-focus2">Partner Acquisition</div></div>
     <div class="cs-meta-div"></div>
-    <div class="cs-meta-item"><div class="cs-meta-label t" data-key="ml-plat">Platforms</div><div class="cs-meta-val">Meta · Google · Figma · Smartly.io</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label t" data-key="ml-scope">Scope</div><div class="cs-meta-val t" data-key="mv-scope">Paid Media · Meta Ads · Creative Strategy</div></div>
     <div class="cs-meta-div"></div>
-    <div class="cs-meta-item"><div class="cs-meta-label t" data-key="ml-year">Year</div><div class="cs-meta-val">2026</div></div>
+    <div class="cs-meta-item"><div class="cs-meta-label t" data-key="ml-team">Team</div><div class="cs-meta-val t" data-key="mv-team">Growth, Performance, Content, BI</div></div>
   </div>
 </div>
 <div class="divider"></div>
 
-<!-- 01 BRIEF -->
+<!-- 01 OVERVIEW / MY ROLE -->
 <div class="cs-section alt reveal">
   <div class="cs-2col">
     <div>
       <p class="cs-eyebrow t" data-key="s02-ey">01 — Overview</p>
       <h2 class="cs-h2 t" data-key="s02-h2">The<br><em>Brief</em></h2>
       <div class="cs-accent-line"></div>
-      <p class="cs-lead t" data-key="s02-l1">In January 2026, I joined 99Food as a Creative Strategist with one mandate: grow the restaurant partner base through B2B acquisition campaigns on Meta and Google.</p>
-      <p class="cs-lead t" data-key="s02-l2">The audience wasn't a typical consumer — it was a business owner deciding whether to trust a new platform with their livelihood. Every creative decision had to answer: what's in it for my business?</p>
+      <p class="cs-lead t" data-key="n-s02-l1">At 99Food, my work was to turn acquisition needs into design hypotheses, modular systems, and experiments that helped restaurant owners understand value, build trust, and advance through the funnel.</p>
+      <p class="cs-lead t" data-key="n-s02-l2">The audience wasn't a typical consumer — it was a business owner deciding whether to trust a new platform with their livelihood. Every design decision had to answer: what's in it for my business?</p>
     </div>
     <div style="display:flex;flex-direction:column;gap:12px;">
       <div class="cs-card">
         <div class="cs-card-label t" data-key="c-resp">Responsibilities</div>
         <ul class="cs-card-list">
-          <li class="t" data-key="r1">Creative direction &amp; messaging strategy</li>
-          <li class="t" data-key="r2">Quarterly experimentation roadmap</li>
-          <li class="t" data-key="r3">Performance analysis &amp; biweekly reporting</li>
-          <li class="t" data-key="r4">Seasonal campaign planning &amp; execution</li>
-          <li class="t" data-key="r5">Fake refresh methodology</li>
-          <li class="t" data-key="r6">Localized creative adaptation — 12 cities</li>
-          <li class="t" data-key="r7">Stakeholder presentations</li>
+          <li class="t" data-key="n-r1">Design hypotheses &amp; experimentation strategy</li>
+          <li class="t" data-key="n-r2">Quarterly experimentation roadmap</li>
+          <li class="t" data-key="n-r3">Performance analysis &amp; biweekly reporting</li>
+          <li class="t" data-key="n-r4">Modular creative system design</li>
+          <li class="t" data-key="n-r5">Fake refresh methodology</li>
+          <li class="t" data-key="n-r6">Localized adaptation — 12 cities</li>
+          <li class="t" data-key="n-r7">Stakeholder presentations</li>
         </ul>
       </div>
       <div class="cs-card">
@@ -395,201 +425,236 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
 </div>
 <div class="divider"></div>
 
-<!-- 02 RESULTS -->
+<!-- 02 PRODUCT CONTEXT -->
 <div class="cs-section reveal">
-  <p class="cs-eyebrow t" data-key="s03-ey">02 — Results</p>
-  <h2 class="cs-h2 t" data-key="s03-h2">What the Campaigns<br><em>Delivered</em></h2>
+  <p class="cs-eyebrow t" data-key="pc-ey">02 — Context</p>
+  <h2 class="cs-h2 t" data-key="pc-h2">The Product Behind<br><em>the Campaigns</em></h2>
   <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s03-lead">Creative experimentation consistently outperformed business-as-usual — in reach, efficiency, and sign-up volume. All gains driven by creative strategy, not budget increases.</p>
+  <p class="cs-lead t" data-key="pc-lead">The challenge wasn't just writing prettier ads. 99Food needed to attract restaurant partners at scale — with clear messaging for different audiences, in different regions, at different moments of the funnel. The design work had to connect business, behavior, and conversion.</p>
   <div class="cs-hb-4sep" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:24px 0;">
-    <div class="cs-highlight-box" style="margin:0;">
-      <div class="cs-highlight-num">+22%</div>
-      <div class="cs-highlight-title t" data-key="h1-t">Reach</div>
-      <div class="cs-highlight-desc t" data-key="h1-d">New audiences reached without resetting platform learning.</div>
+    <div class="cs-challenge-card" style="border-top-color:var(--gold);">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.5" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 20c0-4 3.5-7 7.5-7s7.5 3 7.5 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <h4 class="t" data-key="pc1-t">User</h4>
+      <p class="t" data-key="pc1-d">Restaurant owner seeking predictability, demand, and trust.</p>
     </div>
-    <div class="cs-highlight-box" style="margin:0;">
-      <div class="cs-highlight-num">-9%</div>
-      <div class="cs-highlight-title t" data-key="h3-t">CPC</div>
-      <div class="cs-highlight-desc t" data-key="h3-d">Cost per click reduced with only +6% more spend.</div>
+    <div class="cs-challenge-card">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><path d="M3 20V10M9 20V4M15 20v-7M21 20v-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <h4 class="t" data-key="pc2-t">Business</h4>
+      <p class="t" data-key="pc2-d">Grow the partner base with efficiency.</p>
     </div>
-    <div class="cs-highlight-box" style="margin:0;">
-      <div class="cs-highlight-num">23%</div>
-      <div class="cs-highlight-title t" data-key="res1-t">Easter Sign-ups</div>
-      <div class="cs-highlight-desc t" data-key="res1-d">Seasonal pack drove 23% of total sign-ups at 11% below account average CPSU.</div>
+    <div class="cs-challenge-card">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><path d="M3 11l2-6h14l2 6M3 11v8h18v-8M3 11h18" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <h4 class="t" data-key="pc3-t">Channel</h4>
+      <p class="t" data-key="pc3-d">Digital campaigns and acquisition touchpoints.</p>
     </div>
-    <div class="cs-highlight-box" style="margin:0;">
-      <div class="cs-highlight-num">$0.05</div>
-      <div class="cs-highlight-title t" data-key="res2-t">CPC — AI Creative</div>
-      <div class="cs-highlight-desc t" data-key="res2-d">Lowest CPC of the entire account, achieved by the first AI-native asset in the pipeline.</div>
+    <div class="cs-challenge-card">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><circle cx="6" cy="6" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="6" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="6" cy="18" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M8.3 6h7.4M6 8.3v7.4M18 8.3v7.4M8.3 18h7.4" stroke="currentColor" stroke-width="1.4"/></svg>
+      <h4 class="t" data-key="pc4-t">Complexity</h4>
+      <p class="t" data-key="pc4-d">Multiple audiences, multiple regions, little attention span.</p>
     </div>
-  </div>
-  <div class="cs-insight-box">
-    <p class="t" data-key="res-insight"><strong>The bottom line:</strong> With only +6% more spend, the right creative approach delivered +22% reach, +17% clicks, and +14% engagement — with lower CPM and CPC across the board.</p>
   </div>
 </div>
 <div class="divider"></div>
 
-<!-- 03 CHALLENGE -->
+<!-- 03 THE PRODUCT PROBLEM -->
 <div class="cs-section alt reveal">
-  <div class="cs-2col">
-    <div>
-      <p class="cs-eyebrow t" data-key="s04-ey">03 — The Challenge</p>
-      <h2 class="cs-h2 t" data-key="s04-h2">Four Constraints,<br><em>One Direction</em></h2>
-      <div class="cs-accent-line"></div>
-      <p class="cs-lead t" data-key="s04-lead">Scaling B2B acquisition through paid media comes with compounding constraints. The environment demanded creative efficiency above all — less budget waste, more signal, faster iteration.</p>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <div class="cs-challenge-card"><h4 class="t" data-key="ch1-t">Rising CPC</h4><p class="t" data-key="ch1-d">A +27% increase in market CPC during Q1 made creative efficiency the primary lever for protecting acquisition costs.</p></div>
-      <div class="cs-challenge-card"><h4 class="t" data-key="ch2-t">Creative Fatigue</h4><p class="t" data-key="ch2-d">High-frequency campaigns burned through assets fast. Without a refresh strategy, performance would plateau and costs would spike.</p></div>
-      <div class="cs-challenge-card"><h4 class="t" data-key="ch3-t">Regional Complexity</h4><p class="t" data-key="ch3-d">Expanding to 12 new cities meant localized messaging — but production couldn't scale 1:1 with geography.</p></div>
-      <div class="cs-challenge-card"><h4 class="t" data-key="ch4-t">B2B Specificity</h4><p class="t" data-key="ch4-d">Restaurant owners don't respond to consumer logic. Every angle had to connect to real business value — not just visual appeal.</p></div>
+  <p class="cs-eyebrow t" data-key="pp-ey">03 — Root Causes</p>
+  <h2 class="cs-h2 t" data-key="pp-h2">Why This Was a<br><em>Product Problem</em></h2>
+  <div class="cs-accent-line"></div>
+  <p class="cs-lead t" data-key="pp-lead">The funnel revealed opportunities before the final conversion — not just at the sign-up screen, but at every step a restaurant owner had to trust before getting there.</p>
+  <div class="cs-2col" style="align-items:start;margin-top:20px;">
+    <ul class="cs-icon-list">
+      <li>
+        <svg class="cs-icon-ico" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <div><h4 class="t" data-key="pp1-t">Unclear Value Proposition</h4><p class="t" data-key="pp1-d">The benefit wasn't always obvious at a glance.</p></div>
+      </li>
+      <li>
+        <svg class="cs-icon-ico" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3.5v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9v-5L12 3z" stroke="currentColor" stroke-width="1.6"/></svg>
+        <div><h4 class="t" data-key="pp2-t">Low Initial Trust</h4><p class="t" data-key="pp2-d">Credibility signals were missing at the right moment.</p></div>
+      </li>
+      <li>
+        <svg class="cs-icon-ico" viewBox="0 0 24 24" fill="none"><path d="M4 7h11l-3-3M20 17H9l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h4 class="t" data-key="pp3-t">High Variation, Low System</h4><p class="t" data-key="pp3-d">Learnings didn't scale with consistency.</p></div>
+      </li>
+      <li>
+        <svg class="cs-icon-ico" viewBox="0 0 24 24" fill="none"><circle cx="7" cy="8" r="2.6" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="8" r="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M2.5 19c0-3 2-5 4.5-5s4.5 2 4.5 5M12.5 19c0-3 2-5 4.5-5s4.5 2 4.5 5" stroke="currentColor" stroke-width="1.6"/></svg>
+        <div><h4 class="t" data-key="pp4-t">Audiences With Different Objections</h4><p class="t" data-key="pp4-d">One message didn't serve everyone.</p></div>
+      </li>
+    </ul>
+    <div class="cs-funnel">
+      <div class="cs-funnel-step" style="max-width:100%;"><span class="t" data-key="fn1">Discovery</span></div>
+      <div class="cs-funnel-arrow">↓</div>
+      <div class="cs-funnel-step" style="max-width:82%;"><span class="t" data-key="fn2">Interest</span></div>
+      <div class="cs-funnel-arrow">↓</div>
+      <div class="cs-funnel-step" style="max-width:64%;"><span class="t" data-key="fn3">Consideration</span></div>
+      <div class="cs-funnel-arrow">↓</div>
+      <div class="cs-funnel-step" style="max-width:46%;"><span class="t" data-key="fn4">Sign-up</span></div>
     </div>
   </div>
 </div>
 <div class="divider"></div>
 
-<!-- 04 STRATEGIC LOGIC + ROADMAP -->
+<!-- 04 DESIGN GOALS & APPROACH -->
 <div class="cs-section reveal">
-  <p class="cs-eyebrow t" data-key="s05-ey">04 — Strategic Logic</p>
-  <h2 class="cs-h2 t" data-key="s05-h2">Before Building Creatives,<br><em>We Built a Plan</em></h2>
+  <p class="cs-eyebrow t" data-key="dg-ey">04 — Approach</p>
+  <h2 class="cs-h2 t" data-key="dg-h2">Design Goals &amp;<br><em>How We Thought About It</em></h2>
   <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s05-lead">Instead of producing campaigns reactively, I structured a quarterly experimentation pipeline — each phase with a hypothesis, a creative variable, and a performance signal to validate. Every asset had a reason to exist. Every result fed the next cycle.</p>
-  <div style="margin-bottom:28px;">
+  <p class="cs-lead t" data-key="dg-lead">Instead of producing campaigns reactively, I structured a quarterly experimentation pipeline — each phase with a hypothesis, a design variable, and a performance signal to validate.</p>
+  <div class="cs-hb-4sep" style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0 32px;">
+    <div class="cs-challenge-card">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <h4 class="t" data-key="dg1-t">Clarify Value</h4><p class="t" data-key="dg1-d">Make the value proposition more understandable.</p>
+    </div>
+    <div class="cs-challenge-card">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><path d="M3 17l6-6 4 4 8-8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 7h6v6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h4 class="t" data-key="dg2-t">Improve Traffic Quality</h4><p class="t" data-key="dg2-d">Increase the quality of traffic and intent.</p>
+    </div>
+    <div class="cs-challenge-card">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+      <h4 class="t" data-key="dg3-t">Build a Modular System</h4><p class="t" data-key="dg3-d">Create a system to test, iterate, and scale.</p>
+    </div>
+    <div class="cs-challenge-card">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><path d="M13 2L4 14h6l-1 8 9-12h-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <h4 class="t" data-key="dg4-t">Speed Up Learning</h4><p class="t" data-key="dg4-d">Support growth with faster learning velocity.</p>
+    </div>
+  </div>
+  <div style="margin-bottom:24px;">
     <img src="IMG_2091.png" alt="99Food Restaurant Roadmap Pipeline" class="cs-img-full" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
     <div style="display:none;background:rgba(200,162,0,0.07);border:1px solid var(--border);border-radius:10px;padding:40px 32px;text-align:center;"><p style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:0.1em;">Restaurant Roadmap Pipeline</p></div>
     <p class="cs-img-caption t" data-key="roadmap-cap">Restaurant Roadmap Pipeline — 99 Creative Strategy Kick-off</p>
   </div>
-  <div class="cs-2col">
-    <div class="cs-timeline">
-      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="tl1-ph">Phase 1 · Q1</div><div class="cs-tl-title t" data-key="tl1-ti">Easter + Fake Refresh Launch</div><div class="cs-tl-desc t" data-key="tl1-de">Seasonal creative tying Easter demand to partner growth opportunity. Parallel test: BG swap on top-performing ad to extend delivery without resetting platform learning.</div></div>
-      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="tl2-ph">Phase 2 · Q2</div><div class="cs-tl-title t" data-key="tl2-ti">AI Bag Delivery + Carousel How-to</div><div class="cs-tl-desc t" data-key="tl2-de">First AI-assisted creative introduced. "How to Sign Up" carousel launched in static and template versions to reduce onboarding friction.</div></div>
-      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="tl3-ph">Phase 3 · Q3</div><div class="cs-tl-title t" data-key="tl3-ti">12 New Cities Launch Pack</div><div class="cs-tl-desc t" data-key="tl3-de">Coordinated Meta + Google pack for regional expansion. AI Dashboard Growth creative introduced to communicate platform traction to prospective partners.</div></div>
-      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="tl4-ph">Phase 4 · Q4</div><div class="cs-tl-title t" data-key="tl4-ti">UGC + Commission Fee Campaign</div><div class="cs-tl-desc t" data-key="tl4-de">UGC Curios format introduced for peer trust. Mother's Day seasonal + Commission Fee + Delivery campaign closed the annual cycle.</div></div>
-    </div>
-    <div style="display:flex;flex-direction:column;gap:12px;">
-      <div style="background:rgba(200,162,0,0.06);border:1px solid var(--border);border-radius:8px;padding:16px 20px;">
-        <div style="margin-bottom:12px;">
-          <div style="font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:7px;" class="t" data-key="ct-label-type">Content Types</div>
-          <div style="display:flex;flex-wrap:wrap;gap:6px;">
-            <span class="cs-season-tag t" data-key="ct-edu">Educational</span>
-            <span class="cs-season-tag">UGC</span>
-            <span class="cs-season-tag t" data-key="ct-ai">AI Creative</span>
-            <span class="cs-season-tag t" data-key="ct-offers">Offers &amp; Benefits</span>
-          </div>
-        </div>
-        <div>
-          <div style="font-family:'Space Mono',monospace;font-size:0.5rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:7px;" class="t" data-key="ct-label-act">Strategies &amp; Actions</div>
-          <div style="display:flex;flex-wrap:wrap;gap:6px;">
-            <span class="cs-season-tag">Fake Refresh</span>
-            <span class="cs-season-tag t" data-key="ct-sea">Seasonal</span>
-            <span class="cs-season-tag t" data-key="ct-evergreen">Evergreen</span>
-            <span class="cs-season-tag t" data-key="ct-launch">Launch Pack</span>
-          </div>
-        </div>
-      </div>
-      <div style="background:rgba(200,162,0,0.06);border:1px solid var(--border);border-radius:8px;padding:16px 20px;">
-        <div style="font-family:'Space Mono',monospace;font-size:0.54rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:12px;" class="t" data-key="ps-label">Performance Signal</div>
-        <div style="display:flex;flex-direction:column;gap:9px;">
-          <div style="display:flex;justify-content:space-between;font-size:0.76rem;"><span style="color:var(--text-muted);" class="t" data-key="ps1-l">Seasonal</span><span style="color:var(--gold);font-family:'Space Mono',monospace;font-size:0.65rem;" class="t" data-key="ps1-v">Top performer</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:0.76rem;"><span style="color:var(--text-muted);">Fake Refresh</span><span style="color:var(--gold);font-family:'Space Mono',monospace;font-size:0.65rem;" class="t" data-key="ps2-v">−9% CPC</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:0.76rem;"><span style="color:var(--text-muted);" class="t" data-key="ps3-l">AI Creatives</span><span style="color:var(--gold);font-family:'Space Mono',monospace;font-size:0.65rem;" class="t" data-key="ps3-v">Lowest CPC</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:0.76rem;"><span style="color:var(--text-muted);">Video</span><span style="color:var(--gold);font-family:'Space Mono',monospace;font-size:0.65rem;" class="t" data-key="ps4-v">+0.55pp CTR</span></div>
-          <div style="display:flex;justify-content:space-between;font-size:0.76rem;"><span style="color:var(--text-muted);">UGC</span><span style="color:var(--gold);font-family:'Space Mono',monospace;font-size:0.65rem;" class="t" data-key="ps5-v">+Engagement</span></div>
-        </div>
-      </div>
-    </div>
+  <div class="cs-timeline">
+    <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="sol1-ph">1</div><div class="cs-tl-title t" data-key="sol1-ti">Reading the Data</div><div class="cs-tl-desc t" data-key="sol1-de">Funnel, channel, and behavior analysis.</div></div>
+    <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="sol2-ph">2</div><div class="cs-tl-title t" data-key="sol2-ti">Mapping Objections</div><div class="cs-tl-desc t" data-key="sol2-de">Understanding pains, doubts, and barriers.</div></div>
+    <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="sol3-ph">3</div><div class="cs-tl-title t" data-key="sol3-ti">Design Hypotheses</div><div class="cs-tl-desc t" data-key="sol3-de">Ideas prioritized by impact and effort.</div></div>
+    <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="sol4-ph">4</div><div class="cs-tl-title t" data-key="sol4-ti">Modular System</div><div class="cs-tl-desc t" data-key="sol4-de">Components and patterns to scale learnings.</div></div>
+    <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="sol5-ph">5</div><div class="cs-tl-title t" data-key="sol5-ti">Test &amp; Optimize</div><div class="cs-tl-desc t" data-key="sol5-de">Continuous experimentation and evidence-based decisions.</div></div>
   </div>
 </div>
 <div class="divider"></div>
 
-<!-- 05 CREATIVE SYSTEM -->
+<!-- 05 HYPOTHESES -->
 <div class="cs-section alt reveal">
-  <p class="cs-eyebrow t" data-key="s06-ey">05 — Creative Formats</p>
-  <h2 class="cs-h2 t" data-key="s06-h2">Modular Formats Built to<br><em>Test, Refresh &amp; Scale</em></h2>
+  <p class="cs-eyebrow t" data-key="hy-ey">05 — Guiding Beliefs</p>
+  <h2 class="cs-h2 t" data-key="hy-h2">Hypotheses That<br><em>Guided the Work</em></h2>
   <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s06-lead">Instead of one-off campaigns, I built a modular creative approach — formats adaptable by message, season, or region without starting from scratch. This compressed production cycles and multiplied experiments per quarter.</p>
-  <div class="cs-creative-grid">
-    <div class="cs-creative-card"><div class="cs-creative-icon">01</div><h4 class="t" data-key="cc1-t">Static Ads</h4><p class="t" data-key="cc1-d">Core of the acquisition funnel. The "High Demand + Guaranteed Delivery" angle represented ~74% of total national impressions in peak periods.</p></div>
-    <div class="cs-creative-card"><div class="cs-creative-icon">02</div><h4 class="t" data-key="cc2-t">Video Ads</h4><p class="t" data-key="cc2-d">Short-form with strong hooks. Consistently outperformed static in CTR — +0.55 p.p. above campaign average. Top format across multiple cities.</p></div>
-    <div class="cs-creative-card"><div class="cs-creative-icon">03</div><h4 class="t" data-key="cc3-t">Educational Carousel</h4><p class="t" data-key="cc3-d">"How to Sign Up" step-by-step format in static and template versions — reduced perceived complexity of joining the platform.</p></div>
-    <div class="cs-creative-card"><div class="cs-creative-icon">04</div><h4 class="t" data-key="cc4-t">AI-Assisted Assets</h4><p class="t" data-key="cc4-d">AI Bag Delivery via Smartly.io — first AI-native creative in the pipeline. Achieved the lowest CPC of the entire account at $0.05.</p></div>
-    <div class="cs-creative-card"><div class="cs-creative-icon">05</div><h4 class="t" data-key="cc5-t">UGC Concepts</h4><p class="t" data-key="cc5-d">Creator-style content to build peer trust with restaurant owners — a different emotional register from performance-first formats.</p></div>
-    <div class="cs-creative-card"><div class="cs-creative-icon">06</div><h4 class="t" data-key="cc6-t">Localized Versions</h4><p class="t" data-key="cc6-d">City-specific adaptations for the 12-city expansion — regional cues, adjusted messaging, no full production per market.</p></div>
+  <p class="cs-lead t" data-key="hy-lead">Every design decision started from a testable belief about restaurant-owner behavior — tracked, validated, and reused across campaigns.</p>
+  <div class="cs-hyp-list">
+    <div class="cs-hyp-row">
+      <svg class="cs-icon-ico" viewBox="0 0 24 24" fill="none"><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.45 1 .95 1 1.6v.5h5v-.5c0-.65.4-1.15 1-1.6A6 6 0 0 0 12 3z" stroke="currentColor" stroke-width="1.6"/><path d="M10 19h4M11 21.5h2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <div><div class="cs-signal-title t" data-key="hy1-t">Clarity Drives Action</div><div class="cs-signal-desc t" data-key="hy1-d">The clearer the proposition, the higher the chance of moving forward.</div></div>
+    </div>
+    <div class="cs-hyp-row">
+      <svg class="cs-icon-ico" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12" r="0.8" fill="currentColor"/></svg>
+      <div><div class="cs-signal-title t" data-key="hy2-t">Relevance Boosts Response</div><div class="cs-signal-desc t" data-key="hy2-d">Language and context need to reflect the partner's reality.</div></div>
+    </div>
+    <div class="cs-hyp-row">
+      <svg class="cs-icon-ico" viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3.5v5c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9v-5L12 3z" stroke="currentColor" stroke-width="1.6"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><div class="cs-signal-title t" data-key="hy3-t">Proof Reduces Friction</div><div class="cs-signal-desc t" data-key="hy3-d">Trust signals help the initial decision.</div></div>
+    </div>
+    <div class="cs-hyp-row">
+      <svg class="cs-icon-ico" viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-2.34-5.66" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M20 3v5h-5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div><div class="cs-signal-title t" data-key="hy4-t">Refresh Reactivates Attention</div><div class="cs-signal-desc t" data-key="hy4-d">Perceptible changes renew interest without losing consistency.</div></div>
+    </div>
+    <div class="cs-hyp-row">
+      <svg class="cs-icon-ico" viewBox="0 0 24 24" fill="none"><rect x="3" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.5" stroke="currentColor" stroke-width="1.6"/></svg>
+      <div><div class="cs-signal-title t" data-key="hy5-t">Systems Accelerate Learning</div><div class="cs-signal-desc t" data-key="hy5-d">Reusable components let us test faster and learn faster.</div></div>
+    </div>
   </div>
 </div>
 <div class="divider"></div>
 
-<!-- 06 MESSAGING -->
+<!-- 06 MODULAR SYSTEM -->
 <div class="cs-section reveal">
-  <p class="cs-eyebrow t" data-key="s07-ey">06 — Messaging</p>
-  <h2 class="cs-h2 t" data-key="s07-h2">Finding the Angle That Makes<br><em>a Restaurant Owner Say Yes</em></h2>
+  <p class="cs-eyebrow t" data-key="ms-ey">06 — Building Blocks</p>
+  <h2 class="cs-h2 t" data-key="ms-h2">A System Built to<br><em>Test, Refresh &amp; Scale</em></h2>
   <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s07-lead">Structured copystorming sessions identified which emotional and business-driven triggers drove action. Six directions tested simultaneously, tracked weekly across impressions, clicks, and conversion.</p>
-  <div class="cs-msg-grid">
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="mg1">High Demand + Guaranteed Delivery</span></div>
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="mg2">Zero Monthly Fee</span></div>
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="mg3">Extra Earnings</span></div>
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="mg4">Seasonal Opportunity</span></div>
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="mg5">Entrepreneur Mindset</span></div>
-    <div class="cs-msg-pill"><div class="cs-msg-dot"></div><span class="t" data-key="mg6">Occasions</span></div>
+  <p class="cs-lead t" data-key="ms-lead">Instead of one-off campaigns, I designed a modular system — reusable building blocks (hook, value proposition, social proof, objection, offer, CTA) combined into formats adaptable by message, season, or region.</p>
+  <div class="cs-hb-4sep" style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0 28px;">
+    <div class="cs-challenge-card" style="text-align:center;padding:16px 10px;">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><path d="M8 3v9a4 4 0 0 0 8 0V8a2.5 2.5 0 0 0-5 0v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+      <h4 style="font-size:0.8rem;" class="t" data-key="blk1">Hook</h4>
+    </div>
+    <div class="cs-challenge-card" style="text-align:center;padding:16px 10px;">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.5 5 5.5.7-4 4 1 5.5L12 15l-5 2.2 1-5.5-4-4L9.5 7z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <h4 style="font-size:0.8rem;" class="t" data-key="blk2">Value Proposition</h4>
+    </div>
+    <div class="cs-challenge-card" style="text-align:center;padding:16px 10px;">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><circle cx="8" cy="8" r="2.6" stroke="currentColor" stroke-width="1.6"/><circle cx="16" cy="8" r="2.6" stroke="currentColor" stroke-width="1.6"/><path d="M3 19c0-2.8 2.2-5 5-5s5 2.2 5 5M11 19c0-2.8 2.2-5 5-5s5 2.2 5 5" stroke="currentColor" stroke-width="1.6"/></svg>
+      <h4 style="font-size:0.8rem;" class="t" data-key="blk3">Social Proof</h4>
+    </div>
+    <div class="cs-challenge-card" style="text-align:center;padding:16px 10px;">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9.5 9.5a2.5 2.5 0 0 1 4.8 1c0 1.5-2.3 1.7-2.3 3.5M12 17h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+      <h4 style="font-size:0.8rem;" class="t" data-key="blk4">Objection</h4>
+    </div>
+    <div class="cs-challenge-card" style="text-align:center;padding:16px 10px;">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><path d="M3 3l8.5 8.5M12 21l9-9-4-4-9 9zM3 3l4 8 8 4-8-4z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+      <h4 style="font-size:0.8rem;" class="t" data-key="blk5">Offer</h4>
+    </div>
+    <div class="cs-challenge-card" style="text-align:center;padding:16px 10px;">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><path d="M4 12h13M12 6l7 6-7 6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <h4 style="font-size:0.8rem;" class="t" data-key="blk6">CTA</h4>
+    </div>
+    <div class="cs-challenge-card" style="text-align:center;padding:16px 10px;">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><circle cx="7" cy="7" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="17" cy="7" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="17" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M7 9.4V13M17 9.4V13M9 15.5l1.5-1M15 15.5l-1.5-1" stroke="currentColor" stroke-width="1.4"/></svg>
+      <h4 style="font-size:0.8rem;" class="t" data-key="blk7">Segment Variation</h4>
+    </div>
+    <div class="cs-challenge-card" style="text-align:center;padding:16px 10px;">
+      <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><path d="M3 4h18l-7 8v6l-4 2v-8L3 4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>
+      <h4 style="font-size:0.8rem;" class="t" data-key="blk8">Funnel-stage Variation</h4>
+    </div>
   </div>
-  <div class="cs-signal-grid">
-    <div class="cs-signal-card"><div class="cs-signal-icon">~74%</div><div><div class="cs-signal-title t" data-key="sg1-t">"High Demand" Angle</div><div class="cs-signal-desc t" data-key="sg1-d">Represented ~74% of total national impressions in the first test cycle — the highest volume driver across the account.</div></div></div>
-    <div class="cs-signal-card"><div class="cs-signal-icon">+0.55pp</div><div><div class="cs-signal-title t" data-key="sg2-t">Video Format</div><div class="cs-signal-desc t" data-key="sg2-d">CTR consistently above campaign average. Outperformed static going further down the funnel in every tested market.</div></div></div>
-    <div class="cs-signal-card"><div class="cs-signal-icon">23%</div><div><div class="cs-signal-title t" data-key="sg3-t">Seasonal Messages</div><div class="cs-signal-desc t" data-key="sg3-d">Seasonal pack drove 23% of total sign-ups during the campaign window — highest CTR spikes of the year.</div></div></div>
-    <div class="cs-signal-card"><div class="cs-signal-icon" style="font-size:0.9rem;min-width:56px;padding-top:4px;">BASE<br>LINE</div><div><div class="cs-signal-title t" data-key="sg4-t">Generic Copy</div><div class="cs-signal-desc t" data-key="sg4-d">Lowest performance across all metrics. Served as the control baseline — validated the advantage of every specific angle tested.</div></div></div>
+  <div class="cs-creative-grid">
+    <div class="cs-creative-card"><div class="cs-creative-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="9.5" r="1.6" stroke="currentColor" stroke-width="1.4"/><path d="M4 15l4.5-4 3 3 3.5-4.5L21 15" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg></div><h4 class="t" data-key="cc1-t">Static Ads</h4><p class="t" data-key="cc1-d">Core of the acquisition funnel. The "High Demand + Guaranteed Delivery" angle represented ~74% of total national impressions in peak periods.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="16" rx="2" stroke="currentColor" stroke-width="1.6"/><polygon points="10,9 16,12 10,15" fill="currentColor"/></svg></div><h4 class="t" data-key="cc2-t">Video Ads</h4><p class="t" data-key="cc2-d">Short-form with strong hooks. Consistently outperformed static in CTR — +0.55 p.p. above campaign average.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="9.5" y="5" width="6" height="6" rx="1" stroke="currentColor" stroke-width="1.6"/><rect x="16" y="5" width="5" height="6" rx="1" stroke="currentColor" stroke-width="1.6"/><path d="M3 16h18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><h4 class="t" data-key="cc3-t">Educational Carousel</h4><p class="t" data-key="cc3-d">"How to Sign Up" step-by-step format — reduced perceived complexity of joining the platform.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l1.6 4.4L18 8l-4.4 1.6L12 14l-1.6-4.4L6 8l4.4-1.6z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/><path d="M18.5 14l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/></svg></div><h4 class="t" data-key="cc4-t">AI-Assisted Assets</h4><p class="t" data-key="cc4-d">AI Bag Delivery via Smartly.io — achieved the lowest CPC of the entire account at $0.05.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="13.5" r="3" stroke="currentColor" stroke-width="1.4"/></svg></div><h4 class="t" data-key="cc5-t">UGC Concepts</h4><p class="t" data-key="cc5-d">Creator-style content to build peer trust with restaurant owners.</p></div>
+    <div class="cs-creative-card"><div class="cs-creative-icon"><svg viewBox="0 0 24 24" fill="none"><path d="M12 21s-7-4.6-7-10.5A7 7 0 0 1 19 10.5C19 16.4 12 21 12 21z" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="10.4" r="2.3" stroke="currentColor" stroke-width="1.6"/></svg></div><h4 class="t" data-key="cc6-t">Localized Versions</h4><p class="t" data-key="cc6-d">City-specific adaptations for the 12-city expansion — no full production per market.</p></div>
   </div>
 </div>
 <div class="divider"></div>
 
-<!-- 07 FAKE REFRESH -->
+<!-- 07 EXPERIMENTS -->
 <div class="cs-section alt reveal">
-  <p class="cs-eyebrow t" data-key="s08-ey">07 — Key Strategy</p>
-  <h2 class="cs-h2 t" data-key="s08-h2">Fake Refresh<br><em>Strategy</em></h2>
+  <p class="cs-eyebrow t" data-key="exp-ey">07 — Testing the System</p>
+  <h2 class="cs-h2 t" data-key="exp-h2">Experiments That<br><em>Moved the Funnel</em></h2>
   <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s08-l1">The strategy emerged from a pattern observed through Smartly.io's creative feed: by monitoring performance changes across creatives published simultaneously via the platform's live feed, it became clear that lightweight visual updates on top-performing ads were extending delivery without triggering a new learning phase.</p>
-  <p class="cs-lead t" data-key="s08-l2">Instead of rebuilding ads from scratch — which resets platform learning, spikes CPC, and loses accumulated delivery efficiency — Fake Refresh applied BG swaps and copy angle updates to preserve the ad's identity while giving the algorithm a renewed signal.</p>
-  <div class="cs-ba">
-    <div class="cs-ba-col">
-      <div class="cs-ba-label t" data-key="ba-bef">Before — Original</div>
-      <div class="cs-ba-item"><span class="t" data-key="ba-b1">Same background across all variants</span></div>
-      <div class="cs-ba-item"><span class="t" data-key="ba-b2">Single copy angle per campaign</span></div>
-      <div class="cs-ba-item"><span class="t" data-key="ba-b3">Fatigue building, CPC rising</span></div>
-      <div class="cs-ba-item"><span class="t" data-key="ba-b4">Learning reset on full rebuild</span></div>
+  <p class="cs-lead t" data-key="exp-lead">Three experiment tracks tested the system's core hypotheses — messaging, creative refresh, and regional relevance — each validated against real performance signals.</p>
+  <div class="cs-season-grid" style="margin-top:20px;">
+    <div class="cs-season-card">
+      <div class="cs-season-header" style="display:flex;align-items:center;gap:10px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;color:#1a1206;"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M9.5 9.5a2.5 2.5 0 0 1 4.8 1c0 1.5-2.3 1.7-2.3 3.5M12 17h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <div><h3 class="t" data-key="expA-t">A · Finding the Angle</h3><p class="t" data-key="expA-s">Messaging</p></div>
+      </div>
+      <div class="cs-season-body">
+        <p class="t" data-key="expA-d">Structured copystorming built messages from the restaurant owner's real pains and motivations. Six directions tested simultaneously.</p>
+        <span class="cs-season-tag t" data-key="expA-t1">~74% of impressions — "High Demand" angle</span><span class="cs-season-tag t" data-key="expA-t2">Generic copy = baseline</span>
+      </div>
     </div>
-    <div class="cs-ba-col after">
-      <div class="cs-ba-label t" data-key="ba-aft">After — Fake Refresh</div>
-      <div class="cs-ba-item"><span class="t" data-key="ba-a1">BG swap using Template Winner</span></div>
-      <div class="cs-ba-item"><span class="t" data-key="ba-a2">New persona/angle refreshed in copy</span></div>
-      <div class="cs-ba-item"><span class="t" data-key="ba-a3">Visual update maintains ad identity</span></div>
-      <div class="cs-ba-item"><span class="t" data-key="ba-a4">Platform learning preserved → lower CPC</span></div>
+    <div class="cs-season-card">
+      <div class="cs-season-header" style="display:flex;align-items:center;gap:10px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;color:#1a1206;"><path d="M20 12a8 8 0 1 1-2.34-5.66" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M20 3v5h-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div><h3 class="t" data-key="expB-t">B · Fake Refresh Strategy</h3><p class="t" data-key="expB-s">Creative Refresh</p></div>
+      </div>
+      <div class="cs-season-body">
+        <p class="t" data-key="expB-d">Lightweight visual and copy updates on top-performing ads extended delivery without resetting platform learning.</p>
+        <span class="cs-season-tag">+22% reach</span><span class="cs-season-tag">-9% CPC</span><span class="cs-season-tag">260% clicks vs. others</span>
+      </div>
     </div>
-  </div>
-  <div class="cs-result-grid-4">
-    <div class="cs-result-card">
-      <div class="cs-result-num">+22%</div>
-      <div class="cs-result-title t" data-key="fr1-t">Reach</div>
-      <div class="cs-result-desc t" data-key="fr1-d">Extended to new segments without learning reset</div>
-    </div>
-    <div class="cs-result-card">
-      <div class="cs-result-num">+17%</div>
-      <div class="cs-result-title t" data-key="fr2-t">Clicks</div>
-      <div class="cs-result-desc t" data-key="fr2-d">Engagement recovered post-refresh</div>
-    </div>
-    <div class="cs-result-card">
-      <div class="cs-result-num">-9%</div>
-      <div class="cs-result-title t" data-key="fr3-t">CPC</div>
-      <div class="cs-result-desc t" data-key="fr3-d">Costs reduced, learning maintained</div>
-    </div>
-    <div class="cs-result-card">
-      <div class="cs-result-num">260%</div>
-      <div class="cs-result-title t" data-key="fr4-t">Clicks vs. All Others</div>
-      <div class="cs-result-desc t" data-key="fr4-d">Winning Fake Refresh variant vs. all image creatives combined in the same period</div>
-      <div class="cs-result-source">Source: Smartly</div>
+    <div class="cs-season-card">
+      <div class="cs-season-header" style="display:flex;align-items:center;gap:10px;">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" style="flex-shrink:0;color:#1a1206;"><path d="M12 2a10 10 0 0 1 0 20M12 2a10 10 0 0 0 0 20M2 12h20" stroke="currentColor" stroke-width="1.5"/><ellipse cx="12" cy="12" rx="4" ry="10" stroke="currentColor" stroke-width="1.5"/></svg>
+        <div><h3 class="t" data-key="expC-t">C · One Country, Many Audiences</h3><p class="t" data-key="expC-s">Regional</p></div>
+      </div>
+      <div class="cs-season-body">
+        <p class="t" data-key="expC-d">Context and profile adjustments balanced consistency and relevance across urban, interior, new, and experienced audiences.</p>
+        <span class="cs-season-tag t" data-key="expC-t1">6 cities analyzed</span><span class="cs-season-tag t" data-key="expC-t2">Distinct triggers per market</span>
+      </div>
     </div>
   </div>
-  <div class="cs-insight-box">
-    <p class="t" data-key="fr-insight"><strong>Key insight:</strong> The national creative converted 61% of total share clicks across 7 tested cities simultaneously, confirming that the national + refresh approach outperformed city-only executions in most markets.</p>
+  <div class="cs-insight-box" style="margin-top:20px;">
+    <p class="t" data-key="exp-insight"><strong>The bottom line:</strong> With only +6% more spend, the right creative approach delivered +22% reach, +17% clicks, and +14% engagement — with lower CPM and CPC across the board.</p>
   </div>
 </div>
 <div class="divider"></div>
@@ -670,70 +735,44 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
 </div>
 <div class="divider"></div>
 
-<!-- 09 REGIONAL -->
-<div class="cs-section alt reveal">
-  <p class="cs-eyebrow t" data-key="s10-ey">09 — Regional</p>
-  <h2 class="cs-h2 t" data-key="s10-h2">One Country,<br><em>Many Audiences</em></h2>
-  <div class="cs-accent-line"></div>
-  <p class="cs-lead t" data-key="s10-lead">National campaigns set the base. Regional data revealed distinct conversion triggers per city — shaping creative adaptation for the 12-city expansion. Instagram Feed and Stories led across all markets.</p>
-  <div class="cs-regions">
-    <div class="cs-region-card"><div class="cs-region-city">São Paulo</div><p class="t" data-key="rg1">Seasonal creatives drove the highest engagement. Easter "Chocolate" asset secured #1 position in the period.</p></div>
-    <div class="cs-region-card"><div class="cs-region-city">Rio de Janeiro</div><p class="t" data-key="rg2">Consumer Month had the strongest traction. Lifestyle-oriented messaging aligned better with local culture than ROI angles.</p></div>
-    <div class="cs-region-card"><div class="cs-region-city">Manaus</div><p class="t" data-key="rg3">Entrepreneurship + seasonal combination outperformed. Video format led both CPC and engagement throughout the period.</p></div>
-    <div class="cs-region-card"><div class="cs-region-city">Brasília</div><p class="t" data-key="rg4">Only market where static had lower CPC than video — a unique audience signal that informed creative allocation for this city.</p></div>
-    <div class="cs-region-card"><div class="cs-region-city">Fortaleza</div><p class="t" data-key="rg5">National creative consistently outperformed city-specific versions. Running the national ad was the optimal strategy for this market.</p></div>
-    <div class="cs-region-card"><div class="cs-region-city">Porto Alegre</div><p class="t" data-key="rg6">ROI-focused messaging resonated with the entrepreneurial profile. Video led CPC efficiency with the lowest cost per engagement.</p></div>
-  </div>
-</div>
-<div class="divider"></div>
-
-<!-- 10 MY ROLE -->
+<!-- 09 MY ROLE & IMPACT -->
 <div class="cs-section reveal">
   <div class="cs-2col">
     <div>
-      <p class="cs-eyebrow t" data-key="s11-ey">10 — Role</p>
-      <h2 class="cs-h2 t" data-key="s11-h2">My Role<br><em>&amp; Impact</em></h2>
+      <p class="cs-eyebrow t" data-key="role2-ey">09 — Contribution</p>
+      <h2 class="cs-h2 t" data-key="role2-h2">My Role<br><em>&amp; Impact</em></h2>
       <div class="cs-accent-line"></div>
-      <p class="cs-lead t" data-key="s11-l1">I owned creative strategy end-to-end — from structuring the experimentation roadmap and running copystorming sessions, to analyzing biweekly performance data and presenting recommendations to stakeholders.</p>
-      <p class="cs-lead t" data-key="s11-l2">Every brief had a hypothesis. Every campaign had a learning to extract. Every result fed the next cycle.</p>
+      <p class="cs-lead t" data-key="role2-l1">I acted as Product Designer on a Growth front, translating acquisition needs into experience problems, design hypotheses, and scalable solutions.</p>
     </div>
     <div class="cs-card">
-      <div class="cs-card-label t" data-key="role-label">Core Responsibilities</div>
-      <ul class="cs-card-list">
-        <li class="t" data-key="rl1">Quarterly experimentation roadmap planning</li>
-        <li class="t" data-key="rl2">Messaging strategy &amp; structured copystorming</li>
-        <li class="t" data-key="rl3">Creative direction: static, video, carousel, UGC, AI</li>
-        <li class="t" data-key="rl4">Biweekly performance analysis &amp; WoW reporting</li>
-        <li class="t" data-key="rl5">Seasonal campaign planning &amp; execution</li>
-        <li class="t" data-key="rl6">Fake refresh methodology — national + 7 cities</li>
-        <li class="t" data-key="rl7">Localized adaptation — 12-city expansion</li>
-        <li class="t" data-key="rl8">AI-assisted creatives via Smartly.io</li>
-        <li class="t" data-key="rl9">Cross-functional: Growth · CRM · BI · Media · Agency</li>
-        <li class="t" data-key="rl10">Stakeholder presentations &amp; creative reviews</li>
+      <div class="cs-card-label t" data-key="role2-label">Impact</div>
+      <ul class="cs-card-list no-dash" style="list-style:none;">
+        <li class="t" data-key="ri1" style="padding-left:0;">✓ Connected funnel data to design decisions</li>
+        <li class="t" data-key="ri2" style="padding-left:0;">✓ Structured hypotheses and design directions</li>
+        <li class="t" data-key="ri3" style="padding-left:0;">✓ Designed modular systems for multiple formats</li>
+        <li class="t" data-key="ri4" style="padding-left:0;">✓ Supported test, iteration &amp; learning cycles</li>
+        <li class="t" data-key="ri5" style="padding-left:0;">✓ Partnered with Growth, BI &amp; content teams</li>
+        <li class="t" data-key="ri6" style="padding-left:0;">✓ Helped turn a campaign into a product process</li>
       </ul>
     </div>
   </div>
 </div>
 <div class="divider"></div>
 
-<!-- 11 KEY LEARNINGS -->
+<!-- 10 KEY LEARNINGS -->
 <div class="cs-section alt reveal" style="background:var(--bg-mid);">
   <div class="cs-2col">
     <div>
-      <p class="cs-eyebrow t" data-key="s12-ey">11 — Learnings</p>
-      <h2 class="cs-h2 t" data-key="s12-h2">Key <em>Learnings</em></h2>
+      <p class="cs-eyebrow t" data-key="learn2-ey">10 — Closing Thoughts</p>
+      <h2 class="cs-h2 t" data-key="learn2-h2">Key <em>Learnings</em></h2>
       <div class="cs-accent-line"></div>
-      <p class="cs-lead t" data-key="s12-l1">The biggest wins didn't come from a single brilliant creative — they came from a disciplined approach that tested fast, learned consistently, and scaled what worked.</p>
-      <p class="cs-lead t" data-key="s12-l2">In B2B paid media, creative strategy is growth strategy. With +6% more spend, the right experimentation approach delivered +22% more reach — proof that efficiency comes from creative thinking, not budget.</p>
+      <p class="cs-lead t" data-key="learn2-l1">This project reinforced that Growth Product Design isn't just the piece itself, but the ability to turn business signals into a continuous system of experimentation, clarity, and learning.</p>
     </div>
     <div>
       <div class="cs-tags" style="margin-top:0;">
-        <span class="cs-tag">Creative Strategy</span><span class="cs-tag">B2B Communication</span>
-        <span class="cs-tag">Meta Ads</span><span class="cs-tag">Google Ads</span>
-        <span class="cs-tag">Copystorming</span><span class="cs-tag">Fake Refresh</span>
-        <span class="cs-tag">AI Creatives</span><span class="cs-tag t" data-key="tag-sea">Seasonal Campaigns</span>
-        <span class="cs-tag t" data-key="tag-loc">Localization</span><span class="cs-tag">Smartly.io</span>
-        <span class="cs-tag t" data-key="tag-data">Data Analysis</span><span class="cs-tag t" data-key="tag-col">Cross-functional</span>
+        <span class="cs-tag t" data-key="tag-gd">Growth Design</span><span class="cs-tag t" data-key="tag-exp2">Experimentation</span>
+        <span class="cs-tag t" data-key="tag-funnel">Funnel Thinking</span><span class="cs-tag t" data-key="tag-vp">Value Proposition</span>
+        <span class="cs-tag t" data-key="tag-scale">Scalable Systems</span><span class="cs-tag t" data-key="tag-ps">Product Strategy</span>
       </div>
     </div>
   </div>
@@ -763,7 +802,7 @@ footer{background:var(--bg-mid);padding:72px 52px 36px;border-top:1px solid var(
 const T={
   'nav-about':{en:'About',pt:'Sobre'},'nav-case':{en:'Cases',pt:'Cases'},'nav-portfolio':{en:'Portfolio',pt:'Portfólio'},'nav-exp':{en:'Experience',pt:'Experiência'},'nav-contact':{en:'Contact',pt:'Contato'},
   'contact-label':{en:"Let's work together",pt:'Vamos trabalhar juntos'},'contact-title':{en:'Get in Touch',pt:'Entre em Contato'},'footer-dev':{en:'Developed by Leticia Corredato',pt:'Desenvolvido por Leticia Corredato'},
-  'cover-tag':{en:'Case Study · 2026',pt:'Estudo de Caso · 2026'},'cover-sub':{en:'Creative Strategy for Restaurant Acquisition',pt:'Estratégia Criativa para Aquisição de Restaurantes'},'cover-desc':{en:'B2B paid media campaigns on Meta and Google to scale restaurant sign-ups across Brazil — built on creative experimentation, regional intelligence, and performance data.',pt:'Campanhas B2B de mídia paga no Meta e Google para escalar o cadastro de restaurantes no Brasil — construídas sobre experimentação criativa, inteligência regional e dados de performance.'},
+  'cover-tag':{en:'Case Study · Growth Product Design',pt:'Estudo de Caso · Growth Product Design'},'cover-sub':{en:'From Campaigns to a Product-Led Growth System',pt:'De Campanhas para um Sistema de Crescimento Orientado por Produto'},'cover-desc':{en:'At 99Food, my work was to translate acquisition needs into design hypotheses, modular systems, and experiments that helped restaurant owners understand value, build trust, and move through the funnel.',pt:'Na 99Food, meu trabalho foi transformar necessidades de aquisição em hipóteses de design, sistemas modulares e experimentos que ajudavam donos de restaurante a entender valor, ganhar confiança e avançar no funil.'},
   'ml-role':{en:'Role',pt:'Função'},'mv-role':{en:'Creative Strategist',pt:'Estrategista Criativa'},'ml-focus':{en:'Focus',pt:'Foco'},'mv-focus':{en:'B2B Acquisition',pt:'Aquisição B2B'},'ml-plat':{en:'Platforms',pt:'Plataformas'},'ml-mkt':{en:'Markets',pt:'Mercados'},'mv-mkt':{en:'National + 12 Cities',pt:'Nacional + 12 Cidades'},'ml-year':{en:'Year',pt:'Ano'},
   's02-ey':{en:'02 — Overview',pt:'02 — Visão Geral'},'s02-h2':{en:'The<br><em>Brief</em>',pt:'O<br><em>Briefing</em>'},'s02-l1':{en:'In January 2026, I joined 99Food as a Creative Strategist with one mandate: grow the restaurant partner base through B2B acquisition campaigns on Meta and Google.',pt:'Em janeiro de 2026, entrei na 99Food como Estrategista Criativa com um objetivo: expandir a base de parceiros restaurantes por meio de campanhas B2B no Meta e Google.'},'s02-l2':{en:"The audience wasn't a typical consumer — it was a business owner deciding whether to trust a new platform with their livelihood. Every creative decision had to answer: what's in it for my business?",pt:'O público não era um consumidor típico — era um empreendedor decidindo se confiaria em uma nova plataforma com seu negócio. Cada decisão criativa precisava responder: o que isso faz pelo meu negócio?'},
   'c-resp':{en:'Responsibilities',pt:'Responsabilidades'},'r1':{en:'Creative direction & messaging strategy',pt:'Direção criativa e estratégia de mensagem'},'r2':{en:'Quarterly experimentation roadmap',pt:'Roadmap de experimentação trimestral'},'r3':{en:'Performance analysis & biweekly reporting',pt:'Análise de performance e relatórios quinzenais'},'r4':{en:'Seasonal campaign planning & execution',pt:'Planejamento e execução de campanhas sazonais'},'r5':{en:'Fake refresh methodology',pt:'Metodologia de fake refresh'},'r6':{en:'Localized creative adaptation — 12 cities',pt:'Adaptação criativa regionalizada — 12 cidades'},'r7':{en:'Stakeholder presentations',pt:'Apresentações para stakeholders'},'c-plat':{en:'Platforms',pt:'Plataformas'},'c-teams':{en:'Teams',pt:'Times'},
@@ -797,7 +836,42 @@ const T={
   's11-ey':{en:'11 — Role',pt:'11 — Função'},'s11-h2':{en:'My Role<br><em>& Impact</em>',pt:'Meu Papel<br><em>e Impacto</em>'},'s11-l1':{en:'I owned creative strategy end-to-end — from structuring the experimentation roadmap and running copystorming sessions, to analyzing biweekly performance data and presenting recommendations to stakeholders.',pt:'Fui responsável pela estratégia criativa de ponta a ponta — da estruturação do roadmap e condução de copystorming até análise quinzenal de dados e apresentação de recomendações para stakeholders.'},'s11-l2':{en:'Every brief had a hypothesis. Every campaign had a learning to extract. Every result fed the next cycle.',pt:'Cada briefing tinha uma hipótese. Cada campanha tinha um aprendizado a extrair. Cada resultado alimentava o próximo ciclo.'},
   'role-label':{en:'Core Responsibilities',pt:'Responsabilidades Principais'},'rl1':{en:'Quarterly experimentation roadmap planning',pt:'Planejamento do roadmap de experimentação trimestral'},'rl2':{en:'Messaging strategy & structured copystorming',pt:'Estratégia de mensagem e copystorming estruturado'},'rl3':{en:'Creative direction: static, video, carousel, UGC, AI',pt:'Direção criativa: estático, vídeo, carrossel, UGC, IA'},'rl4':{en:'Biweekly performance analysis & WoW reporting',pt:'Análise quinzenal de performance e relatórios WoW'},'rl5':{en:'Seasonal campaign planning & execution',pt:'Planejamento e execução de campanhas sazonais'},'rl6':{en:'Fake refresh methodology — national + 7 cities',pt:'Metodologia de fake refresh — nacional + 7 cidades'},'rl7':{en:'Localized adaptation — 12-city expansion',pt:'Adaptação regionalizada — expansão em 12 cidades'},'rl8':{en:'AI-assisted creatives via Smartly.io',pt:'Criativos com IA via Smartly.io'},'rl9':{en:'Cross-functional: Growth · CRM · BI · Media · Agency',pt:'Colaboração: Growth · CRM · BI · Mídia · Agência'},'rl10':{en:'Stakeholder presentations & creative reviews',pt:'Apresentações para stakeholders e revisões criativas'},
   's12-ey':{en:'12 — Learnings',pt:'12 — Aprendizados'},'s12-h2':{en:'Key <em>Learnings</em>',pt:'Principais <em>Aprendizados</em>'},'s12-l1':{en:"The biggest wins didn't come from a single brilliant creative — they came from a disciplined approach that tested fast, learned consistently, and scaled what worked.",pt:'Os maiores resultados não vieram de um criativo brilhante isolado — vieram de uma abordagem disciplinada que testou rápido, aprendeu consistentemente e escalou o que funcionou.'},'s12-l2':{en:'In B2B paid media, creative strategy is growth strategy. With +6% more spend, the right experimentation approach delivered +22% more reach — proof that efficiency comes from creative thinking, not budget.',pt:'Em mídia paga B2B, estratégia criativa é estratégia de crescimento. Com +6% a mais de investimento, a abordagem certa entregou +22% a mais de alcance — prova de que eficiência vem de pensamento criativo, não de verba.'},
-  'tag-sea':{en:'Seasonal Campaigns',pt:'Campanhas Sazonais'},'tag-loc':{en:'Localization',pt:'Regionalização'},'tag-data':{en:'Data Analysis',pt:'Análise de Dados'},'tag-col':{en:'Cross-functional',pt:'Colaboração Entre Times'},'back-btn':{en:'← Back to Portfolio',pt:'← Voltar ao Portfólio'}
+  'tag-sea':{en:'Seasonal Campaigns',pt:'Campanhas Sazonais'},'tag-loc':{en:'Localization',pt:'Regionalização'},'tag-data':{en:'Data Analysis',pt:'Análise de Dados'},'tag-col':{en:'Cross-functional',pt:'Colaboração Entre Times'},'back-btn':{en:'← Back to Portfolio',pt:'← Voltar ao Portfólio'},
+
+  'ml-scope':{en:'Scope',pt:'Escopo'},'mv-role2':{en:'Designer & Creative Strategist',pt:'Designer e Estrategista Criativa'},'mv-focus2':{en:'Partner Acquisition',pt:'Aquisição de Parceiros'},'mv-scope':{en:'Paid Media · Meta Ads · Creative Strategy',pt:'Mídia Paga · Meta Ads · Estratégia Criativa'},'ml-team':{en:'Team',pt:'Time'},'mv-team':{en:'Growth, Performance, Content, BI',pt:'Growth, Performance, Conteúdo, BI'},
+
+  'n-s02-l1':{en:"At 99Food, my work was to turn acquisition needs into design hypotheses, modular systems, and experiments that helped restaurant owners understand value, build trust, and advance through the funnel.",pt:'Na 99Food, meu trabalho foi transformar necessidades de aquisição em hipóteses de design, sistemas modulares e experimentos que ajudavam donos de restaurante a entender valor, ganhar confiança e avançar no funil.'},
+  'n-s02-l2':{en:"The audience wasn't a typical consumer — it was a business owner deciding whether to trust a new platform with their livelihood. Every design decision had to answer: what's in it for my business?",pt:'O público não era um consumidor típico — era um empreendedor decidindo se confiaria em uma nova plataforma com seu negócio. Cada decisão de design precisava responder: o que isso faz pelo meu negócio?'},
+  'n-r1':{en:'Design hypotheses & experimentation strategy',pt:'Hipóteses de design e estratégia de experimentação'},'n-r2':{en:'Quarterly experimentation roadmap',pt:'Roadmap de experimentação trimestral'},'n-r3':{en:'Performance analysis & biweekly reporting',pt:'Análise de performance e relatórios quinzenais'},'n-r4':{en:'Modular creative system design',pt:'Design de sistema criativo modular'},'n-r5':{en:'Fake refresh methodology',pt:'Metodologia de fake refresh'},'n-r6':{en:'Localized adaptation — 12 cities',pt:'Adaptação regionalizada — 12 cidades'},'n-r7':{en:'Stakeholder presentations',pt:'Apresentações para stakeholders'},
+
+  'pc-ey':{en:'02 — Context',pt:'02 — Contexto'},'pc-h2':{en:'The Product Behind<br><em>the Campaigns</em>',pt:'O Produto Por Trás<br><em>das Campanhas</em>'},'pc-lead':{en:"The challenge wasn't just writing prettier ads. 99Food needed to attract restaurant partners at scale — with clear messaging for different audiences, in different regions, at different moments of the funnel. The design work had to connect business, behavior, and conversion.",pt:'O desafio não era apenas criar peças bonitas. A 99Food precisava atrair restaurantes parceiros em escala — com mensagens claras para públicos diferentes, em regiões diferentes e em momentos diferentes do funil. O trabalho de design precisava conectar negócio, comportamento e conversão.'},
+  'pc1-t':{en:'User',pt:'Usuário'},'pc1-d':{en:'Restaurant owner seeking predictability, demand, and trust.',pt:'Dono de restaurante busca previsibilidade, demanda e confiança.'},'pc2-t':{en:'Business',pt:'Negócio'},'pc2-d':{en:'Grow the partner base with efficiency.',pt:'Crescer a base de parceiros com eficiência.'},'pc3-t':{en:'Channel',pt:'Canal'},'pc3-d':{en:'Digital campaigns and acquisition touchpoints.',pt:'Campanhas digitais e pontos de aquisição.'},'pc4-t':{en:'Complexity',pt:'Complexidade'},'pc4-d':{en:'Multiple audiences, multiple regions, little attention span.',pt:'Múltiplas audiências, múltiplas regiões, pouco tempo de atenção.'},
+
+  'pp-ey':{en:'03 — Root Causes',pt:'03 — Causas Raiz'},'pp-h2':{en:'Why This Was a<br><em>Product Problem</em>',pt:'Por Que Isso Era um<br><em>Problema de Produto</em>'},'pp-lead':{en:"The funnel revealed opportunities before the final conversion — not just at the sign-up screen, but at every step a restaurant owner had to trust before getting there.",pt:'O funil mostrava oportunidades antes da conversão final — não apenas na tela de cadastro, mas em cada etapa que o dono do restaurante precisava confiar antes de chegar lá.'},
+  'pp1-t':{en:'Unclear Value Proposition',pt:'Proposta de Valor Pouco Clara'},'pp1-d':{en:"The benefit wasn't always obvious at a glance.",pt:'Nem sempre o benefício ficava óbvio rapidamente.'},'pp2-t':{en:'Low Initial Trust',pt:'Baixa Confiança Inicial'},'pp2-d':{en:'Credibility signals were missing at the right moment.',pt:'Faltavam sinais de credibilidade no momento certo.'},'pp3-t':{en:'High Variation, Low System',pt:'Muita Variação, Pouco Sistema'},'pp3-d':{en:"Learnings didn't scale with consistency.",pt:'Os aprendizados não escalavam com consistência.'},'pp4-t':{en:'Audiences With Different Objections',pt:'Audiências com Objeções Diferentes'},'pp4-d':{en:"One message didn't serve everyone.",pt:'Uma mesma mensagem não servia para todos.'},
+  'fn1':{en:'Discovery',pt:'Descoberta'},'fn2':{en:'Interest',pt:'Interesse'},'fn3':{en:'Consideration',pt:'Consideração'},'fn4':{en:'Sign-up',pt:'Cadastro'},
+
+  'dg-ey':{en:'04 — Approach',pt:'04 — Abordagem'},'dg-h2':{en:'Design Goals &<br><em>How We Thought About It</em>',pt:'Objetivos de Design e<br><em>Como Pensamos a Solução</em>'},'dg-lead':{en:'Instead of producing campaigns reactively, I structured a quarterly experimentation pipeline — each phase with a hypothesis, a design variable, and a performance signal to validate.',pt:'Em vez de produzir campanhas reativamente, estruturei um pipeline de experimentação trimestral — cada fase com hipótese, variável de design e sinal de performance para validar.'},
+  'dg1-t':{en:'Clarify Value',pt:'Tornar a Proposta de Valor Mais Compreensível'},'dg1-d':{en:'Make the value proposition more understandable.',pt:'Deixar o benefício óbvio rapidamente.'},'dg2-t':{en:'Improve Traffic Quality',pt:'Aumentar a Qualidade do Tráfego'},'dg2-d':{en:'Increase the quality of traffic and intent.',pt:'Aumentar a qualidade do tráfego e da intenção.'},'dg3-t':{en:'Build a Modular System',pt:'Criar um Sistema Modular'},'dg3-d':{en:'Create a system to test, iterate, and scale.',pt:'Criar um sistema para testar, iterar e escalar.'},'dg4-t':{en:'Speed Up Learning',pt:'Apoiar o Crescimento'},'dg4-d':{en:'Support growth with faster learning velocity.',pt:'Apoiar o crescimento com mais velocidade de aprendizado.'},
+  'sol1-ph':{en:'1',pt:'1'},'sol1-ti':{en:'Reading the Data',pt:'Leitura de Dados'},'sol1-de':{en:'Funnel, channel, and behavior analysis.',pt:'Análise do funil, canais e comportamentos.'},'sol2-ph':{en:'2',pt:'2'},'sol2-ti':{en:'Mapping Objections',pt:'Mapeamento de Objeções'},'sol2-de':{en:'Understanding pains, doubts, and barriers.',pt:'Entendimento das dores, dúvidas e barreiras.'},'sol3-ph':{en:'3',pt:'3'},'sol3-ti':{en:'Design Hypotheses',pt:'Hipóteses de Design'},'sol3-de':{en:'Ideas prioritized by impact and effort.',pt:'Ideias priorizadas com base em impacto e esforço.'},'sol4-ph':{en:'4',pt:'4'},'sol4-ti':{en:'Modular System',pt:'Sistema Modular'},'sol4-de':{en:'Components and patterns to scale learnings.',pt:'Componentes e padrões para escalar aprendizados.'},'sol5-ph':{en:'5',pt:'5'},'sol5-ti':{en:'Test & Optimize',pt:'Teste e Otimização'},'sol5-de':{en:'Continuous experimentation and evidence-based decisions.',pt:'Experimentação contínua e decisões baseadas em evidências.'},
+
+  'hy-ey':{en:'05 — Guiding Beliefs',pt:'05 — Crenças que Guiaram'},'hy-h2':{en:'Hypotheses That<br><em>Guided the Work</em>',pt:'Hipóteses Que<br><em>Guiaram o Trabalho</em>'},'hy-lead':{en:"Every design decision started from a testable belief about restaurant-owner behavior — tracked, validated, and reused across campaigns.",pt:'Cada decisão de design partia de uma crença testável sobre o comportamento do dono de restaurante — acompanhada, validada e reaproveitada entre campanhas.'},
+  'hy1-t':{en:'Clarity Drives Action',pt:'Clareza Gera Ação'},'hy1-d':{en:'The clearer the proposition, the higher the chance of moving forward.',pt:'Quanto mais clara a proposta, maior a chance de avançar.'},'hy2-t':{en:'Relevance Boosts Response',pt:'Relevância Aumenta Resposta'},'hy2-d':{en:"Language and context need to reflect the partner's reality.",pt:'Linguagem e contexto precisam refletir a realidade do parceiro.'},'hy3-t':{en:'Proof Reduces Friction',pt:'Prova Reduz Atrito'},'hy3-d':{en:'Trust signals help the initial decision.',pt:'Sinais de confiança ajudam na decisão inicial.'},'hy4-t':{en:'Refresh Reactivates Attention',pt:'Refresh Reativa Atenção'},'hy4-d':{en:'Perceptible changes renew interest without losing consistency.',pt:'Mudanças perceptíveis renovam interesse sem perder consistência.'},'hy5-t':{en:'Systems Accelerate Learning',pt:'Sistema Acelera Aprendizado'},'hy5-d':{en:'Reusable components let us test faster and learn faster.',pt:'Componentes reutilizáveis permitem testar mais e aprender mais rápido.'},
+
+  'ms-ey':{en:'06 — Building Blocks',pt:'06 — Blocos de Construção'},'ms-h2':{en:'A System Built to<br><em>Test, Refresh & Scale</em>',pt:'Sistema Modular Para<br><em>Testar e Escalar</em>'},'ms-lead':{en:'Instead of one-off campaigns, I designed a modular system — reusable building blocks (hook, value proposition, social proof, objection, offer, CTA) combined into formats adaptable by message, season, or region.',pt:'Em vez de campanhas pontuais, desenhei um sistema modular — blocos reutilizáveis (hook, proposta de valor, prova social, objeção, oferta, CTA) combinados em formatos adaptáveis por mensagem, temporada ou região.'},
+  'blk1':{en:'Hook',pt:'Hook'},'blk2':{en:'Value Proposition',pt:'Proposta de Valor'},'blk3':{en:'Social Proof',pt:'Prova Social'},'blk4':{en:'Objection',pt:'Objeção'},'blk5':{en:'Offer',pt:'Oferta'},'blk6':{en:'CTA',pt:'CTA'},'blk7':{en:'Segment Variation',pt:'Variação por Segmento'},'blk8':{en:'Funnel-stage Variation',pt:'Variação por Estágio do Funil'},
+
+  'exp-ey':{en:'07 — Testing the System',pt:'07 — Colocando o Sistema à Prova'},'exp-h2':{en:'Experiments That<br><em>Moved the Funnel</em>',pt:'Experimentos Que<br><em>Moveram o Funil</em>'},'exp-lead':{en:"Three experiment tracks tested the system's core hypotheses — messaging, creative refresh, and regional relevance — each validated against real performance signals.",pt:'Três frentes de experimento testaram as hipóteses centrais do sistema — mensagem, refresh criativo e relevância regional — cada uma validada com sinais reais de performance.'},
+  'expA-t':{en:'A · Finding the Angle',pt:'A · Finding the Angle'},'expA-s':{en:'Messaging',pt:'Mensagem'},'expA-d':{en:"Structured copystorming built messages from the restaurant owner's real pains and motivations. Six directions tested simultaneously.",pt:'Copystorming estruturado construiu mensagens a partir das dores e motivações reais do dono do restaurante. Seis direções testadas simultaneamente.'},'expA-t1':{en:'~74% of impressions — "High Demand" angle',pt:'~74% das impressões — ângulo "Alta Demanda"'},'expA-t2':{en:'Generic copy = baseline',pt:'Copy genérico = baseline'},
+  'expB-t':{en:'B · Fake Refresh Strategy',pt:'B · Fake Refresh Strategy'},'expB-s':{en:'Creative Refresh',pt:'Refresh Criativo'},'expB-d':{en:'Lightweight visual and copy updates on top-performing ads extended delivery without resetting platform learning.',pt:'Atualizações visuais e de copy leves em anúncios top estenderam a entrega sem resetar o aprendizado da plataforma.'},
+  'expC-t':{en:'C · One Country, Many Audiences',pt:'C · One Country, Many Audiences'},'expC-s':{en:'Regional',pt:'Regional'},'expC-d':{en:'Context and profile adjustments balanced consistency and relevance across urban, interior, new, and experienced audiences.',pt:'Ajustes de contexto e perfil equilibraram consistência e relevância entre audiências urbanas, do interior, novas e experientes.'},'expC-t1':{en:'6 cities analyzed',pt:'6 cidades analisadas'},'expC-t2':{en:'Distinct triggers per market',pt:'Gatilhos distintos por mercado'},
+  'exp-insight':{en:'<strong>The bottom line:</strong> With only +6% more spend, the right creative approach delivered +22% reach, +17% clicks, and +14% engagement — with lower CPM and CPC across the board.',pt:'<strong>O resumo:</strong> Com apenas +6% a mais de investimento, a abordagem criativa certa entregou +22% de alcance, +17% de cliques e +14% de engajamento — com CPM e CPC menores em toda a conta.'},
+
+  'role2-ey':{en:'09 — Contribution',pt:'09 — Contribuição'},'role2-h2':{en:'My Role<br><em>& Impact</em>',pt:'Meu Papel<br><em>e Impacto</em>'},'role2-l1':{en:'I acted as Product Designer on a Growth front, translating acquisition needs into experience problems, design hypotheses, and scalable solutions.',pt:'Atuei como Product Designer em uma frente de Growth, traduzindo necessidades de aquisição em problemas de experiência, hipóteses de design e soluções escaláveis.'},'role2-label':{en:'Impact',pt:'Impacto'},
+  'ri1':{en:'✓ Connected funnel data to design decisions',pt:'✓ Conectei dados de funil com decisões criativas'},'ri2':{en:'✓ Structured hypotheses and design directions',pt:'✓ Estruturei hipóteses e direções de design'},'ri3':{en:'✓ Designed modular systems for multiple formats',pt:'✓ Desenhei sistemas modulares para múltiplos formatos'},'ri4':{en:'✓ Supported test, iteration & learning cycles',pt:'✓ Apoiei ciclos de teste, iteração e aprendizado'},'ri5':{en:'✓ Partnered with Growth, BI & content teams',pt:'✓ Trabalhei em parceria com Growth, BI e times de conteúdo'},'ri6':{en:'✓ Helped turn a campaign into a product process',pt:'✓ Ajudei a transformar campanha em processo de produto'},
+
+  'learn2-ey':{en:'10 — Closing Thoughts',pt:'10 — Reflexão Final'},'learn2-h2':{en:'Key <em>Learnings</em>',pt:'Key <em>Learnings</em>'},'learn2-l1':{en:"This project reinforced that Growth Product Design isn't just the piece itself, but the ability to turn business signals into a continuous system of experimentation, clarity, and learning.",pt:'Esse projeto reforçou que, em Growth Product Design, o valor não está só na peça em si, mas na capacidade de transformar sinais do negócio em um sistema contínuo de experimentação, clareza e aprendizado.'},
+  'tag-gd':{en:'Growth Design',pt:'Growth Design'},'tag-exp2':{en:'Experimentation',pt:'Experimentação'},'tag-funnel':{en:'Funnel Thinking',pt:'Funnel Thinking'},'tag-vp':{en:'Value Proposition',pt:'Value Proposition'},'tag-scale':{en:'Scalable Systems',pt:'Scalable Systems'},'tag-ps':{en:'Product Strategy',pt:'Product Strategy'}
 };
 
 const cur=document.getElementById('cursor');
@@ -854,16 +928,15 @@ function gaInitEvents() {
   // 4. Section visibility — tracks which sections recruiter reads
   const sections = [
     { id: 'overview',   label: '01_overview' },
-    { id: 'results',    label: '02_results' },
-    { id: 'challenge',  label: '03_challenge' },
-    { id: 'pipeline',   label: '04_pipeline' },
-    { id: 'formats',    label: '05_formats' },
-    { id: 'messaging',  label: '06_messaging' },
-    { id: 'refresh',    label: '07_fake_refresh' },
+    { id: 'context',    label: '02_product_context' },
+    { id: 'problem',    label: '03_product_problem' },
+    { id: 'approach',   label: '04_design_goals_approach' },
+    { id: 'hypotheses', label: '05_hypotheses' },
+    { id: 'system',     label: '06_modular_system' },
+    { id: 'experiments',label: '07_experiments' },
     { id: 'campaigns',  label: '08_campaigns' },
-    { id: 'regional',   label: '09_regional' },
-    { id: 'role',       label: '10_role' },
-    { id: 'learnings',  label: '11_learnings' },
+    { id: 'role',       label: '09_role_impact' },
+    { id: 'learnings',  label: '10_learnings' },
   ];
   const seen = new Set();
   const sectionObs = new IntersectionObserver(entries => {
