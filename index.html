@@ -758,6 +758,7 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   @keyframes scrollPulse { 0%,100%{opacity:0.3;transform:scaleY(1)} 50%{opacity:1;transform:scaleY(1.1)} }
 
   .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .skill-tag-js { display: none; }
 
   .portfolio-grid { grid-template-columns: repeat(4, 1fr) !important; }
   .cases-grid { grid-template-columns: repeat(3, 1fr) !important; }
@@ -881,6 +882,7 @@ footer { background:var(--bg-mid); padding:76px 52px 38px; border-top:1px solid 
   .hero-cta-primary, .hero-cta-secondary { width: 100%; max-width: 280px; text-align: center; }
 
   .skills-grid { grid-template-columns: 1fr 1fr; }
+  .skill-tag-js { display: none; }
 
   .portfolio-grid { grid-template-columns: repeat(2, 1fr) !important; }
   .cases-grid { grid-template-columns: 1fr !important; }
@@ -929,9 +931,10 @@ html[data-fs="large"] { font-size: 19px; }
 /* Mobile: botão no header (ao lado do hamburger) */
 .fs-mob-header {
   display: none;
-  background: transparent; border: none;
+  -webkit-appearance: none; appearance: none; outline: none; box-sizing: border-box;
+  background: transparent; border: 1px solid var(--border); border-color: var(--border);
   color: var(--gray); cursor: pointer;
-  width: 36px; height: 36px;
+  width: 36px; height: 32px;
   align-items: center; justify-content: center;
   transition: color 0.2s;
   padding: 0; flex-shrink: 0;
@@ -941,7 +944,8 @@ html[data-fs="large"] { font-size: 19px; }
 
 /* Botão dentro do mobile-controls (menu aberto) — igual ao theme-btn mob */
 .mobile-controls .fs-mob-menu {
-  background: transparent; border: none; border-left: 1px solid var(--border);
+  -webkit-appearance: none; appearance: none; outline: none; box-sizing: border-box;
+  background: transparent; border: none; border-left: 1px solid var(--border); border-color: var(--border);
   width: 44px; height: 100%;
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; color: var(--gray); padding: 0;
@@ -953,6 +957,8 @@ html[data-fs="large"] { font-size: 19px; }
 @media (max-width: 768px) {
   .fs-nav-btn  { display: none; }
   .fs-mob-header { display: flex; }
+  .nav-controls { border-radius: 4px 0 0 4px; }
+  .fs-mob-header { border-radius: 0 4px 4px 0; border-left: none; margin-left: -8px; }
 }
 
 /* ══════════════════════════════════════════
@@ -1304,14 +1310,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="skill-tag">Figma</span>
       <span class="skill-tag">Prototyping</span>
       <span class="skill-tag">HTML / CSS</span>
-      <span class="skill-tag">JavaScript</span>
+      <span class="skill-tag skill-tag-js">JavaScript</span>
 
       <!-- Grupo 3: CRM & Product Analytics -->
       <span class="skill-tag">CRM</span>
       <span class="skill-tag">Product Analytics</span>
       <span class="skill-tag">Looker Studio</span>
       <span class="skill-tag">A/B Testing</span>
-      <span class="skill-tag">CRO</span>
+      <span class="skill-tag">Accessibility</span>
       <span class="skill-tag">Salesforce</span>
 
       <!-- Grupo 4: AI Workflows -->
@@ -1387,7 +1393,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
     <div class="case-card" onclick="window.location.href='case-product/99food.html'" style="cursor:pointer;">
       <img src="https://static.wixstatic.com/media/b72a24_91686112eab144e29d922bf12c0c4a3e~mv2.png" alt="Campaigns" loading="lazy">
-      <div class="case-overlay"><span class="case-cat">Growth · 99</span><h3 class="case-title">Creative Strategy & Performance</h3></div>
+      <div class="case-overlay"><span class="case-cat">Growth · 99</span><h3 class="case-title">Creative Strategy &amp; Performance</h3></div>
     </div>
   </div>
 
