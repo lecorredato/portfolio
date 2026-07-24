@@ -146,8 +146,9 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;display:flex;align-items:ce
 .cs-timeline::before{content:'';position:absolute;left:10px;top:8px;bottom:8px;width:2px;background:linear-gradient(to bottom,var(--gold),rgba(200,162,0,0.1));}
 .cs-tl-item{position:relative;margin-bottom:26px;}
 .cs-tl-dot{position:absolute;left:-22px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--gold);box-shadow:0 0 8px rgba(212,168,0,0.5);}
-.cs-tl-phase{font-family:'Space Mono',monospace;font-size:0.68rem;letter-spacing:0.14em;color:var(--gold3);text-transform:uppercase;margin-bottom:3px;}
-.cs-tl-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.05em;color:var(--text);margin-bottom:5px;}
+.cs-tl-head{display:flex;align-items:baseline;gap:10px;margin-bottom:5px;}
+.cs-tl-phase{font-family:'Space Mono',monospace;font-size:0.78rem;letter-spacing:0.1em;color:var(--gold3);}
+.cs-tl-title{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:0.05em;color:var(--text);}
 .cs-tl-desc{font-size:0.92rem;color:var(--text-muted);line-height:1.6;}
 /* BEFORE / AFTER */
 .cs-ba{display:grid;grid-template-columns:1fr 1fr;gap:3px;border-radius:8px;overflow:hidden;margin-bottom:24px;}
@@ -538,7 +539,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <h2 class="cs-h2 t" data-key="dg-h2">Design Goals &amp;<br><em>How We Thought About It</em></h2>
   <div class="cs-accent-line"></div>
   <p class="cs-lead t" data-key="dg-lead">Instead of producing campaigns reactively, I structured a quarterly experimentation pipeline — each phase with a hypothesis, a design variable, and a performance signal to validate. That pipeline was mapped into the roadmap below, guiding four goals for every cycle:</p>
-  <div class="cs-2col" style="align-items:start;margin-top:20px;">
+
+  <div style="margin:24px 0 32px;">
+    <img src="IMG_2091.png" alt="99Food Restaurant Roadmap Pipeline" class="cs-img-full" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+    <div style="display:none;background:rgba(200,162,0,0.07);border:1px solid var(--border);border-radius:10px;padding:40px 32px;text-align:center;"><p style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:0.1em;">Restaurant Roadmap Pipeline</p></div>
+    <p class="cs-img-caption t" data-key="roadmap-cap">Restaurant Roadmap Pipeline — 99 Creative Strategy Kick-off</p>
+  </div>
+
+  <div class="cs-2col" style="align-items:start;">
     <div class="cs-hb-4sep" style="display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin:0;">
       <div class="cs-challenge-card">
         <svg class="cs-mod-icon" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v5M12 16h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
@@ -557,17 +565,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h4 class="t" data-key="dg4-t">Speed Up Learning</h4><p class="t" data-key="dg4-d">Shorter test cycles mean faster, more confident decisions.</p>
       </div>
     </div>
-    <div>
-      <img src="IMG_2091.png" alt="99Food Restaurant Roadmap Pipeline" class="cs-img-full" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-      <div style="display:none;background:rgba(200,162,0,0.07);border:1px solid var(--border);border-radius:10px;padding:40px 32px;text-align:center;"><p style="font-family:'Bebas Neue',sans-serif;font-size:1.4rem;color:var(--gold);letter-spacing:0.1em;">Restaurant Roadmap Pipeline</p></div>
-      <p class="cs-img-caption t" data-key="roadmap-cap">Restaurant Roadmap Pipeline — 99 Creative Strategy Kick-off</p>
-      <div class="cs-timeline" style="margin-top:28px;">
-        <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="sol1-ph">1</div><div class="cs-tl-title t" data-key="sol1-ti">Reading the Data</div><div class="cs-tl-desc t" data-key="sol1-de">Funnel, channel, and behavior analysis.</div></div>
-        <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="sol2-ph">2</div><div class="cs-tl-title t" data-key="sol2-ti">Mapping Objections</div><div class="cs-tl-desc t" data-key="sol2-de">Understanding pains, doubts, and barriers.</div></div>
-        <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="sol3-ph">3</div><div class="cs-tl-title t" data-key="sol3-ti">Design Hypotheses</div><div class="cs-tl-desc t" data-key="sol3-de">Ideas prioritized by impact and effort.</div></div>
-        <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="sol4-ph">4</div><div class="cs-tl-title t" data-key="sol4-ti">Modular System</div><div class="cs-tl-desc t" data-key="sol4-de">Components and patterns to scale learnings.</div></div>
-        <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-phase t" data-key="sol5-ph">5</div><div class="cs-tl-title t" data-key="sol5-ti">Test &amp; Optimize</div><div class="cs-tl-desc t" data-key="sol5-de">Continuous experimentation and evidence-based decisions.</div></div>
-      </div>
+    <div class="cs-timeline">
+      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-head"><span class="cs-tl-phase t" data-key="sol1-ph">1</span><span class="cs-tl-title t" data-key="sol1-ti">Reading the Data</span></div><div class="cs-tl-desc t" data-key="sol1-de">Funnel, channel, and behavior analysis.</div></div>
+      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-head"><span class="cs-tl-phase t" data-key="sol2-ph">2</span><span class="cs-tl-title t" data-key="sol2-ti">Mapping Objections</span></div><div class="cs-tl-desc t" data-key="sol2-de">Understanding pains, doubts, and barriers.</div></div>
+      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-head"><span class="cs-tl-phase t" data-key="sol3-ph">3</span><span class="cs-tl-title t" data-key="sol3-ti">Design Hypotheses</span></div><div class="cs-tl-desc t" data-key="sol3-de">Ideas prioritized by impact and effort.</div></div>
+      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-head"><span class="cs-tl-phase t" data-key="sol4-ph">4</span><span class="cs-tl-title t" data-key="sol4-ti">Modular System</span></div><div class="cs-tl-desc t" data-key="sol4-de">Components and patterns to scale learnings.</div></div>
+      <div class="cs-tl-item"><div class="cs-tl-dot"></div><div class="cs-tl-head"><span class="cs-tl-phase t" data-key="sol5-ph">5</span><span class="cs-tl-title t" data-key="sol5-ti">Test &amp; Optimize</span></div><div class="cs-tl-desc t" data-key="sol5-de">Continuous experimentation and evidence-based decisions.</div></div>
     </div>
   </div>
 </div>
